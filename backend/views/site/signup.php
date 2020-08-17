@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--            <button class="btn btn-facebook btn-block">Sign Up Using Facebook</button>-->
 <!--            <button class="btn btn-twitter btn-block">Sign Up Using Twitter</button>-->
 <!--         -->
-            <p class="mg-t-40 mg-b-0">Already have an account? <a href="site/login">Sign In</a></p>
+            <p class="mg-t-40 mg-b-0">Already have an account? <a href="/en/site/login">Sign In</a></p>
         </div><!-- signin-box -->
         <?php ActiveForm::end(); ?>
     </div><!-- signin-right -->

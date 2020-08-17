@@ -28,21 +28,18 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['first_name', 'trim'],
-            ['first_name', 'required'],
-            ['phone', 'required'],
-            ['first_name', 'string', 'min' => 2, 'max' => 255],
-            ['company_name', 'required'],
-            ['email', 'trim'],
-            ['email', 'required'],
+            [['first_name', 'last_name', 'email', 'company_name'], 'trim'],
+            [['first_name', 'last_name', 'email', 'phone',
+                'password', 'company_name', 'password_repeat'], 'required'],
+            ['last_name', 'required'],
+            ['phone', 'number', 'message' => 'Enter only number'],
+            [['first_name', 'last_name'], 'string', 'min' => 2, 'max' => 255],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
-            ['password', 'required'],
             ['password', 'string', 'min' => 6],
-            ['password_repeat', 'required'],
-            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password', 'message' => "Passwords don't match" ],
         ];
     }
 

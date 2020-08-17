@@ -52,7 +52,7 @@ AppAsset::register($this);
     <div class="container-fluid">
         <div class="slim-header-left">
 
-            <h2 class="slim-logo"><a href="index.html">Autotech<span>.</span></a></h2>
+            <h2 class="slim-logo"><a href="/">Autotech<span>.</span></a></h2>
             <a href="" id="slimSidebarMenu" class="slim-sidebar-menu"><span></span></a>
 <!--            <div class="search-box">-->
 <!--                <input type="text" class="form-control" placeholder="Search">-->
@@ -201,19 +201,29 @@ AppAsset::register($this);
     <div class="slim-sidebar">
         <?php if(!Yii::$app->user->identity->hasAccess('new')):?>
         <ul class="nav nav-sidebar">
-            <li class="sidebar-nav-item with-sub">
+            <li class="sidebar-nav-item">
+<!--                with-sub-->
                 <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Dashboard</a>
-                <ul class="nav sidebar-nav-sub">
+<!--                <ul class="nav sidebar-nav-sub">
                     <li class="nav-sub-item"><a href="index.html" class="nav-sub-link">Dashboard 01</a></li>
                     <li class="nav-sub-item"><a href="index2.html" class="nav-sub-link">Dashboard 02</a></li>
                     <li class="nav-sub-item"><a href="index3.html" class="nav-sub-link">Dashboard 03</a></li>
                     <li class="nav-sub-item"><a href="index4.html" class="nav-sub-link">Dashboard 04</a></li>
                     <li class="nav-sub-item"><a href="index5.html" class="nav-sub-link">Dashboard 05</a></li>
-                </ul>
+                </ul>-->
             </li>
             <li class="sidebar-nav-item">
-                <a href="page-messages.html" class="sidebar-nav-link"><i class="icon ion-ios-chatboxes-outline"></i> Messages</a>
+                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Derasanner</a>
             </li>
+            <li class="sidebar-nav-item">
+                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Nerkayacumner</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Norutyunner</a>
+            </li>
+<!--            <li class="sidebar-nav-item">
+                <a href="page-messages.html" class="sidebar-nav-link"><i class="icon ion-ios-chatboxes-outline"></i> Messages</a>
+            </li>-->
 
         </ul>
         <?php else:?>
@@ -226,13 +236,13 @@ AppAsset::register($this);
     <div class="slim-mainpanel">
         <div class="container">
 
-             <?=$content;?>
+             <?= $content; ?>
         </div><!-- container -->
 
         <div class="slim-footer mg-t-0">
             <div class="container-fluid">
-<!--                <p>Copyright 2018 &copy; All Rights Reserved. Slim Dashboard Template</p>-->
-<!--                <p>Designed by: <a href="">ThemePixels</a></p>-->
+                <p>Copyright 2020 &copy; All Rights Reserved. Slim Dashboard Template</p>
+                <p>Designed by: <a href="">ThemePixels</a></p>
             </div><!-- container-fluid -->
         </div><!-- slim-footer -->
     </div><!-- slim-mainpanel -->

@@ -63,13 +63,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
         $this->layout = 'main';
-        $objUser = Yii::$app->user->identity;
-        if($objUser->hasAccess('new')){
+        //echo '<pre>';
+        //var_dump(Yii::$app->user->identity);
+        //echo '</pre>';die;
+        //$objUser = Yii::$app->user->identity;
+/*        if($objUser->hasAccess('new')){
             $this->redirect('/dashboard');
 
-        }
+        }*/
 
         return $this->render('index');
     }
