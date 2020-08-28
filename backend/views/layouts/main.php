@@ -2,6 +2,8 @@
 <?php
 use common\widgets\WLanguage;
 use backend\assets\AppAsset;
+use yii\helpers\Html;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -34,13 +36,14 @@ AppAsset::register($this);
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Slim Responsive Bootstrap 4 Admin Template</title>
+    <title><?= Html::encode($this->title) ?></title>
 
     <!-- vendor css -->
     <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/lib/fontawesome-5.13/css/all.css" rel="stylesheet">
     <link href="/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
-    <link href="/lib/jquery.steps/css/jquery.steps.css" rel="stylesheet">
+    <link href="/lib/jquery.steps/css/jquery.steps.css" rel="stylesheet"
     <?php $this->registerCsrfMetaTags() ?>
     <!-- Slim CSS -->
     <link rel="stylesheet" href="/css/slim.css">
@@ -203,7 +206,7 @@ AppAsset::register($this);
         <ul class="nav nav-sidebar">
             <li class="sidebar-nav-item">
 <!--                with-sub-->
-                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Dashboard</a>
+                <a href="/en/dashboard" class="sidebar-nav-link"><i class="fas fa-home"></i> Dashboard</a>
 <!--                <ul class="nav sidebar-nav-sub">
                     <li class="nav-sub-item"><a href="index.html" class="nav-sub-link">Dashboard 01</a></li>
                     <li class="nav-sub-item"><a href="index2.html" class="nav-sub-link">Dashboard 02</a></li>
@@ -213,13 +216,13 @@ AppAsset::register($this);
                 </ul>-->
             </li>
             <li class="sidebar-nav-item">
-                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Derasanner</a>
+                <a href="/en/actor/index" class="sidebar-nav-link"><i class="fas fa-theater-masks"></i> Actors</a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Nerkayacumner</a>
+                <a href="/en/presentation/index" class="sidebar-nav-link"><i class="fab fa-pinterest-p"></i> Presentations</a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="" class="sidebar-nav-link"><i class="icon ion-ios-home-outline"></i> Norutyunner</a>
+                <a href="/en/news/index" class="sidebar-nav-link"><i class="fas fa-newspaper"></i> News</a>
             </li>
 <!--            <li class="sidebar-nav-item">
                 <a href="page-messages.html" class="sidebar-nav-link"><i class="icon ion-ios-chatboxes-outline"></i> Messages</a>

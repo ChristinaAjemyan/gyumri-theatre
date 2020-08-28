@@ -17,7 +17,12 @@
         "php": ">=5.6.0",
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "carono/yii2-giix": "^0.4.5",
+		"pcrt/yii2-datepicker": "*",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "2amigos/yii2-ckeditor-widget" : "~2.1",
+        "kartik-v/yii2-widget-select2": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

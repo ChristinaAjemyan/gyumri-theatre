@@ -16,7 +16,7 @@ return [
                 '*' => [
                     'class' => 'yii\i18n\DbMessageSource',
                     'sourceLanguage' => 'en',
-                    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
+                    //'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
 //                    'fileMap' => [
 //                        //'main' => 'main.php',
 //                    ],
