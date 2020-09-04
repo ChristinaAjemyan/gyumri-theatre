@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'content' => function ($data){
                     $images = [
                         [
-                            'src' => Yii::getAlias('@web').'/upload_avatars/'.$data['img_path'], ['height' => '50px'],
+                            'src' => Yii::getAlias('@web').'/upload/avatars/'.$data['img_path'], ['height' => '50px'],
                             'title' => $data['title'],
                         ]
                     ];
@@ -40,14 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'id'     =>'lightbox',
                         'class'  =>'galary',
                         'height' =>'50px',
-                        //'width' =>'100px',
                         'images' => $images,
                     ]);
                 }
             ],
             //'id',
             'title',
-            'content:ntext',
+            //'content:ntext',
             //'img_path',
             'dt_create',
             ['class' => 'yii\grid\ActionColumn'],

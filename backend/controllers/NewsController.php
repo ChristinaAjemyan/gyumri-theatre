@@ -70,16 +70,16 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            if (!is_dir('upload_avatars/')){
-                mkdir('upload_avatars/',0777, true);
+            if (!is_dir('upload/avatars/')){
+                mkdir('upload/avatars/',0777, true);
             }
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $model->img_path = time() . '.' . $model->avatar_image->extension;
                 $model->save();
-                $model->avatar_image->saveAs('upload_avatars/' . time() . '.' . $model->avatar_image->extension);
+                $model->avatar_image->saveAs('upload/avatars/' . time() . '.' . $model->avatar_image->extension);
             }else{
-                copy('image/default.jpg', 'upload_avatars/default.jpg');
+                copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->save();
             }
@@ -107,20 +107,20 @@ class NewsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
-                if (file_exists('upload_avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                     $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload_avatars/'.$_SESSION['img_name']);
+                    unlink('upload/avatars/'.$_SESSION['img_name']);
                 }
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $model->img_path = time() . '.' . $model->avatar_image->extension;
                 $model->save();
-                $model->avatar_image->saveAs('upload_avatars/' . time() . '.' . $model->avatar_image->extension);
+                $model->avatar_image->saveAs('upload/avatars/' . time() . '.' . $model->avatar_image->extension);
             }else{
-                if (file_exists('upload_avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                     $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload_avatars/'.$_SESSION['img_name']);
+                    unlink('upload/avatars/'.$_SESSION['img_name']);
                 }
-                copy('image/default.jpg', 'upload_avatars/default.jpg');
+                copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->save();
             }

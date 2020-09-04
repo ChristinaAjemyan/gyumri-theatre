@@ -21,9 +21,10 @@
         "carono/yii2-giix": "^0.4.5",
 		"pcrt/yii2-datepicker": "*",
         "kartik-v/yii2-widget-fileinput": "dev-master",
-        "2amigos/yii2-ckeditor-widget" : "~2.1",
         "kartik-v/yii2-widget-select2": "dev-master",
-        "slavkovrn/yii2-lightbox": "^1.0"
+        "slavkovrn/yii2-lightbox": "^1.0",
+        "mihaildev/yii2-elfinder": "*",
+        "mihaildev/yii2-ckeditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

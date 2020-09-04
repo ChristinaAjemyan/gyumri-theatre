@@ -21,7 +21,7 @@ class Main extends Model
         $modelClass =  "\app\models\\".$modelName;
         $imgName = $modelClass::find()->where(['id' => $id])->one()['img_path'];
         if ($imgName && $imgName !== 'default.jpg'){
-            $arr[] = '/upload_avatars/'.$imgName;
+            $arr[] = '/upload/avatars/'.$imgName;
             return $arr;
         }
         return false;

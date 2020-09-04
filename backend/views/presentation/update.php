@@ -23,7 +23,7 @@ $images = ArrayHelper::map(Image::find()->where(['presentation_id' => $model->at
             <?php foreach ($images as $image): ?>
             <?php $result.= "<div class=\"col-2\">
                 <div class=\"card card-block my-card-block\">
-                    <img src=\"/upload_galleries/$image\" alt=\"$image\">
+                    <img src=\"/upload/galleries/$image\" alt=\"$image\">
                     <button type=\"button\" class=\"file_remove\"><i class=\"fas fa-times\"></i></button>
                 </div>
             </div>"; ?>

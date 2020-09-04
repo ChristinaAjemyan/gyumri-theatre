@@ -1,10 +1,12 @@
 <?php
 
 use app\models\Main;
+use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
-use dosamigos\ckeditor\CKEditor;
+use mihaildev\elfinder\ElFinder;
+\mihaildev\elfinder\Assets::noConflict($this);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Actor */
@@ -22,7 +24,7 @@ use dosamigos\ckeditor\CKEditor;
     <?= $form->field($model, 'birthday')->textInput(['class' => 'datepicker-here form-control', 'data-date-format' => 'yyyy-mm-dd']) ?>
 
     <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'upload_avatars/*'],
+        'options' => ['accept' => 'avatars/*'],
         'pluginOptions' => [
             'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
             'initialPreviewAsData' => true,
@@ -34,13 +36,9 @@ use dosamigos\ckeditor\CKEditor;
 
     <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'desc')->widget(CKEditor::className(),[
-                        'options' => ['rows' => 6],
-                        'preset' => 'advanced',
-                        'clientOptions' => [
-                            'filebrowserUploadUrl' => 'img/*'
-                        ]
-                    ]) ?>
+    <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
+        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
