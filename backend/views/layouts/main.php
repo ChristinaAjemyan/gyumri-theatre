@@ -39,6 +39,8 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
 
     <!-- vendor css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/lib/fontawesome-5.13/css/all.css" rel="stylesheet">
     <link href="/lib/Ionicons/css/ionicons.css" rel="stylesheet">
@@ -237,7 +239,7 @@ AppAsset::register($this);
     </div><!-- slim-sidebar -->
 
     <div class="slim-mainpanel">
-        <div class="container">
+        <div class="container-fluid">
 
              <?= $content; ?>
         </div><!-- container -->
@@ -251,7 +253,10 @@ AppAsset::register($this);
     </div><!-- slim-mainpanel -->
 </div><!-- slim-body -->
 
+
 <script src="/lib/jquery/js/jquery.js"></script>
+<script src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="/lib/popper.js/js/popper.js"></script>
 <script src="/lib/bootstrap/js/bootstrap.js"></script>
 <script src="/lib/jquery.cookie/js/jquery.cookie.js"></script>
@@ -260,6 +265,7 @@ AppAsset::register($this);
 <script type="text/javascript" src="/js/angular/angular.min.js"></script>
 <script type="text/javascript" src="/js/angular/app.js"></script>
 <script src="/js/slim.js"></script>
+
 
 <?php $this->endBody() ?>
 </body>

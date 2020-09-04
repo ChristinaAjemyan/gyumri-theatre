@@ -18,7 +18,7 @@ class PresentationSearch extends Presentation
     {
         return [
             [['id', 'is_new'], 'integer'],
-            [['title', 'img_path', 'actors_id', 'show_date', 'trailer', 'desc'], 'safe'],
+            [['title', 'img_path', 'show_date', 'trailer', 'desc'], 'safe'],
         ];
     }
 
@@ -66,7 +66,6 @@ class PresentationSearch extends Presentation
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'img_path', $this->img_path])
-            ->andFilterWhere(['like', 'actors_id', $this->actors_id])
             ->andFilterWhere(['like', 'trailer', $this->trailer])
             ->andFilterWhere(['like', 'desc', $this->desc]);
 

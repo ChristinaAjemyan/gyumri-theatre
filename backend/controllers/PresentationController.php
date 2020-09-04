@@ -3,9 +3,12 @@
 namespace backend\controllers;
 
 use app\models\ActorPresentation;
+use app\models\Image;
+use kartik\select2\Select2;
 use Yii;
 use app\models\Presentation;
 use app\models\PresentationSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -41,12 +44,6 @@ class PresentationController extends Controller
         $searchModel = new PresentationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-                                                
-            if (Yii::$app->session->has('img_name') || Yii::$app->session->has('img_field_name')){
-                unset($_SESSION['img_name']);
-                unset($_SESSION['img_field_name']);
-            }
-                                                                                                
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -74,52 +71,51 @@ class PresentationController extends Controller
     public function actionCreate()
     {
         $model = new Presentation();
-
-
+        $model_act_present = new ActorPresentation();
+        $model_image = new Image();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-
-            if (!is_dir('uploads/')){
-                mkdir('uploads/',0777, true);
-
+            if (!is_dir('upload_avatars/')){
+                mkdir('upload_avatars/',0777, true);
             }
-            foreach ($model->attributes['actors_id'] as $actor){
-                $model_act_present = new ActorPresentation();
-                $model_act_present->actor_id = $actor;
-                $model_act_present->presentation_id = $model->attributes['id'];
-                $model_act_present->save();
-            }
-            if (UploadedFile::getInstance($model, 'file')->name !== null){
-
-                foreach (array_keys($model->attributes) as $item){
-                    if (preg_match('/^(img_path|path|img|image|images|photo|upload|uploads|file)$/i', $item)) {
-                        $model->file = UploadedFile::getInstance($model, 'file');
-                        $model->file->saveAs('uploads/' . date('dhis') . '.' . $model->file->extension);
-                        $model->$item = date('dhis') . '.' . $model->file->extension;
-                        $model->save();
-                    }
-                }
+            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
+                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $model->save();
+                $model->avatar_image->saveAs('upload_avatars/' . time() . '.' . $model->avatar_image->extension);
             }else{
-                foreach (array_keys($model->attributes) as $item){
-                    if (preg_match('/^(img_path|path|img|image|images|photo|upload|uploads|file)$/i', $item)) {
-                        copy('image/default.jpg', 'uploads/default.jpg');
-                        $model->$item = 'default.jpg';
-                        $model->save();
-                    }
+                copy('image/default.jpg', 'upload_avatars/default.jpg');
+                $model->img_path = 'default.jpg';
+                $model->save();
+            }
+            if (isset(Yii::$app->request->post('ActorPresentation')['actor_id'])){
+                foreach (Yii::$app->request->post('ActorPresentation')['actor_id'] as $actor){
+                    $model_act_present = new ActorPresentation();
+                    $model_act_present->actor_id = $actor;
+                    $model_act_present->presentation_id = $model->attributes['id'];
+                    $model_act_present->save();
                 }
             }
 
-            if ($model->actors_id){
-                $model->actors_id = implode(',', $model->actors_id);
+            if (UploadedFile::getInstances($model_image, 'image')){
+                if (!is_dir('upload_galleries/')){
+                    mkdir('upload_galleries/',0777, true);
+                }
+                $images = UploadedFile::getInstances($model_image, 'image');
+                foreach ($images as $image){
+                    $img_name = time().rand(100, 999) . '.' . $image->extension;
+                    $model_image = new Image();
+                    $model_image->presentation_id = $model->attributes['id'];
+                    $model_image->image = $img_name;
+                    $model_image->save();
+                    $image->saveAs('upload_galleries/' . $img_name);
+                }
             }
-            $model->save();
-                                                                                                
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('create', [
-            'model' => $model,
+            'model' => $model, 'model_image' => $model_image, 'model_act_present' => $model_act_present
         ]);
     }
 
@@ -133,57 +129,77 @@ class PresentationController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_act_present = new ActorPresentation();
+        $model_image = new Image();
 
-        foreach (array_keys($model::find()->asArray()->where(['id' => $id])->one()) as $item){
-            if (preg_match('/^(img_path|path|img|image|images|photo|upload|uploads|file)$/i', $item)) {
-                Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()[$item]);
-                Yii::$app->session->set('img_field_name', $item);
+        Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
+
+        if (Yii::$app->request->post('src')){
+            $src = Yii::$app->request->post('src');
+            $img = Image::find()->where(['image' => $src])->one();
+            $img->delete();
+            if (file_exists('upload_galleries/'.$src)){
+                unlink('upload_galleries/'.$src);
             }
         }
-        $imgField = Yii::$app->session->get('img_field_name');
-        if (Yii::$app->request->isAjax){
-            if (file_exists('uploads/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null){
-                unlink('uploads/'.$_SESSION['img_name']);
-            }
-            $model::findOne($id);
-            $model->$imgField = 'default.jpg';
-            $model->save();
-        }
-                                                                                                
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            ActorPresentation::deleteAll(['=', 'presentation_id', $id]);
-            foreach ($model->attributes['actors_id'] as $actor){
-                $model_act_present = new ActorPresentation();
-                $model_act_present->actor_id = $actor;
-                $model_act_present->presentation_id = $model->attributes['id'];
-                $model_act_present->save();
-            }
-
-            if (UploadedFile::getInstance($model, 'file')->name !== null){
-                if (file_exists('uploads/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
-                $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('uploads/'.$_SESSION['img_name']);
+            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+                if (file_exists('upload_avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                    $_SESSION['img_name'] !== 'default.jpg'){
+                    unlink('upload_avatars/'.$_SESSION['img_name']);
                 }
-                $model->file = UploadedFile::getInstance($model, 'file');
-                $model->file->saveAs('uploads/' . date('dhis') . '.' . $model->file->extension);
-                $model->$imgField = date('dhis') . '.' . $model->file->extension;
+                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
+                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $model->save();
+                $model->avatar_image->saveAs('upload_avatars/' . time() . '.' . $model->avatar_image->extension);
+            }else{
+                if (file_exists('upload_avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                    $_SESSION['img_name'] !== 'default.jpg'){
+                    unlink('upload_avatars/'.$_SESSION['img_name']);
+                }
+                copy('image/default.jpg', 'upload_avatars/default.jpg');
+                $model->img_path = 'default.jpg';
                 $model->save();
             }
-            unset($_SESSION['img_name']);
-            unset($_SESSION['img_field_name']);
 
-            if ($model->actors_id){
-                $model->actors_id = implode(',', $model->actors_id);
+            ActorPresentation::deleteAll(['=', 'presentation_id', $id]);
+            if (isset(Yii::$app->request->post('ActorPresentation')['actor_id'])){
+                foreach (Yii::$app->request->post('ActorPresentation')['actor_id'] as $actor){
+                    $model_act_present = new ActorPresentation();
+                    $model_act_present->actor_id = $actor;
+                    $model_act_present->presentation_id = $model->attributes['id'];
+                    $model_act_present->save();
+                }
             }
-            $model->save();
-                                                                                                                                                
+
+            if (UploadedFile::getInstances($model_image, 'image')){
+                if (!is_dir('upload_galleries/')){
+                    mkdir('upload_galleries/',0777, true);
+                }
+                $images = UploadedFile::getInstances($model_image, 'image');
+                foreach ($images as $image){
+                    $img_name = time().rand(100, 999) . '.' . $image->extension;
+                    $model_image = new Image();
+                    $model_image->presentation_id = $model->attributes['id'];
+                    $model_image->image = $img_name;
+                    $model_image->save();
+                    $image->saveAs('upload_galleries/' . $img_name);
+                }
+            }
+            unset($_SESSION['img_name']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        $model->actors_id = explode(',', $model->actors_id);
+        $arr_actors = ArrayHelper::map(ActorPresentation::find()->where(['presentation_id' => $id])->all(), 'id', 'actor_id');
+        $arr_actors_id = [];
+        foreach ($arr_actors as $item){
+            $arr_actors_id[] = $item;
+        }
+        $model_act_present->actor_id = $arr_actors_id;
 
         return $this->render('update', [
-            'model' => $model,
+            'model' => $model, 'model_image' => $model_image, 'model_act_present' => $model_act_present
         ]);
     }
 

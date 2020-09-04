@@ -5,23 +5,23 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "actor_presentation".
+ * This is the model class for table "image".
  *
  * @property int $id
- * @property int|null $actor_id
  * @property int|null $presentation_id
+ * @property string|null $image
  *
- * @property Actor $actor
  * @property Presentation $presentation
  */
-class ActorPresentation extends \yii\db\ActiveRecord
+class Image extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
+
     public static function tableName()
     {
-        return 'actor_presentation';
+        return 'image';
     }
 
     /**
@@ -30,9 +30,9 @@ class ActorPresentation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['actor_id'], 'required'],
-            [['actor_id', 'presentation_id'], 'integer'],
-            [['actor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Actor::className(), 'targetAttribute' => ['actor_id' => 'id']],
+            [['presentation_id'], 'integer'],
+            [['image'], 'string', 'max' => 255],
+            ['image', 'file', 'maxFiles' => 10, 'extensions' => ['png', 'jpg', 'jpeg']],
             [['presentation_id'], 'exist', 'skipOnError' => true, 'targetClass' => Presentation::className(), 'targetAttribute' => ['presentation_id' => 'id']],
         ];
     }
@@ -44,19 +44,9 @@ class ActorPresentation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'actor_id' => 'Select Actors',
             'presentation_id' => 'Presentation ID',
+            'image' => 'Add More Images',
         ];
-    }
-
-    /**
-     * Gets query for [[Actor]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getActor()
-    {
-        return $this->hasOne(Actor::className(), ['id' => 'actor_id']);
     }
 
     /**
@@ -68,5 +58,4 @@ class ActorPresentation extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Presentation::className(), ['id' => 'presentation_id']);
     }
-
 }

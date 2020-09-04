@@ -62,7 +62,7 @@ class Companies extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/company_logos/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile->saveAs('upload_avatars/company_logos/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             return true;
         } else {
             return false;

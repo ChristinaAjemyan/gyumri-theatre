@@ -1,34 +1,16 @@
 <?php
 
+use app\models\Presentation;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
 use dosamigos\ckeditor\CKEditor;
-use yii\helpers\ArrayHelper;
-use app\models\Actor;
 use kartik\select2\Select2;
+use app\models\Main;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Presentation */
 /* @var $form yii\widgets\ActiveForm */
-?>
-
-<?php
-function getFullName()
-{
-    $key = [];
-    $val = [];
-    $fist_name = ArrayHelper::map(Actor::find()->all(), 'id', 'first_name');
-    $last_name = ArrayHelper::map(Actor::find()->all(), 'id', 'last_name');
-    for ($i = 1, $j = 1; $i <= count($fist_name), $j <= count($last_name); $i++, $j++) {
-        $fullName = $fist_name[$i] . ' ' . $last_name[$j];
-        array_push($key, $i);
-        array_push($val, $fullName);
-        $result = array_combine($key, $val);
-    }
-    return $result;
-}
-
 ?>
 
 <div class="presentation-form">
@@ -37,20 +19,17 @@ function getFullName()
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'uploads/*'],
+    <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'upload_avatars/*'],
         'pluginOptions' => [
-            'initialPreview' => [
-                '/uploads/' . Yii::$app->session->get('img_name'),
-            ],
+            'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
             'initialPreviewAsData' => true,
-            'initialCaption' => Yii::$app->session->get('img_name'),
             'showUpload' => false
         ]
     ]) ?>
 
-    <?= $form->field($model, 'actors_id')->widget(Select2::className(), [
-        'data' => getFullName(),
+    <?= $form->field($model_act_present, 'actor_id')->widget(Select2::className(), [
+        'data' => Presentation::getFullName(),
         'options' => [
             'placeholder' => 'Select actors ...',
             'multiple' => true
@@ -60,6 +39,10 @@ function getFullName()
     <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd']) ?>
 
     <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
+
+    <?= $result ? $result : false; ?>
 
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'options' => ['rows' => 6],

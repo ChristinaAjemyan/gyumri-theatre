@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use slavkovrn\lightbox\LightBoxWidget;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\NewsSearch */
@@ -25,12 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             [
-                'attribute' => 'image',
-                'format' => 'html',
-                'value' => function($data){
-                    return Html::img(Yii::getAlias('@web').'/uploads/'.$data['img_path'], ['height' => '50px']);
+                'header' => 'image',
+                'contentOptions' => ['class' => 'text-center'],
+                'content' => function ($data){
+                    $images = [
+                        [
+                            'src' => Yii::getAlias('@web').'/upload_avatars/'.$data['img_path'], ['height' => '50px'],
+                            'title' => $data['title'],
+                        ]
+                    ];
+                    return LightBoxWidget::widget([
+                        'id'     =>'lightbox',
+                        'class'  =>'galary',
+                        'height' =>'50px',
+                        //'width' =>'100px',
+                        'images' => $images,
+                    ]);
                 }
             ],
             //'id',
@@ -38,7 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'content:ntext',
             //'img_path',
             'dt_create',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\Sort;
+use slavkovrn\lightbox\LightBoxWidget;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ActorSearch */
@@ -26,12 +27,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             [
-                'attribute' => 'image',
-                'format' => 'html',
-                'value' => function($data){
-                    return Html::img(Yii::getAlias('@web').'/uploads/'.$data['img_path'], ['height' => '50px']);
+                'header' => 'image',
+                'contentOptions' => ['class' => 'text-center'],
+                'content' => function ($data){
+                    $images = [
+                        [
+                            'src' => Yii::getAlias('@web').'/upload_avatars/'.$data['img_path'], ['height' => '50px'],
+                            'title' => $data['first_name'].' '.$data['last_name'],
+                        ]
+                    ];
+                    return LightBoxWidget::widget([
+                        'id'     =>'lightbox',
+                        'class'  =>'galary',
+                        'height' =>'50px',
+                        //'width' =>'100px',
+                        'images' => $images,
+                    ]);
                 }
             ],
             //'id',
@@ -42,7 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'country',
             'city',
             //'desc:ntext',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

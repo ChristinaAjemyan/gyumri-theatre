@@ -16,7 +16,7 @@ class m200818_110236_create_presentation_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string(),
             'img_path' => $this->string(),
-            'actors_id' => $this->string(),
+            //'actors_id' => $this->string(),
             'show_date' => $this->timestamp(),
             'trailer' => $this->string()->defaultValue('NULL'),
             'desc' => $this->text(),

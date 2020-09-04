@@ -19,7 +19,7 @@ class News extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
 
-    public $file;
+    public $avatar_image;
 
     public static function tableName()
     {
@@ -34,8 +34,8 @@ class News extends \yii\db\ActiveRecord
         return [
             [['title', 'content'], 'required'],
             [['content'], 'string'],
-            [['dt_create'], 'safe'],
-            [['title', 'img_path'], 'string', 'max' => 255],
+            ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
+            [['title', 'img_path'], 'string', 'max' => 255]
         ];
     }
 
@@ -48,8 +48,7 @@ class News extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'content' => 'Content',
-            'img_path' => 'Img Path',
-            'dt_create' => 'Dt Create',
+            //'img_path' => 'Img Path'
         ];
     }
 }

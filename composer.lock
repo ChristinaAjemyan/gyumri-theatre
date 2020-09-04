@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bea77eb97ca1241a5d463f3cca7c93a",
+    "content-hash": "045bad78199688470a4df49997e90da6",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -992,6 +992,55 @@
             "description": "Select2 is a jQuery based replacement for select boxes.",
             "homepage": "https://select2.org/",
             "time": "2020-01-28T05:01:22+00:00"
+        },
+        {
+            "name": "slavkovrn/yii2-lightbox",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SlavKoVrn/yii2-lightbox.git",
+                "reference": "e2bc3c51a29fda59cb710cf309bcd1b4de75c311"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SlavKoVrn/yii2-lightbox/zipball/e2bc3c51a29fda59cb710cf309bcd1b4de75c311",
+                "reference": "e2bc3c51a29fda59cb710cf309bcd1b4de75c311",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "slavkovrn\\lightbox\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Viacheslav Kolesnikov",
+                    "email": "slavko.chita@gmail.com",
+                    "homepage": "http://yii2.kadastrcard.ru"
+                }
+            ],
+            "description": "Yii2 LightBox image galary widget uses Lightbox v2.10.0 by Lokesh Dhakar",
+            "keywords": [
+                "Image galary widget",
+                "jQuery Lightbox v2.10.0 by Lokesh Dhakar",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2018-10-14T11:49:11+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

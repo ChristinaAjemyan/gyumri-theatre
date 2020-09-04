@@ -22,7 +22,7 @@ class Actor extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
 
-    public $file;
+    public $avatar_image;
 
     public static function tableName()
     {
@@ -37,6 +37,7 @@ class Actor extends \yii\db\ActiveRecord
         return [
             [['first_name', 'last_name'], 'required'],
             [['birthday'], 'safe'],
+            ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
             [['first_name', 'last_name', 'img_path', 'country', 'city'], 'string', 'max' => 255],
         ];

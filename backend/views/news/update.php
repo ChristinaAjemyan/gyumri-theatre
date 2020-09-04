@@ -22,19 +22,20 @@ $this->params['breadcrumbs'][] = 'Update';
 </div>
 
 
-                <?php
+<?php
 $js = <<<JS
-    let title = $('.file-caption-name').attr('title');
-    if (title === 'default.jpg' || title === '1 file selected') {
-        $('.fileinput-remove-button').css('display', 'none');
-    }
-    $('.fileinput-remove-button').on('click', function() {
-        $.ajax({
-            url: window.location.href,
-            type: 'post'
-        })
+    $('.file-thumbnail-footer').css('display', 'none');
+    $('.file-drop-zone').css('min-height', '202px');
+    $('#news-avatar_image').on('click', function() {
+        let footer_none = setInterval(function() {
+            if ($('.file-thumbnail-footer').length === 1 && $('.file-thumbnail-footer').attr('style') !== 'display: none;'){
+                $('.file-thumbnail-footer').css('display', 'none');
+                setTimeout(function() {
+                  clearInterval(footer_none);
+                }, 1500);
+            }
+        }, 30);
     })
 JS;
 $this->registerJs($js);
 ?>
-        

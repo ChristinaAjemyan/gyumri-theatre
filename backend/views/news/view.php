@@ -29,10 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            [
+                'attribute' => 'image',
+                'format' => 'html',
+                'value' =>('<img src =' .'/upload_avatars/' . $model->img_path . ' width="300"' .   '>')
+            ],
+            //'id',
             'title',
             'content:ntext',
-            'img_path',
+            //'img_path',
             'dt_create',
         ],
     ]) ?>

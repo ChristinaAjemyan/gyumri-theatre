@@ -24,11 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php
 $js = <<<JS
-    let title = $('.file-caption-name').attr('title');
-    if (title === '1 file selected') {
-        $('.fileinput-remove-button').css('display', 'none');
-    }
+$('.file-drop-zone').css('min-height', '202px');
+    $('#actor-avatar_image').on('click', function() {
+        let footer_none = setInterval(function() {
+            if ($('.file-thumbnail-footer').length === 1 && $('.file-thumbnail-footer').attr('style') !== 'display: none;'){
+                $('.file-thumbnail-footer').css('display', 'none');
+                setTimeout(function() {
+                  clearInterval(footer_none);
+                }, 1500);
+            }
+        }, 30);
+    })
 JS;
 $this->registerJs($js);
 ?>
-                

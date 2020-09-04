@@ -39,11 +39,6 @@ class NewsController extends Controller
     {
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-            if (Yii::$app->session->has('img_name') || Yii::$app->session->has('img_field_name')){
-                unset($_SESSION['img_name']);
-                unset($_SESSION['img_field_name']);
-            }
                                 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -75,29 +70,19 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            if (!is_dir('uploads/')){
-                mkdir('uploads/',0777, true);
+            if (!is_dir('upload_avatars/')){
+                mkdir('upload_avatars/',0777, true);
             }
-            if (UploadedFile::getInstance($model, 'file')->name !== null){
-
-                foreach (array_keys($model->attributes) as $item){
-                    if (preg_match('/^(img_path|path|img|image|images|photo|upload|uploads|file)$/i', $item)) {
-                        $model->file = UploadedFile::getInstance($model, 'file');
-                        $model->file->saveAs('uploads/' . date('dhis') . '.' . $model->file->extension);
-                        $model->$item = date('dhis') . '.' . $model->file->extension;
-                        $model->save();
-                    }
-                }
+            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
+                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $model->save();
+                $model->avatar_image->saveAs('upload_avatars/' . time() . '.' . $model->avatar_image->extension);
             }else{
-                foreach (array_keys($model->attributes) as $item){
-                    if (preg_match('/^(img_path|path|img|image|images|photo|upload|uploads|file)$/i', $item)) {
-                        copy('image/default.jpg', 'uploads/default.jpg');
-                        $model->$item = 'default.jpg';
-                        $model->save();
-                    }
-                }
+                copy('image/default.jpg', 'upload_avatars/default.jpg');
+                $model->img_path = 'default.jpg';
+                $model->save();
             }
-                                
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -117,39 +102,29 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        foreach (array_keys($model::find()->asArray()->where(['id' => $id])->one()) as $item){
+        Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
 
-            if (preg_match('/^(img_path|path|img|image|images|photo|upload|uploads|file)$/i', $item)) {
-                Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()[$item]);
-                Yii::$app->session->set('img_field_name', $item);
-            }
-        }
-        $imgField = Yii::$app->session->get('img_field_name');
-        if (Yii::$app->request->isAjax){
-            if (file_exists('uploads/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null){
-                unlink('uploads/'.$_SESSION['img_name']);
-            }
-            $model::findOne($id);
-            $model->$imgField = 'default.jpg';
-            $model->save();
-        }
-                                
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-                                                                                                
-            if (UploadedFile::getInstance($model, 'file')->name !== null){
-                if (file_exists('uploads/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
-                $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('uploads/'.$_SESSION['img_name']);
+            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+                if (file_exists('upload_avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                    $_SESSION['img_name'] !== 'default.jpg'){
+                    unlink('upload_avatars/'.$_SESSION['img_name']);
                 }
-                $model->file = UploadedFile::getInstance($model, 'file');
-                $model->file->saveAs('uploads/' . date('dhis') . '.' . $model->file->extension);
-                $model->$imgField = date('dhis') . '.' . $model->file->extension;
+                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
+                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $model->save();
+                $model->avatar_image->saveAs('upload_avatars/' . time() . '.' . $model->avatar_image->extension);
+            }else{
+                if (file_exists('upload_avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                    $_SESSION['img_name'] !== 'default.jpg'){
+                    unlink('upload_avatars/'.$_SESSION['img_name']);
+                }
+                copy('image/default.jpg', 'upload_avatars/default.jpg');
+                $model->img_path = 'default.jpg';
                 $model->save();
             }
             unset($_SESSION['img_name']);
-            unset($_SESSION['img_field_name']);
-                                                
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

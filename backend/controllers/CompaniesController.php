@@ -123,7 +123,7 @@ class CompaniesController extends Controller
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if($model->imageFile){
                 $model->upload();
-                $model->logo  = '/uploads/company_logos/'.$model->imageFile->name;
+                $model->logo  = '/upload_avatars/company_logos/'.$model->imageFile->name;
             }
             $companySettings->save();
             $model->save();

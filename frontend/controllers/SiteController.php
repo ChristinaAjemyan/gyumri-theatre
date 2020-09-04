@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\Presentation;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -74,8 +75,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $presentations = Presentation::find()->asArray()->all();
+
+//        echo '<pre>';
+//        var_dump($presentation);
+//        echo '</pre>';
+//        die;
+
         $this->layout = 'new';
-        return $this->render('index');
+        return $this->render('index',[
+            'presentations' => $presentations
+        ]);
     }
 
     /**
