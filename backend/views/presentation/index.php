@@ -1,6 +1,5 @@
 <?php
 
-use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use slavkovrn\lightbox\LightBoxWidget;

@@ -80,9 +80,10 @@ class PresentationController extends Controller
             }
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $img_name = time() . '.' . $model->avatar_image->extension;
+                $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . time() . '.' . $model->avatar_image->extension);
+                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
             }else{
                 copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
@@ -103,12 +104,12 @@ class PresentationController extends Controller
                 }
                 $images = UploadedFile::getInstances($model_image, 'image');
                 foreach ($images as $image){
-                    $img_name = time().rand(100, 999) . '.' . $image->extension;
+                    $image_name = time().rand(100, 999) . '.' . $image->extension;
                     $model_image = new Image();
                     $model_image->presentation_id = $model->attributes['id'];
-                    $model_image->image = $img_name;
+                    $model_image->image = $image_name;
                     $model_image->save();
-                    $image->saveAs('upload/galleries/' . $img_name);
+                    $image->saveAs('upload/galleries/' . $image_name);
                 }
             }
             return $this->redirect(['view', 'id' => $model->id]);
@@ -150,9 +151,10 @@ class PresentationController extends Controller
                     unlink('upload/avatars/'.$_SESSION['img_name']);
                 }
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $img_name = time() . '.' . $model->avatar_image->extension;
+                $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . time() . '.' . $model->avatar_image->extension);
+                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
             }else{
                 if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                     $_SESSION['img_name'] !== 'default.jpg'){
@@ -179,12 +181,12 @@ class PresentationController extends Controller
                 }
                 $images = UploadedFile::getInstances($model_image, 'image');
                 foreach ($images as $image){
-                    $img_name = time().rand(100, 999) . '.' . $image->extension;
+                    $image_name = time().rand(100, 999) . '.' . $image->extension;
                     $model_image = new Image();
                     $model_image->presentation_id = $model->attributes['id'];
-                    $model_image->image = $img_name;
+                    $model_image->image = $image_name;
                     $model_image->save();
-                    $image->saveAs('upload/galleries/' . $img_name);
+                    $image->saveAs('upload/galleries/' . $image_name);
                 }
             }
             unset($_SESSION['img_name']);

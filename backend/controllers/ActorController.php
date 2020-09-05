@@ -75,9 +75,10 @@ class ActorController extends Controller
             }
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $img_name = time() . '.' . $model->avatar_image->extension;
+                $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . time() . '.' . $model->avatar_image->extension);
+                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
             }else{
                 copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
@@ -113,9 +114,10 @@ class ActorController extends Controller
                     unlink('upload/avatars/'.$_SESSION['img_name']);
                 }
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $model->img_path = time() . '.' . $model->avatar_image->extension;
+                $img_name = time() . '.' . $model->avatar_image->extension;
+                $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . time() . '.' . $model->avatar_image->extension);
+                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
             }else{
                 if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                     $_SESSION['img_name'] !== 'default.jpg'){

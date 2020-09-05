@@ -8,7 +8,7 @@ use kartik\select2\Select2;
 use app\models\Main;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
-\mihaildev\elfinder\Assets::noConflict($this);
+//\mihaildev\elfinder\Assets::noConflict($this);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Presentation */

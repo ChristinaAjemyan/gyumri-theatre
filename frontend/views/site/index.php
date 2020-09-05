@@ -1,4 +1,13 @@
-<?php //var_dump($presentations); ?>
+<?php
+
+use yii\helpers\Html;
+use frontend\assets\BackendAsset;
+
+
+$backend = BackendAsset::register($this);
+//echo '<pre>';
+//var_dump($backend->baseUrl);die;
+?>
 <section class="section_carousel">
     <div class="container">
         <h2 class="block_title carousel_title">ԸՆԹԱՑԻԿ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ</h2>
@@ -7,7 +16,7 @@
             <?php foreach ($presentations as $presentation) : ?>
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img1.png" alt="Card image cap">
+                    <img class="card-img-top" src="<?= $backend->baseUrl.'/avatars/'.$presentation['img_path']; ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?= $presentation['title'] ?></h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
