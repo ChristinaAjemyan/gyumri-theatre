@@ -1,9 +1,6 @@
 <?php
 namespace backend\controllers;
-use backend\models\Companies;
-use backend\models\CompanySettings;
 use yii\filters\AccessControl;
-use backend\models\SignupForm;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -64,11 +61,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = 'main';
-        //$objUser = Yii::$app->user->identity;
-/*        if($objUser->hasAccess('new')){
-            $this->redirect('/dashboard');
-
-        }*/
 
         return $this->render('index');
     }
@@ -80,7 +72,6 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-
         $this->layout='custom';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -88,7 +79,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect(['/dashboard']);
+            return $this->redirect(['/']);
         } else {
             $model->password = '';
 
@@ -97,20 +88,6 @@ class SiteController extends Controller
             ]);
         }
     }
-    public function actionSignup()
-    {
-
-        $this->layout = 'custom';
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
     /**
      * Logout action.
      *
@@ -118,7 +95,6 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-
         Yii::$app->user->logout();
 
         return $this->goHome();

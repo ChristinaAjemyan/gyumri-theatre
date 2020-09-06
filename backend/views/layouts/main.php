@@ -3,6 +3,7 @@
 use common\widgets\WLanguage;
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -57,7 +58,7 @@ AppAsset::register($this);
     <div class="container-fluid">
         <div class="slim-header-left">
 
-            <h2 class="slim-logo"><a href="/">Autotech<span>.</span></a></h2>
+            <h2 class="slim-logo"><?= Html::a(Html::img(Url::to('/image/logo.png')), Url::base())  ?></h2>
             <a href="" id="slimSidebarMenu" class="slim-sidebar-menu"><span></span></a>
 <!--            <div class="search-box">-->
 <!--                <input type="text" class="form-control" placeholder="Search">-->

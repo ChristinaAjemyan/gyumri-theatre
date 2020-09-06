@@ -8,6 +8,31 @@ $backend = BackendAsset::register($this);
 //echo '<pre>';
 //var_dump($backend->baseUrl);die;
 ?>
+
+<div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
+    <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
+
+    <ol class="carousel-indicators">
+        <li data-target="#hero" data-slide-to="0"></li>
+        <li data-target="#hero" data-slide-to="1" class="active"></li>
+        <li data-target="#hero" data-slide-to="2"></li>
+        <li data-target="#hero" data-slide-to="3"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active" style="background-image: url(/assets/images/baner.png)">
+
+            <div class="container_new">
+                <div class="scrollme" data-when="exit" data-from="0" data-to="1" data-opacity="0"
+                     data-translatey="100">
+                    <h1 class="baner_title">ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
 <section class="section_carousel">
     <div class="container">
         <h2 class="block_title carousel_title">ԸՆԹԱՑԻԿ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ</h2>
@@ -61,7 +86,7 @@ $backend = BackendAsset::register($this);
                         <div class="col-md-3  col-12">
 
 
-                            <img src="assets/images/item_img1.png" class="mr-5" alt="Photo">
+                            <img src="/assets/images/item_img1.png" class="mr-5" alt="Photo">
                         </div>
                         <div class="col-md-9 col-12">
 
@@ -96,7 +121,7 @@ $backend = BackendAsset::register($this);
                         <div class="col-md-3  col-12">
 
 
-                            <img src="assets/images/item_img2.png" class="mr-5" alt="Photo">
+                            <img src="/assets/images/item_img2.png" class="mr-5" alt="Photo">
                         </div>
                         <div class="col-md-9 col-12">
 
@@ -135,7 +160,7 @@ $backend = BackendAsset::register($this);
                         <div class="col-md-3  col-12">
 
 
-                            <img src="assets/images/item_img3.png" class="mr-5" alt="Photo">
+                            <img src="/assets/images/item_img3.png" class="mr-5" alt="Photo">
                         </div>
                         <div class="col-md-9 col-12">
 
@@ -175,7 +200,7 @@ $backend = BackendAsset::register($this);
                         <div class="col-md-3  col-12">
 
 
-                            <img src="assets/images/item_img4.png" class="mr-5" alt="Photo">
+                            <img src="/assets/images/item_img4.png" class="mr-5" alt="Photo">
                         </div>
                         <div class="col-md-9 col-12">
 
@@ -331,7 +356,7 @@ $backend = BackendAsset::register($this);
 
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img1.png" alt="Card image cap">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Ոչինչ չի մնա</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -341,7 +366,7 @@ $backend = BackendAsset::register($this);
 
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img2.png" alt="Card image cap">
+                    <img class="card-img-top" src="/assets/images/item_img2.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">ՀԱՐՍԱՆԻՔ ԹԻԿՈՒՆՔՈՒՄ</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -351,7 +376,7 @@ $backend = BackendAsset::register($this);
 
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img3.png" alt="Card image cap">
+                    <img class="card-img-top" src="/assets/images/item_img3.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">ՀԱՍՄԻԿ</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -361,7 +386,7 @@ $backend = BackendAsset::register($this);
 
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img4.png" alt="Card image cap">
+                    <img class="card-img-top" src="/assets/images/item_img4.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">ԵՐԿՆԱԳՈՒՅՆ ՇԱՆ ԱՉՔՈՐԸ</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -371,7 +396,7 @@ $backend = BackendAsset::register($this);
 
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img1.png" alt="Card image cap">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Ոչինչ չի մնա</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -381,7 +406,7 @@ $backend = BackendAsset::register($this);
 
             <div class="carousel_item">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/item_img1.png" alt="Card image cap">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Ոչինչ չի մնա</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>

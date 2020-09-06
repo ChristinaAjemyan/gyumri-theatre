@@ -75,17 +75,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
         $presentations = Presentation::find()->asArray()->all();
 
-//        echo '<pre>';
-//        var_dump($presentation);
-//        echo '</pre>';
-//        die;
-
-        $this->layout = 'new';
         return $this->render('index',[
             'presentations' => $presentations
         ]);
+    }
+
+    public function actionView()
+    {
+        $this->view->title = 'View';
+
+        return $this->render('view',[]);
     }
 
     /**
@@ -154,6 +156,11 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionTest()
+    {
+        return $this->render('test');
     }
 
     /**
