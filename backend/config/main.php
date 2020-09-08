@@ -10,32 +10,13 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-
-//    'bootstrap' => [
-//        'log',
-//        'common\components\i18nUrlRules'
-//    ],
-    'modules' => [
-        'rbac' => [
-            'class' => 'yii2mod\rbac\Module',
-        ],
-    ],
-
+    'bootstrap' => ['log'],
+    'modules' => [],
     'components' => [
         'request' => [
-            'class' => 'common\components\LangRequest',
             'csrfParam' => '_csrf-backend',
-            'cookieValidationKey' => '1234567890',
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ]
         ],
-
         'timezone'=>'Asia',
-        'emailComponent' => [
-            'class' => 'app\components\EmailComponent',
-        ],
-
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -61,15 +42,14 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'class'=>'common\components\LangUrlManager',
             'rules' => [
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest', 'user'],
         ],
+
     ],
 
     'controllerMap' => [

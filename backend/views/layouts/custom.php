@@ -1,5 +1,10 @@
+<?php
+
+use yii\helpers\Html;
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Yii::$app->language ?>">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,7 +33,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Slim Responsive Bootstrap 4 Admin Template</title>
+    <title><?= Html::encode($this->title) ?></title>
 
     <!-- Vendor css -->
     <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet">

@@ -33,7 +33,6 @@ $('.file-drop-zone').css('min-height', '202px');
                   clearInterval(footer_none);
                 }, 1500);
             }
-            console.log(1);
         }, 30);
     })
 JS;

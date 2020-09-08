@@ -106,7 +106,6 @@ class NewsController extends Controller
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
                 if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                     $_SESSION['img_name'] !== 'default.jpg'){
@@ -118,18 +117,19 @@ class NewsController extends Controller
                 $model->save();
                 $model->avatar_image->saveAs('upload/avatars/' . $img_name);
             }else{
-                if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
-                    $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload/avatars/'.$_SESSION['img_name']);
+                if (Yii::$app->request->post('token') !== null){
+                    if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+                        $_SESSION['img_name'] !== 'default.jpg'){
+                        unlink('upload/avatars/'.$_SESSION['img_name']);
+                    }
+                    copy('image/default.jpg', 'upload/avatars/default.jpg');
+                    $model->img_path = 'default.jpg';
+                    $model->save();
                 }
-                copy('image/default.jpg', 'upload/avatars/default.jpg');
-                $model->img_path = 'default.jpg';
-                $model->save();
             }
             unset($_SESSION['img_name']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);

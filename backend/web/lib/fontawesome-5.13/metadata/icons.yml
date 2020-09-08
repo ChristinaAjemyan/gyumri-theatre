@@ -7239,7 +7239,7 @@ file-powerpoint:
       - display
       - document
       - keynote
-      - presentation
+      - performance
   styles:
     - solid
     - regular
@@ -21292,7 +21292,7 @@ x-ray:
     terms:
       - health
       - medical
-      - radiological images
+      - radiological image
       - radiology
       - skeleton
   styles:

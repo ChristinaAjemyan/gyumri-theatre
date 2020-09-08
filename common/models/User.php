@@ -1,7 +1,6 @@
 <?php
 namespace common\models;
 
-use backend\models\Companies;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -12,10 +11,7 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string $first_name
- * @property string $last_name
- * @property string $phone
- * @property string $lang
+ * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
@@ -81,12 +77,12 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Finds user by username
      *
-     * @param string $first_name
+     * @param string $username
      * @return static|null
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['email' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -198,6 +194,9 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
+    /**
+     * Generates new token for email verification
+     */
     public function generateEmailVerificationToken()
     {
         $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
@@ -209,18 +208,5 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
-    }
-    public function getCompany()
-    {
-        return $this->hasOne(Companies::className(), ['id' => 'company_id']);
-    }
-    public function hasAccess($param)
-    {
-        $obj = Companies::find()->where(['id'=>$this->company_id])->one();
-        if($obj->type == $param){
-            return true;
-        }else{
-            return false;
-        }
     }
 }

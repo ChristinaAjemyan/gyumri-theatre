@@ -1827,14 +1827,14 @@ MediumEditor.extensions = {};
                     end: start + range.toString().length
                 };
 
-                // Check to see if the selection starts with any images
+                // Check to see if the selection starts with any image
                 // if so we need to make sure the the beginning of the selection is
                 // set correctly when importing selection
                 if (this.doesRangeStartWithImages(range, doc)) {
                     selectionState.startsWithImage = true;
                 }
 
-                // Check to see if the selection has any trailing images
+                // Check to see if the selection has any trailing image
                 // if so, this this means we need to look for them when we import selection
                 var trailingImageCount = this.getTrailingImageCount(root, selectionState, range.endContainer, range.endOffset);
                 if (trailingImageCount) {
@@ -2162,14 +2162,14 @@ MediumEditor.extensions = {};
         },
 
         getTrailingImageCount: function (root, selectionState, endContainer, endOffset) {
-            // If the endOffset of a range is 0, the endContainer doesn't contain images
-            // If the endContainer is a text node, there are no trailing images
+            // If the endOffset of a range is 0, the endContainer doesn't contain image
+            // If the endContainer is a text node, there are no trailing image
             if (endOffset === 0 || endContainer.nodeType !== 1) {
                 return 0;
             }
 
             // If the endContainer isn't an image, and doesn't have an image descendants
-            // there are no trailing images
+            // there are no trailing image
             if (endContainer.nodeName.toLowerCase() !== 'img' && !endContainer.querySelector('img')) {
                 return 0;
             }
@@ -6424,7 +6424,7 @@ MediumEditor.extensions = {};
             var range = selection.getRangeAt(0),
                 boundary = range.getBoundingClientRect();
 
-            // Handle selections with just images
+            // Handle selections with just image
             if (!boundary || ((boundary.height === 0 && boundary.width === 0) && range.startContainer === range.endContainer)) {
                 // If there's a nested image, use that for the bounding rectangle
                 if (range.startContainer.nodeType === 1 && range.startContainer.querySelector('img')) {
@@ -7056,7 +7056,7 @@ MediumEditor.extensions = {};
         // 1. ImageDragging ON + No Custom Image Dragging Extension:
         //    * Use fileDragging extension (default options)
         // 2. ImageDragging OFF + No Custom Image Dragging Extension:
-        //    * Use fileDragging extension w/ images turned off
+        //    * Use fileDragging extension w/ image turned off
         // 3. ImageDragging ON + Custom Image Dragging Extension:
         //    * Don't use fileDragging (could interfere with custom image dragging extension)
         // 4. ImageDragging OFF + Custom Image Dragging:
@@ -7688,7 +7688,7 @@ MediumEditor.extensions = {};
                                     editableElementIndex: exportedSelection.editableElementIndex
                                 }
                             );
-                            // If textNodes are not present, when changing link on images
+                            // If textNodes are not present, when changing link on image
                             // ex: <a><img src="http://image.test.com"></a>, change fragment to currRange.startContainer
                             // and set textNodes array to [imageElement, imageElement]
                             if (textNodes.length === 0) {

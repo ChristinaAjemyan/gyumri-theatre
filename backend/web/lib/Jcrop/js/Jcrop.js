@@ -1024,7 +1024,7 @@ Jcrop.registerStageType('Canvas',CanvasStage);
 
   /**
    * Image Loader
-   * Reliably pre-loads images
+   * Reliably pre-loads image
    */
   // var ImageLoader = function(src,element,cb){{{
   var ImageLoader = function(src,element,cb){

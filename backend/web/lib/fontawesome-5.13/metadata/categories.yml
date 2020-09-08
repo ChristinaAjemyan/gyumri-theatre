@@ -1184,7 +1184,7 @@ images:
     - id-badge
     - id-card
     - image
-    - images
+    - image
     - photo-video
     - portrait
     - sliders-h
@@ -1421,7 +1421,7 @@ maps:
     - home
     - hospital
     - image
-    - images
+    - image
     - industry
     - info
     - info-circle
@@ -1775,7 +1775,7 @@ objects:
     - hourglass
     - igloo
     - image
-    - images
+    - image
     - industry
     - key
     - keyboard
@@ -2152,7 +2152,7 @@ social:
     - heart
     - icons
     - image
-    - images
+    - image
     - map-marker
     - map-marker-alt
     - photo-video

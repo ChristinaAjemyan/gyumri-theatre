@@ -2434,7 +2434,7 @@ hljs.registerLanguage('asciidoc', function(hljs) {
         begin: '^\'{3,}[ \\t]*$',
         relevance: 10
       },
-      // images and links
+      // image and links
       {
         begin: '(link:)?(http|https|ftp|file|irc|image:?):\\S+\\[.*?\\]',
         returnBegin: true,
@@ -11917,7 +11917,7 @@ hljs.registerLanguage('php', function(hljs) {
 hljs.registerLanguage('pony', function(hljs) {
   var KEYWORDS = {
     keyword:
-      'actor addressof and as be break class compile_error compile_intrinsic' +
+      'staff addressof and as be break class compile_error compile_intrinsic' +
       'consume continue delegate digestof do else elseif embed end error' +
       'for fun if ifdef in interface is isnt lambda let match new not object' +
       'or primitive recover repeat return struct then trait try type until ' +
@@ -11959,7 +11959,7 @@ hljs.registerLanguage('pony', function(hljs) {
 
   var CLASS = {
     className: 'class',
-    beginKeywords: 'class actor', end: '$',
+    beginKeywords: 'class staff', end: '$',
     contains: [
       hljs.TITLE_MODE,
       hljs.C_LINE_COMMENT_MODE

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-use common\widgets\WLanguage;
 use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -60,183 +59,53 @@ AppAsset::register($this);
 
             <h2 class="slim-logo"><?= Html::a(Html::img(Url::to('/image/logo.png')), Url::base())  ?></h2>
             <a href="" id="slimSidebarMenu" class="slim-sidebar-menu"><span></span></a>
-<!--            <div class="search-box">-->
-<!--                <input type="text" class="form-control" placeholder="Search">-->
-<!--                <button class="btn btn-primary"><i class="fa fa-search"></i></button>-->
-<!--            </div>-->
+<!--            <div class="search-box">
+                <input type="text" class="form-control" placeholder="Search">
+                <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+            </div>-->
 
         </div><!-- slim-header-left -->
         <div class="slim-header-right">
-            <?= WLanguage::widget() ?>
-            <div class="dropdown dropdown-a" data-toggle="tooltip" title="Activity Logs">
-                <a href="" class="header-notification" data-toggle="dropdown">
-                    <i class="icon ion-ios-bolt-outline"></i>
-                </a>
-                <div class="dropdown-menu">
-                    <div class="dropdown-menu-header">
-                        <h6 class="dropdown-menu-title">Activity Logs</h6>
-                        <div>
-                            <a href="">Filter List</a>
-                            <a href="">Settings</a>
-                        </div>
-                    </div><!-- dropdown-menu-header -->
-                    <div class="dropdown-activity-list">
-                        <div class="activity-label">Today, December 13, 2017</div>
-                        <div class="activity-item">
-                            <div class="row no-gutters">
-                                <div class="col-2 tx-right">10:15am</div>
-                                <div class="col-2 tx-center"><span class="square-10 bg-success"></span></div>
-                                <div class="col-8">Purchased christmas sale cloud storage</div>
-                            </div><!-- row -->
-                        </div><!-- activity-item -->
-                        <div class="activity-item">
-                            <div class="row no-gutters">
-                                <div class="col-2 tx-right">9:48am</div>
-                                <div class="col-2 tx-center"><span class="square-10 bg-danger"></span></div>
-                                <div class="col-8">Login failure</div>
-                            </div><!-- row -->
-                        </div><!-- activity-item -->
-                        <div class="activity-item">
-                            <div class="row no-gutters">
-                                <div class="col-2 tx-right">7:29am</div>
-                                <div class="col-2 tx-center"><span class="square-10 bg-warning"></span></div>
-                                <div class="col-8">(D:) Storage almost full</div>
-                            </div><!-- row -->
-                        </div><!-- activity-item -->
-                        <div class="activity-item">
-                            <div class="row no-gutters">
-                                <div class="col-2 tx-right">3:21am</div>
-                                <div class="col-2 tx-center"><span class="square-10 bg-success"></span></div>
-                                <div class="col-8">1 item sold <strong>Christmas bundle</strong></div>
-                            </div><!-- row -->
-                        </div><!-- activity-item -->
-                        <div class="activity-label">Yesterday, December 12, 2017</div>
-                        <div class="activity-item">
-                            <div class="row no-gutters">
-                                <div class="col-2 tx-right">6:57am</div>
-                                <div class="col-2 tx-center"><span class="square-10 bg-success"></span></div>
-                                <div class="col-8">Earn new badge <strong>Elite Author</strong></div>
-                            </div><!-- row -->
-                        </div><!-- activity-item -->
-                    </div><!-- dropdown-activity-list -->
-                    <div class="dropdown-list-footer">
-                        <a href="page-activity.html"><i class="fa fa-angle-down"></i> Show All Activities</a>
-                    </div>
-                </div><!-- dropdown-menu-right -->
-            </div><!-- dropdown -->
-            <div class="dropdown dropdown-b" data-toggle="tooltip" title="Notifications">
-                <a href="" class="header-notification" data-toggle="dropdown">
-                    <i class="icon ion-ios-bell-outline"></i>
-                    <span class="indicator"></span>
-                </a>
-                <div class="dropdown-menu">
-                    <div class="dropdown-menu-header">
-                        <h6 class="dropdown-menu-title">Notifications</h6>
-                        <div>
-                            <a href="">Mark All as Read</a>
-                            <a href="">Settings</a>
-                        </div>
-                    </div><!-- dropdown-menu-header -->
-                    <div class="dropdown-list">
-
-                        <!-- loop starts here -->
-                        <a href="" class="dropdown-link">
-                            <div class="media">
-                                <img src="http://via.placeholder.com/500x500" alt="">
-                                <div class="media-body">
-                                    <p><strong>Suzzeth Bungaos</strong> tagged you and 18 others in a post.</p>
-                                    <span>October 03, 2017 8:45am</span>
-                                </div>
-                            </div><!-- media -->
-                        </a>
-                        <!-- loop ends here -->
-                        <a href="" class="dropdown-link">
-                            <div class="media">
-                                <img src="http://via.placeholder.com/500x500" alt="">
-                                <div class="media-body">
-                                    <p><strong>Mellisa Brown</strong> appreciated your work <strong>The Social Network</strong></p>
-                                    <span>October 02, 2017 12:44am</span>
-                                </div>
-                            </div><!-- media -->
-                        </a>
-                        <a href="" class="dropdown-link read">
-                            <div class="media">
-                                <img src="http://via.placeholder.com/500x500" alt="">
-                                <div class="media-body">
-                                    <p>20+ new items added are for sale in your <strong>Sale Group</strong></p>
-                                    <span>October 01, 2017 10:20pm</span>
-                                </div>
-                            </div><!-- media -->
-                        </a>
-                        <a href="" class="dropdown-link read">
-                            <div class="media">
-                                <img src="http://via.placeholder.com/500x500" alt="">
-                                <div class="media-body">
-                                    <p><strong>Julius Erving</strong> wants to connect with you on your conversation with <strong>Ronnie Mara</strong></p>
-                                    <span>October 01, 2017 6:08pm</span>
-                                </div>
-                            </div><!-- media -->
-                        </a>
-                        <div class="dropdown-list-footer">
-                            <a href="page-notifications.html"><i class="fa fa-angle-down"></i> Show All Notifications</a>
-                        </div>
-                    </div><!-- dropdown-list -->
-                </div><!-- dropdown-menu-right -->
-            </div><!-- dropdown -->
             <div class="dropdown dropdown-c">
                 <a href="#" class="logged-user" data-toggle="dropdown">
                     <img src="http://via.placeholder.com/500x500" alt="">
-                    <span><?=Yii::$app->user->identity->first_name?></span>
+                    <span><?=Yii::$app->user->identity->username; ?></span>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <nav class="nav">
-<!--                        <a href="page-profile.html" class="nav-link"><i class="icon ion-person"></i> View Profile</a>-->
-<!--                        <a href="page-edit-profile.html" class="nav-link"><i class="icon ion-compose"></i> Edit Profile</a>-->
-<!--                        <a href="page-activity.html" class="nav-link"><i class="icon ion-ios-bolt"></i> Activity Log</a>-->
-                        <a href="<?php echo Yii::$app->urlManager->createUrl('companies/company-update'); ?>" class="nav-link"><i class="icon ion-ios-gear"></i> Account Settings</a>
                    <a href="<?php echo Yii::$app->urlManager->createUrl('site/logout'); ?>" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
                     </nav>
                 </div><!-- dropdown-menu -->
             </div><!-- dropdown -->
-        </div><!-- header-right -->
+        </div>
     </div><!-- container-fluid -->
 </div><!-- slim-header -->
 
 <div class="slim-body">
     <div class="slim-sidebar">
-        <?php if(!Yii::$app->user->identity->hasAccess('new')):?>
         <ul class="nav nav-sidebar">
             <li class="sidebar-nav-item">
-<!--                with-sub-->
-                <a href="/en/dashboard" class="sidebar-nav-link"><i class="fas fa-home"></i> Dashboard</a>
-<!--                <ul class="nav sidebar-nav-sub">
-                    <li class="nav-sub-item"><a href="index.html" class="nav-sub-link">Dashboard 01</a></li>
-                    <li class="nav-sub-item"><a href="index2.html" class="nav-sub-link">Dashboard 02</a></li>
-                    <li class="nav-sub-item"><a href="index3.html" class="nav-sub-link">Dashboard 03</a></li>
-                    <li class="nav-sub-item"><a href="index4.html" class="nav-sub-link">Dashboard 04</a></li>
-                    <li class="nav-sub-item"><a href="index5.html" class="nav-sub-link">Dashboard 05</a></li>
-                </ul>-->
+                <a href="/" class="sidebar-nav-link"><i class="fas fa-home"></i> Dashboard</a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="/en/actor/index" class="sidebar-nav-link"><i class="fas fa-theater-masks"></i> Actors</a>
+                <a href="/staff/index" class="sidebar-nav-link"><i class="fas fa-theater-masks"></i> Staff</a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="/en/presentation/index" class="sidebar-nav-link"><i class="fab fa-pinterest-p"></i> Presentations</a>
+                <a href="/performance/index" class="sidebar-nav-link"><i class="fab fa-pinterest-p"></i> Performances</a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="/en/news/index" class="sidebar-nav-link"><i class="fas fa-newspaper"></i> News</a>
+                <a href="/news/index" class="sidebar-nav-link"><i class="fas fa-newspaper"></i> News</a>
             </li>
-<!--            <li class="sidebar-nav-item">
-                <a href="page-messages.html" class="sidebar-nav-link"><i class="icon ion-ios-chatboxes-outline"></i> Messages</a>
-            </li>-->
+            <li class="sidebar-nav-item with-sub">
+                <a class="sidebar-nav-link"><i class="fas fa-cogs"></i> Settings </a>
+                <ul class="nav sidebar-nav-sub">
+                    <li class="nav-sub-item"><a href="/genre/index" class="nav-sub-link"><i class="fab fa-glide-g"></i> &nbsp;Genre</a></li>
+                    <li class="nav-sub-item"><a href="/role/index" class="nav-sub-link"><i class="fas fa-user-friends"></i> &nbsp;Role</a></li>
+                </ul>
+            </li>
 
         </ul>
-        <?php else:?>
-        <li class="sidebar-nav-item ">
-            <a href="<?php echo Yii::$app->urlManager->createUrl('dashboard/index'); ?>" class="sidebar-nav-link active"><i class="icon ion-ios-information-outline"></i><?= Yii::t('app','Verification');?></a>
-        </li>
-        <?php endif;?>
     </div><!-- slim-sidebar -->
 
     <div class="slim-mainpanel">
@@ -255,7 +124,8 @@ AppAsset::register($this);
 </div><!-- slim-body -->
 
 
-<script src="/lib/jquery/js/jquery.js"></script>
+<!--<script src="/lib/jquery/js/jquery.js"></script>-->
+<script src="/js/jquery-3.5.1.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="/lib/popper.js/js/popper.js"></script>

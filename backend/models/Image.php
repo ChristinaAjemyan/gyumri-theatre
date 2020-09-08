@@ -8,10 +8,10 @@ use Yii;
  * This is the model class for table "image".
  *
  * @property int $id
- * @property int|null $presentation_id
+ * @property int|null $performance_id
  * @property string|null $image
  *
- * @property Presentation $presentation
+ * @property Performance $performance
  */
 class Image extends \yii\db\ActiveRecord
 {
@@ -30,10 +30,10 @@ class Image extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['presentation_id'], 'integer'],
+            [['performance_id'], 'integer'],
             [['image'], 'string', 'max' => 255],
             ['image', 'file', 'maxFiles' => 10, 'extensions' => ['png', 'jpg', 'jpeg']],
-            [['presentation_id'], 'exist', 'skipOnError' => true, 'targetClass' => Presentation::className(), 'targetAttribute' => ['presentation_id' => 'id']],
+            [['performance_id'], 'exist', 'skipOnError' => true, 'targetClass' => Performance::className(), 'targetAttribute' => ['performance_id' => 'id']],
         ];
     }
 
@@ -44,18 +44,18 @@ class Image extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'presentation_id' => 'Presentation ID',
+            'performance_id' => 'Performance ID',
             'image' => 'Add More Images',
         ];
     }
 
     /**
-     * Gets query for [[Presentation]].
+     * Gets query for [[Performance]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPresentation()
+    public function getPerformance()
     {
-        return $this->hasOne(Presentation::className(), ['id' => 'presentation_id']);
+        return $this->hasOne(Performance::className(), ['id' => 'performance_id']);
     }
 }

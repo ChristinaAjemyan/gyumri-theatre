@@ -1,7 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\Presentation;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,19 +74,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
-        $presentations = Presentation::find()->asArray()->all();
-
-        return $this->render('index',[
-            'presentations' => $presentations
-        ]);
-    }
-
-    public function actionView()
-    {
-        $this->view->title = 'View';
-
-        return $this->render('view',[]);
+        return $this->render('index');
     }
 
     /**
@@ -156,11 +143,6 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
-    }
-
-    public function actionTest()
-    {
-        return $this->render('test');
     }
 
     /**

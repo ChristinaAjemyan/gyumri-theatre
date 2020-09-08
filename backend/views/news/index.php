@@ -32,14 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'content' => function ($data){
                     $images = [
                         [
-                            'src' => Yii::getAlias('@web').'/upload/avatars/'.$data['img_path'], ['height' => '50px'],
+                            'src' => Yii::getAlias('@web').'/upload/avatars/'.$data['img_path'],
                             'title' => $data['title'],
                         ]
                     ];
                     return LightBoxWidget::widget([
-                        'id'     =>'lightbox',
-                        'class'  =>'galary',
-                        'height' =>'50px',
+                        'id'     => 'lightbox',
+                        'class'  => 'galary',
+                        'height' => '70px',
                         'images' => $images,
                     ]);
                 }

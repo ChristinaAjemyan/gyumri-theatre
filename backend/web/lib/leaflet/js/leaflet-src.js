@@ -206,7 +206,7 @@ function indexOf(array, el) {
 
 // @property emptyImageUrl: String
 // Data URI string containing a base64-encoded empty GIF image.
-// Used as a hack to free memory from unused images on WebKit-powered
+// Used as a hack to free memory from unused image on WebKit-powered
 // mobile devices (by setting image `src` to this string).
 var emptyImageUrl = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
@@ -7065,7 +7065,7 @@ var Icon = Class.extend({
 	 * as iconAnchor if not specified).
 	 *
 	 * @option className: String = ''
-	 * A custom class name to assign to both icon and shadow images. Empty by default.
+	 * A custom class name to assign to both icon and shadow image. Empty by default.
 	 */
 
 	options: {
@@ -7185,7 +7185,7 @@ var IconDefault = Icon.extend({
 
 		// @option imagePath: String
 		// `Icon.Default` will try to auto-detect the location of the
-		// blue icon images. If you are placing these images in a non-standard
+		// blue icon image. If you are placing these image in a non-standard
 		// way, set this option to point to the right path.
 		return (this.options.imagePath || IconDefault.imagePath) + Icon.prototype._getIconUrl.call(this, name);
 	},
@@ -7399,7 +7399,7 @@ var Marker = Layer.extend({
 		alt: '',
 
 		// @option zIndexOffset: Number = 0
-		// By default, marker images zIndex is set automatically based on its latitude. Use this option if you want to put the marker on top of all others (or below), specifying a high value like `1000` (or high negative value, respectively).
+		// By default, marker image zIndex is set automatically based on its latitude. Use this option if you want to put the marker on top of all others (or below), specifying a high value like `1000` (or high negative value, respectively).
 		zIndexOffset: 0,
 
 		// @option opacity: Number = 1.0
@@ -9506,7 +9506,7 @@ var DivOverlay = Layer.extend({
 		var bottom = this._containerBottom = -offset.y,
 		    left = this._containerLeft = -Math.round(this._containerWidth / 2) + offset.x;
 
-		// bottom position the popup in case the height of the popup changes (images loading etc)
+		// bottom position the popup in case the height of the popup changes (image loading etc)
 		this._container.style.bottom = bottom + 'px';
 		this._container.style.left = left + 'px';
 	},
@@ -11577,10 +11577,10 @@ var TileLayer = GridLayer.extend({
 		tile.alt = '';
 
 		/*
-		 Set role="presentation" to force screen readers to ignore this
+		 Set role="performance" to force screen readers to ignore this
 		 https://www.w3.org/TR/wai-aria/roles#textalternativecomputation
 		*/
-		tile.setAttribute('role', 'presentation');
+		tile.setAttribute('role', 'performance');
 
 		tile.src = this.getTileUrl(coords);
 
@@ -11743,7 +11743,7 @@ var TileLayerWMS = TileLayer.extend({
 		format: 'image/jpeg',
 
 		// @option transparent: Boolean = false
-		// If `true`, the WMS service will return images with transparency.
+		// If `true`, the WMS service will return image with transparency.
 		transparent: false,
 
 		// @option version: String = '1.1.1'

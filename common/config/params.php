@@ -5,4 +5,7 @@ return [
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
     'user.passwordResetTokenExpire' => 3600,
+    'user.passwordMinLength' => 8,
+    'backend-url' => 'http://theatre.loc',
+    'front-url' => 'front.loc',
 ];
