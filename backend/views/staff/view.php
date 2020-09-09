@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Role;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -37,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'first_name',
             'last_name',
+            [
+                'attribute' => 'role',
+                'value' => Role::find()->where(['id' => $model->role_id])->asArray()->one()['name']
+            ],
             'date_of_birth',
             //'img_path',
             'country',

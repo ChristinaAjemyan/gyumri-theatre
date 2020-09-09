@@ -11,9 +11,14 @@ use yii\helpers\ArrayHelper;
  * @property int $id
  * @property string|null $title
  * @property string|null $img_path
- * @property string|null $staff_id
  * @property string|null $show_date
  * @property string|null $trailer
+ * @property int|null $age_restriction
+ * @property int|null $performance_length
+ * @property string|null $banner
+ * @property string|null $author
+ * @property int|null $hall
+ * @property string|null $short_desc
  * @property string|null $desc
  * @property int|null $is_new
  */
@@ -24,6 +29,7 @@ class Performance extends \yii\db\ActiveRecord
      */
 
     public $avatar_image;
+    public $banner_image;
 
     public static function tableName()
     {
@@ -38,10 +44,10 @@ class Performance extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['show_date'], 'safe'],
-            [['desc'], 'string'],
-            ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
-            [['is_new'], 'integer'],
-            [['title', 'img_path', 'trailer'], 'string', 'max' => 255],
+            [['desc', 'short_desc'], 'string'],
+            [['avatar_image', 'banner_image'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
+            [['age_restriction', 'performance_length', 'hall', 'is_new'], 'integer'],
+            [['title', 'img_path', 'trailer', 'banner', 'author'], 'string', 'max' => 255],
         ];
     }
 
@@ -56,6 +62,12 @@ class Performance extends \yii\db\ActiveRecord
             //'img_path' => 'Image',
             'show_date' => 'Show Date',
             'trailer' => 'Trailer',
+            'age_restriction' => 'Age Restriction',
+            'performance_length' => 'Performance Length',
+            'banner' => 'Banner',
+            'author' => 'Author',
+            'hall' => 'Hall',
+            'short_desc' => 'Short Description',
             'desc' => 'Description',
             'is_new' => 'Is New',
         ];

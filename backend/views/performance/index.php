@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'id'     =>'lightbox',
                         'class'  =>'galary',
                         'height' =>'50px',
-                        'image' => $images,
+                        'images' => $images,
                     ]);
                 }
             ],

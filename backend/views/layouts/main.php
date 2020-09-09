@@ -54,10 +54,10 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class="slim-header with-sidebar">
-    <div class="container-fluid">
+    <div class="my-container-fluid">
         <div class="slim-header-left">
 
-            <h2 class="slim-logo"><?= Html::a(Html::img(Url::to('/image/logo.png')), Url::base())  ?></h2>
+            <h2 class="slim-logo"><?= Html::a(Html::img(Url::to('/image/logo.png')),  Yii::$app->params['backend-url'])  ?></h2>
             <a href="" id="slimSidebarMenu" class="slim-sidebar-menu"><span></span></a>
 <!--            <div class="search-box">
                 <input type="text" class="form-control" placeholder="Search">

@@ -21,6 +21,8 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն'], ['value' => 0]) ?>
+
     <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
         'options' => ['accept' => 'avatars/*'],
         'pluginOptions' => [
@@ -42,9 +44,30 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'age_restriction')->textInput(['type' => 'number', 'min' => 0]); ?>
+
+    <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
+
+<!--    --><?//= $form->field($model, 'banner_image')->widget(FileInput::classname(), [
+//        'options' => ['accept' => 'banners/*'],
+//        'pluginOptions' => [
+//            'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
+//            'initialPreviewAsData' => true,
+//            'showUpload' => false
+//        ]
+//    ]) ?>
+
+    <?= $form->field($model, 'banner_image')->fileInput() ?>
+
+    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
 
     <?= $result ? $result : false; ?>
+
+    <?= $form->field($model, 'short_desc')->widget(CKEditor::className(), [
+        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+    ]); ?>
 
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),

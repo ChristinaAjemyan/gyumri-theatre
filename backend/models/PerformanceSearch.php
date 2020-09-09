@@ -17,8 +17,8 @@ class PerformanceSearch extends Performance
     public function rules()
     {
         return [
-            [['id', 'is_new'], 'integer'],
-            [['title', 'img_path', 'show_date', 'trailer', 'desc'], 'safe'],
+            [['id', 'is_new', 'age_restriction', 'performance_length', 'hall'], 'integer'],
+            [['title', 'img_path', 'show_date', 'trailer', 'banner', 'author', 'short_desc', 'desc'], 'safe'],
         ];
     }
 
@@ -61,12 +61,18 @@ class PerformanceSearch extends Performance
         $query->andFilterWhere([
             'id' => $this->id,
             'show_date' => $this->show_date,
+            'age_restriction' => $this->age_restriction,
+            'performance_length' => $this->performance_length,
+            'hall' => $this->hall,
             'is_new' => $this->is_new,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'img_path', $this->img_path])
             ->andFilterWhere(['like', 'trailer', $this->trailer])
+            ->andFilterWhere(['like', 'banner', $this->banner])
+            ->andFilterWhere(['like', 'author', $this->author])
+            ->andFilterWhere(['like', 'short_desc', $this->short_desc])
             ->andFilterWhere(['like', 'desc', $this->desc]);
 
         return $dataProvider;

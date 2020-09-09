@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +50,7 @@
         <h1 class="error-title">404</h1>
         <h5 class="tx-sm-24 tx-normal">Oopps. The page you were looking for doesn't exist.</h5>
         <p class="mg-b-50">You may have mistyped the address or the page may have moved.</p>
-        <p class="mg-b-50"><a href="index.html" class="btn btn-error">Back to Home</a></p>
+        <p class="mg-b-50"><a href="<?= Yii::$app->params['backend-url']; ?>" class="btn btn-error">Back to Home</a></p>
         <p class="error-footer">&copy; Copyright 2018. All Rights Reserved. Slim Bootstrap 4 Admin Dashboard Template.</p>
     </div>
 

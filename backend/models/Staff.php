@@ -15,7 +15,7 @@ use Yii;
  * @property string|null $country
  * @property string|null $city
  * @property string|null $desc
- * @property string|null $role
+ * @property int|null $role_id
  */
 class Staff extends \yii\db\ActiveRecord
 {
@@ -36,11 +36,11 @@ class Staff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_name', 'last_name'], 'required'],
+            [['first_name', 'last_name', 'role_id'], 'required'],
             [['date_of_birth'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
-            [['first_name', 'last_name', 'img_path', 'country', 'city', 'role'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'img_path', 'country', 'city'], 'string', 'max' => 255],
         ];
     }
 

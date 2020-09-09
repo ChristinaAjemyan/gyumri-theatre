@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\Sort;
 use slavkovrn\lightbox\LightBoxWidget;
+use app\models\Role;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\StaffSearch */
@@ -27,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
             [
                 'header' => 'image',
                 'contentOptions' => ['class' => 'text-center'],
@@ -49,6 +51,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'first_name',
             'last_name',
 //            'date_of_birth',
+            [
+                'header' => 'Role',
+                'content' => function ($data){
+                    return Role::find()->where(['id' => $data['role_id']])->asArray()->one()['name'];
+                },
+            ],
             [
                 'header' => 'Age',
                 'content' => function ($data){

@@ -16,17 +16,21 @@ use mihaildev\elfinder\ElFinder;
 <div class="news-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'avatars/*'],
-        'pluginOptions' => [
-            'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
-            'initialPreviewAsData' => true,
-            'showUpload' => false
-        ]
-    ]) ?>
+            <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
+                'options' => ['accept' => 'avatars/*'],
+                'pluginOptions' => [
+                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
+                    'initialPreviewAsData' => true,
+                    'showUpload' => false
+                ]
+            ]) ?>
+        </div>
+    </div>
 
     <?= $form->field($model, 'content')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),

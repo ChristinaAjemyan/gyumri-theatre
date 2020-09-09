@@ -21,8 +21,23 @@ class m200908_144920_create_staff_table extends Migration
             'country' => $this->string(),
             'city' => $this->string(),
             'desc' => $this->text(),
-            'role' => $this->string()
+            'role_id' => $this->integer()
         ]);
+
+        $this->createIndex(
+            'idx-staff-role_id',
+            'staff',
+            'role_id'
+        );
+
+        $this->addForeignKey(
+            'idx-staff-role_id',
+            'staff',
+            'role_id',
+            'role',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**

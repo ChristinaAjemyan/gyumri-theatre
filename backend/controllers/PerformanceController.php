@@ -7,7 +7,9 @@ use app\models\Image;
 use Yii;
 use app\models\Performance;
 use app\models\PerformanceSearch;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +27,16 @@ class PerformanceController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'create', 'update', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -75,7 +87,41 @@ class PerformanceController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+
             if (!is_dir('upload/avatars/')){
+//                mkdir('upload/avatars/',0777, true);
+                FileHelper::createDirectory('upload/avatars/');
+            }
+            $arr_dir = [];
+            $imageArray = ['avatar_image','banner_image'];
+            foreach ($imageArray as $item){
+                $model->$item = UploadedFile::getInstance($model, $item);
+                $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                $arr_dir[0] = $avatar_name;
+                $arr_dir[1] = $banner_name;
+                $model->img_path = $avatar_name;
+                $model->banner = $banner_name;
+                $model->save();
+            }
+
+            foreach ($imageArray as $value){
+                $model->$value = UploadedFile::getInstance($model, $value);
+                if ($value == 'avatar_image'){
+                    $model->$value->saveAs('upload/avatars/' . $arr_dir[0]);
+                }
+                if ($value == 'banner_image'){
+                    $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                }
+            }
+
+
+
+
+
+
+            //avatars
+/*            if (!is_dir('upload/avatars/')){
                 mkdir('upload/avatars/',0777, true);
             }
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
@@ -88,7 +134,24 @@ class PerformanceController extends Controller
                 copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->save();
+            }*/
+            //banner
+/*            if (!is_dir('upload/banners/')){
+                mkdir('upload/banners/',0777, true);
             }
+            if (UploadedFile::getInstance($model, 'banner_image')->name !== null){
+                $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
+                //var_dump(UploadedFile::getInstance($model, 'banner_image')->name);die;
+                $img_name = time().rand(100, 999) . '.' . $model->banner_image->extension;
+                $model->banner = $img_name;
+                $model->save();
+                $model->banner_image->saveAs('upload/banners/' . $img_name);
+            }*/
+/*            else{
+                copy('image/default.jpg', 'upload/avatars/default.jpg');
+                $model->img_path = 'default.jpg';
+                $model->save();
+            }*/
             if (isset(Yii::$app->request->post('StaffPerformance')['staff_id'])){
                 foreach (Yii::$app->request->post('StaffPerformance')['staff_id'] as $staff){
                     $model_stf_present = new StaffPerformance();
