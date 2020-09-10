@@ -43,7 +43,7 @@ class GenrePerformance extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'genre_id' => 'Genre ID',
+            'genre_id' => 'Select Genre',
             'performance_id' => 'Performance ID',
         ];
     }

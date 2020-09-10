@@ -43,7 +43,7 @@ use app\models\Role;
             <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'avatars/*'],
                 'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
+                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model)[0],
                     'initialPreviewAsData' => true,
                     'showUpload' => false
                 ]

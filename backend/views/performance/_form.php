@@ -1,6 +1,8 @@
 <?php
 
+use app\models\Genre;
 use app\models\Performance;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
@@ -19,47 +21,57 @@ use mihaildev\elfinder\ElFinder;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <div class="form-row">
+        <div class="col">
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն'], ['value' => 0]) ?>
+            <?= $form->field($model_genre_perform, 'genre_id')->widget(Select2::className(), [
+                'data' => ArrayHelper::map(Genre::find()->all(), 'id', 'name'),
+                'options' => [
+                    'placeholder' => 'Select staff ...',
+                    'multiple' => true
+                ],
+            ]) ?>
 
-    <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'avatars/*'],
-        'pluginOptions' => [
-            'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
-            'initialPreviewAsData' => true,
-            'showUpload' => false
-        ]
-    ]) ?>
+            <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
+                'options' => ['accept' => 'avatars/*'],
+                'pluginOptions' => [
+                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model)[0],
+                    'initialPreviewAsData' => true,
+                    'showUpload' => false,
+                ]
+            ]) ?>
 
-    <?= $form->field($model_stf_present, 'staff_id')->widget(Select2::className(), [
-        'data' => Performance::getFullName(),
-        'options' => [
-            'placeholder' => 'Select staff ...',
-            'multiple' => true
-        ],
-    ]) ?>
+            <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd']) ?>
 
-    <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd']) ?>
+            <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
+        </div>
+        <div class="col">
+            <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model_stf_perform, 'staff_id')->widget(Select2::className(), [
+                'data' => Performance::getFullName(),
+                'options' => [
+                    'placeholder' => 'Select staff ...',
+                    'multiple' => true
+                ],
+            ]) ?>
 
-    <?= $form->field($model, 'age_restriction')->textInput(['type' => 'number', 'min' => 0]); ?>
+            <?= $form->field($model, 'banner_image')->widget(FileInput::classname(), [
+                'options' => ['accept' => 'banners/*'],
+                'pluginOptions' => [
+                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model)[1],
+                    'initialPreviewAsData' => true,
+                    'showUpload' => false
+                ]
+            ]) ?>
 
-    <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
+            <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
 
-<!--    --><?//= $form->field($model, 'banner_image')->widget(FileInput::classname(), [
-//        'options' => ['accept' => 'banners/*'],
-//        'pluginOptions' => [
-//            'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model),
-//            'initialPreviewAsData' => true,
-//            'showUpload' => false
-//        ]
-//    ]) ?>
+            <?= $form->field($model, 'age_restriction')->textInput(['type' => 'number', 'min' => 0]); ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'banner_image')->fileInput() ?>
-
-    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
 
@@ -72,6 +84,8 @@ use mihaildev\elfinder\ElFinder;
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
+
+    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն'], ['value' => 0]) ?>
 
     <?= $form->field($model, 'is_new')->checkbox() ?>
 

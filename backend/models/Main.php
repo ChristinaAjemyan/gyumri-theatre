@@ -19,11 +19,13 @@ class Main extends Model
         $arr = [];
         $modelName = ucfirst($model->tableName());
         $modelClass =  "\app\models\\".$modelName;
-        $imgName = $modelClass::find()->where(['id' => $id])->one()['img_path'];
-        if ($imgName && $imgName !== 'default.jpg'){
-            $arr[] = '/upload/avatars/'.$imgName;
-            return $arr;
+        $object = new $modelClass;
+        $avatarName = $modelClass::find()->where(['id' => $id])->one()['img_path'];
+        $avatarName && $avatarName !== 'default.jpg' ? $arr[0] = '/upload/avatars/'.$avatarName : $arr[0] = '';
+        if (in_array('banner', array_keys($object->attributes))){
+            $bannerName = $modelClass::find()->where(['id' => $id])->one()['banner'];
+            $bannerName ? $arr[1] = '/upload/banners/'.$bannerName : $arr[1] = '';
         }
-        return false;
+        return $arr;
     }
 }

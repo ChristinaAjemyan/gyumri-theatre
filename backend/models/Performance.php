@@ -47,6 +47,8 @@ class Performance extends \yii\db\ActiveRecord
             [['desc', 'short_desc'], 'string'],
             [['avatar_image', 'banner_image'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['age_restriction', 'performance_length', 'hall', 'is_new'], 'integer'],
+            ['age_restriction', 'integer', 'min' => 0],
+            ['performance_length', 'integer', 'min' => 1],
             [['title', 'img_path', 'trailer', 'banner', 'author'], 'string', 'max' => 255],
         ];
     }

@@ -39,7 +39,8 @@ $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->att
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model, 'model_image' => $model_image, 'model_stf_present' => $model_stf_present, 'result' => $result
+        'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
+        'result' => $result, 'model_genre_perform' => $model_genre_perform
     ]) ?>
 
 </div>
@@ -49,14 +50,16 @@ $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->att
 $js = <<<JS
     $('.file-thumbnail-footer').css('display', 'none');
     $('.file-drop-zone').css('min-height', '202px');
-    $('#performance-avatar_image').on('click', function() {
+    $('#performance-avatar_image, #performance-banner_image').on('click', function() {
         let footer_none = setInterval(function() {
-            if ($('.file-thumbnail-footer').length === 1 && $('.file-thumbnail-footer').attr('style') !== 'display: none;'){
-                $('.file-thumbnail-footer').css('display', 'none');
+            $.each($('.file-thumbnail-footer'), function(i, item) {
+            if ($(item).length === 1 && $(item).attr('style') !== 'display: none;'){
+                $(item).css('display', 'none');
                 setTimeout(function() {
                   clearInterval(footer_none);
                 }, 1500);
             }
+            })
         }, 30);
     });
 

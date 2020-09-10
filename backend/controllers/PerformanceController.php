@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\GenrePerformance;
 use app\models\StaffPerformance;
 use app\models\Image;
 use Yii;
@@ -31,7 +32,7 @@ class PerformanceController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update', 'view'],
+                        'actions' => ['index', 'create', 'update', 'view', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -82,82 +83,90 @@ class PerformanceController extends Controller
     public function actionCreate()
     {
         $model = new Performance();
-        $model_stf_present = new StaffPerformance();
+        $model_stf_perform = new StaffPerformance();
         $model_image = new Image();
+        $model_genre_perform = new GenrePerformance();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+            $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
+            $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
 
-            if (!is_dir('upload/avatars/')){
-//                mkdir('upload/avatars/',0777, true);
-                FileHelper::createDirectory('upload/avatars/');
-            }
-            $arr_dir = [];
-            $imageArray = ['avatar_image','banner_image'];
-            foreach ($imageArray as $item){
-                $model->$item = UploadedFile::getInstance($model, $item);
-                $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                $arr_dir[0] = $avatar_name;
-                $arr_dir[1] = $banner_name;
-                $model->img_path = $avatar_name;
-                $model->banner = $banner_name;
-                $model->save();
-            }
+            if ($imgAvatar !== null && $imgBanner !== null){
 
-            foreach ($imageArray as $value){
-                $model->$value = UploadedFile::getInstance($model, $value);
-                if ($value == 'avatar_image'){
-                    $model->$value->saveAs('upload/avatars/' . $arr_dir[0]);
+                if (!is_dir('upload/avatars/') || !is_dir('upload/banners/')){
+                    FileHelper::createDirectory('upload/avatars/');
+                    FileHelper::createDirectory('upload/banners/');
                 }
-                if ($value == 'banner_image'){
-                    $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                $arr_dir = [];
+                $imageArray = ['avatar_image', 'banner_image'];
+                foreach ($imageArray as $item){
+                    $model->$item = UploadedFile::getInstance($model, $item);
+                    $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                    $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                    $arr_dir[0] = $avatar_name;
+                    $arr_dir[1] = $banner_name;
+                    $model->img_path = $avatar_name;
+                    $model->banner = $banner_name;
+                    $model->save();
                 }
-            }
+                foreach ($imageArray as $value){
+                    $model->$value = UploadedFile::getInstance($model, $value);
+                    if ($value == 'avatar_image'){
+                        $model->$value->saveAs('upload/avatars/' . $arr_dir[0]);
+                    }
+                    if ($value == 'banner_image'){
+                        $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                    }
+                }
 
-
-
-
-
-
-            //avatars
-/*            if (!is_dir('upload/avatars/')){
-                mkdir('upload/avatars/',0777, true);
-            }
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+            }elseif ($imgAvatar !== null && $imgBanner === null){
+                if (!is_dir('upload/avatars/')){
+                    FileHelper::createDirectory('upload/avatars/');
+                }
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
                 $model->avatar_image->saveAs('upload/avatars/' . $img_name);
-            }else{
+
+            }elseif ($imgAvatar === null && $imgBanner !== null){
+
+                if (!is_dir('upload/banners/')){
+                    FileHelper::createDirectory('upload/banners/');
+                }
                 copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
-                $model->save();
-            }*/
-            //banner
-/*            if (!is_dir('upload/banners/')){
-                mkdir('upload/banners/',0777, true);
-            }
-            if (UploadedFile::getInstance($model, 'banner_image')->name !== null){
                 $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
-                //var_dump(UploadedFile::getInstance($model, 'banner_image')->name);die;
-                $img_name = time().rand(100, 999) . '.' . $model->banner_image->extension;
+                $img_name = time() . '.' . $model->banner_image->extension;
                 $model->banner = $img_name;
                 $model->save();
                 $model->banner_image->saveAs('upload/banners/' . $img_name);
-            }*/
-/*            else{
+
+            }else{
+                if (!is_dir('upload/avatars/')){
+                    FileHelper::createDirectory('upload/avatars/');
+                }
                 copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->save();
-            }*/
+            }
+
             if (isset(Yii::$app->request->post('StaffPerformance')['staff_id'])){
                 foreach (Yii::$app->request->post('StaffPerformance')['staff_id'] as $staff){
                     $model_stf_present = new StaffPerformance();
                     $model_stf_present->staff_id = $staff;
                     $model_stf_present->performance_id = $model->attributes['id'];
                     $model_stf_present->save();
+                }
+            }
+
+            if (isset(Yii::$app->request->post('GenrePerformance')['genre_id'])){
+                foreach (Yii::$app->request->post('GenrePerformance')['genre_id'] as $genre){
+                    $model_genre_perform = new GenrePerformance();
+                    $model_genre_perform->genre_id = $genre;
+                    $model_genre_perform->performance_id = $model->attributes['id'];
+                    $model_genre_perform->save();
                 }
             }
 
@@ -178,7 +187,8 @@ class PerformanceController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
         return $this->render('create', [
-            'model' => $model, 'model_image' => $model_image, 'model_stf_present' => $model_stf_present
+            'model' => $model, 'model_image' => $model_image,
+            'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform
         ]);
     }
 
@@ -192,10 +202,12 @@ class PerformanceController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model_stf_present = new StaffPerformance();
+        $model_stf_perform = new StaffPerformance();
         $model_image = new Image();
+        $model_genre_perform = new GenrePerformance();
 
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
+        Yii::$app->session->set('banner', $model::find()->asArray()->where(['id' => $id])->one()['banner']);
 
         if (Yii::$app->request->post('src')){
             $src = Yii::$app->request->post('src');
@@ -208,8 +220,46 @@ class PerformanceController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
-                if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+            $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
+            $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
+
+            if ($imgAvatar !== null && $imgBanner !== null){
+
+                if (!is_dir('upload/banners/')){
+                    FileHelper::createDirectory('upload/banners/');
+                }
+                if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
+                    $_SESSION['img_name'] !== 'default.jpg'){
+                    unlink('upload/avatars/'.$_SESSION['img_name']);
+                }
+                if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
+                    unlink('upload/banners/'.$_SESSION['banner']);
+                }
+                $arr_dir = [];
+                $imageArray = ['avatar_image', 'banner_image'];
+                foreach ($imageArray as $item){
+                    $model->$item = UploadedFile::getInstance($model, $item);
+                    $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                    $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                    $arr_dir[0] = $avatar_name;
+                    $arr_dir[1] = $banner_name;
+                    $model->img_path = $avatar_name;
+                    $model->banner = $banner_name;
+                    $model->save();
+                }
+                foreach ($imageArray as $value){
+                    $model->$value = UploadedFile::getInstance($model, $value);
+                    if ($value == 'avatar_image'){
+                        $model->$value->saveAs('upload/avatars/' . $arr_dir[0]);
+                    }
+                    if ($value == 'banner_image'){
+                        $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                    }
+                }
+
+            }elseif ($imgAvatar !== null && $imgBanner === null){
+
+                if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
                     $_SESSION['img_name'] !== 'default.jpg'){
                     unlink('upload/avatars/'.$_SESSION['img_name']);
                 }
@@ -217,15 +267,57 @@ class PerformanceController extends Controller
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
-            }else{
-                if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
-                    $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload/avatars/'.$_SESSION['img_name']);
+
+                if (Yii::$app->request->post('token2') == 2){
+                    if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
+                        unlink('upload/banners/'.$_SESSION['banner']);
+                    }
+                    $model->banner = null;
+                    $model->save();
                 }
-                copy('image/default.jpg', 'upload/avatars/default.jpg');
-                $model->img_path = 'default.jpg';
+                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
+
+            }elseif ($imgAvatar === null && $imgBanner !== null){
+
+                if (!is_dir('upload/banners/')){
+                    FileHelper::createDirectory('upload/banners/');
+                }
+                if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
+                    unlink('upload/banners/'.$_SESSION['banner']);
+                }
+                $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
+                $img_name = time() . '.' . $model->banner_image->extension;
+                $model->banner = $img_name;
                 $model->save();
+
+                if (Yii::$app->request->post('token1') == 1){
+                    if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
+                        $_SESSION['img_name'] !== 'default.jpg'){
+                        unlink('upload/avatars/'.$_SESSION['img_name']);
+                    }
+                    copy('image/default.jpg', 'upload/avatars/default.jpg');
+                    $model->img_path = 'default.jpg';
+                    $model->save();
+                }
+                $model->banner_image->saveAs('upload/banners/' . $img_name);
+
+            }else{
+                if (Yii::$app->request->post('token1') == 1){
+                    if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
+                        $_SESSION['img_name'] !== 'default.jpg'){
+                        unlink('upload/avatars/'.$_SESSION['img_name']);
+                    }
+                    copy('image/default.jpg', 'upload/avatars/default.jpg');
+                    $model->img_path = 'default.jpg';
+                    $model->save();
+                }
+                if (Yii::$app->request->post('token2') == 2){
+                    if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
+                        unlink('upload/banners/'.$_SESSION['banner']);
+                    }
+                    $model->banner = null;
+                    $model->save();
+                }
             }
 
             StaffPerformance::deleteAll(['=', 'performance_id', $id]);
@@ -235,6 +327,16 @@ class PerformanceController extends Controller
                     $model_stf_present->staff_id = $staff;
                     $model_stf_present->performance_id = $model->attributes['id'];
                     $model_stf_present->save();
+                }
+            }
+
+            GenrePerformance::deleteAll(['=', 'performance_id', $id]);
+            if (isset(Yii::$app->request->post('GenrePerformance')['genre_id'])){
+                foreach (Yii::$app->request->post('GenrePerformance')['genre_id'] as $genre){
+                    $model_genre_perform = new GenrePerformance();
+                    $model_genre_perform->genre_id = $genre;
+                    $model_genre_perform->performance_id = $model->attributes['id'];
+                    $model_genre_perform->save();
                 }
             }
 
@@ -253,17 +355,25 @@ class PerformanceController extends Controller
                 }
             }
             unset($_SESSION['img_name']);
+            unset($_SESSION['banner']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
         $arr_staff = ArrayHelper::map(StaffPerformance::find()->where(['performance_id' => $id])->all(), 'id', 'staff_id');
-        $arr_staff_id = [];
+        $arr_genre = ArrayHelper::map(GenrePerformance::find()->where(['performance_id' => $id])->all(), 'id', 'genre_id');
+        $arr_staff_id = []; $arr_genre_id = [];
         foreach ($arr_staff as $item){
             $arr_staff_id[] = $item;
         }
-        $model_stf_present->staff_id = $arr_staff_id;
+        $model_stf_perform->staff_id = $arr_staff_id;
+        foreach ($arr_genre as $item){
+            $arr_genre_id[] = $item;
+        }
+        $model_genre_perform->genre_id = $arr_genre_id;
 
         return $this->render('update', [
-            'model' => $model, 'model_image' => $model_image, 'model_stf_present' => $model_stf_present
+            'model' => $model, 'model_image' => $model_image,
+            'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform
         ]);
     }
 
