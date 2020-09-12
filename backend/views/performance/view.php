@@ -58,6 +58,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $result;
                 }
             ],
+            [
+                'attribute' => 'banner',
+                'format' => 'html',
+                'value' => ('<img src =' . '/upload/banners/' . $model->banner . ' width="300"' . '>')
+            ],
             'show_date',
             'trailer',
             [
@@ -83,6 +88,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $result;
                 }
             ],
+            'age_restriction',
+            'performance_length',
+            'author',
+            'hall',
+            'short_desc:html',
             'desc:html',
             'is_new'
         ],
