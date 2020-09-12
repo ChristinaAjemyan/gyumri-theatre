@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' => ('<img src =' . '/upload/avatars/' . $model->img_path . ' width="300"' . '>')
+                'value' => ('<img src =' . '/upload/avatars/performance/original/' . $model->img_path . ' width="300"' . '>')
             ],
             //'id',
             'title',
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php $image = $image['image']; ?>
                                     <?php $result .= "<div class=\"\">
                                         <div class=\"card card-block my-block float-left m-2\">
-                                            <img src=\"/upload/galleries/$image\" alt=\"$image\" style=\"height: 200px;\">
+                                            <img src=\"/upload/galleries/250/$image\" alt=\"$image\" style=\"height: 200px;\">
                                         </div>
                                     </div>"; ?>
                                 <?php endforeach; ?>

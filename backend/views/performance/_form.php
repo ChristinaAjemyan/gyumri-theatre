@@ -36,7 +36,7 @@ use mihaildev\elfinder\ElFinder;
             <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'avatars/*'],
                 'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model)[0],
+                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/performance/400')[0],
                     'initialPreviewAsData' => true,
                     'showUpload' => false,
                 ]
@@ -60,7 +60,7 @@ use mihaildev\elfinder\ElFinder;
             <?= $form->field($model, 'banner_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'banners/*'],
                 'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model)[1],
+                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/performance/400')[1],
                     'initialPreviewAsData' => true,
                     'showUpload' => false
                 ]

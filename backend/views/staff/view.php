@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' =>('<img src =' .'/upload/avatars/' . $model->img_path . ' width="300"' .   '>')
+                'value' =>('<img src =' .'/upload/avatars/staff/400/' . $model->img_path . ' width="300"' .   '>')
             ],
             //'id',
             'first_name',

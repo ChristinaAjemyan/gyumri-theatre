@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use app\models\GenrePerformance;
+use app\models\Main;
 use app\models\StaffPerformance;
 use app\models\Image;
 use Yii;
@@ -89,15 +90,16 @@ class PerformanceController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+            Main::createUploadDirectories('avatars/performance', ['original', '400', '200']);
+
+            if (!is_dir('upload/banners/')){
+                FileHelper::createDirectory('upload/banners/');
+            }
+
             $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
             $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
 
             if ($imgAvatar !== null && $imgBanner !== null){
-
-                if (!is_dir('upload/avatars/') || !is_dir('upload/banners/')){
-                    FileHelper::createDirectory('upload/avatars/');
-                    FileHelper::createDirectory('upload/banners/');
-                }
                 $arr_dir = [];
                 $imageArray = ['avatar_image', 'banner_image'];
                 foreach ($imageArray as $item){
@@ -113,41 +115,28 @@ class PerformanceController extends Controller
                 foreach ($imageArray as $value){
                     $model->$value = UploadedFile::getInstance($model, $value);
                     if ($value == 'avatar_image'){
-                        $model->$value->saveAs('upload/avatars/' . $arr_dir[0]);
+                        $model->$value->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
                     }
                     if ($value == 'banner_image'){
                         $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
                     }
                 }
-
+                Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
             }elseif ($imgAvatar !== null && $imgBanner === null){
-                if (!is_dir('upload/avatars/')){
-                    FileHelper::createDirectory('upload/avatars/');
-                }
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
-
+                $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
+                Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
             }elseif ($imgAvatar === null && $imgBanner !== null){
-
-                if (!is_dir('upload/banners/')){
-                    FileHelper::createDirectory('upload/banners/');
-                }
-                copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
                 $img_name = time() . '.' . $model->banner_image->extension;
                 $model->banner = $img_name;
                 $model->save();
                 $model->banner_image->saveAs('upload/banners/' . $img_name);
-
             }else{
-                if (!is_dir('upload/avatars/')){
-                    FileHelper::createDirectory('upload/avatars/');
-                }
-                copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->save();
             }
@@ -173,6 +162,8 @@ class PerformanceController extends Controller
             if (UploadedFile::getInstances($model_image, 'image')){
                 if (!is_dir('upload/galleries/')){
                     mkdir('upload/galleries/',0777, true);
+                    FileHelper::createDirectory('upload/galleries/original/');
+                    FileHelper::createDirectory('upload/galleries/250/');
                 }
                 $images = UploadedFile::getInstances($model_image, 'image');
                 foreach ($images as $image){
@@ -181,7 +172,8 @@ class PerformanceController extends Controller
                     $model_image->performance_id = $model->attributes['id'];
                     $model_image->image = $image_name;
                     $model_image->save();
-                    $image->saveAs('upload/galleries/' . $image_name);
+                    $image->saveAs('upload/galleries/original/' . $image_name);
+                    Main::myResizeImage('galleries', $image_name, ['250']);
                 }
             }
             return $this->redirect(['view', 'id' => $model->id]);
@@ -213,8 +205,9 @@ class PerformanceController extends Controller
             $src = Yii::$app->request->post('src');
             $img = Image::find()->where(['image' => $src])->one();
             $img->delete();
-            if (file_exists('upload/galleries/'.$src)){
-                unlink('upload/galleries/'.$src);
+            if (file_exists('upload/galleries/original/'.$src)){
+                unlink('upload/galleries/original/'.$src);
+                unlink('upload/galleries/250/'.$src);
             }
         }
 
@@ -225,13 +218,7 @@ class PerformanceController extends Controller
 
             if ($imgAvatar !== null && $imgBanner !== null){
 
-                if (!is_dir('upload/banners/')){
-                    FileHelper::createDirectory('upload/banners/');
-                }
-                if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
-                    $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload/avatars/'.$_SESSION['img_name']);
-                }
+                Main::unlinkImages('avatars/performance', ['original', '400', '200']);
                 if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
                     unlink('upload/banners/'.$_SESSION['banner']);
                 }
@@ -250,24 +237,21 @@ class PerformanceController extends Controller
                 foreach ($imageArray as $value){
                     $model->$value = UploadedFile::getInstance($model, $value);
                     if ($value == 'avatar_image'){
-                        $model->$value->saveAs('upload/avatars/' . $arr_dir[0]);
+                        $model->$value->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
                     }
                     if ($value == 'banner_image'){
                         $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
                     }
                 }
-
+                Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
             }elseif ($imgAvatar !== null && $imgBanner === null){
 
-                if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
-                    $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload/avatars/'.$_SESSION['img_name']);
-                }
+                Main::unlinkImages('avatars/performance', ['original', '400', '200']);
+
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
-
                 if (Yii::$app->request->post('token2') == 2){
                     if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
                         unlink('upload/banners/'.$_SESSION['banner']);
@@ -275,13 +259,11 @@ class PerformanceController extends Controller
                     $model->banner = null;
                     $model->save();
                 }
-                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
+                $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
+                Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
 
             }elseif ($imgAvatar === null && $imgBanner !== null){
 
-                if (!is_dir('upload/banners/')){
-                    FileHelper::createDirectory('upload/banners/');
-                }
                 if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
                     unlink('upload/banners/'.$_SESSION['banner']);
                 }
@@ -291,11 +273,7 @@ class PerformanceController extends Controller
                 $model->save();
 
                 if (Yii::$app->request->post('token1') == 1){
-                    if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
-                        $_SESSION['img_name'] !== 'default.jpg'){
-                        unlink('upload/avatars/'.$_SESSION['img_name']);
-                    }
-                    copy('image/default.jpg', 'upload/avatars/default.jpg');
+                    Main::unlinkImages('avatars/performance', ['original', '400', '200']);
                     $model->img_path = 'default.jpg';
                     $model->save();
                 }
@@ -303,11 +281,7 @@ class PerformanceController extends Controller
 
             }else{
                 if (Yii::$app->request->post('token1') == 1){
-                    if ($_SESSION['img_name'] !== null && file_exists('upload/avatars/'.$_SESSION['img_name']) &&
-                        $_SESSION['img_name'] !== 'default.jpg'){
-                        unlink('upload/avatars/'.$_SESSION['img_name']);
-                    }
-                    copy('image/default.jpg', 'upload/avatars/default.jpg');
+                    Main::unlinkImages('avatars/performance', ['original', '400', '200']);
                     $model->img_path = 'default.jpg';
                     $model->save();
                 }
@@ -343,6 +317,8 @@ class PerformanceController extends Controller
             if (UploadedFile::getInstances($model_image, 'image')){
                 if (!is_dir('upload/galleries/')){
                     mkdir('upload/galleries/',0777, true);
+                    FileHelper::createDirectory('upload/galleries/original/');
+                    FileHelper::createDirectory('upload/galleries/250/');
                 }
                 $images = UploadedFile::getInstances($model_image, 'image');
                 foreach ($images as $image){
@@ -351,7 +327,8 @@ class PerformanceController extends Controller
                     $model_image->performance_id = $model->attributes['id'];
                     $model_image->image = $image_name;
                     $model_image->save();
-                    $image->saveAs('upload/galleries/' . $image_name);
+                    $image->saveAs('upload/galleries/original/' . $image_name);
+                    Main::myResizeImage('galleries', $image_name, ['250']);
                 }
             }
             unset($_SESSION['img_name']);

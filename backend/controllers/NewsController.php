@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\Main;
 use Yii;
 use app\models\News;
 use app\models\NewsSearch;
@@ -81,17 +82,16 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            if (!is_dir('upload/avatars/')){
-                mkdir('upload/avatars/',0777, true);
-            }
+            Main::createUploadDirectories('avatars/news', ['original', '400']);
+
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
+                $model->avatar_image->saveAs('upload/avatars/news/original/' . $img_name);
+                Main::myResizeImage('avatars/news', $img_name, ['400']);
             }else{
-                copy('image/default.jpg', 'upload/avatars/default.jpg');
                 $model->img_path = 'default.jpg';
                 $model->save();
             }
@@ -118,22 +118,16 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
-                if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
-                    $_SESSION['img_name'] !== 'default.jpg'){
-                    unlink('upload/avatars/'.$_SESSION['img_name']);
-                }
+                Main::unlinkImages('avatars/news', ['original', '400']);
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name ;
                 $model->save();
-                $model->avatar_image->saveAs('upload/avatars/' . $img_name);
+                $model->avatar_image->saveAs('upload/avatars/news/original/' . $img_name);
+                Main::myResizeImage('avatars/news', $img_name, ['400']);
             }else{
                 if (Yii::$app->request->post('token') !== null){
-                    if (file_exists('upload/avatars/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
-                        $_SESSION['img_name'] !== 'default.jpg'){
-                        unlink('upload/avatars/'.$_SESSION['img_name']);
-                    }
-                    copy('image/default.jpg', 'upload/avatars/default.jpg');
+                    Main::unlinkImages('avatars/news', ['original', '400']);
                     $model->img_path = 'default.jpg';
                     $model->save();
                 }
