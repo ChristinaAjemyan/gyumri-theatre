@@ -13,6 +13,7 @@ use Yii;
 use yii\base\Model;
 use yii\helpers\FileHelper;
 use yii\imagine\Image;
+//use app\models\Image;
 
 
 class Main extends Model
@@ -51,13 +52,39 @@ class Main extends Model
     }
 
     public static function unlinkImages($path, $arr = []){
-
         foreach ($arr as $item){
             if (file_exists('upload/'.$path.'/'.$item.'/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                 $_SESSION['img_name'] !== 'default.jpg'){
                 unlink('upload/'.$path.'/'.$item.'/'.$_SESSION['img_name']);
             }
         }
-
     }
+
+    public static function unlinkAllImagesById($model, $id, $path, $arrDirName = []){
+        $modelName = ucfirst($model->tableName());
+        $modelClass =  "\app\models\\".$modelName;
+        $fieldById = $modelClass::findOne($id);
+        foreach ($arrDirName as $item){
+            if (file_exists("upload/$path/$item/$fieldById->img_path")){
+                unlink("upload/$path/$item/$fieldById->img_path");
+            }
+        }
+        if ($path == 'galleries'){
+            $imagesById = \app\models\Image::find()->where(['performance_id' => $id])->all();
+            foreach ($arrDirName as $item){
+                foreach ($imagesById as $img){
+                    if (file_exists("upload/$path/$item/$img->image")){
+                        unlink("upload/$path/$item/$img->image");
+                    }
+                }
+            }
+        }
+        if ($path == 'banners'){
+            if (file_exists("upload/$path/$fieldById->banner")){
+                unlink("upload/$path/$fieldById->banner");
+            }
+        }
+    }
+
+
 }

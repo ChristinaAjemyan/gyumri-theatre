@@ -151,8 +151,9 @@ class StaffController extends Controller
      */
     public function actionDelete($id)
     {
+        $model = new Staff();
+        Main::unlinkAllImagesById($model, $id, 'avatars/staff', ['200', '400', 'original']);
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 

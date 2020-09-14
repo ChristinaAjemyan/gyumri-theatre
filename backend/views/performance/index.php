@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $staff = StaffPerformance::find()->where(['performance_id' => $data->id])->asArray()->all();
 
                     $str = '';
-                    if (count($staff) >= 3){
+                    if (count($staff) > 3){
                         $str .= Html::a('<i class="fas fa-ellipsis-h"></i>', "", ['class' => 'btn btn-info mb-1 px-2 py-0 font-weight-bold',
                             'data-toggle' => 'modal', 'data-target' => '#modalLong'.$data->id]);
                     }
@@ -93,10 +93,28 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $result.$str;
                 },
             ],
+            //'banner',
             'show_date',
             //'trailer',
-            'desc:ntext',
-            'is_new',
+            //'age_restriction',
+            //'performance_length',
+            //'author',
+            [
+                'header' => 'hall',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->hall == 0 ? 'Մեծ թատրոն' : 'Փոքր թատրոն';
+                }
+            ],
+            //'short_desc:html',
+            //'desc:html',
+            [
+                'header' => 'is_new',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->is_new == 0 ? '' : 'Շուտով';
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]);

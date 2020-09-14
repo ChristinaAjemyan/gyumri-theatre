@@ -7,5 +7,6 @@ return [
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
     'backend-url' => 'http://theatre.loc',
+    'backend-models' => "http://theatre.loc\backend\models\\",
     'front-url' => 'front.loc',
 ];

@@ -91,10 +91,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'age_restriction',
             'performance_length',
             'author',
-            'hall',
+            [
+                'attribute' => 'hall',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->hall == 0 ? 'Մեծ թատրոն' : 'Փոքր թատրոն';
+                }
+            ],
             'short_desc:html',
             'desc:html',
-            'is_new'
+            [
+                'attribute' => 'is_new',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->is_new == 0 ? '' : 'Շուտով';
+                }
+            ],
         ],
 
     ]) ?>

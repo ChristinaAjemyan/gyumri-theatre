@@ -149,8 +149,9 @@ class NewsController extends Controller
      */
     public function actionDelete($id)
     {
+        $model = new News();
+        Main::unlinkAllImagesById($model, $id, 'avatars/news', ['400', 'original']);
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 

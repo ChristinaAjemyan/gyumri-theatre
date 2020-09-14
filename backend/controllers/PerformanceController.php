@@ -363,6 +363,10 @@ class PerformanceController extends Controller
      */
     public function actionDelete($id)
     {
+        $model = new Performance();
+        Main::unlinkAllImagesById($model, $id, 'avatars/performance', ['200', '400', 'original']);
+        Main::unlinkAllImagesById($model, $id, 'galleries', ['250', 'original']);
+        Main::unlinkAllImagesById($model, $id, 'banners');
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

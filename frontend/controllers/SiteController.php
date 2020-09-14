@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Performance;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -74,7 +75,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
+        //$presentations = Presentation::find()->asArray()->all();
+
+        $a = Yii::getAlias('@models').'\Performance.php';
+        $k = str_replace('/', '\\', $a);
+
+        //$b = new $k;
+
+
+        return $this->render('index'
+            //['presentations' => $presentations]
+        );
     }
 
     /**
