@@ -138,6 +138,7 @@ AppAsset::register($this);
 <script src="/js/slim.js"></script>
 
 
+
 <?php $this->endBody() ?>
 </body>
 </html>

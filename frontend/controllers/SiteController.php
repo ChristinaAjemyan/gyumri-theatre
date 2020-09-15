@@ -78,10 +78,7 @@ class SiteController extends Controller
         $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
         //$presentations = Presentation::find()->asArray()->all();
 
-        $a = Yii::getAlias('@models').'\Performance.php';
-        $k = str_replace('/', '\\', $a);
-
-        //$b = new $k;
+        //$presentations = new Performance();
 
 
         return $this->render('index'

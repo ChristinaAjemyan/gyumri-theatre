@@ -35,7 +35,6 @@ $('.file-drop-zone').css('min-height', '202px');
             }
         }, 30);
     })
-      
 JS;
 $this->registerJs($js);
 ?>

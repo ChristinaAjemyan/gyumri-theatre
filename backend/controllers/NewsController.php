@@ -80,6 +80,8 @@ class NewsController extends Controller
     {
         $model = new News();
 
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             Main::createUploadDirectories('avatars/news', ['original', '400']);
