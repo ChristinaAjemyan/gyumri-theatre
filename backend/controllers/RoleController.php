@@ -26,7 +26,7 @@ class RoleController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update', 'view', 'delete', 'translate'],
+                        'actions' => ['index', 'create', 'update', 'view', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -77,22 +77,12 @@ class RoleController extends Controller
     public function actionCreate()
     {
         $model = new Role();
-        $model_translate = new Translate();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        if ($model_translate->load(Yii::$app->request->post()) && $model_translate->save()) {
-            $model_translate->table_name = $model->tableName();
-            $model_translate->column_name = array_keys($model->attributes)[1];
-            $model_translate->language = Yii::$app->request->get('lang');
-            $model_translate->save();
-            return $this->redirect(['/translate/view', 'id' => $model_translate->id]);
-        }
-
         return $this->render('create', [
-            'model' => $model, 'model_translate' => $model_translate
+            'model' => $model,
         ]);
     }
 
@@ -106,36 +96,12 @@ class RoleController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model_translate = $this->findModelTranslate($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
-            'model' => $model, 'model_translate' => $model_translate
-        ]);
-    }
-
-    public function actionTranslate($id = null)
-    {
-        //$model_translate = $this->findModelTranslate($id);
-        //var_dump($id);
-
-        $translate = new Translate();
-        $model_translate = $this->findModelTranslate($id);
-        if ($translate->load(Yii::$app->request->post()) && $translate->save()) {
-            $translate->table_name = 'role';
-            $translate->column_name = 'name';
-            $translate->language = Yii::$app->request->get('lang');
-            $translate->table_id = $id;
-            $translate->save();
-
-            return $this->redirect(['/translate/view', 'id' => $translate->id]);
-        }
-
-        return $this->render('translate', [
-            'model_translate' => $model_translate
+            'model' => $model,
         ]);
     }
 
@@ -163,15 +129,6 @@ class RoleController extends Controller
     protected function findModel($id)
     {
         if (($model = Role::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    protected function findModelTranslate($id)
-    {
-        if (($model = Translate::findOne($id)) !== null) {
             return $model;
         }
 

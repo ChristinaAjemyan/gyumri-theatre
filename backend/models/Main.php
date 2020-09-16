@@ -14,6 +14,7 @@ use yii\base\Model;
 use yii\helpers\FileHelper;
 use yii\imagine\Image;
 //use app\models\Image;
+use app\models\Translate;
 
 
 class Main extends Model
@@ -84,6 +85,26 @@ class Main extends Model
                 unlink("upload/$path/$fieldById->banner");
             }
         }
+    }
+
+    public static function createTranslationUrlRU($table_name, $table_id, $arrColumnName){
+        $translate_table_id = Translate::find()->where(['table_id' => $table_id, 'table_name' => $table_name, 'language' => 'ru'])->asArray()->one()['id'];
+        if ($translate_table_id){
+            $urlRU = "/translate/update?lang=ru&table_id=$table_id&table_name=$table_name&$arrColumnName&id=$translate_table_id";
+        }else{
+            $urlRU = "/translate/create?lang=ru&table_id=$table_id&table_name=$table_name&$arrColumnName";
+        }
+        return $urlRU;
+    }
+
+    public static function createTranslationUrlEN($table_name, $table_id, $arrColumnName){
+        $translate_table_id = Translate::find()->where(['table_id' => $table_id, 'table_name' => $table_name, 'language' => 'en'])->asArray()->one()['id'];
+        if ($translate_table_id){
+            $urlEN = "/translate/update?lang=en&table_id=$table_id&table_name=$table_name&$arrColumnName&id=$translate_table_id";
+        }else{
+            $urlEN = "/translate/create?lang=en&table_id=$table_id&table_name=$table_name&$arrColumnName";
+        }
+        return $urlEN;
     }
 
 

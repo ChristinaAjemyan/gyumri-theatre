@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\models\Main;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Role */
@@ -10,14 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Roles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 
-$a = \app\models\Translate::find()->where(['table_id' => $model->id, 'table_name' => 'role', 'language' => 'ru'])->asArray()->one()['id'];
-if ($a){
-    $k = "&id=$a";
-}else{
-    $k = '';
-}
-//echo '<pre>';
-//var_dump($a);
+$table_name = $model->tableName();
+$column_name = array_keys($model->attributes);
+$arrColumnName = "column_name[]=$column_name[1]";
 ?>
 <div class="role-update">
 
@@ -25,14 +21,14 @@ if ($a){
         <h1><?= Html::encode($this->title) ?></h1>
         <div class="mt-5 mr-5">
             <?= Html::a('HY', "?id=$model->id"); ?>
-            <?= Html::a('RU', "/role/translate?lang=ru$k"); ?>
-            <?= Html::a('EN', "/role/translate?lang=en&id=$model->id"); ?>
+            <?= Html::a('RU', Main::createTranslationUrlRU($table_name, $model->id, $arrColumnName)); ?>
+            <?= Html::a('EN', Main::createTranslationUrlEN($table_name, $model->id, $arrColumnName)); ?>
         </div>
     </div>
 
 
     <?= $this->render('_form', [
-        'model' => $model, 'model_translate' => $model_translate
+        'model' => $model
     ]) ?>
 
 </div>

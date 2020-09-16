@@ -57,7 +57,7 @@ class Staff extends \yii\db\ActiveRecord
             'img_path' => 'Img Path',
             'country' => 'Country',
             'city' => 'City',
-            'desc' => 'Desc',
+            'desc' => 'Description',
             'role' => 'Role',
         ];
     }
