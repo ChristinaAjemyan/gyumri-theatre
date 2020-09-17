@@ -15,14 +15,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'model' => $model, 'model_image' => $model_image
     ]) ?>
 
 </div>
 
 
 
-                    <?php
+<?php
 $js = <<<JS
 $('.file-drop-zone').css('min-height', '202px');
     $('#staff-avatar_image').on('click', function() {

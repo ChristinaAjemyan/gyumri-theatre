@@ -3,6 +3,7 @@
 use app\models\Role;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\StaffImage;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Staff */
@@ -46,6 +47,29 @@ $this->params['breadcrumbs'][] = $this->title;
             //'img_path',
             'country',
             'city',
+            [
+                'attribute' => 'Galleries',
+                'format' => 'html',
+                'value' => function ($model) {
+                    $images = StaffImage::find()->where(['staff_id' => $model->id])->asArray()->all(); ?>
+                    <?php if (!empty($images) && isset($images)): ?>
+                        <?php $result = "<div class=\"card border-0\">
+                            <div class=\"card-body p-0\">"; ?>
+                        <?php foreach ($images as $image): ?>
+                            <?php $image = $image['image']; ?>
+                            <?php $result .= "<div class=\"\">
+                                        <div class=\"card card-block my-block float-left m-2\">
+                                            <img src=\"/upload/galleries/250/$image\" alt=\"$image\" style=\"height: 200px;\">
+                                        </div>
+                                    </div>"; ?>
+                        <?php endforeach; ?>
+                        <?php $result .= "</div>
+                        </div>"; ?>
+                    <?php endif; ?>
+                    <?php
+                    return $result;
+                }
+            ],
             'desc:html',
         ],
     ]) ?>

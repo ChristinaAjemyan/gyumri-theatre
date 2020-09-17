@@ -17,20 +17,6 @@ $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
 $arrColumnName = "column_name[]=$column_name[1]&column_name[]=$column_name[2]";
 
-/*$translate_table_id = \app\models\Translate::find()->where(['table_id' => $model->id, 'table_name' => $table_name, 'language' => 'ru'])->asArray()->one()['id'];
-if ($translate_table_id){
-    $urlRU = "/translate/update?lang=ru&table_id=$model->id&table_name=$table_name&$arrColumnName&id=$translate_table_id";
-}else{
-    $urlRU = "/translate/create?lang=ru&table_id=$model->id&table_name=$table_name&$arrColumnName";
-}*/
-
-/*$translate_table_id = \app\models\Translate::find()->where(['table_id' => $model->id, 'table_name' => $table_name, 'language' => 'en'])->asArray()->one()['id'];
-if ($translate_table_id){
-    $urlEN = "/translate/update?lang=en&table_id=$model->id&table_name=$table_name&$arrColumnName&id=$translate_table_id";
-}else{
-    $urlEN = "/translate/create?lang=en&table_id=$model->id&table_name=$table_name&$arrColumnName";
-}*/
-
 ?>
 <div class="news-update">
 

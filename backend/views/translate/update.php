@@ -1,13 +1,11 @@
 <?php
 
-use app\models\Role;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Main;
 use app\models\Translate;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Role */
@@ -47,34 +45,60 @@ $arrColumnName = trim($arrColumnNameUrl, '&');
 
     <?php if ($table_name == 'news'): ?>
 
-        <?= $form->field($update_translate, "[0]text")->textInput(['maxlength' => true]) ?>
+        <?= $form->field($update_lang[0], '[0]text')->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Title') ?>
 
-        <?= $form->field($update_translate, "[1]text")->widget(CKEditor::className(), [
+        <?= $form->field($update_lang[1], '[1]text')->widget(CKEditor::className(), [
             'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-        ]); ?>
+        ])->label('Content') ?>
 
     <?php elseif ($table_name == 'staff'): ?>
 
-        <?= $form->field($update_translate, "[0]text")->textInput(['maxlength' => true])->label('First Name') ?>
+        <div class="form-row">
+            <div class="col">
+                <?= $form->field($update_lang[0], "[0]text")->textInput(['maxlength' => true])->label('First Name') ?>
 
-        <?= $form->field($update_translate, "[1]text")->textInput(['maxlength' => true])->label('Last Name') ?>
+                <?= $form->field($update_lang[1], "[1]text")->textInput(['maxlength' => true])->label('Last Name') ?>
+            </div>
+            <div class="col">
+                <?= $form->field($update_lang[2], "[2]text")->textInput(['maxlength' => true])->label('Country') ?>
 
-        <?= $form->field($update_translate, "[2]text")->dropDownList(
-            ArrayHelper::map(Role::find()->asArray()->all(), 'id', 'name'), ['prompt' => 'Անձնակազմ...'])->label('Role Id') ?>
+                <?= $form->field($update_lang[3], "[3]text")->textInput(['maxlength' => true])->label('City') ?>
+            </div>
+        </div>
 
-        <?= $form->field($update_translate, "[3]text")->textInput(['maxlength' => true])->label('Country') ?>
-
-        <?= $form->field($update_translate, "[4]text")->textInput(['maxlength' => true])->label('City') ?>
-
-        <?= $form->field($update_translate, "[5]text")->widget(CKEditor::className(), [
+        <?= $form->field($update_lang[4], "[4]text")->widget(CKEditor::className(), [
             'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
         ])->label('Description') ?>
 
     <?php elseif ($table_name == 'performance'): ?>
 
+        <div class="form-row">
+            <div class="col-6">
+                <?= $form->field($update_lang[0], '[0]text')->textInput(['maxlength' => true])->label('Title') ?>
+
+            </div>
+            <div class="col-6">
+                <?= $form->field($update_lang[1], '[1]text')->textInput(['maxlength' => true])->label('Author') ?>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <?= $form->field($update_lang[2], '[2]text')->widget(CKEditor::className(), [
+                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+                ])->label('Short Description'); ?>
+            </div>
+            <div class="col-12">
+                <?= $form->field($update_lang[3], '[3]text')->widget(CKEditor::className(), [
+                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+                ])->label('Description'); ?>
+            </div>
+        </div>
+
     <?php else: ?>
 
-        <?= $form->field($update_translate, '[0]text')->textInput(['maxlength' => true, 'style' => 'width:35%', 'required'=>true]) ?>
+        <?= $form->field($update_lang[0], '[0]text')->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Name') ?>
 
     <?php endif; ?>
 

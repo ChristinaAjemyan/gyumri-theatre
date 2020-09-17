@@ -43,7 +43,7 @@ class TranslateController extends Controller
                 $translate->save();
                 $i++;
             }
-
+            Yii::$app->session->set('translate', $translate->id);
 
             return $this->redirect(['view', 'id' => $translate->id]);
         }
@@ -57,24 +57,31 @@ class TranslateController extends Controller
     public function actionUpdate($id)
     {
         $update_translate = $this->findModel($id);
+        $table_name = Yii::$app->request->get('table_name');
+        $column_name = Yii::$app->request->get('column_name');
+        $lang = Yii::$app->request->get('lang');
+        $table_id = Yii::$app->request->get('table_id');
+
         if ($update_translate->load(Yii::$app->request->post())) {
             $i = 0;
             foreach (Yii::$app->request->post('Translate') as $item){
-                $update_translate = $this->findModel($id);
-                $update_translate->table_name = Yii::$app->request->get('table_name');
-                $update_translate->column_name = Yii::$app->request->get('column_name')[$i];
-                $update_translate->language = Yii::$app->request->get('lang');
+                $update_translate = $this->findModel($id + $i);
+                $update_translate->table_name = $table_name;
+                $update_translate->column_name = $column_name[$i];
+                $update_translate->language = $lang;
                 $update_translate->text = $item['text'];
-                $update_translate->table_id = Yii::$app->request->get('table_id');
+                $update_translate->table_id = $table_id;
                 $update_translate->save();
                 $i++;
             }
 
             return $this->redirect(['view', 'id' => $update_translate->id]);
         }
+        $update_lang = Translate::find()->where(['table_id' => $table_id,
+                'language' => $lang, 'table_name' => $table_name])->all();
 
         return $this->render('update', [
-            'update_translate' => $update_translate
+            'update_lang' => $update_lang
         ]);
     }
     /**

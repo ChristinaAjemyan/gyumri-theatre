@@ -2,6 +2,7 @@
 
 
 use app\models\Image;
+use app\models\Main;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -14,6 +15,9 @@ $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'i
 $this->params['breadcrumbs'][] = 'Update';
 
 $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->attributes['id']])->all(), 'id', 'image');
+$table_name = $model->tableName();
+$column_name = array_keys($model->attributes);
+$arrColumnName = "column_name[]=$column_name[1]&column_name[]=$column_name[8]&column_name[]=$column_name[10]&column_name[]=$column_name[11]";
 ?>
 
 <?php if (!empty($images) && isset($images)): ?>
@@ -36,7 +40,14 @@ $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->att
 
 <div class="performance-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="d-flex justify-content-between">
+        <h1><?= Html::encode($this->title) ?></h1>
+        <div class="mt-5 mr-5">
+            <?= Html::a('HY', "?id=$model->id"); ?>
+            <?= Html::a('RU', Main::createTranslationUrlRU($table_name, $model->id, $arrColumnName)); ?>
+            <?= Html::a('EN', Main::createTranslationUrlEN($table_name, $model->id, $arrColumnName)); ?>
+        </div>
+    </div>
 
     <?= $this->render('_form', [
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,

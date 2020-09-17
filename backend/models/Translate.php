@@ -30,7 +30,8 @@ class Translate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'string'],
+            [['text'], 'safe'],
+            [['text'], 'required'],
             [['table_id'], 'integer'],
             [['table_name', 'column_name', 'language'], 'string', 'max' => 255],
         ];

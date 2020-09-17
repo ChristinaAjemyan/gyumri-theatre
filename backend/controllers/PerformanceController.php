@@ -161,7 +161,6 @@ class PerformanceController extends Controller
 
             if (UploadedFile::getInstances($model_image, 'image')){
                 if (!is_dir('upload/galleries/')){
-                    mkdir('upload/galleries/',0777, true);
                     FileHelper::createDirectory('upload/galleries/original/');
                     FileHelper::createDirectory('upload/galleries/250/');
                 }

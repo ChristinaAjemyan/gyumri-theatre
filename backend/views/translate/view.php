@@ -13,16 +13,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="translate-view">
 
-
-    <h1>Translate confirmed!</h1>
+    <h1 class="text-success">Translate confirmed!</h1>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             //'id',
             //'table_name',
             //'column_name',
-            'language',
-            'text:ntext',
+            //'language',
+            //'text:ntext',
             //'table_id',
         ],
     ]) ?>

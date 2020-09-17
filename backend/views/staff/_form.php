@@ -25,7 +25,7 @@ use app\models\Role;
         </div>
         <div class="col">
             <?= $form->field($model, 'role_id')->dropDownList(
-                    ArrayHelper::map(Role::find()->asArray()->all(), 'id', 'name'), ['prompt' => 'Անձնակազմ...']); ?>
+                    ArrayHelper::map(Role::find()->orderBy('name')->asArray()->all(), 'id', 'name'), ['prompt' => 'Անձնակազմ...']); ?>
         </div>
     </div>
 
@@ -50,6 +50,10 @@ use app\models\Role;
             ]) ?>
         </div>
     </div>
+
+    <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
+
+    <?= $result ? $result : false; ?>
 
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
