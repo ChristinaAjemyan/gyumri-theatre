@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Genre;
+use common\models\Genre;
 use app\models\GenreSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;

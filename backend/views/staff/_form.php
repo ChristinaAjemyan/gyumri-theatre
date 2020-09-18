@@ -1,17 +1,17 @@
 <?php
 
-use app\models\Main;
+use common\models\Main;
 use mihaildev\ckeditor\CKEditor;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
 use mihaildev\elfinder\ElFinder;
-use app\models\Role;
+use common\models\Role;
 //\mihaildev\elfinder\Assets::noConflict($this);
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Staff */
+/* @var $model common\models\Staff */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

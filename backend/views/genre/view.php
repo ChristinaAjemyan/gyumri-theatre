@@ -1,19 +1,32 @@
 <?php
 
+use common\models\Main;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Genre */
+/* @var $model common\models\Genre */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Genres', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$table_name = $model->tableName();
+$column_name = array_keys($model->attributes);
+$arrColumnName = "column_name[]=$column_name[1]";
 ?>
 <div class="genre-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="d-flex justify-content-between">
+        <h1><?= Html::encode($this->title) ?></h1>
+        <div class="mt-5 mr-5 language_flag_disabled">
+            <?= Html::a(Html::img(Url::to('/image/flag_am.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_am']), "/$table_name/update?id=$model->id"); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($table_name, $model->id, $arrColumnName)); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_en.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_en']), Main::createTranslationUrlEN($table_name, $model->id, $arrColumnName)); ?>
+        </div>
+    </div>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

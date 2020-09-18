@@ -3,8 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Translate;
-use app\models\TranslateSearch;
+use common\models\Translate;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,6 +34,7 @@ class TranslateController extends Controller
             $i = 0;
             foreach (Yii::$app->request->post('Translate') as $item){
                 $translate = new Translate();
+
                 $translate->table_name = Yii::$app->request->get('table_name');
                 $translate->column_name = Yii::$app->request->get('column_name')[$i];
                 $translate->language = Yii::$app->request->get('lang');

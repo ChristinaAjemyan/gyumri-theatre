@@ -3,11 +3,28 @@
 use yii\helpers\Html;
 
 ?>
-
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
     <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
+    <div class="scrollme">
+        <h1 class="baner_title">ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ</h1>
+    </div>
+    <div class="header_carousel owl-carousel" id="headerCarousel">
 
-    <ol class="carousel-indicators">
+        <div class="carusel_block">
+            <img src="/assets/images/baner.png" alt="Photo">
+        </div>
+
+        <div class="carusel_block">
+            <img src="/assets/images/baner.png" alt="Photo">
+        </div>
+
+        <div class="carusel_block">
+            <img src="/assets/images/baner.png" alt="Photo">
+        </div>
+
+    </div>
+
+    <!-- <ol class="carousel-indicators">
         <li data-target="#hero" data-slide-to="0"></li>
         <li data-target="#hero" data-slide-to="1" class="active"></li>
         <li data-target="#hero" data-slide-to="2"></li>
@@ -15,37 +32,84 @@ use yii\helpers\Html;
     </ol>
 
     <div class="carousel-inner">
-        <div class="item active" style="background-image: url(/assets/images/baner.png)">
+        <div class="item active" style="background-image: url(images/baner.png)">
 
-            <div class="container_new">
-                <div class="scrollme" data-when="exit" data-from="0" data-to="1" data-opacity="0"
-                     data-translatey="100">
-                    <h1 class="baner_title">ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ</h1>
-                </div>
-            </div>
+
         </div>
 
-    </div>
+
+    </div> -->
 </div>
+
 </div>
+
+
 <section class="section_carousel">
     <div class="container">
         <h2 class="block_title carousel_title">ԸՆԹԱՑԻԿ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ</h2>
         <span class="title_line"></span>
-        <div class="main_carousel owl-carousel">
-            <?php if (!empty($presentations) && isset($presentations)): ?>
-            <?php foreach ($presentations as $presentation) : ?>
-                <div class="carousel_item">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/'.$presentation['img_path']; ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $presentation['title'] ?></h5>
-                            <p class="card-text">30 սեպտեմբեր 18։30</p>
-                        </div>
+        <div class="main_carousel owl-carousel" id="current_performance">
+
+            <div class="carousel_item">
+                <div class="card" style="width: 16rem;">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Ոչինչ չի մնա</h5>
+                        <p class="card-text">30 սեպտեմբեր 18։30</p>
                     </div>
                 </div>
-            <?php endforeach; ?>
-            <?php endif; ?>
+            </div>
+
+            <div class="carousel_item">
+                <div class="card" style="width: 16rem;">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">ՀԱՐՍԱՆԻՔ ԹԻԿՈՒՆՔՈՒՄ</h5>
+                        <p class="card-text">30 սեպտեմբեր 18։30</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel_item">
+                <div class="card" style="width: 16rem;">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">ՀԱՍՄԻԿ</h5>
+                        <p class="card-text">30 սեպտեմբեր 18։30</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel_item">
+                <div class="card" style="width: 16rem;">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">ԵՐԿՆԱԳՈՒՅՆ ՇԱՆ ԱՉՔՈՐԸ</h5>
+                        <p class="card-text">30 սեպտեմբեր 18։30</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel_item">
+                <div class="card" style="width: 16rem;">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Ոչինչ չի մնա</h5>
+                        <p class="card-text">30 սեպտեմբեր 18։30</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel_item">
+                <div class="card" style="width: 16rem;">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Ոչինչ չի մնա</h5>
+                        <p class="card-text">30 սեպտեմբեր 18։30</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -58,6 +122,9 @@ use yii\helpers\Html;
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
                 <input id="datepicker"  class="date-calendar" type="text">
+                <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
+                <a class="nav-item nav-link" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
+                   aria-controls="nav-cal" aria-selected="true"><i class="far fa-calendar-alt"></i></a>
 
                 <a class="nav-item nav-link active" id="nav-tus-tab" data-toggle="tab" href="#nav-tus" role="tab"
                    aria-controls="nav-tus" aria-selected="true">ԵՐՔ</a>
@@ -75,9 +142,14 @@ use yii\helpers\Html;
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
+
+            <div class="tab-pane fade" id="nav-cal" role="tabpanel" aria-labelledby="nav-cal-tab">
+                Calendar
+            </div>
+
             <div class="tab-pane fade show active" id="nav-tus" role="tabpanel" aria-labelledby="nav-tus-tab">
 
-                <div class="media">
+                <div class="media color_h">
                     <div class="row">
                         <div class="col-md-3  col-12">
 
@@ -98,7 +170,7 @@ use yii\helpers\Html;
 
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <button class="btn more_btn">ԱՎԵԼԻՆ</button>
+                                        <a href="presentation.html" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ
                                             <i class="fas fa-chevron-right"></i></button>
                                     </div>
@@ -135,7 +207,7 @@ use yii\helpers\Html;
 
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <button class="btn more_btn">ԱՎԵԼԻՆ</button>
+                                        <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ <i
                                                     class="fas fa-chevron-right"></i></button>
 
@@ -177,7 +249,7 @@ use yii\helpers\Html;
 
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <button class="btn more_btn">ԱՎԵԼԻՆ</button>
+                                        <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ <i
                                                     class="fas fa-chevron-right"></i></button>
                                     </div>
@@ -220,7 +292,7 @@ use yii\helpers\Html;
 
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <button class="btn more_btn">ԱՎԵԼԻՆ</button>
+                                        <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ <i
                                                     class="fas fa-chevron-right"></i></button>
                                     </div>
@@ -236,7 +308,7 @@ use yii\helpers\Html;
                 <hr>
 
 
-                <div aria-label="Page navigation example">
+                <div>
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Previous">
@@ -296,9 +368,6 @@ use yii\helpers\Html;
 
 </main>
 
-
-
-
 <section class="new_section p-2">
     <div class="container ">
         <h3 class="new_section-title">ՇՈՒՏՈՎ</h3>
@@ -323,7 +392,7 @@ use yii\helpers\Html;
 
                     <div class="media-footer">
                         <div class="media_btn-group">
-                            <button class="btn more_btn">ԱՎԵԼԻՆ</button>
+                            <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                         </div>
                         <span class="calendar"><i class="far fa-calendar-alt"></i></span>
                         <p class='view-movie'>30 սեպտեմբեր 18։30</p>
@@ -345,13 +414,13 @@ use yii\helpers\Html;
     </div>
 </section>
 
-<section class="about-carousel">
+<section class="about-carousel" >
     <div class="container">
 
-        <div class="main_carousel owl-carousel">
+        <div class="main_carousel owl-carousel" id="performances-carusel" >
 
             <div class="carousel_item">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Ոչինչ չի մնա</h5>
@@ -361,7 +430,7 @@ use yii\helpers\Html;
             </div>
 
             <div class="carousel_item">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img class="card-img-top" src="/assets/images/item_img2.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">ՀԱՐՍԱՆԻՔ ԹԻԿՈՒՆՔՈՒՄ</h5>
@@ -371,8 +440,8 @@ use yii\helpers\Html;
             </div>
 
             <div class="carousel_item">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="/assets/images/item_img3.png" alt="Card image cap">
+                <div class="card">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">ՀԱՍՄԻԿ</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -381,8 +450,8 @@ use yii\helpers\Html;
             </div>
 
             <div class="carousel_item">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="/assets/images/item_img4.png" alt="Card image cap">
+                <div class="card">
+                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">ԵՐԿՆԱԳՈՒՅՆ ՇԱՆ ԱՉՔՈՐԸ</h5>
                         <p class="card-text">30 սեպտեմբեր 18։30</p>
@@ -391,7 +460,7 @@ use yii\helpers\Html;
             </div>
 
             <div class="carousel_item">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Ոչինչ չի մնա</h5>
@@ -401,7 +470,7 @@ use yii\helpers\Html;
             </div>
 
             <div class="carousel_item">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Ոչինչ չի մնա</h5>
@@ -414,6 +483,7 @@ use yii\helpers\Html;
     </div>
 
 </section>
+
 <article class="article-call">
     <p class="number-text">ՏԵՂԵԿԱՏՈՒ ՀԵՌԱԽՈՍԱՀԱՄԱՐ</p>
     <h5 class="call-number">060 96 10 10</h5>

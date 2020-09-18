@@ -24,4 +24,18 @@ $(function(){
         }
     });
 
+
+    let href = window.location.href;
+    if (href.indexOf('lang=ru') !== -1){
+        $('.language_flag_disabled .flag_ru').css('opacity', '0.4');
+    } else if (href.indexOf('lang=en') !== -1) {
+        $('.language_flag_disabled .flag_en').css('opacity', '0.4');
+    }else {
+        $('.language_flag_disabled .flag_am').css('opacity', '0.4');
+    }
+
+
 });
+
+
+

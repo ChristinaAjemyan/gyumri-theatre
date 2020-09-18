@@ -2,9 +2,9 @@
 
 namespace backend\controllers;
 
-use app\models\Main;
+use common\models\Main;
 use Yii;
-use app\models\News;
+use common\models\News;
 use app\models\NewsSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;

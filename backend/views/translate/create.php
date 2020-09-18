@@ -2,10 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\models\Main;
+use common\models\Main;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
-use app\models\Translate;
+use common\models\Translate;
+use yii\helpers\Url;
 ?>
 
 <?php
@@ -15,12 +16,13 @@ $column_name = Yii::$app->request->get('column_name');
 $lang = Yii::$app->request->get('lang');
 $table_id = Yii::$app->request->get('table_id');
 
-$this->title = 'Create '.ucfirst($table_name);
+$this->title = 'Translate '.ucfirst($table_name);
 
 $arrColumnNameUrl = "";
 foreach ($column_name as $item){
     $arrColumnNameUrl .= "&column_name[]=".$item;
 }
+
 $arrColumnName = trim($arrColumnNameUrl, '&');
 
 if (Yii::$app->session->has('translate')){
@@ -40,10 +42,10 @@ if (Yii::$app->session->has('translate')){
 
     <div class="d-flex justify-content-between">
         <h1><?= Html::encode($this->title) ?></h1>
-        <div class="mt-5 mr-5">
-            <?= Html::a('HY', "/$table_name/update?id=$table_id"); ?>
-            <?= Html::a('RU', Main::createTranslationUrlRU($table_name, $table_id, $arrColumnName)); ?>
-            <?= Html::a('EN', Main::createTranslationUrlEN($table_name, $table_id, $arrColumnName)); ?>
+        <div class="mt-5 mr-5 language_flag_disabled">
+            <?= Html::a(Html::img(Url::to('/image/flag_am.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_am']), "/$table_name/update?id=$table_id"); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($table_name, $table_id, $arrColumnName)); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_en.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_en']), Main::createTranslationUrlEN($table_name, $table_id, $arrColumnName)); ?>
         </div>
     </div>
 

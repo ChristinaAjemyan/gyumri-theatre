@@ -27,6 +27,9 @@ AppAsset::register($this);
     <?php $this->head() ?>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+          integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
+          crossorigin="anonymous">-->
 </head>
 
 <body>
@@ -36,7 +39,7 @@ AppAsset::register($this);
     <nav class="navbar navbar-expand-lg">
         <div class="container header_flex">
 
-            <a class="navbar-brand logo" href="#"><img src="/assets/images/logo.png" alt="Craft Beer HTML Template"></a>
+            <a class="navbar-brand logo" href="index.html"><img src="/assets/images/logo.png" alt="Craft Beer HTML Template"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -44,6 +47,8 @@ AppAsset::register($this);
 						<i></i>
 						<i></i>
 					</span>
+
+
             </button>
             <div class="collapse navbar-collapse " id="navbarNav">
                 <span class="div"></span>
@@ -56,18 +61,19 @@ AppAsset::register($this);
                             <span class="hove_height"></span>
                         </a>
                         <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">ՓՈՔՐ ԹԱՏՐՈՆ</a></li>
-                            <li><a class="dropdown-item" href="#">ՎԱՐՉԱԿԱՆ ՄԱՍ</a></li>
+                            <li><a class="dropdown-item" href="#">Տարեգրություն</a></li>
+                            <li><a class="dropdown-item" href="#">ՎԱՐՉԱԿԱՆ Մաս</a></li>
+                            <li><a class="dropdown-item" href="#">Արխիվ</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ԴԵՐԱՍԱՆՆԵՐ
+                        <a class="nav-link" href="actors.html">ԴԵՐԱՍԱՆՆԵՐ
                             <span class="hove_height"></span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2"
+                        <a class="nav-link dropdown-toggle" href="presentation.html" id="navbarDropdownMenuLink2"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ
                             <span class="hove_height"></span>
@@ -89,7 +95,7 @@ AppAsset::register($this);
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link asdfg" href="#">ԿԱՊ
+                        <a class="nav-link" href="#">ԿԱՊ
                             <span class="hove_height"></span>
                         </a>
                     </li>
@@ -97,7 +103,7 @@ AppAsset::register($this);
                 <ul class="social_icons">
                     <li class="_line"></li>
                     <li>
-                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a id="searchBtn"><i class="fas fa-search"></i></a>
                     </li>
                     <li>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -108,9 +114,20 @@ AppAsset::register($this);
                     <li>
                         <a href="#"><i class="fab fa-telegram-plane"></i></a>
                     </li>
+                    <li class="search_input"><input type="text" class="form-control" placeholder="Search..."></li>
+                    <li>
+                        <select name="languaga" class="language_select">
+                            <option value="am">Հայ</option>
+                            <option value="ru">Рус</option>
+                            <option value="en">Eng</option>
+                        </select>
+                    </li>
                 </ul>
+
             </div>
+
         </div>
+
 
     </nav>
 
@@ -168,6 +185,7 @@ AppAsset::register($this);
         <div class="container">
             <p>2020 GYUMRITHEATRE</p>
         </div>
+
     </div>
 
 

@@ -1,6 +1,6 @@
 <?php
 
-use app\models\Main;
+use common\models\Main;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
@@ -9,7 +9,7 @@ use mihaildev\elfinder\ElFinder;
 //\mihaildev\elfinder\Assets::noConflict($this);
 
 /* @var $this yii\web\View */
-/* @var $model app\models\News */
+/* @var $model common\models\News */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

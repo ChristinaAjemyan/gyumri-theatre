@@ -2,10 +2,10 @@
 
 namespace backend\controllers;
 
-use app\models\Main;
-use app\models\StaffImage;
+use common\models\Main;
+use common\models\StaffImage;
 use Yii;
-use app\models\Staff;
+use common\models\Staff;
 use app\models\StaffSearch;
 use yii\filters\AccessControl;
 use yii\helpers\FileHelper;

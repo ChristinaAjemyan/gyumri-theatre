@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\Sort;
 use slavkovrn\lightbox\LightBoxWidget;
-use app\models\Role;
+use common\models\Role;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\StaffSearch */

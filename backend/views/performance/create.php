@@ -4,7 +4,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Performance */
+/* @var $model common\models\Performance */
 
 $this->title = 'Create Performance';
 $this->params['breadcrumbs'][] = ['label' => 'Performances', 'url' => ['index']];

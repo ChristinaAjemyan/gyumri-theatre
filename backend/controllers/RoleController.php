@@ -2,9 +2,9 @@
 
 namespace backend\controllers;
 
-use app\models\Translate;
 use Yii;
-use app\models\Role;
+
+use common\models\Role;
 use app\models\RoleSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;

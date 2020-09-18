@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use app\models\GenrePerformance;
-use app\models\Main;
-use app\models\StaffPerformance;
-use app\models\Image;
+use common\models\GenrePerformance;
+use common\models\Main;
+use common\models\StaffPerformance;
+use common\models\Image;
 use Yii;
-use app\models\Performance;
+use common\models\Performance;
 use app\models\PerformanceSearch;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;

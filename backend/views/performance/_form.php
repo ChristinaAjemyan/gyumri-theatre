@@ -1,19 +1,19 @@
 <?php
 
-use app\models\Genre;
-use app\models\Performance;
+use common\models\Genre;
+use common\models\Performance;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
 use kartik\select2\Select2;
-use app\models\Main;
+use common\models\Main;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
 //\mihaildev\elfinder\Assets::noConflict($this);
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Performance */
+/* @var $model common\models\Performance */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
