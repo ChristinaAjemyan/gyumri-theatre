@@ -61,4 +61,5 @@ class Staff extends \yii\db\ActiveRecord
             'role' => 'Role',
         ];
     }
+
 }

@@ -24,7 +24,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
+/*    public function behaviors()
     {
         return [
             'access' => [
@@ -34,7 +34,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['signup'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        'roles' => ['@'],
                     ],
                     [
                         'actions' => ['logout'],
@@ -55,7 +55,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
+/*    public function actions()
     {
         return [
             'error' => [
@@ -66,7 +66,7 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
-    }
+    }*/
 
     /**
      * Displays homepage.
@@ -76,12 +76,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
-        $performance = new Performance();
+        $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
+        $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
-
-        return $this->render('index',
-            ['performance' => $performance]
-        );
+        //var_dump($performanceSoon);die;
+        return $this->render('index', compact('performances', 'performanceSoon'));
     }
 
     /**

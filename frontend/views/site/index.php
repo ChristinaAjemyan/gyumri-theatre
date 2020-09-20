@@ -1,8 +1,4 @@
-<?php
 
-use yii\helpers\Html;
-
-?>
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
     <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
     <div class="scrollme">
@@ -33,83 +29,44 @@ use yii\helpers\Html;
 
     <div class="carousel-inner">
         <div class="item active" style="background-image: url(images/baner.png)">
-
-
         </div>
-
-
     </div> -->
 </div>
 
-</div>
 
+<?php
 
+use common\models\Genre;
+use common\models\GenrePerformance;
+use common\models\Performance;
+use yii\helpers\ArrayHelper;
+
+echo '<pre>';
+//var_dump($performanceSoon);
+echo '</pre>';
+?>
 <section class="section_carousel">
     <div class="container">
         <h2 class="block_title carousel_title">ԸՆԹԱՑԻԿ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ</h2>
         <span class="title_line"></span>
         <div class="main_carousel owl-carousel" id="current_performance">
-
+        <?php if (!empty($performances) && isset($performances)): ?>
+            <?php foreach ($performances as $item): ?>
             <div class="carousel_item">
                 <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
+                    <a href="/performance/view?id=<?= $item->id; ?>">
+                        <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="image">
+                    </a>
                     <div class="card-body">
-                        <h5 class="card-title">Ոչինչ չի մնա</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
+                        <a href="/performance/view?id=<?= $item->id; ?>">
+                            <h5 class="card-title"><?= $item->title; ?></h5>
+                        </a>
+                        <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
                     </div>
                 </div>
             </div>
-
-            <div class="carousel_item">
-                <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">ՀԱՐՍԱՆԻՔ ԹԻԿՈՒՆՔՈՒՄ</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">ՀԱՍՄԻԿ</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">ԵՐԿՆԱԳՈՒՅՆ ՇԱՆ ԱՉՔՈՐԸ</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ոչինչ չի մնա</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ոչինչ չի մնա</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
+            <?php endforeach; ?>
+        <?php endif; ?>
         </div>
 
     </div>
@@ -121,7 +78,6 @@ use yii\helpers\Html;
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                <input id="datepicker"  class="date-calendar" type="text">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
                 <a class="nav-item nav-link" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
                    aria-controls="nav-cal" aria-selected="true"><i class="far fa-calendar-alt"></i></a>
@@ -152,7 +108,6 @@ use yii\helpers\Html;
                 <div class="media color_h">
                     <div class="row">
                         <div class="col-md-3  col-12">
-
 
                             <img src="/assets/images/item_img1.png" class="mr-5" alt="Photo">
                         </div>
@@ -209,7 +164,7 @@ use yii\helpers\Html;
                                     <div class="media_btn-group">
                                         <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ <i
-                                                    class="fas fa-chevron-right"></i></button>
+                                                class="fas fa-chevron-right"></i></button>
 
                                     </div>
                                     <p class='view-movie'>30 սեպտեմբեր 18։30</p>
@@ -251,7 +206,7 @@ use yii\helpers\Html;
                                     <div class="media_btn-group">
                                         <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ <i
-                                                    class="fas fa-chevron-right"></i></button>
+                                                class="fas fa-chevron-right"></i></button>
                                     </div>
                                     <p class='view-movie'>30 սեպտեմբեր 18։30</p>
                                     <p class="movie-lenght">120 ՐՈՊԵ<span>16+</span></p>
@@ -294,7 +249,7 @@ use yii\helpers\Html;
                                     <div class="media_btn-group">
                                         <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                                         <button class="btn add_cupon">ՊԱՏԻՎԻՐԵԼ <i
-                                                    class="fas fa-chevron-right"></i></button>
+                                                class="fas fa-chevron-right"></i></button>
                                     </div>
                                     <p class='view-movie'>30 սեպտեմբեր 18։30</p>
                                     <p class="movie-lenght">120 ՐՈՊԵ<span>16+</span></p>
@@ -374,20 +329,19 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-7 boredr">
                 <div class="media-body">
-                    <h5 class="mt-0 media-title">ԼԻՐ ԱՐՔԱ</h5>
-                    <small class="movie-type">հոգեբանական դրամա 2 գործողությամբ</small>
-                    <p class="author">ՈՒԻԼՅԱՄ ՇԵՔՍՊԻՐ</p>
-                    <p class="media-text">Ակնդետ ինձ էր նայում։ Ոչ մի կերպ չէի հասկանում՝
-                        որտե՞ղ
-                        եմ
-                        տեսել։ Խոնավ, տագնապած
-                        հայացքը փայլկտաց նավթալամպի ընդհատուն լույսի մեջ։ Հիշեցի, ամեն գիշեր
-                        երազում այս
-                        սենյակն ու այս լամպն եմ տեսնում եւ տագնապած հայացքով այս աղջկան։
-                        Այո,
-                        այո, ամեն
-                        անգամ, երբ հատում եմ երազատեսության երերուն սահմանը՝ իրականության եւ
-                        ...
+                    <h5 class="mt-0 media-title"><?= $performanceSoon->title; ?></h5>
+                    <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $performanceSoon->id])->asArray()->all();
+                    $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
+                    <small class="movie-type">
+                        <?php $str = '';
+                        foreach ($genre as $item){
+                            $str .= ' '.$item.',';
+                        }
+                        echo trim($str, ','); ?>
+                    </small>
+                    <p class="author"><?= $performanceSoon->author; ?></p>
+                    <p class="media-text">
+                       <?= substr($performanceSoon->desc,0,350) ?> . . .
                     </p>
 
                     <div class="media-footer">
@@ -395,7 +349,7 @@ use yii\helpers\Html;
                             <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
                         </div>
                         <span class="calendar"><i class="far fa-calendar-alt"></i></span>
-                        <p class='view-movie'>30 սեպտեմբեր 18։30</p>
+                        <p class='view-movie'><?= Performance::getPerformanceTime($performanceSoon->show_date); ?></p>
 
                     </div>
                 </div>
@@ -405,83 +359,13 @@ use yii\helpers\Html;
             <div class="col-md-5">
                 <div class="video_block">
 
-                    <iframe width="460" height="315" src="https://www.youtube.com/embed/By6edE8t-Ao"
+                    <iframe width="460" height="315" src="https://www.youtube.com/embed/<?= $performanceSoon->trailer; ?>"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<section class="about-carousel" >
-    <div class="container">
-
-        <div class="main_carousel owl-carousel" id="performances-carusel" >
-
-            <div class="carousel_item">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ոչինչ չի մնա</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/images/item_img2.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">ՀԱՐՍԱՆԻՔ ԹԻԿՈՒՆՔՈՒՄ</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">ՀԱՍՄԻԿ</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">ԵՐԿՆԱԳՈՒՅՆ ՇԱՆ ԱՉՔՈՐԸ</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ոչինչ չի մնա</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel_item">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/images/item_img1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ոչինչ չի մնա</h5>
-                        <p class="card-text">30 սեպտեմբեր 18։30</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
 </section>
 
 <article class="article-call">

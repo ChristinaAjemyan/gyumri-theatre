@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Arm Hmks';
+    src: url('../libs/fonts/ArmHmksBebasNeueRegular.eot');
+    src: local('Arm Hmks'), local('ArmHmks-Light'),
+        url('../libs/fonts/ArmHmksBebasNeueRegular.eot') format('embedded-opentype'),
+        url('../libs/fonts/ArmHmksBebasNeueRegular.woff') format('woff'),
+        url('../libs/fonts/ArmHmksBebasNeueRegular.ttf ') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ArialAMU';
+    src: url('../libs/fonts/ArialAMU.eot');
+    src: local('ArialAMU'),
+        url('../libs/fonts/ArialAMU.eot') format('embedded-opentype'),
+        url('../libs/fonts/ArialAMU.woff') format('woff'),
+        url('../libs/fonts/ArialAMU.woff2') format('woff2'),
+        url('../libs/fonts/ArialAMU.ttf ') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}

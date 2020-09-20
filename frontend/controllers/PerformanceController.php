@@ -13,37 +13,10 @@ use common\models\Performance;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class PerformanceController extends Controller
 {
-
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index', 'view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-
-
     public function actionIndex()
     {
         $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
@@ -51,12 +24,34 @@ class PerformanceController extends Controller
         return $this->render('index');
     }
 
-    public function actionView()
+    /**
+     * Displays a single News model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
     {
-        $this->view->title = 'Թատրոն';
-        $performance = new Performance();
+        $this->view->title = 'Ներկայացում';
 
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
-        return $this->render('view');
+    /**
+     * Finds the News model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Performance the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Performance::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

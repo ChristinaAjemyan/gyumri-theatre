@@ -89,5 +89,12 @@ class Performance extends \yii\db\ActiveRecord
         }, $fist_name, $last_name);
         return array_combine($key, $val);
     }
+
+    public static function getPerformanceTime($date){
+        $monthsAM = ['Հունվար', 'Փետրվար', 'Մարտ', 'Ապրիլ', 'Մայիս', 'Հունիս',
+            'Հուլիս', 'Օգոստոս', 'Սեպտեմբեր', 'Հոկտեմբեր', 'Նոյեմբեր', 'Դեկտեմբեր'];
+        $month = date("m",strtotime($date));
+        return date("d",strtotime($date)) .' '. $monthsAM[(int)$month-1] .' '. date("H:i",strtotime($date));
+    }
 }
 
