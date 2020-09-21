@@ -4,14 +4,15 @@ use common\models\GenrePerformance;
 use common\models\Image;
 use common\models\Performance;
 use yii\helpers\ArrayHelper;
-
 ?>
 
 <div class="performances-page">
 
     <div id="hero" class="carousel slide carousel-fade performance_header" data-ride="carousel"
          style="background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;">
+        <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
         <span class="btn_play"><a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i class="fas fa-play"></i></a></span>
+        <?php endif; ?>
         <div class="carousel-inners" >
             <!-- <iframe src="https://www.youtube.com/embed/uqA-tT3T6FQ"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -116,10 +117,11 @@ use yii\helpers\ArrayHelper;
 
                 <div class="col-md-5">
                     <div class="video_block">
-
+                        <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
                         <iframe width="460" height="315" src="https://www.youtube.com/embed/<?= $model->trailer; ?>"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

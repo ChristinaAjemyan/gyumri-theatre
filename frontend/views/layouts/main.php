@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -38,7 +39,7 @@ AppAsset::register($this);
     <nav class="navbar navbar-expand-lg navbar-pages">
         <div class="container header_flex">
 
-            <a class="navbar-brand logo" href="index.html"><img src="/assets/images/logo.png" alt="Craft Beer HTML Template"></a>
+            <?= Html::a(Html::img(Url::to('/assets/images/logo.png')),  Yii::$app->params['front-url'], ['class' => 'navbar-brand logo']); ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -53,21 +54,21 @@ AppAsset::register($this);
                 <span class="div"></span>
                 <ul class="navbar-nav">
 
-                    <li class="nav-item dropdown about_us active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                    <li class="nav-item dropdown about_us <?= Yii::$app->request->pathInfo == '' ? 'active': ''; ?>">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ՄԵՐ մԱՍԻՆ
                             <span class="hove_height"></span>
                         </a>
-                        <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Տարեգրություն</a></li>
                             <li><a class="dropdown-item" href="#">ՎԱՐՉԱԿԱՆ Մաս</a></li>
                             <li><a class="dropdown-item" href="#">Արխիվ</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="actors.html">ԴԵՐԱՍԱՆՆԵՐ
+                    <li class="nav-item <?= Yii::$app->request->pathInfo == 'staff' ? 'active': ''; ?>">
+                        <a class="nav-link" href="/staff">ԴԵՐԱՍԱՆՆԵՐ
                             <span class="hove_height"></span>
                         </a>
                     </li>
@@ -140,7 +141,7 @@ AppAsset::register($this);
                 <?php if (!empty($performances) && isset($performances)): ?>
                 <?php foreach ($performances as $item): ?>
                 <div class="carousel_item">
-                    <a href="#">
+                    <a href="/performance/view?id=<?= $item->id; ?>">
                         <div class="card">
                             <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
                             <div class="card-body">

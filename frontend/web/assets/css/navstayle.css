@@ -430,15 +430,12 @@ hr.space-40 {
 
 
 
-
-
-
 /* new style */
 
 /* header Carousel */
 h1,h2,h3,h4,h5,h6,p,a,span,button,small{
-    font-family: "ArialAMU";
-} 
+    /*font-family: "ArialAMU";*/
+}
 #headerCarousel{
     max-height: 500px;
 }
@@ -1480,7 +1477,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     margin-bottom: 60px;
     margin-top: 120px;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     flex-wrap: wrap;
 } 
 .actors_lists  a:hover{
@@ -1501,7 +1498,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .actors_lists .actor img{
-    width: 180px;
+    /*width: 180px;*/
+    width: 210px;
     margin: auto;
     display: block;
     height: 240px;
@@ -1517,7 +1515,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: black;
 }
 .actors_lists .actor_type{
-    font-family:"ArialAMU";
+    /*font-family:"ArialAMU";*/
     color: #F7AB55;
     font-size: 13px;
     font-weight: 700;
@@ -1561,9 +1559,42 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 
 
+.actros_list_page {
+    margin: 20px auto;
+    max-width: 200px;
+}
 
+.actros_list_page a{
+    border: none;
+    font-size: 20px;
+    color: #999999;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+}
+.actros_list_page .active a{
+    color: #e18848 !important;
+    background: none !important;
+    transition: color .5s;
+}
+.actros_list_page a:hover{
+    background: none ;
+    color: #e18848;
+}
+.actros_list_page span svg{
+    font-size: 13px;
+    color: #e18848;
 
-
+    transition: color .5s;
+}
+.actros_list_page span:hover svg{
+    color: #999999;
+}
+.actros_list_page .svg-inline--fa{
+    font-size: 13px!important;
+}
+.actros_list_page .disabled{
+    padding: 0.3rem 0.75rem;
+}
 
 
 

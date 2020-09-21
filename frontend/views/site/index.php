@@ -346,7 +346,7 @@ echo '</pre>';
 
                     <div class="media-footer">
                         <div class="media_btn-group">
-                            <a href="#" class="btn more_btn">ԱՎԵԼԻՆ</a>
+                            <a href="/performance/view?id=<?= $performanceSoon->id; ?>" class="btn more_btn">ԱՎԵԼԻՆ</a>
                         </div>
                         <span class="calendar"><i class="far fa-calendar-alt"></i></span>
                         <p class='view-movie'><?= Performance::getPerformanceTime($performanceSoon->show_date); ?></p>
