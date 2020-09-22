@@ -23,11 +23,11 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         //'assets/js/jquery-3.5.1.min.js',
-        'assets/bootstrap-4.5.2-dist/js/bootstrap.min.js',
-        'assets/libs/owlcarousel/owl.carousel.min.js',
-        'assets/gijgo-combined-1.9.13/js/gijgo.min.js',
-        'assets/libs/fontawesome-free-5.13.1-web/js/all.js',
-        'assets/js/script.js',
+//        'assets/bootstrap-4.5.2-dist/js/bootstrap.min.js',
+        //'assets/libs/owlcarousel/owl.carousel.min.js',
+//        'assets/gijgo-combined-1.9.13/js/gijgo.min.js',
+        //'assets/libs/fontawesome-free-5.13.1-web/js/all.js',
+        //'assets/js/script.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

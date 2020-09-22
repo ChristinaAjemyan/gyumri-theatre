@@ -19,6 +19,9 @@
         width: 300px ;
         height: 315px;
     }
+    .theater_year{
+        font-size: 60px;
+    }
     
 }
 
@@ -132,6 +135,9 @@
     .navbar-collapse{
         height: 320px;
     }
+    .theater_year{
+        font-size: 50px;
+    }
 
     
 
@@ -215,6 +221,7 @@
     .about-present .media .media-text{
         margin-top: 10px;
     }
+   
     .performances-page .main_movies .media-title{
         color: black !important;
     }
@@ -241,7 +248,10 @@
     .media_present{
         margin: 0px auto 30px;
     }
-
+    .theater_year{
+        letter-spacing: 2px;
+        font-size: 45px;
+    }
 }
 
 
@@ -257,6 +267,9 @@
         padding-right: 0px !important;
     }
     .main_movies .media-text{
+        font-size: 13px;
+    }
+    .about_pages .text_director{
         font-size: 13px;
     }
 
@@ -316,6 +329,9 @@
     .new_section .media-text{
         font-size: 12px;
     }
+    /* .about_pages .text_director{
+        font-size: 12px;
+    } */
     .new_section .view-movie{
         font-size: 14px;
     }
@@ -346,6 +362,10 @@
     }
     .actors_page{
         margin-top: 100px;
+    }
+    .theater_year{
+        letter-spacing: 2px;
+        font-size: 35px;
     }
 
 }
@@ -408,6 +428,13 @@
         font-size: 40px;
         height: 45px;
     }
+    .actors_lists .actor{
+        margin-left: 10px;
+        margin-right: 10px;
+    }   
+    .actors_lists{
+        justify-content: center;
+    }
     .actros_about_text{
         font-size: 14px;
         max-height: 270px;
@@ -439,8 +466,19 @@
     .performance_movie .movie_type{
         margin-top: -6px;
         font-size: 13px;
-    }   
-
+    }  
+    .about_pages .new_section{
+        margin-top: 120px;
+    }
+    .about_pages .new_section .media-title{
+        font-size: 30px;
+    }
+   
+    .theater_year{
+        padding: 0 10px;
+        letter-spacing: 1px;
+        font-size: 28px;
+    }
 
 
 }

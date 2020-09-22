@@ -80,7 +80,7 @@ $('#headerCarousel').owlCarousel({
   
 });
 
-/*$('.actros_imges').magnificPopup({
+$('.actros_imges').magnificPopup({
   type: 'image',
   delegate:'a'
 });
@@ -97,7 +97,7 @@ $('.popup_youtube').magnificPopup({
 $('.performances-carusel').magnificPopup({
     type: 'image',
     delegate:'a'
-  });*/
+  });
 
 
 

@@ -148,6 +148,8 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        $this->view->title = 'Մեր մասին';
+
         return $this->render('about');
     }
 

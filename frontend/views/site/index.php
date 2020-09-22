@@ -341,7 +341,7 @@ echo '</pre>';
                     </small>
                     <p class="author"><?= $performanceSoon->author; ?></p>
                     <p class="media-text">
-                       <?= substr($performanceSoon->desc,0,350) ?> . . .
+                       <?= substr($performanceSoon->desc,0,351) ?> . . .
                     </p>
 
                     <div class="media-footer">

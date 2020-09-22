@@ -4,9 +4,10 @@ use yii\widgets\LinkPager;
 
 <?php if (!empty($model) && isset($model)): ?>
 <div class="container">
-    <section class="row actors_lists">
+    <section class="actors_lists">
+        <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
         <?php foreach ($model as $item): ?>
-        <div class="col-3">
+        <div class="col">
             <a href="/staff/view?id=<?= $item->id; ?>">
                 <div class="actor">
                     <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>" alt="Photo">
@@ -15,8 +16,8 @@ use yii\widgets\LinkPager;
                 </div>
             </a>
         </div>
-
         <?php endforeach; ?>
+        </div>
     </section>
 
     <div>

@@ -34,16 +34,14 @@ a:visited {
     -moz-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out;
     text-decoration: none;
-    /*color: #ec7532;*/
-    color: #e18848;
+    color: #ec7532;
     outline: none;
     box-shadow: none
 }
 
 a:hover {
     text-decoration: none;
-    /*color: #ba9a56*/
-    color: #717171
+    color: #ba9a56
 }
 
 a:active,
@@ -430,12 +428,15 @@ hr.space-40 {
 
 
 
+
+
+
 /* new style */
 
 /* header Carousel */
 h1,h2,h3,h4,h5,h6,p,a,span,button,small{
-    /*font-family: "ArialAMU";*/
-}
+    font-family: "ArialAMU";
+} 
 #headerCarousel{
     max-height: 500px;
 }
@@ -618,8 +619,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .social_icons .search_input{
     position: absolute;
-    right: 0;
-    top: 58px;
+    right: 33px;
+    top: 46px;
     max-width: 155px;
     display: none;
 }
@@ -1202,7 +1203,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .performance_header{
     height:400px;
     box-shadow: inset 2px -70px 22px 2px rgba(0,0,0,0.63);
-    /*background: url('../images/baner_pre.png') no-repeat center;*/
+    background: url('../images/baner_pre.png') no-repeat center;
     background-size: cover;
 }
 .performance_header .btn_play a{
@@ -1250,7 +1251,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about-present .media .media-text{
     margin-top: 30px;
-    max-height: 195px;
+    max-height: 193px;
     overflow: hidden;
 }
 .about-present .media img{
@@ -1315,7 +1316,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     display: block !important;
 }
 .performances-page .new_section{
-    /*background-image: url('../images/baner_newsection.png');*/
+    background-image: url('../images/baner_newsection.png');
     background-position:1px;
     box-shadow: inset 0px -220px 115px 106px rgba(0,0,0,0.95) !important;
 
@@ -1498,8 +1499,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .actors_lists .actor img{
-    /*width: 180px;*/
-    width: 210px;
+    width: 180px;
     margin: auto;
     display: block;
     height: 240px;
@@ -1515,7 +1515,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: black;
 }
 .actors_lists .actor_type{
-    /*font-family:"ArialAMU";*/
+    font-family:"ArialAMU";
     color: #F7AB55;
     font-size: 13px;
     font-weight: 700;
@@ -1555,10 +1555,76 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #999999;
 }
 
+.about_pages .performance_header{
+    background-size: cover !important;
+    background: url('../images/about_baner.png') no-repeat center;
+}
+
+.about_pages .main_movies .media-title {
+    font-size: 46px;
+    letter-spacing: 4px;
+    
+}
+.about_pages .about-present .media .media-text{
+    min-height: 175px;
+    text-align: justify;
+    text-indent: 20px;
+   
+}
+.about_pages .text_director{
+    font-size: 15px;
+    text-indent: 20px;
+    text-align: justify;
+    max-width: 1035px;
+    min-height: 100px;
+    max-height: 250px ;
+    overflow: hidden;
+}
+.about_pages .new_section{
+    background-image: url('../images/about_main_baner.png');
+    background-position:1px;
+    box-shadow: inset 0px -155px 55px -24px rgba(0,0,0,0.95) !important;
+
+}
+.about_pages .new_section{
+    margin-top: 40px;
+}
+/* .performances-page .new_section{
+    background-image: url('../images/baner_newsection.png');
+    background-position:1px;
+    box-shadow: inset 0px -220px 115px 106px rgba(0,0,0,0.95) !important;
+
+} */
+.about_pages .new_section .media-title{
+    font-family: "Arm Hmks";
+    font-size: 70px;
+}
+.opacity_baner{
+    padding-bottom: 80px;
+    background: rgba(0, 0, 0, .7);
+    min-height: 600px;
+}
+.about_pages .new_section{
+    padding-bottom: 0px;
+}
+
+.theater_year{
+    border: none;
+    font-size: 80px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 6px;
+    font-family: "Arm Hmks";
+}
+.theater_year span{
+    color: #e18848;
+}
 
 
 
 
+/*-----pagination----*/
 .actros_list_page {
     margin: 20px auto;
     max-width: 200px;
@@ -1595,6 +1661,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .actros_list_page .disabled{
     padding: 0.3rem 0.75rem;
 }
+
 
 
 

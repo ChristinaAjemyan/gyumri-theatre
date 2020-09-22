@@ -14,6 +14,7 @@ use common\models\Staff;
 use common\models\StaffImage;
 use yii\data\Pagination;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class StaffController extends Controller
 {

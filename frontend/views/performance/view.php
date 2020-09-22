@@ -96,7 +96,7 @@ use yii\helpers\ArrayHelper;
                 <div class="col-md-7 boredr">
                     <div class="media-body">
                         <h5 class="mt-0 media-title"><?= $model->title; ?></h5>
-                        <p class="media-text"><?= $model->short_desc; ?></p>
+                        <p class="media-text"><?= substr($model->short_desc,0,650); ?>. . .</p>
 
                         <div class="media-footer">
                             <div class="media_btn-group">
