@@ -108,7 +108,7 @@ $arrColumnName = "column_name[]=$column_name[1]&column_name[]=$column_name[8]&co
                 'attribute' => 'hall',
                 'format' => 'html',
                 'value' => function ($model) {
-                    return $model->hall == 0 ? 'Մեծ թատրոն' : 'Փոքր թատրոն';
+                    return $model->hall == 0 ? 'Մեծ թատրոն' : $model->hall == 1 ? 'Փոքր թատրոն' : 'Հյուրախաղ';
                 }
             ],
             'short_desc:html',

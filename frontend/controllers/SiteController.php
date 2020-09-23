@@ -77,10 +77,11 @@ class SiteController extends Controller
     {
         $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
         $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
+        $performanceAll = Performance::find()->orderBy(['id' => SORT_DESC])->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
-        //var_dump($performanceSoon);die;
-        return $this->render('index', compact('performances', 'performanceSoon'));
+        return $this->render('index', compact('performances',
+            'performanceSoon', 'performanceAll'));
     }
 
     /**

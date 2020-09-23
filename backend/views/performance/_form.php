@@ -85,7 +85,7 @@ use mihaildev\elfinder\ElFinder;
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
 
-    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն']) ?>
+    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն', 2 => 'Հյուրախաղ']) ?>
 
     <?= $form->field($model, 'is_new')->checkbox() ?>
 
