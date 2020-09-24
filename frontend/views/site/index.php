@@ -50,6 +50,7 @@ $a = '2020-09-23 19:40:00';
 //echo  date("w");
 //echo  date("W");
 //$date = date("w", '2020-09-27 09:24:00');
+//$date = date("w", mktime(0, 0, 0, 9, 27, 20));
 //echo $date;
 
 /*$startDate = date('Y-m-d', strtotime("last Tuesday"));
@@ -58,8 +59,8 @@ foreach ($performanceAll as $item){
     if ($item->show_date > $startDate && $item->show_date < $endDate){
         var_dump($item->show_date);
     }
-}*/
-//var_dump($startDate.'- '.$endDate);
+}
+var_dump($startDate.'- '.$endDate);*/
 
 
 ?>
@@ -101,22 +102,21 @@ foreach ($performanceAll as $item){
                    aria-controls="nav-cal" aria-selected="true"><i class="far fa-calendar-alt"></i></a>
 
                 <a class="nav-item nav-link" id="nav-tus-tab" data-toggle="tab" href="#nav-tus" role="tab"
-                   aria-controls="nav-tus" aria-selected="true">ԵՐՔ</a>
+                   aria-controls="nav-tus" aria-selected="true" data-filter="2">ԵՐՔ</a>
                 <a class="nav-item nav-link" id="nav-wed-tab" data-toggle="tab" href="#nav-wed" role="tab"
                    aria-controls="nav-wed" aria-selected="false">ՉՐՔ</a>
                 <a class="nav-item nav-link" id="nav-thur-tab" data-toggle="tab" href="#nav-thur" role="tab"
-                   aria-controls="nav-thur" aria-selected="false">ՀՆԳ</a>
+                   aria-controls="nav-thur" aria-selected="false" data-filter="4">ՀՆԳ</a>
                 <a class="nav-item nav-link" id="nav-fri-tab" data-toggle="tab" href="#nav-fri" role="tab"
-                   aria-controls="nav-fri" aria-selected="false">ՈՒՐԲ</a>
+                   aria-controls="nav-fri" aria-selected="false" data-filter="5">ՈՒՐԲ</a>
                 <a class="nav-item nav-link" id="nav-sat-tab" data-toggle="tab" href="#nav-sat" role="tab"
-                   aria-controls="nav-sat" aria-selected="false">ՇԲԹ</a>
+                   aria-controls="nav-sat" aria-selected="false" data-filter="6">ՇԲԹ</a>
                 <a class="nav-item nav-link" id="nav-sun-tab" data-toggle="tab" href="#nav-sun" role="tab"
-                   aria-controls="nav-sun" aria-selected="false">ԿԻՐ</a>
+                   aria-controls="nav-sun" aria-selected="false" data-filter="all">ԿԻՐ</a>
 
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-
             <div class="tab-pane fade show active" id="nav-cal" role="tabpanel" aria-labelledby="nav-cal-tab">
                 <?php if (!empty($performanceAll) && isset($performanceAll)): ?>
                 <?php foreach ($performanceAll as $item): ?>
@@ -177,33 +177,46 @@ foreach ($performanceAll as $item){
             $arrID = [0 => 'nav-sun-tab', 2=> 'nav-tus-tab', 3 => 'nav-wed-tab', 4 => 'nav-thur-tab', 5 => 'nav-fri-tab', 6 => 'nav-sat-tab'];
             $startDate = date('Y-m-d', strtotime("last Tuesday"));
             $endDate = date('Y-m-d', strtotime("Monday"));
-            $date = date("w", mktime(0, 0, 0, 9, 27, 20));
-            foreach ($performanceAll as $item){
-                if ($item->show_date > $startDate && $item->show_date < $endDate){?>
-                    <?php
 
-                    if ($item->show_date == '2020-09-27 09:24:00'){?>
+            //var_dump(date('w', strtotime("2020-09-22 00:00:00")));
+            $arrWeek = []; $newArr = [];
+            foreach ($performanceAllWeek as $k => $item){
+                $week = date('w', strtotime($item->show_date));
+                //echo '<pre>';
+                //var_dump($item);
+                ?>
+<!--                <div class="tab-pane fade filter <?/*= $week; */?>" id="<?/*= $arrHref[0]; */?>" role="tabpanel" aria-labelledby="<?/*= $arrID[0]; */?>">
+                    156513
+                </div>-->
 
-                        <div class="tab-pane fade" id="<?= $arrHref[$date]; ?>" role="tabpanel" aria-labelledby="<?= $arrID[$date]; ?>">
-                            <?php var_dump($item->author); ?>
-                        </div>
-
-
-                        <?php
-                    }
-
-                    ?>
-
-                   <?php
-                }
+            <?php
             }
-
-
             ?>
 
 
 
-<!--            <div class="tab-pane fade" id="nav-tus" role="tabpanel" aria-labelledby="nav-tus-tab">
+
+<!--            <div class="filter 3">
+                Չորեքշաբթի
+            </div>
+            <div class="filter 4">
+                Հինգշաբթի
+            </div>
+            <div class="filter 5">
+                Ուրբաթ
+            </div>
+            <div class="filter 6">
+                Շաբաթ
+            </div>
+            <div class="filter 0">
+                Կիրակի
+            </div>-->
+
+<!--            <div class="tab-pane fade" id="<?/*= $arrHref[0]; */?>" role="tabpanel" aria-labelledby="<?/*= $arrID[0]; */?>">
+
+            </div>-->
+
+            <div class="tab-pane fade" id="nav-tus" role="tabpanel" aria-labelledby="nav-tus-tab">
                 <div class="media color_h">
                     <div class="row">
                         <div class="col-md-3 col-12">
@@ -405,15 +418,19 @@ foreach ($performanceAll as $item){
             </div>
             <div class="tab-pane fade" id="nav-sun" role="tabpanel" aria-labelledby="nav-sun-tab">
                 Կիրակի
-            </div>-->
+            </div>
 
         </div>
-
 
 
     </div>
 
 </main>
+
+
+
+
+
 
 <section class="new_section p-2">
     <div class="container ">

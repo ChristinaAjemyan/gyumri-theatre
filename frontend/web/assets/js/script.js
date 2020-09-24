@@ -100,5 +100,25 @@ $('.performances-carusel').magnificPopup({
   });
 
 
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+        if(value === "all")
+        {
+            $('.filter').show(2000);
+        }
+        else
+        {
+            $(".filter").not('.'+value).hide(2000);
+            $('.filter').filter('.'+value).show(2000);
+        }
+
+        if (!$(this).hasClass('active')) {
+            $(".filter-button").removeClass('active');
+            $(this).addClass('active');
+        }
+
+    });
+
+
 
 });

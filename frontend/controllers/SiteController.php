@@ -80,8 +80,19 @@ class SiteController extends Controller
         $performanceAll = Performance::find()->orderBy(['id' => SORT_DESC])->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
+        if (date('w') == 1 || date('w') == 2){
+            $startDate = date('Y-m-d', strtotime("Tuesday"));
+        }else{
+            $startDate = date('Y-m-d', strtotime("last Tuesday"));
+        }
+        $endDate = date('Y-m-d', strtotime("Monday"));
+        $performanceAllWeek = Performance::find()->where(['between', 'show_date', $startDate, $endDate])
+            ->orderBy(['show_date' => SORT_ASC])->all();
+        //echo '<pre>';
+        //var_dump($performanceAllWeek);die;
+
         return $this->render('index', compact('performances',
-            'performanceSoon', 'performanceAll'));
+            'performanceSoon', 'performanceAll', 'performanceAllWeek'));
     }
 
     /**
