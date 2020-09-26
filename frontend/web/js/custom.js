@@ -561,6 +561,7 @@ var viewport = (function() {
     return {
         is: is,
         isEqualOrGreaterThan: isEqualOrGreaterThan
-    }
+    };
 
 })();
+

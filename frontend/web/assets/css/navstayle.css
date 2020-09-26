@@ -1650,7 +1650,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .actros_list_page span svg{
     font-size: 13px;
     color: #e18848;
-
     transition: color .5s;
 }
 .actros_list_page span:hover svg{
@@ -1665,8 +1664,30 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 
 
-
-
+.pagingControls {
+    text-align: center;
+    margin-top: 50px;
+}
+.pagingControls ul li a{
+    border: none;
+    font-size: 20px;
+    color: #999999;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+}
+.pagingControls ul li a:hover{
+    background: none ;
+    color: #e18848;
+}
+.pagingControls ul li svg{
+    font-size: 13px;
+    color: #e18848;
+    transition: color .5s;
+}
+.pagingControls ul li a.btn-default{
+    background: none ;
+    color: #e18848;
+}
 
 
 
@@ -1748,3 +1769,4 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         transform: translateX(0)
     }
 }
+

@@ -5,7 +5,7 @@ use yii\widgets\LinkPager;
 <?php if (!empty($model) && isset($model)): ?>
 <div class="container">
     <section class="actors_lists">
-        <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
+        <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 w-100">
         <?php foreach ($model as $item): ?>
         <div class="col">
             <a href="/staff/view?id=<?= $item->id; ?>">

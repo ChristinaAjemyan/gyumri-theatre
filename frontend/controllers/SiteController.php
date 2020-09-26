@@ -1,11 +1,14 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\GenrePerformance;
 use common\models\Performance;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -77,22 +80,38 @@ class SiteController extends Controller
     {
         $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
         $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
-        $performanceAll = Performance::find()->orderBy(['id' => SORT_DESC])->all();
+        $nowDay = date('Y-m-d');
+        $firstMonthDay = date('Y-m-01', strtotime($nowDay));
+        $lastMonthDay = date('Y-m-t', strtotime($nowDay));
+        $performanceAllMonth = Performance::find()->where(['between', 'show_date', $firstMonthDay, $lastMonthDay])
+            ->orderBy(['show_date' => SORT_ASC])->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
-        if (date('w') == 1 || date('w') == 2){
-            $startDate = date('Y-m-d', strtotime("Tuesday"));
-        }else{
-            $startDate = date('Y-m-d', strtotime("last Tuesday"));
+        if (Yii::$app->request->post('day')){
+            $day = Yii::$app->request->post('day');
+            $thisWeekDayStart = date('Y-m-d 00:00:00', strtotime("$day this week"));
+            $thisWeekDayEnd = date('Y-m-d 23:59:59', strtotime("$day this week"));
+            $performanceWeekDay = Performance::find()->where(['between', 'show_date', $thisWeekDayStart, $thisWeekDayEnd])
+                ->orderBy(['show_date' => SORT_ASC])->asArray()->all();
+            foreach ($performanceWeekDay as $key => $value){
+                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $value['id']])->asArray()->all();
+                $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
+                $str = '';
+                foreach ($genre as $item){
+                    $str .= ' '.$item.',';
+                }
+                $performanceWeekDay[$key]['genre'] = trim($str, ',');
+                $performanceWeekDay[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
+            }
+            if (empty($performanceWeekDay)){
+                echo Json::encode(['error' => true]);die;
+            }
+            echo Json::encode(['success' => $performanceWeekDay,
+                'basePath' => Yii::$app->params['backend-url'], 'error' => false]);die;
         }
-        $endDate = date('Y-m-d', strtotime("Monday"));
-        $performanceAllWeek = Performance::find()->where(['between', 'show_date', $startDate, $endDate])
-            ->orderBy(['show_date' => SORT_ASC])->all();
-        //echo '<pre>';
-        //var_dump($performanceAllWeek);die;
 
         return $this->render('index', compact('performances',
-            'performanceSoon', 'performanceAll', 'performanceAllWeek'));
+            'performanceSoon', 'performanceAllMonth', 'performanceWeekDay'));
     }
 
     /**
