@@ -1046,6 +1046,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     max-width: 745px;
     font-size: 15px;
 }
+.new_section .media-body p:nth-last-child(2) strong,
+.new_section .media-body p:nth-last-child(2) span{
+    color: white!important;
+}
 .new_section .media-footer{
     margin-top: 50px;
     display: flex;
@@ -1622,6 +1626,14 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #e18848;
 }
 
+
+.main_movies .media:first-child{
+    padding-top: 0;
+}
+.main_movies .media{
+    border-bottom: 1px solid #e5e5e5;
+    padding: 40px 0;
+}
 
 
 

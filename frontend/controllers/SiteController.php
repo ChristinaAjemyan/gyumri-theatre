@@ -80,38 +80,49 @@ class SiteController extends Controller
     {
         $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
         $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
-        $nowDay = date('Y-m-d');
-        $firstMonthDay = date('Y-m-01', strtotime($nowDay));
-        $lastMonthDay = date('Y-m-t', strtotime($nowDay));
-        $performanceAllMonth = Performance::find()->where(['between', 'show_date', $firstMonthDay, $lastMonthDay])
-            ->orderBy(['show_date' => SORT_ASC])->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
-        if (Yii::$app->request->post('day')){
-            $day = Yii::$app->request->post('day');
-            $thisWeekDayStart = date('Y-m-d 00:00:00', strtotime("$day this week"));
-            $thisWeekDayEnd = date('Y-m-d 23:59:59', strtotime("$day this week"));
-            $performanceWeekDay = Performance::find()->where(['between', 'show_date', $thisWeekDayStart, $thisWeekDayEnd])
+        if (Yii::$app->request->post('day') || Yii::$app->request->post('monthDays')){
+            if (Yii::$app->request->post('day')){
+                $day = Yii::$app->request->post('day');
+                $start = date('Y-m-d 00:00:00', strtotime("$day this week"));
+                $end = date('Y-m-d 23:59:59', strtotime("$day this week"));
+            }else{
+                $nowDay = date('Y-m-d');
+                $start = date('Y-m-01 00:00:00', strtotime($nowDay));
+                $end = date('Y-m-t 23:59:59', strtotime($nowDay));
+            }
+            $performanceByDays = Performance::find()->where(['between', 'show_date', $start, $end])
                 ->orderBy(['show_date' => SORT_ASC])->asArray()->all();
-            foreach ($performanceWeekDay as $key => $value){
+            $arr = []; $arrLastData = [];
+            foreach ($performanceByDays as $key => $value){
+                if ($value['show_date'] < date('Y-m-d H:i:s')){
+                    unset($performanceByDays[$key]);
+                    $arr[] = $value;
+                    $arrLastData = array_reverse($arr);
+                }
+            }
+            foreach ($arrLastData as $item){
+                $performanceByDays[] = $item;
+            }
+            foreach ($performanceByDays as $key => $value){
                 $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $value['id']])->asArray()->all();
                 $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
                 $str = '';
                 foreach ($genre as $item){
                     $str .= ' '.$item.',';
                 }
-                $performanceWeekDay[$key]['genre'] = trim($str, ',');
-                $performanceWeekDay[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
+                $performanceByDays[$key]['genre'] = trim($str, ',');
+                $performanceByDays[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
             }
-            if (empty($performanceWeekDay)){
+            if (empty($performanceByDays)){
                 echo Json::encode(['error' => true]);die;
             }
-            echo Json::encode(['success' => $performanceWeekDay,
+            echo Json::encode(['success' => $performanceByDays,
                 'basePath' => Yii::$app->params['backend-url'], 'error' => false]);die;
         }
-
         return $this->render('index', compact('performances',
-            'performanceSoon', 'performanceAllMonth', 'performanceWeekDay'));
+            'performanceSoon'));
     }
 
     /**

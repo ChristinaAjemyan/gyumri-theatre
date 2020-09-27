@@ -1,4 +1,12 @@
 
+<?php
+
+use common\models\GenrePerformance;
+use common\models\Performance;
+use yii\helpers\ArrayHelper;
+
+?>
+
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
     <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
     <div class="scrollme">
@@ -33,19 +41,6 @@
     </div> -->
 </div>
 
-<?php
-
-use common\models\Genre;
-use common\models\GenrePerformance;
-use common\models\Performance;
-use yii\helpers\ArrayHelper;
-
-/*echo '<pre>';
-var_dump($performanceWeekDay);
-echo '</pre>';*/
-
-?>
-
 <section class="section_carousel">
     <div class="container">
         <h2 class="block_title carousel_title">ԸՆԹԱՑԻԿ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ</h2>
@@ -79,9 +74,8 @@ echo '</pre>';*/
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
-                <a class="nav-item nav-link active" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
+                <a class="nav-item nav-link weekdays active" data-value="all" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
                    aria-controls="nav-cal" aria-selected="true"><i class="far fa-calendar-alt"></i></a>
-
                 <a class="nav-item nav-link weekdays" data-id="2" id="nav-tus-tab" data-toggle="tab" href="#nav-tus" role="tab"
                    aria-controls="nav-tus" aria-selected="true">ԵՐՔ</a>
                 <a class="nav-item nav-link weekdays" data-id="3" id="nav-wed-tab" data-toggle="tab" href="#nav-wed" role="tab"
@@ -96,74 +90,11 @@ echo '</pre>';*/
                    aria-controls="nav-sun" aria-selected="false">ԿԻՐ</a>
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active content_row" id="nav-cal" role="tabpanel" aria-labelledby="nav-cal-tab">
-                <?php if (!empty($performanceAllMonth) && isset($performanceAllMonth)): ?>
-                <?php foreach ($performanceAllMonth as $item): ?>
-                <div class="media result">
-                    <div class="row">
-                        <div class="col-md-3  col-12">
-                            <a href="/performance/view?id=<?= $item->id; ?>">
-                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" class="mr-5" alt="Photo">
-                            </a>
-                        </div>
-                        <div class="col-md-9 col-12">
-                            <div class="media-body">
-                                <?php if ($item->hall == 1): ?>
-                                    <aside class="aside_text aside-text_bg">ՓՈՔՐ ԹԱՏՐՈՆ</aside>
-                                <?php elseif ($item->hall == 2): ?>
-                                    <aside class="aside_text">ՀՅՈՒՐԱԽԱՂ</aside>
-                                <?php endif; ?>
-                                <p class="author"><?= $item->author; ?> </p>
-                                <a href="/performance/view?id=<?= $item->id; ?>"><h5 class="mt-0 media-title"><?= $item->title; ?></h5></a>
-                                <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item->id])->asArray()->all();
-                                $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
-                                <small class="movie-type">
-                                    <?php $str = '';
-                                    foreach ($genre as $value){
-                                        $str .= ' '.$value.',';
-                                    }
-                                    echo trim($str, ','); ?>
-                                </small>
-                                <p class="media-text">
-                                    <?= substr($item->desc,0,571); ?>
-                                    <?= strlen($item->desc) > 571 ? '...' : ''; ?></p>
-                                <div class="media-footer">
-                                    <div class="media_btn-group">
-                                        <a href="/performance/view?id=<?= $item->id; ?>" class="btn more_btn">ԱՎԵԼԻՆ</a>
-                                        <?php if ($item->show_date > date("Y-m-d H:i:s")): ?>
-                                        <button class="btn add_cupon">ՊԱՏՎԻՐԵԼ
-                                            <i class="fas fa-chevron-right"></i></button>
-                                        <?php endif; ?>
-                                    </div>
-                                    <p class='view-movie'><?= Performance::getPerformanceTime($item->show_date); ?></p>
-                                    <p class="movie-lenght"><?= $item->performance_length; ?> ՐՈՊԵ<span><?= $item->age_restriction; ?>+</span></p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <hr>
-                <?php endforeach; ?>
-                <?php else: ?>
-                    <?= "<p class='text-center h2'>Ներկայացում չի գտնվել</p>"; ?>
-                <?php endif; ?>
-
-            </div>
-            <div class="pagingControls paginator--list"></div>
-
-        </div>
-
+        <div class="tab-content" id="nav-tabContent"></div>
 
     </div>
 
 </main>
-
-
-
-
 
 
 <section class="new_section p-2">

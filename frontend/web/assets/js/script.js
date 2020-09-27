@@ -106,6 +106,7 @@ $('.weekdays').on('click', function () {
         ('0' + myDate.getDate()).slice(-2) + ' '+myDate.getHours()
         + ':'+('0' + (myDate.getMinutes())).slice(-2)+ ':'+myDate.getSeconds();
     let nowWeek = +$(this).attr('data-id');
+    let allMonth = $(this).attr('data-value');
     let navHref = $(this).attr('href');
     let weekHref = navHref.slice(1);
     let weekId = $(this).attr('id');
@@ -114,16 +115,16 @@ $('.weekdays').on('click', function () {
         url: window.location.href,
         type: 'post',
         dataType: 'json',
-        data: {day: days[nowWeek]},
+        data: {day: days[nowWeek], monthDays: allMonth},
         success: function (data) {
             $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
             if (data.error){
-                console.log('error');
+                $(`#nav-tabContent`).append(`<p class='text-center h2 remove'>Ներկայացում չի գտնվել</p>`);
             }else {
                 $('#nav-tabContent').append(`
                     <div class="tab-pane fade show active remove content_row" id="${weekHref}" role="tabpanel" aria-labelledby="${weekId}"></div>
-                    `);
+                    <div class="pagingControls paginator--list remove"></div>`);
             }
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
@@ -141,7 +142,7 @@ $('.weekdays').on('click', function () {
                                 <p class="author">${item.author} </p>
                                 <a href="/performance/view?id=${item.id}"><h5 class="mt-0 media-title">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
-                                <p class="media-text">${item.desc.substring(0, 313)}${item.desc.length > 313 ? ' ...': ''}</p>
+                                <p class="media-text">${item.desc.substring(0, 213)}${item.desc.length > 213 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view?id=${item.id}" class="btn more_btn">ԱՎԵԼԻՆ</a>
@@ -154,12 +155,11 @@ $('.weekdays').on('click', function () {
                         </div>
                     </div>
                 </div>
-                <hr>
             `);
             });
             $(function () {
                 $('.content_row').flexiblePagination({
-                    itemsPerPage: 1,
+                    itemsPerPage: 6,
                     itemSelector: 'div.result:visible',
                     pagingControlsContainer: '.pagingControls',
                     showingInfoSelector: '#showingInfo',
@@ -168,15 +168,7 @@ $('.weekdays').on('click', function () {
         }
     });
 });
+$('#nav-tab .active').click();
 
-    /*------------------------pagination------------------------*/
-    $(function () {
-        $('.content_row').flexiblePagination({
-            itemsPerPage: 1,
-            itemSelector: 'div.result:visible',
-            pagingControlsContainer: '.pagingControls',
-            showingInfoSelector: '#showingInfo',
-        });
-    });
 
 });

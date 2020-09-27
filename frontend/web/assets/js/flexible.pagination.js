@@ -55,7 +55,7 @@ Flexible.Pagination = function(options){
     defaultOption.searchPhrase = '';
     defaultOption.showingInfoSelector = '.showingInfo';
     /** How many Page Number should be visible while navigating. Minimum allowed is 3  (previous, current & next) */
-    defaultOption.displayedPages = 10;
+    defaultOption.displayedPages = 7;
     /**Show / Hide Control Buttons : Default to TRUE */
     defaultOption.showGotoFirst = true;
     defaultOption.showGotoLast = true;
