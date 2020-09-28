@@ -12,7 +12,7 @@ use yii\widgets\LinkPager;
                 <div class="actor">
                     <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>" alt="Photo">
                     <h6 class="actor_name"><?= $item->first_name.' '.$item->last_name; ?></h6>
-                    <span class="actor_type">Դերասան</span>
+                    <span class="actor_type"><?= Yii::t('home', 'Դերասան') ?></span>
                 </div>
             </a>
         </div>

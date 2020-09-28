@@ -18,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\Cookie;
 
 /**
  * Site controller
@@ -116,10 +117,11 @@ class SiteController extends Controller
                 $performanceByDays[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
             }
             if (empty($performanceByDays)){
-                echo Json::encode(['error' => true]);die;
+                echo Json::encode(['error' => true, 'lang' => Yii::$app->request->cookies->getValue('language')]);die;
             }
             echo Json::encode(['success' => $performanceByDays,
-                'basePath' => Yii::$app->params['backend-url'], 'error' => false]);die;
+                'basePath' => Yii::$app->params['backend-url'], 'error' => false,
+                'lang' => Yii::$app->request->cookies->getValue('language')]);die;
         }
         return $this->render('index', compact('performances',
             'performanceSoon'));
@@ -193,6 +195,18 @@ class SiteController extends Controller
         $this->view->title = 'Մեր մասին';
 
         return $this->render('about');
+    }
+
+    public function actionLanguage(){
+        $language = Yii::$app->request->post('language');
+        Yii::$app->language = $language;
+        $languageCookie = new Cookie([
+            'name' => 'language',
+            'value' => $language,
+            'expire' => time() + 60 * 60 * 24 * 30
+        ]);
+        Yii::$app->response->cookies->add($languageCookie);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

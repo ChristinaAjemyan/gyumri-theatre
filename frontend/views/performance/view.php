@@ -51,11 +51,13 @@ use yii\helpers\ArrayHelper;
 
                             <div class="media-footer">
                                 <div class="media_btn-group">
-                                    <button class="btn more_btn">ՊԱՏԻՎԻՐԵԼ
-                                        <i class="fas fa-chevron-right"></i></button>
+                                    <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
+                                        <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏԻՎԻՐԵԼ') ?>
+                                            <i class="fas fa-chevron-right"></i></button>
+                                    <?php endif; ?>
                                 </div>
                                 <p class='view-movie'><i class="far fa-calendar-alt"></i><?= Performance::getPerformanceTime($model->show_date); ?></p>
-                                <p class="movie-lenght"><?= $model->performance_length; ?> ՐՈՊԵ<span><?= $model->age_restriction; ?>+</span></p>
+                                <p class="movie-lenght"><?= $model->performance_length; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?><span><?= $model->age_restriction; ?>+</span></p>
                             </div>
 
                         </div>
@@ -74,7 +76,7 @@ use yii\helpers\ArrayHelper;
     <?php if (!empty($images) && isset($images)): ?>
     <section class="present-corusel" >
         <div class="container">
-            <h2 class="block_title carousel_title">ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
+            <h2 class="block_title carousel_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
             <span class="title_line"></span>
             <div class="performances-carusel owl-carousel" id="current_performance">
                 <?php foreach ($images as $image): ?>
@@ -91,12 +93,12 @@ use yii\helpers\ArrayHelper;
 
     <section class="new_section p-2" style="background-image: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);">
         <div class="container ">
-            <h3 class="new_section-title">ԱՆՈՆՍ</h3>
+            <h3 class="new_section-title"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h3>
             <div class="row">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
                         <h5 class="mt-0 media-title"><?= $model->title; ?></h5>
-                        <p class="media-text"><?= substr($model->short_desc,0,650); ?>. . .</p>
+                        <p class="media-text"><?= substr($model->short_desc,0,351); ?>. . .</p>
 
                         <div class="media-footer">
                             <div class="media_btn-group">
@@ -104,9 +106,11 @@ use yii\helpers\ArrayHelper;
                                     <span class="calendar"><i class="far fa-calendar-alt"></i></span>
                                     <p class='view-movie'><?= Performance::getPerformanceTime($model->show_date); ?></p>
                                 </div>
+                                <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
+                                    <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏԻՎԻՐԵԼ') ?>
+                                        <i class="fas fa-chevron-right"></i></button>
+                                <?php endif; ?>
 
-                                <button class="btn more_btn">ՊԱՏԻՎԻՐԵԼ
-                                    <i class="fas fa-chevron-right"></i></button>
                             </div>
 
 
@@ -129,7 +133,7 @@ use yii\helpers\ArrayHelper;
     </section>
 
     <article class="article-call">
-        <p class="number-text">ՏԵՂԵԿԱՏՈՒ ՀԵՌԱԽՈՍԱՀԱՄԱՐ</p>
+        <p class="number-text"><?= Yii::t('home', 'ՏԵՂԵԿԱՏՈՒ ՀԵՌԱԽՈՍԱՀԱՄԱՐ') ?></p>
         <h5 class="call-number">060 96 10 10</h5>
     </article>
 

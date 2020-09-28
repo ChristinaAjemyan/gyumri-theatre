@@ -97,7 +97,15 @@ $('.performances-carusel').magnificPopup({
     delegate:'a'
   });
 
-
+function getTranslate(data, enText, ruText, amText){
+    if (data === 'en-EN'){
+        return enText;
+    } else if (data === 'ru-RU') {
+        return ruText;
+    }else {
+        return amText;
+    }
+}
 
 $('.weekdays').on('click', function () {
     var myDate = new Date();
@@ -120,7 +128,9 @@ $('.weekdays').on('click', function () {
             $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
             if (data.error){
-                $(`#nav-tabContent`).append(`<p class='text-center h2 remove'>Ներկայացում չի գտնվել</p>`);
+                $(`#nav-tabContent`).append(`<p class='text-center h2 remove'>
+                   ${data.lang === 'en-EN' ? 'Performance not found' : data.lang === 'ru-RU' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}
+                                </p>`);
             }else {
                 $('#nav-tabContent').append(`
                     <div class="tab-pane fade show active remove content_row" id="${weekHref}" role="tabpanel" aria-labelledby="${weekId}"></div>
@@ -145,11 +155,14 @@ $('.weekdays').on('click', function () {
                                 <p class="media-text">${item.desc.substring(0, 213)}${item.desc.length > 213 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <a href="/performance/view?id=${item.id}" class="btn more_btn">ԱՎԵԼԻՆ</a>
-                                        ${item.show_date > currentTime ? "<button class=\"btn add_cupon\">ՊԱՏՎԻՐԵԼ<i class=\"fas fa-chevron-right\"></i></button>" : ''}
+                                        <a href="/performance/view?id=${item.id}" class="btn more_btn">
+                                            ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
+                                        </a>
+                                    ${item.show_date > currentTime ? "<button class=\"btn add_cupon\">" + 
+                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏԻՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></button>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
-                                    <p class="movie-lenght">${item.performance_length} ՐՈՊԵ<span>${item.age_restriction}+</span></p>
+                                    <p class="movie-lenght">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
                                 </div>
                             </div>
                         </div>
@@ -170,5 +183,6 @@ $('.weekdays').on('click', function () {
 });
 $('#nav-tab .active').click();
 
+    //data.lang === 'en-EN' ? 'ORDER' : data.lang === 'ru-RU' ? 'ПРИКАЗ' : 'ԱՎԵԼԻՆ'
 
 });
