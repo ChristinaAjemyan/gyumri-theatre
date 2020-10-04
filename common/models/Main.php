@@ -11,6 +11,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\imagine\Image;
 //use common\models\Image;
@@ -87,23 +88,62 @@ class Main extends Model
         }
     }
 
-    public static function createTranslationUrlRU($table_name, $table_id, $arrColumnName){
-
-        $translate_table_id = Translate::find()->where(['table_id' => $table_id, 'table_name' => $table_name, 'language' => 'ru'])->asArray()->one()['id'];
-        if ($translate_table_id){
-            $urlRU = "/translate/update?lang=ru&table_id=$table_id&table_name=$table_name&$arrColumnName&id=$translate_table_id";
+    public static function createTranslationUrlRU($id, $table_name, $columnName){
+        $modelName = ucfirst($table_name);
+        $modelClass =  "\common\models\\".$modelName;
+        $str = ''; $translation_id = ''; $count = 0;
+        $arrMessageAll = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
+        if (!empty($columnName) && isset($columnName)){
+            foreach ($columnName as $item){
+                $str .= "col[]=$item&";
+            }
+            $col = trim($str, '&');
+            foreach ($columnName as $value){
+                if (in_array($modelClass::findOne($id)->$value, $arrMessageAll)){
+                    $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->all()[0]->id;
+                    $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'ru'])->all()[0];
+                    if ($hasMessage !== null){
+                        $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'ru'])->all()[0]->id."&";
+                        $tr_id = trim($translation_id, '&');
+                        $count = 1;
+                    }
+                }
+            }
+        }
+        if ($count == 1){
+            $urlRU = "/translate/update?id=$id&lang=ru&table_name=$table_name&$col&$tr_id";
         }else{
-            $urlRU = "/translate/create?lang=ru&table_id=$table_id&table_name=$table_name&$arrColumnName";
+            $urlRU = "/translate/create?id=$id&lang=ru&table_name=$table_name&$col";
         }
         return $urlRU;
     }
 
-    public static function createTranslationUrlEN($table_name, $table_id, $arrColumnName){
-        $translate_table_id = Translate::find()->where(['table_id' => $table_id, 'table_name' => $table_name, 'language' => 'en'])->asArray()->one()['id'];
-        if ($translate_table_id){
-            $urlEN = "/translate/update?lang=en&table_id=$table_id&table_name=$table_name&$arrColumnName&id=$translate_table_id";
+    public static function createTranslationUrlEN($id, $table_name, $columnName){
+        $modelName = ucfirst($table_name);
+        $modelClass =  "\common\models\\".$modelName;
+        $str = ''; $translation_id = ''; $count = 0;
+        $arrMessageAll = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
+        if (!empty($columnName) && isset($columnName)){
+            foreach ($columnName as $item){
+                $str .= "col[]=$item&";
+            }
+            $col = trim($str, '&');
+            foreach ($columnName as $value){
+                if (in_array($modelClass::findOne($id)->$value, $arrMessageAll)){
+                    $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->all()[0]->id;
+                    $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'en'])->all()[0];
+                    if ($hasMessage !== null){
+                        $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'en'])->all()[0]->id."&";
+                        $tr_id = trim($translation_id, '&');
+                        $count = 1;
+                    }
+                }
+            }
+        }
+        if ($count == 1){
+            $urlEN = "/translate/update?id=$id&lang=en&table_name=$table_name&$col&$tr_id";
         }else{
-            $urlEN = "/translate/create?lang=en&table_id=$table_id&table_name=$table_name&$arrColumnName";
+            $urlEN = "/translate/create?id=$id&lang=en&table_name=$table_name&$col";
         }
         return $urlEN;
     }

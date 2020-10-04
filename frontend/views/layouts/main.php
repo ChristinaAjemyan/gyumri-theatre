@@ -223,6 +223,7 @@ AppAsset::register($this);
     <div class='footer_year'>
         <div class="container">
             <p>2020 GYUMRITHEATRE</p>
+            <p><?= Yii::t('text', 'Գլխավոր'); ?></p>
         </div>
 
     </div>

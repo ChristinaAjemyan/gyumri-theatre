@@ -38,8 +38,12 @@ use common\models\Role;
             <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'inst_url')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col">
+            <?= $form->field($model, 'staff_genre_type')->textInput(['maxlength' => true]) ?>
+
             <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'avatars/*'],
                 'pluginOptions' => [

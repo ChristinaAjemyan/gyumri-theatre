@@ -60,6 +60,8 @@ $arrColumnName = "column_name[]=$column_name[1]&column_name[]=$column_name[2]&co
             //'img_path',
             'country',
             'city',
+            'inst_url',
+            'staff_genre_type',
             [
                 'attribute' => 'Galleries',
                 'format' => 'html',

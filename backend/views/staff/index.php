@@ -67,6 +67,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'img_path',
             'country',
             'city',
+            //'inst_url',
+            //'staff_genre_type',
             //'desc:ntext',
             ['class' => 'yii\grid\ActionColumn'],
         ],

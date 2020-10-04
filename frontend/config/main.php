@@ -51,8 +51,11 @@ return [
         ],
         'i18n' => [
             'translations' => [
+                'home' => [
+                    'class' => 'yii\i18n\PhpMessageSource'
+                ],
                 '*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
+                    'class' => 'yii\i18n\DbMessageSource'
                     //'basePath' => '@app/messages',
                     //'sourceLanguage' => 'en-US',
                 ],

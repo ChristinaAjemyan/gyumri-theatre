@@ -18,11 +18,12 @@ use yii\helpers\ArrayHelper;
                 <div class="col-md-9 col-12 order-md-1 order-4">
                     <div class="about_actros">
                         <div class="about_act_title">
-                            <small class="actros_type">դրամա</small>
+                            <small class="actros_type"><?= $model->staff_genre_type; ?></small>
                             <h5 class="mt-0 actros_name"><?= $model->first_name.' '.$model->last_name; ?></h5>
                         </div>
-                        <a href="https://instagram.com/arsentrampmiqayelyan?igshid=kan1e0ayf3q1" target="_blank" class="social_page_act"><i class="fab fa-instagram"></i></a>
-
+                        <?php if (!empty($model->inst_url) && isset($model->inst_url)): ?>
+                        <a href="https://instagram.com/<?= $model->inst_url; ?>" target="_blank" class="social_page_act"><i class="fab fa-instagram"></i></a>
+                        <?php endif; ?>
                     </div>
 
                     <p class="actros_about_text">

@@ -14,6 +14,8 @@ use Yii;
  * @property string|null $img_path
  * @property string|null $country
  * @property string|null $city
+ * @property string|null $inst_url
+ * @property string|null $staff_genre_type
  * @property string|null $desc
  * @property int|null $role_id
  */
@@ -40,7 +42,7 @@ class Staff extends \yii\db\ActiveRecord
             [['date_of_birth'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
-            [['first_name', 'last_name', 'img_path', 'country', 'city'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type'], 'string', 'max' => 255],
         ];
     }
 
@@ -57,6 +59,8 @@ class Staff extends \yii\db\ActiveRecord
             'img_path' => 'Img Path',
             'country' => 'Country',
             'city' => 'City',
+            'inst_url' => 'Instagram Url',
+            'staff_genre_type' => 'Staff Genre',
             'desc' => 'Description',
             'role' => 'Role',
         ];
