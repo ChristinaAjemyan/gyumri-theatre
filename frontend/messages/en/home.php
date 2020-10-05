@@ -22,7 +22,7 @@ return [
     'ՇՈՒՏՈՎ' => 'SOON',
     'ՏԵՂԵԿԱՏՈՒ ՀԵՌԱԽՈՍԱՀԱՄԱՐ' => 'Information telephone',
     'ԱՎԵԼԻՆ' => 'MORE',
-    'ՊԱՏԻՎԻՐԵԼ' => 'ORDER',
+    'ՊԱՏՎԻՐԵԼ' => 'ORDER',
     'ՐՈՊԵ' => 'MINUTE',
     'ԼՈՒՍԱՆԿԱՐՆԵՐ' => 'PHOTOS',
     'ԱՆՈՆՍ' => 'PREVIEW',

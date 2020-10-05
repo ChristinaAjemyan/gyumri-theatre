@@ -18,8 +18,8 @@ use yii\helpers\ArrayHelper;
                 <div class="col-md-9 col-12 order-md-1 order-4">
                     <div class="about_actros">
                         <div class="about_act_title">
-                            <small class="actros_type"><?= $model->staff_genre_type; ?></small>
-                            <h5 class="mt-0 actros_name"><?= $model->first_name.' '.$model->last_name; ?></h5>
+                            <small class="actros_type"><?= Yii::t('text', $model->staff_genre_type); ?></small>
+                            <h5 class="mt-0 actros_name"><?= Yii::t('text', $model->first_name).' '.Yii::t('text', $model->last_name); ?></h5>
                         </div>
                         <?php if (!empty($model->inst_url) && isset($model->inst_url)): ?>
                         <a href="https://instagram.com/<?= $model->inst_url; ?>" target="_blank" class="social_page_act"><i class="fab fa-instagram"></i></a>
@@ -27,7 +27,7 @@ use yii\helpers\ArrayHelper;
                     </div>
 
                     <p class="actros_about_text">
-                        <?= $model->desc; ?>
+                        <?= Yii::t('text', $model->desc); ?>
                     </p>
                 </div>
                 <?php $images = StaffImage::find()->where(['staff_id' => $model->id])->all(); ?>
@@ -62,14 +62,14 @@ use yii\helpers\ArrayHelper;
                                 <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>"
                                      class="align-self-center mr-3 present_baner" alt="...">
                                 <div class="media-body">
-                                    <span class="author"><?= $item->author; ?></span>
-                                    <h5 class="mt-0 performance_name"><?= $item->title; ?></h5>
+                                    <span class="author"><?= Yii::t('text', $item->author); ?></span>
+                                    <h5 class="mt-0 performance_name"><?= Yii::t('text', $item->title); ?></h5>
                                     <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item->id])->asArray()->all();
                                     $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
                                     <small class="movie_type">
                                         <?php $str = '';
                                         foreach ($genre as $value){
-                                            $str .= ' '.$value.',';
+                                            $str .= ' '.Yii::t('text', $value).',';
                                         }
                                         echo trim($str, ','); ?>
                                     </small>

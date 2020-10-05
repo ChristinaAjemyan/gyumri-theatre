@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Main;
+use common\models\SourceMessage;
 use Yii;
 use common\models\News;
 use app\models\NewsSearch;
@@ -151,6 +152,11 @@ class NewsController extends Controller
     {
         $model = new News();
         Main::unlinkAllImagesById($model, $id, 'avatars/news', ['400', 'original']);
+        $data = $this->findModel($id);
+        $colData = [$data->title, $data->content];
+        foreach ($colData as $item){
+            SourceMessage::deleteAll(['=', 'message', $item]);
+        }
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }

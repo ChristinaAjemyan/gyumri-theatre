@@ -2,41 +2,22 @@
 
 namespace backend\controllers;
 
-use common\models\Main;
 use common\models\Message;
-use common\models\News;
 use common\models\SourceMessage;
 use Yii;
-use common\models\Translate;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * TranslateController implements the CRUD actions for Translate model.
  */
 class TranslateController extends Controller
 {
-    /**
-     * Displays a single Translate model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
     public function actionCreate()
     {
         $message = new Message();
-
         if ($message->load(Yii::$app->request->post())) {
-
             $arrMessage = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
             $id = Yii::$app->request->get('id');
             $table_name = Yii::$app->request->get('table_name');
@@ -65,6 +46,9 @@ class TranslateController extends Controller
                 $message->translation = $item['translation'];
                 $message->save();
             }
+            Yii::$app->session->set('message', $message->id);
+            Yii::$app->session->set('lang', $lang);
+            Yii::$app->session->setFlash('success', 'Translate confirmed!');
             return $this->redirect("/translate/update?id=$id&lang=$lang&table_name=$table_name&$columnName&$tr_id");
         }
 
@@ -78,7 +62,6 @@ class TranslateController extends Controller
         $message = new Message();
         $lang = Yii::$app->request->get('lang');
         $tr_id = Yii::$app->request->get('tr_id');
-
         if ($message->load(Yii::$app->request->post())) {
             foreach (Yii::$app->request->post('Message') as $key => $item){
                 $message_model = Message::find()->where(['id' => $tr_id[$key], 'language' => $lang])->all()[0];
@@ -86,9 +69,9 @@ class TranslateController extends Controller
                 $message_model->translation = $item['translation'];
                 $message_model->save();
             }
+            Yii::$app->session->setFlash('success', 'Translate confirmed!');
             return $this->redirect(Yii::$app->request->referrer);
         }
-
         $arrTranslations = [];
         foreach ($tr_id as $value){
             $arrTranslations[] = Message::find()->where(['id' => $value, 'language' => $lang])->all()[0];

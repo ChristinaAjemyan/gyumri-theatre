@@ -18,7 +18,10 @@ $this->params['breadcrumbs'][] = 'Update';
 $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->attributes['id']])->all(), 'id', 'image');
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
-$arrColumnName = "column_name[]=$column_name[1]&column_name[]=$column_name[8]&column_name[]=$column_name[10]&column_name[]=$column_name[11]";
+$column[] = $column_name[1];
+$column[] = $column_name[8];
+$column[] = $column_name[10];
+$column[] = $column_name[11];
 ?>
 
 <?php if (!empty($images) && isset($images)): ?>
@@ -40,21 +43,18 @@ $arrColumnName = "column_name[]=$column_name[1]&column_name[]=$column_name[8]&co
 
 
 <div class="performance-update">
-
     <div class="d-flex justify-content-between">
         <h1><?= Html::encode($this->title) ?></h1>
         <div class="mt-5 mr-5 language_flag_disabled">
             <?= Html::a(Html::img(Url::to('/image/flag_am.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_am']), "?id=$model->id"); ?>
-            <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($table_name, $model->id, $arrColumnName)); ?>
-            <?= Html::a(Html::img(Url::to('/image/flag_en.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_en']), Main::createTranslationUrlEN($table_name, $model->id, $arrColumnName)); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($model->id, $table_name, $column)); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_en.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_en']), Main::createTranslationUrlEN($model->id, $table_name, $column)); ?>
         </div>
     </div>
-
     <?= $this->render('_form', [
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
         'result' => $result, 'model_genre_perform' => $model_genre_perform
     ]) ?>
-
 </div>
 
 

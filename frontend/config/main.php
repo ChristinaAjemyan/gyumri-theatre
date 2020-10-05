@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'language' => 'am-AM',
+    'language' => 'am',
     'bootstrap' => [
         'log',
         [
@@ -55,11 +55,13 @@ return [
                     'class' => 'yii\i18n\PhpMessageSource'
                 ],
                 '*' => [
-                    'class' => 'yii\i18n\DbMessageSource'
-                    //'basePath' => '@app/messages',
-                    //'sourceLanguage' => 'en-US',
+                    'class' => 'yii\i18n\DbMessageSource',
+                    //'sourceLanguage' => 'am'
                 ],
             ],
+        ],
+        'i18nJs' => [
+            'class' => 'w3lifer\yii2\I18nJs',
         ],
 
     ],

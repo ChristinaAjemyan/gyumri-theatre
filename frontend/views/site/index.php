@@ -4,8 +4,9 @@
 use common\models\GenrePerformance;
 use common\models\Performance;
 use yii\helpers\ArrayHelper;
-setcookie('user', 'armen');
+Yii::$app->i18nJs;
 ?>
+
 
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
     <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
@@ -55,7 +56,7 @@ setcookie('user', 'armen');
                     </a>
                     <div class="card-body">
                         <a href="/performance/view?id=<?= $item->id; ?>">
-                            <h5 class="card-title"><?= $item->title; ?></h5>
+                            <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                         </a>
                         <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
                     </div>
@@ -96,27 +97,26 @@ setcookie('user', 'armen');
 
 </main>
 
-
 <section class="new_section p-2">
     <div class="container ">
         <h3 class="new_section-title"><?= Yii::t('home', 'ՇՈՒՏՈՎ') ?></h3>
         <div class="row">
             <div class="col-md-7 boredr">
                 <div class="media-body">
-                    <h5 class="mt-0 media-title"><?= $performanceSoon->title; ?></h5>
+                    <h5 class="mt-0 media-title"><?= Yii::t('text', $performanceSoon->title); ?></h5>
                     <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $performanceSoon->id])->asArray()->all();
                     $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
                     <small class="movie-type">
                         <?php $str = '';
                         foreach ($genre as $item){
-                            $str .= ' '.$item.',';
+                            $str .= ' '.Yii::t('text', $item).',';
                         }
                         echo trim($str, ','); ?>
                     </small>
-                    <p class="author"><?= $performanceSoon->author; ?></p>
+                    <p class="author"><?= Yii::t('text', $performanceSoon->author); ?></p>
                     <p class="media-text">
-                        <?= substr($performanceSoon->desc,0,351); ?>
-                        <?= strlen($performanceSoon->desc) > 351 ? '...' : ''; ?>
+                        <?= substr(Yii::t('text', $performanceSoon->desc),0,352); ?>
+                        <?= strlen(Yii::t('text', $performanceSoon->desc)) > 352 ? '...' : ''; ?>
                     </p>
 
                     <div class="media-footer">

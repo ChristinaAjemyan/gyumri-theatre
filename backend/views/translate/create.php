@@ -1,48 +1,41 @@
 <?php
 
+use common\models\Message;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Main;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
-use common\models\Translate;
 use yii\helpers\Url;
 ?>
 
 <?php
-
 $id = Yii::$app->request->get('id');
 $table_name = Yii::$app->request->get('table_name');
 $column_name = Yii::$app->request->get('col');
 $lang = Yii::$app->request->get('lang');
 
-
 $this->title = 'Translate '.ucfirst($table_name);
 
-//$arrColumnNameUrl = "";
-$column = [];
 foreach ($column_name as $item){
-    //$arrColumnNameUrl .= "&col[]=".$item;
     $column[] = $item;
 }
 
-//$arrColumnName = trim($arrColumnNameUrl, '&');
-
-/*if (Yii::$app->session->has('translate')){
-    $isTranslate = Translate::find()->where(['id' => Yii::$app->session->get('translate')])->all();
-    if ($isTranslate){
+if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
+    $hasMessage = Message::find()->where(['id' => Yii::$app->session->get('message'), 'language' => Yii::$app->session->get('lang')])->all();
+    if ($hasMessage){
         if ($lang == 'ru'){
-            Yii::$app->response->redirect(Main::createTranslationUrlRU($table_name, $table_id, $arrColumnName));
+            Yii::$app->response->redirect(Main::createTranslationUrlRU($id, $table_name, $column));
         }else{
-            Yii::$app->response->redirect(Main::createTranslationUrlEN($table_name, $table_id, $arrColumnName));
+            Yii::$app->response->redirect(Main::createTranslationUrlEN($id, $table_name, $column));
         }
-        unset($_SESSION['translate']);
+        unset($_SESSION['message']);
+        unset($_SESSION['lang']);
     }
-}*/
+}
 ?>
 
 <div class="translate-create">
-
     <div class="d-flex justify-content-between">
         <h1><?= Html::encode($this->title) ?></h1>
         <div class="mt-5 mr-5 language_flag_disabled">
@@ -54,70 +47,66 @@ foreach ($column_name as $item){
 
     <?php $form = ActiveForm::begin(); ?>
 
-<!--    <?php /*if ($table_name == 'news'): */?>
+    <?php if ($table_name == 'news'): ?>
 
-        <?/*= $form->field($translate, "[0]text")->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Title') */?>
+        <?= $form->field($message, "[0]translation")->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Title') ?>
 
-        <?/*= $form->field($translate, "[1]text")->widget(CKEditor::className(), [
+        <?= $form->field($message, "[1]translation")->widget(CKEditor::className(), [
             'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-        ])->label('Content'); */?>
+        ])->label('Content'); ?>
 
-
-    <?php /*elseif ($table_name == 'staff'): */?>
+    <?php elseif ($table_name == 'staff'): ?>
 
         <div class="form-row">
             <div class="col">
-                <?/*= $form->field($translate, "[0]text")->textInput(['maxlength' => true])->label('First Name') */?>
+                <?= $form->field($message, "[0]translation")->textInput(['maxlength' => true])->label('First Name') ?>
 
-                <?/*= $form->field($translate, "[1]text")->textInput(['maxlength' => true])->label('Last Name') */?>
+                <?= $form->field($message, "[1]translation")->textInput(['maxlength' => true])->label('Last Name') ?>
+
+                <?= $form->field($message, "[2]translation")->textInput(['maxlength' => true])->label('Genre') ?>
             </div>
             <div class="col">
-                <?/*= $form->field($translate, "[2]text")->textInput(['maxlength' => true])->label('Country') */?>
+                <?= $form->field($message, "[3]translation")->textInput(['maxlength' => true])->label('Country') ?>
 
-                <?/*= $form->field($translate, "[3]text")->textInput(['maxlength' => true])->label('City') */?>
+                <?= $form->field($message, "[4]translation")->textInput(['maxlength' => true])->label('City') ?>
             </div>
         </div>
 
-        <?/*= $form->field($translate, "[4]text")->widget(CKEditor::className(), [
+        <?= $form->field($message, "[5]translation")->widget(CKEditor::className(), [
             'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-        ])->label('Description') */?>
+        ])->label('Description') ?>
 
-    <?php /*elseif ($table_name == 'performance'): */?>
+    <?php elseif ($table_name == 'performance'): ?>
 
         <div class="form-row">
             <div class="col-6">
-                <?/*= $form->field($translate, '[0]text')->textInput(['maxlength' => true])->label('Title') */?>
+                <?= $form->field($message, '[0]translation')->textInput(['maxlength' => true])->label('Title') ?>
 
             </div>
             <div class="col-6">
-                <?/*= $form->field($translate, '[1]text')->textInput(['maxlength' => true])->label('Author') */?>
+                <?= $form->field($message, '[1]translation')->textInput(['maxlength' => true])->label('Author') ?>
 
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <?/*= $form->field($translate, '[2]text')->widget(CKEditor::className(), [
+                <?= $form->field($message, '[2]translation')->widget(CKEditor::className(), [
                     'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-                ])->label('Short Description'); */?>
+                ])->label('Short Description'); ?>
             </div>
             <div class="col-12">
-                <?/*= $form->field($translate, '[3]text')->widget(CKEditor::className(), [
+                <?= $form->field($message, '[3]translation')->widget(CKEditor::className(), [
                     'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-                ])->label('Description'); */?>
+                ])->label('Description'); ?>
             </div>
         </div>
 
-    <?php /*else: */?>
+    <?php else: ?>
 
-        <?/*= $form->field($sourceMessage, '[0]text')->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Name') */?>
+        <?= $form->field($message, '[0]translation')->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Name') ?>
 
-    --><?php /*endif; */?>
-
-
-    <?= $form->field($message, '[0]translation')->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Name') ?>
-
-    <?= $form->field($message, '[1]translation')->textarea(); ?>
+    <?php endif; ?>
 
 
     <div class="form-group">

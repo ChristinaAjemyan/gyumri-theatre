@@ -36,18 +36,18 @@ use yii\helpers\ArrayHelper;
                     <div class="col-md-9 col-12">
 
                         <div class="media-body">
-                            <p class="author"><?= $model->author; ?> </p>
-                            <h1 class="mt-0 media-title"><?= $model->title; ?></h1>
+                            <p class="author"><?= Yii::t('text', $model->author); ?> </p>
+                            <h1 class="mt-0 media-title"><?= Yii::t('text', $model->title); ?></h1>
                             <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
                             $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
                             <small class="movie-type">
                                 <?php $str = '';
                                 foreach ($genre as $item){
-                                    $str .= ' '.$item.',';
+                                    $str .= ' '.Yii::t('text', $item).',';
                                 }
                                 echo trim($str, ','); ?>
                             </small>
-                            <p class="media-text"><?= $model->desc; ?></p>
+                            <p class="media-text"><?= Yii::t('text', $model->desc); ?></p>
 
                             <div class="media-footer">
                                 <div class="media_btn-group">
@@ -66,8 +66,6 @@ use yii\helpers\ArrayHelper;
 
             </div>
         </section>
-
-
 
     </div>
 
@@ -97,8 +95,11 @@ use yii\helpers\ArrayHelper;
             <div class="row">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
-                        <h5 class="mt-0 media-title"><?= $model->title; ?></h5>
-                        <p class="media-text"><?= substr($model->short_desc,0,351); ?>. . .</p>
+                        <h5 class="mt-0 media-title"><?= Yii::t('text', $model->title); ?></h5>
+                        <p class="media-text">
+                            <?= substr(Yii::t('text', $model->short_desc),0,352); ?>
+                            <?= strlen(Yii::t('text', $model->short_desc)) > 352 ? '...' : ''; ?>
+                        </p>
 
                         <div class="media-footer">
                             <div class="media_btn-group">
@@ -107,7 +108,7 @@ use yii\helpers\ArrayHelper;
                                     <p class='view-movie'><?= Performance::getPerformanceTime($model->show_date); ?></p>
                                 </div>
                                 <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
-                                    <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏԻՎԻՐԵԼ') ?>
+                                    <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
                                         <i class="fas fa-chevron-right"></i></button>
                                 <?php endif; ?>
 

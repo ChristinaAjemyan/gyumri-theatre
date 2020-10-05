@@ -12,6 +12,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\models\Performance;
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -127,7 +128,7 @@ AppAsset::register($this);
                         </select>-->
                         <?= Html::beginForm('/site/language'); ?>
                         <?= Html::dropDownList('language', Yii::$app->language,
-                            ['am-AM' => 'Հայ', 'ru-RU' => 'Рус', 'en-EN' => 'Eng'], [
+                            ['am' => 'Հայ', 'ru' => 'Рус', 'en' => 'Eng'], [
                                     'class' => 'language_select',
                                 'onChange' => 'this.form.submit()'
                             ]); ?>
@@ -157,7 +158,7 @@ AppAsset::register($this);
                         <div class="card">
                             <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $item->title; ?></h5>
+                                <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                 <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
                             </div>
                         </div>
@@ -222,13 +223,11 @@ AppAsset::register($this);
     </footer>
     <div class='footer_year'>
         <div class="container">
-            <p>2020 GYUMRITHEATRE</p>
-            <p><?= Yii::t('text', 'Գլխավոր'); ?></p>
+            <p><?= date('Y'); ?> GYUMRITHEATRE</p>
         </div>
 
     </div>
 </div>
-
 
     <?php $this->endBody() ?>
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

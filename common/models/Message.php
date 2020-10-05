@@ -29,7 +29,7 @@ class Message extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'language'], 'required'],
+            [['id', 'language', 'translation'], 'required'],
             [['id'], 'integer'],
             [['translation'], 'string'],
             [['language'], 'string', 'max' => 16],

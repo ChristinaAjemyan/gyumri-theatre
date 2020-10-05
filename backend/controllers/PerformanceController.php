@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\GenrePerformance;
 use common\models\Main;
+use common\models\SourceMessage;
 use common\models\StaffPerformance;
 use common\models\Image;
 use Yii;
@@ -366,8 +367,12 @@ class PerformanceController extends Controller
         Main::unlinkAllImagesById($model, $id, 'avatars/performance', ['200', '400', 'original']);
         Main::unlinkAllImagesById($model, $id, 'galleries', ['250', 'original']);
         Main::unlinkAllImagesById($model, $id, 'banners');
+        $data = $this->findModel($id);
+        $colData = [$data->title, $data->author, $data->short_desc, $data->desc];
+        foreach ($colData as $item){
+            SourceMessage::deleteAll(['=', 'message', $item]);
+        }
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 

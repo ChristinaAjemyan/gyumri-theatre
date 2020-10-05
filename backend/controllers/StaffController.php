@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Main;
+use common\models\SourceMessage;
 use common\models\StaffImage;
 use Yii;
 use common\models\Staff;
@@ -201,6 +202,12 @@ class StaffController extends Controller
     {
         $model = new Staff();
         Main::unlinkAllImagesById($model, $id, 'avatars/staff', ['200', '400', 'original']);
+        $data = $this->findModel($id);
+        $colData = [$data->first_name, $data->last_name, $data->country,
+            $data->city, $data->staff_genre_type, $data->desc];
+        foreach ($colData as $item){
+            SourceMessage::deleteAll(['=', 'message', $item]);
+        }
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }

@@ -1046,6 +1046,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     max-width: 745px;
     font-size: 15px;
 }
+.new_section .media-body p:nth-last-child(2),
 .new_section .media-body p:nth-last-child(2) strong,
 .new_section .media-body p:nth-last-child(2) span{
     color: white!important;

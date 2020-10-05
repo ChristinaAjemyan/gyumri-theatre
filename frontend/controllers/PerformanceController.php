@@ -17,13 +17,6 @@ use yii\web\NotFoundHttpException;
 
 class PerformanceController extends Controller
 {
-    public function actionIndex()
-    {
-        $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
-
-        return $this->render('index');
-    }
-
     /**
      * Displays a single News model.
      * @param integer $id

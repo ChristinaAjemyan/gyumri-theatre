@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\SourceMessage;
 use Yii;
 
 use common\models\Role;
@@ -114,8 +115,12 @@ class RoleController extends Controller
      */
     public function actionDelete($id)
     {
+        $data = $this->findModel($id);
+        $colData = [$data->name];
+        foreach ($colData as $item){
+            SourceMessage::deleteAll(['=', 'message', $item]);
+        }
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 

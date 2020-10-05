@@ -159,7 +159,7 @@ $('.weekdays').on('click', function () {
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
                                     ${item.show_date > currentTime ? "<button class=\"btn add_cupon\">" + 
-                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏԻՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></button>" : ''}
+                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></button>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
                                     <p class="movie-lenght">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
@@ -183,6 +183,9 @@ $('.weekdays').on('click', function () {
 });
 $('#nav-tab .active').click();
 
-    //data.lang === 'en-EN' ? 'ORDER' : data.lang === 'ru-RU' ? 'ПРИКАЗ' : 'ԱՎԵԼԻՆ'
+    //console.log(yii.t('home', 'ՊԱՏՎԻՐԵԼ'));
+
+    //console.log(yii.t('text', 'Ռեժիսոր'));
 
 });
+

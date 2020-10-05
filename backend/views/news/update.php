@@ -13,28 +13,23 @@ $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 
-$column = [];
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
 $column[] = $column_name[1];
 $column[] = $column_name[2];
-$id = Yii::$app->request->get('id');
 ?>
 <div class="news-update">
-
     <div class="d-flex justify-content-between">
         <h1><?= Html::encode($this->title) ?></h1>
         <div class="mt-5 mr-5 language_flag_disabled">
             <?= Html::a(Html::img(Url::to('/image/flag_am.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_am']), "?id=$model->id"); ?>
-            <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($id, $table_name, $column)); ?>
-            <?= Html::a(Html::img(Url::to('/image/flag_en.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_en']), Main::createTranslationUrlEN($id, $table_name, $column)); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($model->id, $table_name, $column)); ?>
+            <?= Html::a(Html::img(Url::to('/image/flag_en.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_en']), Main::createTranslationUrlEN($model->id, $table_name, $column)); ?>
         </div>
     </div>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>
 
 
