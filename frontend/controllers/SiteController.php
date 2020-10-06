@@ -111,10 +111,16 @@ class SiteController extends Controller
                 $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
                 $str = '';
                 foreach ($genre as $item){
-                    $str .= ' '.$item.',';
+                    $str .= ' '.Yii::t('text', $item).',';
                 }
                 $performanceByDays[$key]['genre'] = trim($str, ',');
                 $performanceByDays[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
+            }
+            foreach ($performanceByDays as $key => $val){
+                $performanceByDays[$key]['title'] = Yii::t('text', $val['title']);
+                $performanceByDays[$key]['author'] = Yii::t('text', $val['author']);
+                $performanceByDays[$key]['short_desc'] = Yii::t('text', $val['short_desc']);
+                $performanceByDays[$key]['desc'] = Yii::t('text', $val['desc']);
             }
             if (empty($performanceByDays)){
                 echo Json::encode(['error' => true, 'lang' => Yii::$app->request->cookies->getValue('language')]);die;

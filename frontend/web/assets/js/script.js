@@ -98,9 +98,9 @@ $('.performances-carusel').magnificPopup({
   });
 
 function getTranslate(data, enText, ruText, amText){
-    if (data === 'en-EN'){
+    if (data === 'en'){
         return enText;
-    } else if (data === 'ru-RU') {
+    } else if (data === 'ru') {
         return ruText;
     }else {
         return amText;
@@ -125,11 +125,12 @@ $('.weekdays').on('click', function () {
         dataType: 'json',
         data: {day: days[nowWeek], monthDays: allMonth},
         success: function (data) {
+            console.log(data);
             $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
             if (data.error){
                 $(`#nav-tabContent`).append(`<p class='text-center h2 remove'>
-                   ${data.lang === 'en-EN' ? 'Performance not found' : data.lang === 'ru-RU' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}
+                   ${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}
                                 </p>`);
             }else {
                 $('#nav-tabContent').append(`
@@ -147,8 +148,8 @@ $('.weekdays').on('click', function () {
                         </div>
                         <div class="col-md-9 col-12">
                             <div class="media-body">
-                            ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\">ՓՈՔՐ ԹԱՏՐՈՆ</aside>" : 
-                                    item.hall === '2' ? "<aside class=\"aside_text\">ՀՅՈՒՐԱԽԱՂ</aside>" : ''}
+                            ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\">"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
+                                    item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
                                 <p class="author">${item.author} </p>
                                 <a href="/performance/view?id=${item.id}"><h5 class="mt-0 media-title">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
@@ -185,7 +186,6 @@ $('#nav-tab .active').click();
 
     //console.log(yii.t('home', 'ՊԱՏՎԻՐԵԼ'));
 
-    //console.log(yii.t('text', 'Ռեժիսոր'));
 
 });
 

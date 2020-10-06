@@ -99,10 +99,10 @@ class Performance extends \yii\db\ActiveRecord
             'August', 'September', 'October', 'November', 'December',];
         $month = date("m",strtotime($date));
         $cookieLanguage = Yii::$app->request->cookies->getValue('language');
-        if ($cookieLanguage == 'en-EN'){
+        if ($cookieLanguage == 'en'){
             return date("d",strtotime($date)) .' '. $monthsEN[(int)$month-1] .' '. date("H:i",strtotime($date));
         }
-        if ($cookieLanguage == 'ru-RU'){
+        if ($cookieLanguage == 'ru'){
             return date("d",strtotime($date)) .' '. $monthsRU[(int)$month-1] .' '. date("H:i",strtotime($date));
         }
         return date("d",strtotime($date)) .' '. $monthsAM[(int)$month-1] .' '. date("H:i",strtotime($date));

@@ -7,7 +7,7 @@ return [
     'Արխիվ' => 'Archive',
     'ԴԵՐԱՍԱՆՆԵՐ' => 'Actors',
     'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'Performances',
-    'ՓՈՔՐ ԹԱՏՐՈՆ' => 'Small theater',
+    'ՓՈՔՐ ԹԱՏՐՈՆ' => 'Small theatre',
     'ՆՈՐՈՒԹՅՈՒՆՆԵՐ' => 'News',
     'ԼՐԱՏՎԱՄԻՋՈՑ' => 'Media',
     'ԿԱՊ' => 'Contact',
@@ -27,5 +27,5 @@ return [
     'ԼՈՒՍԱՆԿԱՐՆԵՐ' => 'PHOTOS',
     'ԱՆՈՆՍ' => 'PREVIEW',
     'Դերասան' => 'Actor',
-    'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'STAGED PERFORMANCES',
+    'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'STAGED PERFORMANCES'
 ];
