@@ -92,6 +92,7 @@ class StaffController extends Controller
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
+
                 $model->avatar_image->saveAs('upload/avatars/staff/original/' . $img_name);
                 Main::myResizeImage('avatars/staff', $img_name, ['400', '200']);
             }else{
@@ -112,7 +113,7 @@ class StaffController extends Controller
                     $model_image->image = $image_name;
                     $model_image->save();
                     $image->saveAs('upload/galleries/original/' . $image_name);
-                    Main::myResizeImage('galleries', $image_name, ['250']);
+                    Main::myResizeImage('galleries', $image_name, ['original','250']);
                 }
             }
 

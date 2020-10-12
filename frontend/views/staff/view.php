@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
                 <div class="col-md-9 col-12 order-md-1 order-4">
                     <div class="about_actros">
                         <div class="about_act_title">
-                            <small class="actros_type"><?= Yii::t('text', $model->staff_genre_type); ?></small>
+                            <small class="actros_type"><?= $model->staff_genre_type ? Yii::t('text', $model->staff_genre_type) : ''; ?></small>
                             <h5 class="mt-0 actros_name"><?= Yii::t('text', $model->first_name).' '.Yii::t('text', $model->last_name); ?></h5>
                         </div>
                         <?php if (!empty($model->inst_url) && isset($model->inst_url)): ?>
@@ -83,7 +83,6 @@ use yii\helpers\ArrayHelper;
         </section>
         <?php endif; ?>
     </div>
-
 </div>
 
 

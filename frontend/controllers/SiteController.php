@@ -1,8 +1,13 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Archive;
 use common\models\GenrePerformance;
+use common\models\Message;
+use common\models\News;
 use common\models\Performance;
+use common\models\SourceMessage;
+use common\models\Staff;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -28,38 +33,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-/*    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-/*    public function actions()
+    public function actions()
     {
         return [
             'error' => [
@@ -70,7 +44,7 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
-    }*/
+    }
 
     /**
      * Displays homepage.
@@ -79,7 +53,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->view->title = 'Գյումրու պետական դրամատիկական թատրոն';
+        $this->view->title = Yii::t('home', 'ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ');
         $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
@@ -133,40 +107,110 @@ class SiteController extends Controller
             'performanceSoon'));
     }
 
-    /**
-     * Logs in a user.
-     *
-     * @return mixed
-     */
-    public function actionLogin()
+    public function actionChronicle()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        $this->view->title = Yii::t('home', 'Տարեգրություն');
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            $model->password = '';
-
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('chronicle');
     }
 
     /**
-     * Logs out the current user.
+     * Displays about page.
      *
      * @return mixed
      */
-    public function actionLogout()
+    public function actionAbout()
     {
-        Yii::$app->user->logout();
+        $this->view->title = Yii::t('home', 'Մեր մասին');
 
-        return $this->goHome();
+        return $this->render('about');
     }
+
+    public function actionSearch()
+    {
+        $this->view->title = Yii::t('home', 'Որոնման արդյունք');
+        $searchInformation = [];
+        if (Yii::$app->request->get()) {
+            $inputVal = Yii::$app->request->get('search');
+            if (!$inputVal){
+                return $this->redirect('/site/search');
+            }
+            if (!strpos(trim($inputVal, ' '), ' ') && is_numeric(trim($inputVal, ' '))
+                && strlen(trim($inputVal, ' ')) < 3){
+                $inputVal = false;
+            }
+            $inputVal ? $searchName = explode(' ', trim($inputVal, ' ')) : $searchName = [];
+            $str = ''; $num = []; $searchNameData = []; $count = 0;
+            if (count($searchName) > 1){
+                foreach ($searchName as $key => $value){
+                    $str .= $value;
+                }
+                foreach ($searchName as $k => $v){
+                    if (is_numeric($v) && strlen($v) >= 3){
+                        $num[] = $searchName[$k];
+                        $count = 1;
+                    }else if (is_numeric($v) && strlen($v) < 3){
+                        $count = 1;
+                        unset($searchName[$k]);
+                    }
+                }
+                foreach ($searchName as $k => $v){
+                    if (!is_numeric($v) && $count == 0){
+                        $num[] = $v;
+                    }
+                }
+                unset($searchName);
+                foreach ($num as $val){
+                    $searchName[] = $val;
+                }
+                $searchName[] = $str;
+                array_push($searchName, trim($inputVal, ' '));
+            }
+            if (preg_match('/[А-Яа-яЁё]/u', trim($inputVal, ' ')) || preg_match('/[A-Za-z]/', trim($inputVal, ' '))){
+                foreach ($searchName as $key => $item){
+                    $searchNameData[] = Message::find()->where(['like', 'translation', '%' . $item . '%', false])->asArray()->all();
+                }
+                if (!empty($searchNameData) && isset($searchNameData)){
+                    unset($searchName);
+                    foreach ($searchNameData as $value){
+                        foreach ($value as $key => $val){
+                            $searchName[] = SourceMessage::find()->where(['id' => $val['id']])->asArray()->all()[0]['message'];
+                        }
+                    }
+                }
+            }
+            $wherePerformance = ''; $whereStaff = ''; $whereNews = ''; $whereArchive = '';
+            if (!empty($searchName) && isset($searchName)){
+                foreach ($searchName as $item){
+                    $wherePerformance .= " `title` LIKE '%{$item}%' or `short_desc` LIKE '%{$item}%' or
+                `desc` LIKE '%{$item}%' or";
+                    $whereStaff .= " `first_name` LIKE '%{$item}%' or `last_name` LIKE '%{$item}%' or
+                `country` LIKE '%{$item}%' or `city` LIKE '%{$item}%' or `desc` LIKE '%{$item}%' or";
+                    $whereNews .= " `title` LIKE '%{$item}%' or `content` LIKE '%{$item}%' or";
+                    $whereArchive .= " `title` LIKE '%{$item}%' or `content` LIKE '%{$item}%' or";
+                }
+                $searchInformation['performance'] = Performance::find()->where(rtrim($wherePerformance, 'or'))->asArray()->all();
+                $searchInformation['staff'] = Staff::find()->where(rtrim($whereStaff, 'or'))->asArray()->all();
+                $searchInformation['news'] = News::find()->where(rtrim($whereNews, 'or'))->asArray()->all();
+                $searchInformation['archive'] = Archive::find()->where(rtrim($whereArchive, 'or'))->asArray()->all();
+
+                if (!empty($searchInformation['performance']) && isset($searchInformation['performance'])){
+                    foreach ($searchInformation['performance'] as $key => $value){
+                        $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $value['id']])->asArray()->all();
+                        $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
+                        $str = '';
+                        foreach ($genre as $item){
+                            $str .= ' '.Yii::t('text', $item).',';
+                        }
+                        $searchInformation['performance'][$key]['genre'] = trim($str, ',');
+                        $searchInformation['performance'][$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
+                    }
+                }
+            }
+        }
+        return $this->render('search', ['searchInformation' => $searchInformation]);
+    }
+
 
     /**
      * Displays contact page.
@@ -191,17 +235,6 @@ class SiteController extends Controller
         }
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        $this->view->title = 'Մեր մասին';
-
-        return $this->render('about');
-    }
 
     public function actionLanguage(){
         $language = Yii::$app->request->post('language');
@@ -215,116 +248,4 @@ class SiteController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
-    public function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
-            }
-        }
-
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Resets password.
-     *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
-     */
-    public function actionResetPassword($token)
-    {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
-
-            return $this->goHome();
-        }
-
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Verify email address
-     *
-     * @param string $token
-     * @throws BadRequestHttpException
-     * @return yii\web\Response
-     */
-    public function actionVerifyEmail($token)
-    {
-        try {
-            $model = new VerifyEmailForm($token);
-        } catch (InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-        if ($user = $model->verifyEmail()) {
-            if (Yii::$app->user->login($user)) {
-                Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
-                return $this->goHome();
-            }
-        }
-
-        Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
-        return $this->goHome();
-    }
-
-    /**
-     * Resend verification email
-     *
-     * @return mixed
-     */
-    public function actionResendVerificationEmail()
-    {
-        $model = new ResendVerificationEmailForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-                return $this->goHome();
-            }
-            Yii::$app->session->setFlash('error', 'Sorry, we are unable to resend verification email for the provided email address.');
-        }
-
-        return $this->render('resendVerificationEmail', [
-            'model' => $model
-        ]);
-    }
 }

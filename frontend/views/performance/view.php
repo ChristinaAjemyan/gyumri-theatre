@@ -52,7 +52,7 @@ use yii\helpers\ArrayHelper;
                             <div class="media-footer">
                                 <div class="media_btn-group">
                                     <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
-                                        <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏԻՎԻՐԵԼ') ?>
+                                        <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
                                             <i class="fas fa-chevron-right"></i></button>
                                     <?php endif; ?>
                                 </div>
@@ -97,8 +97,8 @@ use yii\helpers\ArrayHelper;
                     <div class="media-body">
                         <h5 class="mt-0 media-title"><?= Yii::t('text', $model->title); ?></h5>
                         <p class="media-text">
-                            <?= substr(Yii::t('text', $model->short_desc),0,352); ?>
-                            <?= strlen(Yii::t('text', $model->short_desc)) > 352 ? '...' : ''; ?>
+                            <?= mb_substr(Yii::t('text', $model->short_desc),0,370, 'utf-8'); ?>
+                            <?= strlen(Yii::t('text', $model->short_desc)) > 370 ? '...' : ''; ?>
                         </p>
 
                         <div class="media-footer">

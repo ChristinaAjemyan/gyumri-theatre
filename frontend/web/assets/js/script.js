@@ -125,7 +125,6 @@ $('.weekdays').on('click', function () {
         dataType: 'json',
         data: {day: days[nowWeek], monthDays: allMonth},
         success: function (data) {
-            console.log(data);
             $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
             if (data.error){
@@ -139,7 +138,7 @@ $('.weekdays').on('click', function () {
             }
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
-                <div class="media result">
+                <div class="media result d-block">
                     <div class="row">
                         <div class="col-md-3 col-12">
                         <a href="/performance/view?id=${item.id}">
@@ -153,7 +152,7 @@ $('.weekdays').on('click', function () {
                                 <p class="author">${item.author} </p>
                                 <a href="/performance/view?id=${item.id}"><h5 class="mt-0 media-title">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
-                                <p class="media-text">${item.desc.substring(0, 213)}${item.desc.length > 213 ? ' ...': ''}</p>
+                                <p class="media-text">${item.desc.substring(0, 270)}${item.desc.length > 270 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view?id=${item.id}" class="btn more_btn">
@@ -183,8 +182,6 @@ $('.weekdays').on('click', function () {
     });
 });
 $('#nav-tab .active').click();
-
-    //console.log(yii.t('home', 'ՊԱՏՎԻՐԵԼ'));
 
 
 });

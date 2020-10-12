@@ -77,7 +77,7 @@ $column[] = $column_name[11];
             [
                 'attribute' => 'banner',
                 'format' => 'html',
-                'value' => ('<img src =' . '/upload/banners/' . $model->banner . ' width="300"' . '>')
+                'value' => ('<img src =' . '/upload/banners/' . $model->banner ? $model->banner : '' . ' width="300"' . '>')
             ],
             'show_date',
             'trailer',

@@ -115,8 +115,8 @@ Yii::$app->i18nJs;
                     </small>
                     <p class="author"><?= Yii::t('text', $performanceSoon->author); ?></p>
                     <p class="media-text">
-                        <?= substr(Yii::t('text', $performanceSoon->desc),0,352); ?>
-                        <?= strlen(Yii::t('text', $performanceSoon->desc)) > 352 ? '...' : ''; ?>
+                        <?= mb_substr(Yii::t('text', $performanceSoon->desc),0,370, 'utf-8'); ?>
+                        <?= strlen(Yii::t('text', $performanceSoon->desc)) > 370 ? '...' : ''; ?>
                     </p>
 
                     <div class="media-footer">

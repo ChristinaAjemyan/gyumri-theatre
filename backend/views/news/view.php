@@ -45,7 +45,7 @@ $column[] = $column_name[2];
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' =>('<img src =' .'/upload/avatars/news/original/' . $model->img_path . ' width="300"' .   '>')
+                'value' =>('<img src =' .'/upload/avatars/news/200/' . $model->img_path . '>')
             ],
             //'id',
             'title',

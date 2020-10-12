@@ -30,9 +30,7 @@ class TranslateController extends Controller
                 $sourceMessage = new SourceMessage();
                 $sourceMessage->category = 'text';
                 $sourceMessage->message = $modelClass::findOne($id)->$value;
-                if (!in_array($modelClass::findOne($id)->$value, $arrMessage)){
-                    $sourceMessage->save();
-                }
+                $sourceMessage->save();
                 $arr[] = SourceMessage::find()->where(['message' => $sourceMessage->message])->one()->id;
                 $arrColumnName .= "col[]=$value&";
                 $columnName = trim($arrColumnName, '&');
@@ -76,6 +74,11 @@ class TranslateController extends Controller
         foreach ($tr_id as $value){
             $arrTranslations[] = Message::find()->where(['id' => $value, 'language' => $lang])->all()[0];
         }
+
+        //echo '<pre>';
+        //var_dump($arrTranslations);
+        //echo '</pre>';die;
+
         return $this->render('update', [
             'update_lang' => $arrTranslations
         ]);

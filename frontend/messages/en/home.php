@@ -1,14 +1,16 @@
 <?php
 
 return [
-    'ՄԵՐ մԱՍԻՆ' => 'About us',
+    'Գլխավոր' => 'Home',
+    'Մեր մասին' => 'About us',
     'Տարեգրություն' => 'Chronicle',
     'Վարչական մաս' => 'Administrative',
     'Արխիվ' => 'Archive',
     'ԴԵՐԱՍԱՆՆԵՐ' => 'Actors',
     'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'Performances',
+    'ՄԵԾ ԹԱՏՐՈՆ' => 'Big theatre',
     'ՓՈՔՐ ԹԱՏՐՈՆ' => 'Small theatre',
-    'ՆՈՐՈՒԹՅՈՒՆՆԵՐ' => 'News',
+    'Նորություններ' => 'News',
     'ԼՐԱՏՎԱՄԻՋՈՑ' => 'Media',
     'ԿԱՊ' => 'Contact',
     'ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ' => 'Gyumri drama theatre',
@@ -27,5 +29,9 @@ return [
     'ԼՈՒՍԱՆԿԱՐՆԵՐ' => 'PHOTOS',
     'ԱՆՈՆՍ' => 'PREVIEW',
     'Դերասան' => 'Actor',
-    'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'STAGED PERFORMANCES'
+    'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'STAGED PERFORMANCES',
+    'ՀՅՈՒՐԱԽԱՂ' => 'TOUR',
+    'Որոնել' => 'Search',
+    'Որոնման արդյունք' => 'Search result',
+    'Որևէ տվյալ չի գտնվել։' => 'No result.'
 ];

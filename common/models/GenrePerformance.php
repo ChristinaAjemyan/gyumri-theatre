@@ -30,6 +30,7 @@ class GenrePerformance extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['genre_id', 'required'],
             [['genre_id', 'performance_id'], 'integer'],
             [['genre_id'], 'exist', 'skipOnError' => true, 'targetClass' => Genre::className(), 'targetAttribute' => ['genre_id' => 'id']],
             [['performance_id'], 'exist', 'skipOnError' => true, 'targetClass' => Performance::className(), 'targetAttribute' => ['performance_id' => 'id']],

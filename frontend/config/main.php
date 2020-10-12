@@ -42,7 +42,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -56,14 +55,12 @@ return [
                 ],
                 '*' => [
                     'class' => 'yii\i18n\DbMessageSource',
-                    //'sourceLanguage' => 'am'
                 ],
             ],
         ],
         'i18nJs' => [
             'class' => 'w3lifer\yii2\I18nJs',
         ],
-
     ],
     'params' => $params,
 ];

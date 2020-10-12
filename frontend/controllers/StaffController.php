@@ -12,6 +12,7 @@ namespace frontend\controllers;
 use common\models\Role;
 use common\models\Staff;
 use common\models\StaffImage;
+use Yii;
 use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -19,7 +20,26 @@ use yii\web\NotFoundHttpException;
 class StaffController extends Controller
 {
     public function actionIndex(){
-        $this->view->title = 'Դերասաններ';
+        $this->view->title = Yii::t('home', 'Վարչական մաս');
+        $role_id = Role::find()->where(['name' => 'Դերասան'])->one()->id;
+        $staff = Staff::find()->where(['!=', 'role_id', $role_id])->orderBy(['last_name' => SORT_ASC]);
+        $pages = new Pagination([
+            'totalCount' => $staff->count(),
+            'defaultPageSize' => 15,
+        ]);
+        $model = $staff->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('index',
+            [
+                'model' => $model,
+                'pages' => $pages
+            ]
+        );
+    }
+
+    public function actionActor(){
+        $this->view->title = Yii::t('home', 'Դերասաններ');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one();
         $actors = Staff::find()->where(['role_id' => $role_id->id]);
         $pages = new Pagination([
@@ -30,7 +50,7 @@ class StaffController extends Controller
             ->limit($pages->limit)
             ->all();
 
-        return $this->render('index',
+        return $this->render('actor',
             [
                 'model' => $model,
                 'pages' => $pages
@@ -45,7 +65,7 @@ class StaffController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id){
-        $this->view->title = 'Դերասան';
+        $this->view->title = Yii::t('text', $this->findModel($id)->first_name).' '.Yii::t('text', $this->findModel($id)->last_name);
 
         return $this->render('view', [
             'model' => $this->findModel($id),

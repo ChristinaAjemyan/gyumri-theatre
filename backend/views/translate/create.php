@@ -47,7 +47,7 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php if ($table_name == 'news'): ?>
+    <?php if ($table_name == 'news' || $table_name == 'archive'): ?>
 
         <?= $form->field($message, "[0]translation")->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Title') ?>
 
@@ -91,9 +91,7 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
 
         <div class="row">
             <div class="col-12">
-                <?= $form->field($message, '[2]translation')->widget(CKEditor::className(), [
-                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-                ])->label('Short Description'); ?>
+                <?= $form->field($message, '[2]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
             </div>
             <div class="col-12">
                 <?= $form->field($message, '[3]translation')->widget(CKEditor::className(), [

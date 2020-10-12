@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'content' => function ($data){
                     $images = [
                         [
-                            'src' => Yii::getAlias('@web').'/upload/avatars/news/400/'.$data['img_path'],
+                            'src' => Yii::getAlias('@web').'/upload/avatars/news/200/'.$data['img_path'],
                             'title' => $data['title'],
                         ]
                     ];

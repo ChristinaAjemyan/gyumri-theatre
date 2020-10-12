@@ -34,12 +34,11 @@ AppAsset::register($this);
           crossorigin="anonymous">
 </head>
 
-<body>
+<body class="pr-0 overflow-auto">
 <?php $this->beginBody() ?>
 <div class="wrapper">
     <nav class="navbar navbar-expand-lg navbar-pages">
         <div class="container header_flex">
-
             <?= Html::a(Html::img(Url::to('/assets/images/logo.png')),  Yii::$app->params['front-url'], ['class' => 'navbar-brand logo']); ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,50 +52,60 @@ AppAsset::register($this);
                 <span class="div"></span>
                 <ul class="navbar-nav">
 
-                    <li class="nav-item dropdown about_us <?= Yii::$app->request->pathInfo == '' ? 'active': ''; ?>">
-                        <?= Html::a(Yii::t('home', 'ՄԵՐ մԱՍԻՆ')."<span class=\"hove_height\"></span>",
-                            '', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink',
-                                'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
+                    <li class="nav-item dropdown about_us <?= Yii::$app->request->pathInfo == '' ||
+                    Yii::$app->request->pathInfo== 'site/about' || Yii::$app->request->pathInfo == 'site/chronicle' ||
+                    Yii::$app->request->pathInfo == 'staff' || Yii::$app->request->pathInfo == 'archive' ? 'active': ''; ?>">
+                        <?= Html::a(Yii::t('home', 'Գլխավոր')."<span class=\"hove_height\"></span>",
+                            'javascript:void(0)', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink',
+                                'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
+                                <?= Html::a(Yii::t('home', 'Մեր մասին'),
+                                    '/site/about', ['class' => 'dropdown-item']); ?>
+                            </li>
+                            <li>
                                 <?= Html::a(Yii::t('home', 'Տարեգրություն'),
-                                    '', ['class' => 'dropdown-item']); ?>
+                                    '/site/chronicle', ['class' => 'dropdown-item']); ?>
                             </li>
                             <li>
                                 <?= Html::a(Yii::t('home', 'Վարչական մաս'),
-                                    '', ['class' => 'dropdown-item']); ?>
+                                    '/staff', ['class' => 'dropdown-item']); ?>
                             </li>
                             <li>
                                 <?= Html::a(Yii::t('home', 'Արխիվ'),
-                                    '', ['class' => 'dropdown-item']); ?>
+                                    '/archive', ['class' => 'dropdown-item']); ?>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="nav-item <?= Yii::$app->request->pathInfo == 'staff' ? 'active': ''; ?>">
+                    <li class="nav-item <?= Yii::$app->request->pathInfo == 'staff/actor' ? 'active': ''; ?>">
                         <?= Html::a(Yii::t('home', 'ԴԵՐԱՍԱՆՆԵՐ')."<span class=\"hove_height\"></span>",
-                            '/staff', ['class' => 'nav-link']); ?>
+                            '/staff/actor', ['class' => 'nav-link']); ?>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown <?= Yii::$app->request->pathInfo == 'performance' ||
+                    Yii::$app->request->pathInfo == 'performance/small' ? 'active': ''; ?>">
                         <?= Html::a(Yii::t('home', 'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ')."<span class=\"hove_height\"></span>",
-                            '', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
-                                'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
+                            'javascript:void(0)', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
+                                'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                             <li>
+                                <?= Html::a(Yii::t('home', 'Մեծ ԹԱՏՐՈՆ'),
+                                    '/performance', ['class' => 'dropdown-item']); ?>
+                            </li>
+                            <li>
                                 <?= Html::a(Yii::t('home', 'ՓՈՔՐ ԹԱՏՐՈՆ'),
-                                    '', ['class' => 'dropdown-item']); ?>
+                                '/performance/small', ['class' => 'dropdown-item']); ?>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <?= Html::a(Yii::t('home', 'ՆՈՐՈՒԹՅՈՒՆՆԵՐ')."<span class=\"hove_height\"></span>",
-                            '', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink3',
-                                'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
+                    <li class="nav-item dropdown <?= Yii::$app->request->pathInfo == 'news' ? 'active': ''; ?>">
+                        <?= Html::a(Yii::t('home', 'Նորություններ')."<span class=\"hove_height\"></span>",
+                            '/news', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink3',
+                                'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
                             <li>
                                 <?= Html::a(Yii::t('home', 'ԼՐԱՏՎԱՄԻՋՈՑ'),
                                     '', ['class' => 'dropdown-item']); ?>
-                            </li>
                             </li>
                         </ul>
                     </li>
@@ -108,7 +117,9 @@ AppAsset::register($this);
                 <ul class="social_icons">
                     <li class="_line"></li>
                     <li>
-                        <a id="searchBtn"><i class="fas fa-search"></i></a>
+                        <a id="searchBtn" data-toggle="modal" data-target="#searchModal">
+                            <i class="fas fa-search"></i>
+                        </a>
                     </li>
                     <li>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -119,7 +130,9 @@ AppAsset::register($this);
                     <li>
                         <a href="#"><i class="fab fa-telegram-plane"></i></a>
                     </li>
-                    <li class="search_input"><input type="text" class="form-control" placeholder="Search..."></li>
+                    <li class="search_icon_button">
+<!--                        <input type="text" class="form-control" placeholder="Search...">-->
+                    </li>
                     <li>
 <!--                        <select name="languaga" class="language_select">
                             <option value="am">Հայ</option>
@@ -139,9 +152,32 @@ AppAsset::register($this);
             </div>
 
         </div>
-
-
     </nav>
+
+    <div class="modal fade pr-0" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="/assets/images/logo.png" alt="logo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer modal-has-search">
+                    <form action="/site/search" method="get">
+                        <p class="mb-1 pl-4"><i class="fas fa-search modal-search_icon mr-1"></i><?= Yii::t('home', 'Որոնել') ?></p>
+                        <input value="<?= Yii::$app->request->get('search') ? Yii::$app->request->get('search') : '' ?>"
+                               type="text" class="modal-search_input" name="search" required>
+                        <div class="modal_media_btn-group">
+                            <input type="submit" class="btn more_btn search_button text-uppercase" value="<?= Yii::t('home', 'Որոնել') ?>">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <?= $content ?>
 
@@ -173,54 +209,6 @@ AppAsset::register($this);
     </section>
     <?php endif; ?>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-12">
-                    <div class='footer-block1'>
-                        <h6 class="footer-block_title">GET IN TOUCH</h6>
-                        <ul class="footer-block_list">
-                            <li> <a href="#">FAQs </a></li>
-                            <li> <a href="#">Give us feedback</a></li>
-                            <li> <a href="#">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12">
-                    <div class='footer-block2'>
-                        <h6 class="footer-block_title">ABOUT MOVIE STAR</h6>
-                        <ul class="footer-block_list">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Find us</a></li>
-                            <li><a href="#">Schedule</a></li>
-                            <li><a href="#">News</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12">
-                    <div class='footer-block3'>
-                        <h6 class="footer-block_title">LEGAL STUFF</h6>
-                        <ul class="footer-block_list">
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Cookie policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12">
-                    <div class='footer-block4'>
-                        <h6 class="footer-block_title">CONNECT WITH US</h6>
-                        <ul class="footer-block_list">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                            <li><a href="#"><i class="fab fa-google-plus-g"></i> Google +</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </footer>
     <div class='footer_year'>
         <div class="container">
             <p><?= date('Y'); ?> GYUMRITHEATRE</p>

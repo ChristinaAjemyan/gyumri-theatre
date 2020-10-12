@@ -28,7 +28,7 @@ use mihaildev\elfinder\ElFinder;
             <?= $form->field($model_genre_perform, 'genre_id')->widget(Select2::className(), [
                 'data' => ArrayHelper::map(Genre::find()->all(), 'id', 'name'),
                 'options' => [
-                    'placeholder' => 'Select staff ...',
+                    'placeholder' => 'Select genre ...',
                     'multiple' => true
                 ],
             ]) ?>
@@ -77,9 +77,7 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $result ? $result : false; ?>
 
-    <?= $form->field($model, 'short_desc')->widget(CKEditor::className(), [
-        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-    ]); ?>
+    <?= $form->field($model, 'short_desc')->textarea(['rows' => 6]); ?>
 
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),

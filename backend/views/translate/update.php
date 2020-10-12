@@ -28,9 +28,11 @@ $this->params['breadcrumbs'][] = 'Update';?>
 <?php endif; ?>
 
 <?php
+
 foreach ($column_name as $item){
     $column[] = $item;
 }
+
 ?>
 
 <div class="translate-update">
@@ -45,7 +47,7 @@ foreach ($column_name as $item){
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php if ($table_name == 'news'): ?>
+    <?php if ($table_name == 'news' || $table_name == 'archive'): ?>
 
         <?= $form->field($update_lang[0], '[0]translation')->textInput(['maxlength' => true, 'style' => 'width:35%'])->label('Title') ?>
 
@@ -87,9 +89,7 @@ foreach ($column_name as $item){
 
         <div class="row">
             <div class="col-12">
-                <?= $form->field($update_lang[2], '[2]translation')->widget(CKEditor::className(), [
-                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-                ])->label('Short Description'); ?>
+                <?= $form->field($message, '[2]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
             </div>
             <div class="col-12">
                 <?= $form->field($update_lang[3], '[3]translation')->widget(CKEditor::className(), [

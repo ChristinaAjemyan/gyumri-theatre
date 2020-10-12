@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\imagine\Image;
 //use common\models\Image;
-use common\models\Translate;
+
 
 
 class Main extends Model
@@ -35,11 +35,11 @@ class Main extends Model
     }
 
     public static function createUploadDirectories($path, $arr = []){
-        if (!is_dir('upload/'.$path)){
+        if (!is_dir(Yii::getAlias('@backend').'/web/upload/'.$path)){
             foreach ($arr as $value){
-                FileHelper::createDirectory('upload/'.$path.'/'.$value);
+                FileHelper::createDirectory(Yii::getAlias('@backend').'/web/upload/'.$path.'/'.$value);
             }
-            foreach (glob('upload/'.$path.'/*') as $item){
+            foreach (glob(Yii::getAlias('@backend').'/web/upload/'.$path.'/*') as $item){
                 copy('image/default.jpg', $item.'/default.jpg');
             }
         }
@@ -48,16 +48,16 @@ class Main extends Model
 
     public static function myResizeImage($path, $name, $width = [], $height = null, $quality = 80){
         foreach ($width as $value){
-            Image::thumbnail('upload/'.$path.'/original/'.$name, $value, $height)
-                ->save('upload/'.$path.'/'.$value.'/'.$name, ['quality' => $quality]);
+            Image::thumbnail(Yii::getAlias('@backend').'/web/upload/'.$path.'/original/'.$name, $value, $height)
+                ->save(Yii::getAlias('@backend').'/web/upload/'.$path.'/'.$value.'/'.$name, ['quality' => $quality]);
         }
     }
 
     public static function unlinkImages($path, $arr = []){
         foreach ($arr as $item){
-            if (file_exists('upload/'.$path.'/'.$item.'/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
+            if (file_exists(Yii::getAlias('@backend').'/web/upload/'.$path.'/'.$item.'/'.$_SESSION['img_name']) && $_SESSION['img_name'] !== null &&
                 $_SESSION['img_name'] !== 'default.jpg'){
-                unlink('upload/'.$path.'/'.$item.'/'.$_SESSION['img_name']);
+                unlink(Yii::getAlias('@backend').'/web/upload/'.$path.'/'.$item.'/'.$_SESSION['img_name']);
             }
         }
     }
@@ -67,50 +67,59 @@ class Main extends Model
         $modelClass =  "\common\models\\".$modelName;
         $fieldById = $modelClass::findOne($id);
         foreach ($arrDirName as $item){
-            if (file_exists("upload/$path/$item/$fieldById->img_path")){
-                unlink("upload/$path/$item/$fieldById->img_path");
+            if (file_exists(Yii::getAlias('@backend')."/web/upload/$path/$item/$fieldById->img_path")){
+                unlink(Yii::getAlias('@backend')."/web/upload/$path/$item/$fieldById->img_path");
             }
         }
         if ($path == 'galleries'){
             $imagesById = \common\models\Image::find()->where(['performance_id' => $id])->all();
-            foreach ($arrDirName as $item){
-                foreach ($imagesById as $img){
-                    if (file_exists("upload/$path/$item/$img->image")){
-                        unlink("upload/$path/$item/$img->image");
+            if (!empty($imagesById)){
+                foreach ($arrDirName as $item){
+                    foreach ($imagesById as $img){
+                        if (file_exists(Yii::getAlias('@backend')."/web/upload/$path/$item/$img->image")){
+                            unlink(Yii::getAlias('@backend')."/web/upload/$path/$item/$img->image");
+                        }
                     }
                 }
             }
+
         }
         if ($path == 'banners'){
-            if (file_exists("upload/$path/$fieldById->banner")){
-                unlink("upload/$path/$fieldById->banner");
+            if ($fieldById->banner !== null &&
+                file_exists(Yii::getAlias('@backend')."/web/upload/$path/$fieldById->banner")){
+                unlink(Yii::getAlias('@backend')."/web/upload/$path/$fieldById->banner");
             }
         }
+
     }
 
     public static function createTranslationUrlRU($id, $table_name, $columnName){
         $modelName = ucfirst($table_name);
         $modelClass =  "\common\models\\".$modelName;
-        $str = ''; $translation_id = ''; $count = 0;
-        $arrMessageAll = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
+        $str = ''; $translation_id = ''; $count = 0; $i = 0;
+        $arrSourceMessageAll = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
         if (!empty($columnName) && isset($columnName)){
             foreach ($columnName as $item){
                 $str .= "col[]=$item&";
             }
             $col = trim($str, '&');
             foreach ($columnName as $value){
-                if (in_array($modelClass::findOne($id)->$value, $arrMessageAll)){
+                if (in_array($modelClass::findOne($id)->$value, $arrSourceMessageAll)){
                     $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->all()[0]->id;
                     $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'ru'])->all()[0];
                     if ($hasMessage !== null){
                         $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'ru'])->all()[0]->id."&";
-                        $tr_id = trim($translation_id, '&');
                         $count = 1;
+                    }else{
+                        $i = 1;
                     }
+                }else{
+                    $i = 1;
                 }
             }
         }
-        if ($count == 1){
+        $tr_id = trim($translation_id, '&');
+        if ($count == 1 && $i !== 1){
             $urlRU = "/translate/update?id=$id&lang=ru&table_name=$table_name&$col&$tr_id";
         }else{
             $urlRU = "/translate/create?id=$id&lang=ru&table_name=$table_name&$col";
@@ -121,26 +130,30 @@ class Main extends Model
     public static function createTranslationUrlEN($id, $table_name, $columnName){
         $modelName = ucfirst($table_name);
         $modelClass =  "\common\models\\".$modelName;
-        $str = ''; $translation_id = ''; $count = 0;
-        $arrMessageAll = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
+        $str = ''; $translation_id = ''; $count = 0; $i = 0;
+        $arrSourceMessageAll = ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message');
         if (!empty($columnName) && isset($columnName)){
             foreach ($columnName as $item){
                 $str .= "col[]=$item&";
             }
             $col = trim($str, '&');
             foreach ($columnName as $value){
-                if (in_array($modelClass::findOne($id)->$value, $arrMessageAll)){
+                if (in_array($modelClass::findOne($id)->$value, $arrSourceMessageAll)){
                     $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->all()[0]->id;
                     $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'en'])->all()[0];
                     if ($hasMessage !== null){
                         $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'en'])->all()[0]->id."&";
-                        $tr_id = trim($translation_id, '&');
                         $count = 1;
+                    }else{
+                        $i = 1;
                     }
+                }else{
+                    $i = 1;
                 }
             }
         }
-        if ($count == 1){
+        $tr_id = trim($translation_id, '&');
+        if ($count == 1 && $i !== 1){
             $urlEN = "/translate/update?id=$id&lang=en&table_name=$table_name&$col&$tr_id";
         }else{
             $urlEN = "/translate/create?id=$id&lang=en&table_name=$table_name&$col";

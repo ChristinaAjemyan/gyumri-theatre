@@ -12,7 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-
+use yii\imagine\Image;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -83,7 +83,7 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            Main::createUploadDirectories('avatars/news', ['original', '400']);
+            Main::createUploadDirectories('avatars/news', ['original', '200']);
 
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
@@ -91,7 +91,7 @@ class NewsController extends Controller
                 $model->img_path = $img_name;
                 $model->save();
                 $model->avatar_image->saveAs('upload/avatars/news/original/' . $img_name);
-                Main::myResizeImage('avatars/news', $img_name, ['400']);
+                Main::myResizeImage('avatars/news', $img_name, ['200']);
             }else{
                 $model->img_path = 'default.jpg';
                 $model->save();
@@ -119,16 +119,16 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
-                Main::unlinkImages('avatars/news', ['original', '400']);
+                Main::unlinkImages('avatars/news', ['original', '200']);
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name ;
                 $model->save();
                 $model->avatar_image->saveAs('upload/avatars/news/original/' . $img_name);
-                Main::myResizeImage('avatars/news', $img_name, ['400']);
+                Main::myResizeImage('avatars/news', $img_name, ['200']);
             }else{
                 if (Yii::$app->request->post('token') !== null){
-                    Main::unlinkImages('avatars/news', ['original', '400']);
+                    Main::unlinkImages('avatars/news', ['original', '200']);
                     $model->img_path = 'default.jpg';
                     $model->save();
                 }
@@ -151,7 +151,7 @@ class NewsController extends Controller
     public function actionDelete($id)
     {
         $model = new News();
-        Main::unlinkAllImagesById($model, $id, 'avatars/news', ['400', 'original']);
+        Main::unlinkAllImagesById($model, $id, 'avatars/news', ['200', 'original']);
         $data = $this->findModel($id);
         $colData = [$data->title, $data->content];
         foreach ($colData as $item){
