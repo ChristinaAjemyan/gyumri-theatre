@@ -63,16 +63,18 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
 
                 <?= $form->field($message, "[1]translation")->textInput(['maxlength' => true])->label('Last Name') ?>
 
-                <?= $form->field($message, "[2]translation")->textInput(['maxlength' => true])->label('Genre') ?>
+                <?= $form->field($message, "[2]translation")->textInput(['maxlength' => true])->label('Slug') ?>
             </div>
             <div class="col">
-                <?= $form->field($message, "[3]translation")->textInput(['maxlength' => true])->label('Country') ?>
+                <?= $form->field($message, "[3]translation")->textInput(['maxlength' => true])->label('Genre') ?>
 
-                <?= $form->field($message, "[4]translation")->textInput(['maxlength' => true])->label('City') ?>
+                <?= $form->field($message, "[4]translation")->textInput(['maxlength' => true])->label('Country') ?>
+
+                <?= $form->field($message, "[5]translation")->textInput(['maxlength' => true])->label('City') ?>
             </div>
         </div>
 
-        <?= $form->field($message, "[5]translation")->widget(CKEditor::className(), [
+        <?= $form->field($message, "[6]translation")->widget(CKEditor::className(), [
             'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
         ])->label('Description') ?>
 
@@ -82,19 +84,19 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
             <div class="col-6">
                 <?= $form->field($message, '[0]translation')->textInput(['maxlength' => true])->label('Title') ?>
 
+                <?= $form->field($message, "[1]translation")->textInput(['maxlength' => true])->label('Slug') ?>
             </div>
             <div class="col-6">
-                <?= $form->field($message, '[1]translation')->textInput(['maxlength' => true])->label('Author') ?>
-
+                <?= $form->field($message, '[2]translation')->textInput(['maxlength' => true])->label('Author') ?>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <?= $form->field($message, '[2]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
+                <?= $form->field($message, '[3]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
             </div>
             <div class="col-12">
-                <?= $form->field($message, '[3]translation')->widget(CKEditor::className(), [
+                <?= $form->field($message, '[4]translation')->widget(CKEditor::className(), [
                     'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
                 ])->label('Description'); ?>
             </div>

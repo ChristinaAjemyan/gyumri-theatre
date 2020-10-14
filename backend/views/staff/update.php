@@ -25,9 +25,10 @@ $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
 $column[] = $column_name[1];
 $column[] = $column_name[2];
+$column[] = $column_name[11];
+$column[] = $column_name[8];
 $column[] = $column_name[5];
 $column[] = $column_name[6];
-$column[] = $column_name[8];
 $column[] = $column_name[9];
 ?>
 <?php if (!empty($images) && isset($images)): ?>

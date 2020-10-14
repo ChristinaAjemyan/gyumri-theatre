@@ -4,6 +4,7 @@ use common\models\GenrePerformance;
 use common\models\StaffImage;
 use common\models\StaffPerformance;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 ?>
 
@@ -56,7 +57,7 @@ use yii\helpers\ArrayHelper;
             <div class="row">
                 <?php foreach ($performance as $item): ?>
                 <div class="col-md-4">
-                    <a href="/performance/view?id=<?= $item->id; ?>">
+                    <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                         <div class="media_present">
                             <div class="media">
                                 <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>"

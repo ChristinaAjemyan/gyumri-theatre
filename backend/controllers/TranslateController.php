@@ -30,15 +30,21 @@ class TranslateController extends Controller
                 $sourceMessage = new SourceMessage();
                 $sourceMessage->category = 'text';
                 $sourceMessage->message = $modelClass::findOne($id)->$value;
-                $sourceMessage->save();
-                $arr[] = SourceMessage::find()->where(['message' => $sourceMessage->message])->one()->id;
+                if (!in_array($modelClass::findOne($id)->$value, ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message'))){
+                    $sourceMessage->save();
+                }
+                $arr[] = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()->id;
                 $arrColumnName .= "col[]=$value&";
                 $columnName = trim($arrColumnName, '&');
-                $translation_id .= "tr_id[]=".SourceMessage::find()->where(['message' => $sourceMessage->message])->one()->id."&";
+                $translation_id .= "tr_id[]=".SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()->id."&";
                 $tr_id = trim($translation_id, '&');
             }
             foreach (Yii::$app->request->post('Message') as $key => $item){
-                $message = new Message();
+                if (Message::find()->where(['id' => $arr[$key], 'language' => $lang])->all()[0]){
+                    $message = Message::find()->where(['id' => $arr[$key], 'language' => $lang])->all()[0];
+                }else{
+                    $message = new Message();
+                }
                 $message->id = $arr[$key];
                 $message->language = $lang;
                 $message->translation = $item['translation'];
@@ -49,7 +55,6 @@ class TranslateController extends Controller
             Yii::$app->session->setFlash('success', 'Translate confirmed!');
             return $this->redirect("/translate/update?id=$id&lang=$lang&table_name=$table_name&$columnName&$tr_id");
         }
-
         return $this->render('create', [
             'message' => $message
         ]);
@@ -74,11 +79,6 @@ class TranslateController extends Controller
         foreach ($tr_id as $value){
             $arrTranslations[] = Message::find()->where(['id' => $value, 'language' => $lang])->all()[0];
         }
-
-        //echo '<pre>';
-        //var_dump($arrTranslations);
-        //echo '</pre>';die;
-
         return $this->render('update', [
             'update_lang' => $arrTranslations
         ]);

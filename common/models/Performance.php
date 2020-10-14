@@ -21,6 +21,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $short_desc
  * @property string|null $desc
  * @property int|null $is_new
+ * @property int|null $slug
  */
 class Performance extends \yii\db\ActiveRecord
 {
@@ -42,7 +43,8 @@ class Performance extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'slug'], 'required'],
+            ['slug', 'unique'],
             [['show_date'], 'safe'],
             [['desc', 'short_desc'], 'string'],
             [['avatar_image', 'banner_image'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
@@ -50,6 +52,7 @@ class Performance extends \yii\db\ActiveRecord
             ['age_restriction', 'integer', 'min' => 0],
             ['performance_length', 'integer', 'min' => 1],
             [['title', 'img_path', 'trailer', 'banner', 'author'], 'string', 'max' => 255],
+            [['title', 'author'], 'filter', 'filter' => 'mb_strtolower']
         ];
     }
 
@@ -72,6 +75,7 @@ class Performance extends \yii\db\ActiveRecord
             'short_desc' => 'Short Description',
             'desc' => 'Description',
             'is_new' => 'Is New',
+            'slug' => 'Slug',
         ];
     }
 
@@ -84,7 +88,7 @@ class Performance extends \yii\db\ActiveRecord
             $key[] = $k;
         }
         $val = array_map(function($v1, $v2){
-            $result = $v1.' '.$v2;
+            $result = Main::uppercaseFirstLetter($v1).' '.Main::uppercaseFirstLetter($v2);
             return $result;
         }, $fist_name, $last_name);
         return array_combine($key, $val);

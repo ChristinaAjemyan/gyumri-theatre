@@ -25,7 +25,8 @@ class m200907_125808_create_performance_table extends Migration
             'hall' => $this->integer(),
             'short_desc' => $this->text(),
             'desc' => $this->text(),
-            'is_new' => $this->boolean()
+            'is_new' => $this->boolean(),
+            'slug' => $this->string()->notNull()->unique()
         ]);
     }
 

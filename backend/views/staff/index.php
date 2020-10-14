@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Main;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\Sort;
@@ -48,8 +49,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             //'id',
-            'first_name',
-            'last_name',
+            [
+                'header' => 'first_name',
+                'content' => function ($data){
+                    return Main::uppercaseFirstLetter($data->first_name);
+                },
+            ],
+            [
+                'header' => 'last_name',
+                'content' => function ($data){
+                    return Main::uppercaseFirstLetter($data->last_name);
+                },
+            ],
 //            'date_of_birth',
             [
                 'header' => 'Role',
@@ -65,8 +76,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             //'img_path',
-            'country',
-            'city',
+            [
+                'header' => 'country',
+                'content' => function ($data){
+                    return Main::uppercaseFirstLetter($data->country);
+                },
+            ],
+            [
+                'header' => 'city',
+                'content' => function ($data){
+                    return Main::uppercaseFirstLetter($data->city);
+                },
+            ],
+            //'slug,'
             //'inst_url',
             //'staff_genre_type',
             //'desc:ntext',

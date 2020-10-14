@@ -18,7 +18,7 @@ class PerformanceSearch extends Performance
     {
         return [
             [['id', 'is_new', 'age_restriction', 'performance_length', 'hall'], 'integer'],
-            [['title', 'img_path', 'show_date', 'trailer', 'banner', 'author', 'short_desc', 'desc'], 'safe'],
+            [['title', 'img_path', 'show_date', 'trailer', 'banner', 'author', 'short_desc', 'desc', 'slug'], 'safe'],
         ];
     }
 
@@ -73,7 +73,8 @@ class PerformanceSearch extends Performance
             ->andFilterWhere(['like', 'banner', $this->banner])
             ->andFilterWhere(['like', 'author', $this->author])
             ->andFilterWhere(['like', 'short_desc', $this->short_desc])
-            ->andFilterWhere(['like', 'desc', $this->desc]);
+            ->andFilterWhere(['like', 'desc', $this->desc])
+            ->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
     }

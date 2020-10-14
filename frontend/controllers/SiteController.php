@@ -53,7 +53,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->view->title = Yii::t('home', 'ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ');
+        $this->view->title = Yii::t('home', 'Գյումրու Դրամատիկական թատրոն');
         $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
@@ -163,6 +163,7 @@ class SiteController extends Controller
                 foreach ($num as $val){
                     $searchName[] = $val;
                 }
+
                 $searchName[] = $str;
                 array_push($searchName, trim($inputVal, ' '));
             }
@@ -245,7 +246,7 @@ class SiteController extends Controller
             'expire' => time() + 60 * 60 * 24 * 30
         ]);
         Yii::$app->response->cookies->add($languageCookie);
-        return $this->redirect(Yii::$app->request->referrer);
+        return $this->goHome();
     }
 
 }

@@ -30,6 +30,7 @@ class Genre extends \yii\db\ActiveRecord
         return [
             ['name', 'required'],
             [['name'], 'string', 'max' => 255],
+            ['name', 'filter', 'filter' => 'mb_strtolower'],
         ];
     }
 

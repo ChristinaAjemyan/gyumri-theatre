@@ -3,6 +3,9 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use common\models\Genre;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -79,21 +82,21 @@ AppAsset::register($this);
                     </li>
 
                     <li class="nav-item <?= Yii::$app->request->pathInfo == 'staff/actor' ? 'active': ''; ?>">
-                        <?= Html::a(Yii::t('home', 'ԴԵՐԱՍԱՆՆԵՐ')."<span class=\"hove_height\"></span>",
+                        <?= Html::a(Yii::t('home', 'Դերասաններ')."<span class=\"hove_height\"></span>",
                             '/staff/actor', ['class' => 'nav-link']); ?>
                     </li>
                     <li class="nav-item dropdown <?= Yii::$app->request->pathInfo == 'performance' ||
                     Yii::$app->request->pathInfo == 'performance/small' ? 'active': ''; ?>">
-                        <?= Html::a(Yii::t('home', 'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ')."<span class=\"hove_height\"></span>",
+                        <?= Html::a(Yii::t('home', 'Ներկայացումներ')."<span class=\"hove_height\"></span>",
                             'javascript:void(0)', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                             <li>
-                                <?= Html::a(Yii::t('home', 'Մեծ ԹԱՏՐՈՆ'),
+                                <?= Html::a(Yii::t('home', 'Մեծ թատրոն'),
                                     '/performance', ['class' => 'dropdown-item']); ?>
                             </li>
                             <li>
-                                <?= Html::a(Yii::t('home', 'ՓՈՔՐ ԹԱՏՐՈՆ'),
+                                <?= Html::a(Yii::t('home', 'Փոքր թատրոն'),
                                 '/performance/small', ['class' => 'dropdown-item']); ?>
                             </li>
                         </ul>
@@ -102,15 +105,15 @@ AppAsset::register($this);
                         <?= Html::a(Yii::t('home', 'Նորություններ')."<span class=\"hove_height\"></span>",
                             '/news', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink3',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
                             <li>
-                                <?= Html::a(Yii::t('home', 'ԼՐԱՏՎԱՄԻՋՈՑ'),
-                                    '', ['class' => 'dropdown-item']); ?>
+                                <?/*= Html::a(Yii::t('home', 'Լրատվամիջոց'),
+                                    '', ['class' => 'dropdown-item']); */?>
                             </li>
-                        </ul>
+                        </ul>-->
                     </li>
                     <li class="nav-item">
-                        <?= Html::a(Yii::t('home', 'ԿԱՊ')."<span class=\"hove_height\"></span>",
+                        <?= Html::a(Yii::t('home', 'Կապ')."<span class=\"hove_height\"></span>",
                             '', ['class' => 'nav-link']); ?>
                     </li>
                 </ul>
@@ -134,11 +137,11 @@ AppAsset::register($this);
 <!--                        <input type="text" class="form-control" placeholder="Search...">-->
                     </li>
                     <li>
-<!--                        <select name="languaga" class="language_select">
-                            <option value="am">Հայ</option>
-                            <option value="ru">Рус</option>
-                            <option value="en">Eng</option>
-                        </select>-->
+<!--                        <select name="languaga" class="language_select">-->
+<!--                            <option value="am">Հայ</option>-->
+<!--                            <option value="ru">Рус</option>-->
+<!--                            <option value="en">Eng</option>-->
+<!--                        </select>-->
                         <?= Html::beginForm('/site/language'); ?>
                         <?= Html::dropDownList('language', Yii::$app->language,
                             ['am' => 'Հայ', 'ru' => 'Рус', 'en' => 'Eng'], [

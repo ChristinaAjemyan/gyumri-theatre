@@ -161,5 +161,8 @@ class Main extends Model
         return $urlEN;
     }
 
+    public static function uppercaseFirstLetter($str){
+        return mb_substr(mb_strtoupper(Yii::t('text', $str)), 0, 1).mb_substr(Yii::t('text', $str), 1);
+    }
 
 }

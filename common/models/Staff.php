@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $staff_genre_type
  * @property string|null $desc
  * @property int|null $role_id
+ * @property int|null $slug
  */
 class Staff extends \yii\db\ActiveRecord
 {
@@ -38,11 +39,13 @@ class Staff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_name', 'last_name', 'role_id'], 'required'],
+            [['first_name', 'last_name', 'role_id', 'slug'], 'required'],
+            ['slug', 'unique'],
             [['date_of_birth'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
             [['first_name', 'last_name', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'country', 'city', 'staff_genre_type'], 'filter', 'filter' => 'mb_strtolower'],
         ];
     }
 
@@ -63,6 +66,7 @@ class Staff extends \yii\db\ActiveRecord
             'staff_genre_type' => 'Staff Genre',
             'desc' => 'Description',
             'role' => 'Role',
+            'slug' => 'Slug',
         ];
     }
 

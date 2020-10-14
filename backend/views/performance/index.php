@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Main;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use slavkovrn\lightbox\LightBoxWidget;
@@ -47,7 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             //'id',
-            'title',
+            [
+                'header' => 'title',
+                'content' => function ($data){
+                    return Main::uppercaseFirstLetter($data->title);
+                },
+            ],
             //'img_path',
             [
                 'header' => 'staff',
@@ -64,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach ($staff as $item){
                         $first_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['first_name'];
                         $last_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['last_name'];
-                        $arr[$item['staff_id']] = $first_name.' '.$last_name;
+                        $arr[$item['staff_id']] = Main::uppercaseFirstLetter($first_name).' '.Main::uppercaseFirstLetter($last_name);
                     }
                     foreach ($arr as $key => $value){?>
                         <div class="modal fade" id="modalLong<?= $data->id; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
@@ -95,6 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'banner',
             'show_date',
+            //'slug',
             //'trailer',
             //'age_restriction',
             //'performance_length',

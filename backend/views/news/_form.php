@@ -18,7 +18,6 @@ use mihaildev\elfinder\ElFinder;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-lg-6 col-md-8 col-sm-12">
-
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [

@@ -2,6 +2,7 @@
 
 namespace frontend\assets;
 
+use Yii;
 use yii\web\AssetBundle;
 
 /**
@@ -33,4 +34,14 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         //'yii\bootstrap\BootstrapAsset',
     ];
+    public function __construct($config = [])
+    {
+        $cookieLanguage = Yii::$app->request->cookies->getValue('language');
+        if ($cookieLanguage == 'ru'){
+            array_unshift($this->css, 'assets/css/fontsRU.css');
+        }else{
+            array_unshift($this->css, 'assets/css/fotns.css');
+        }
+        parent::__construct($config);
+    }
 }

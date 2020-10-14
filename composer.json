@@ -24,8 +24,7 @@
         "slavkovrn/yii2-lightbox": "^1.0",
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
-        "yiisoft/yii2-imagine": "*",
-        "w3lifer/yii2-i18n-js": "^2.2"
+        "yiisoft/yii2-imagine": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

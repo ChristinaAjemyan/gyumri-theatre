@@ -42,12 +42,14 @@ use mihaildev\elfinder\ElFinder;
                 ]
             ]) ?>
 
+            <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+
             <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd']) ?>
 
             <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
         </div>
         <div class="col">
-            <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model_stf_perform, 'staff_id')->widget(Select2::className(), [
                 'data' => Performance::getFullName(),

@@ -9,7 +9,10 @@
 namespace frontend\controllers;
 
 
+use common\models\Main;
+use common\models\Message;
 use common\models\Role;
+use common\models\SourceMessage;
 use common\models\Staff;
 use common\models\StaffImage;
 use Yii;
@@ -19,7 +22,8 @@ use yii\web\NotFoundHttpException;
 
 class StaffController extends Controller
 {
-    public function actionIndex(){
+    public function actionIndex()
+    {
         $this->view->title = Yii::t('home', 'Վարչական մաս');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one()->id;
         $staff = Staff::find()->where(['!=', 'role_id', $role_id])->orderBy(['last_name' => SORT_ASC]);
@@ -38,7 +42,8 @@ class StaffController extends Controller
         );
     }
 
-    public function actionActor(){
+    public function actionActor()
+    {
         $this->view->title = Yii::t('home', 'Դերասաններ');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one();
         $actors = Staff::find()->where(['role_id' => $role_id->id]);
@@ -64,11 +69,21 @@ class StaffController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id){
-        $this->view->title = Yii::t('text', $this->findModel($id)->first_name).' '.Yii::t('text', $this->findModel($id)->last_name);
+    public function actionView($slug)
+    {
+        $cookieLanguage = Yii::$app->request->cookies->getValue('language');
+        if ($cookieLanguage == 'ru' || $cookieLanguage == 'en') {
+            $message_id = Message::find()->where(['translation' => $slug])->one()->id;
+            $source_message = SourceMessage::find()->where(['id' => $message_id])->one()->message;
+            $model = Staff::find()->where(['slug' => $source_message])->one();
+        } else {
+            $model = Staff::find()->where(['slug' => $slug])->one();
+        }
+        $this->view->title = Main::uppercaseFirstLetter($model->first_name) . ' ' . Main::uppercaseFirstLetter($model->last_name);
+        empty($model) ? $this->goHome() : false;
 
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model
         ]);
     }
 

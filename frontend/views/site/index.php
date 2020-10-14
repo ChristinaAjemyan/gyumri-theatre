@@ -4,14 +4,15 @@
 use common\models\GenrePerformance;
 use common\models\Performance;
 use yii\helpers\ArrayHelper;
-Yii::$app->i18nJs;
+use yii\helpers\Url;
+
 ?>
 
 
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
     <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
     <div class="scrollme">
-        <h1 class="baner_title"><?= Yii::t('home', 'ԳՅՈՒՄՐՈՒ ԴՐԱՄԱՏԻԿԱԿԱՆ ԹԱՏՐՈՆ') ?></h1>
+        <h1 class="baner_title"><?= Yii::t('home', 'Գյումրու Դրամատիկական թատրոն') ?></h1>
     </div>
     <div class="header_carousel owl-carousel" id="headerCarousel">
 
@@ -44,18 +45,18 @@ Yii::$app->i18nJs;
 
 <section class="section_carousel">
     <div class="container">
-        <h2 class="block_title carousel_title"><?= Yii::t('home', 'ԸՆԹԱՑԻԿ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
+        <h2 class="block_title carousel_title"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
         <span class="title_line"></span>
         <div class="main_carousel owl-carousel" id="current_performance">
         <?php if (!empty($performances) && isset($performances)): ?>
             <?php foreach ($performances as $item): ?>
             <div class="carousel_item">
                 <div class="card" style="width: 16rem;">
-                    <a href="/performance/view?id=<?= $item->id; ?>">
+                    <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                         <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="image">
                     </a>
                     <div class="card-body">
-                        <a href="/performance/view?id=<?= $item->id; ?>">
+                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                         </a>
                         <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
@@ -121,7 +122,7 @@ Yii::$app->i18nJs;
 
                     <div class="media-footer">
                         <div class="media_btn-group">
-                            <a href="/performance/view?id=<?= $performanceSoon->id; ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
+                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performanceSoon->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                         </div>
                         <span class="calendar"><i class="far fa-calendar-alt"></i></span>
                         <p class='view-movie'><?= Performance::getPerformanceTime($performanceSoon->show_date); ?></p>

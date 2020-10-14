@@ -43,10 +43,18 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'enablePrettyUrl' => true,
+            'rules' => array(
+                '<controller:\w+>/<action:\w+>/<slug:[Ա-Ֆա-ֆА-Яа-яЁёA-Za-z0-9 -_.]+>' => '<controller>/<action>',
+                //'staff/view/<slug:[Ա-Ֆա-ֆА-Яа-яЁёA-Za-z0-9 -_.]+>' => 'staff/view',
+                //'performance/view/<slug:[Ա-Ֆա-ֆА-Яа-яЁёA-Za-z0-9 -_.]+>' => 'performance/view',
+                '<controller:\w+>/<action:\w+>/<page:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
         ],
         'i18n' => [
             'translations' => [
@@ -57,10 +65,8 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                 ],
             ],
-        ],
-        'i18nJs' => [
-            'class' => 'w3lifer\yii2\I18nJs',
-        ],
+        ]
+
     ],
     'params' => $params,
 ];

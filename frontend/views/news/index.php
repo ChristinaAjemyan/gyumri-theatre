@@ -1,4 +1,5 @@
 <?php use common\models\Performance;
+use yii\helpers\Url;
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
     <div class="container p-3">
@@ -9,13 +10,13 @@ use yii\widgets\LinkPager;  ?>
                     <div class="media d-block">
                         <div class="row">
                             <div class="col-md-2  col-12">
-                                <a href="/news/view?id=<?= $content['id']; ?>">
+                                <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>">
                                     <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/news/200/'.$content['img_path']; ?>" class="w-100" alt="Photo">
                                 </a>
                             </div>
                             <div class="col-md-10 col-12">
                                 <div class="media-body">
-                                    <a href="/news/view?id=<?= $content['id']; ?>">
+                                    <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>">
                                         <h5 class="mt-0 media-title"><?= Yii::t('text', $content['title']); ?></h5>
                                     </a>
                                     <p class="media-text">
@@ -24,7 +25,7 @@ use yii\widgets\LinkPager;  ?>
                                     </p>
                                     <div class="media-footer">
                                         <div class="media_btn-group d-flex justify-content-between w-100">
-                                            <a href="/news/view?id=<?= $content['id']; ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
+                                            <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                                             <span class="view-movie"><?= Performance::getPerformanceTime($content['dt_create']); ?></span>
                                         </div>
                                     </div>

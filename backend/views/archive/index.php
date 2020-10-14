@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Main;
 use slavkovrn\lightbox\LightBoxWidget;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -46,7 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             //'id',
-            'title',
+            [
+                'header' => 'title',
+                'content' => function ($data){
+                    return Main::uppercaseFirstLetter($data->title);
+                },
+            ],
             //'content:ntext',
             //'img_path',
             'dt_create',

@@ -124,6 +124,10 @@ $('.weekdays').on('click', function () {
         type: 'post',
         dataType: 'json',
         data: {day: days[nowWeek], monthDays: allMonth},
+        beforeSend: function() {
+            $('#nav-tabContent').empty();
+            $('#nav-tabContent').append('<div class="d-flex justify-content-center loadIcon"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
+        },
         success: function (data) {
             $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
@@ -141,7 +145,7 @@ $('.weekdays').on('click', function () {
                 <div class="media result d-block">
                     <div class="row">
                         <div class="col-md-3 col-12">
-                        <a href="/performance/view?id=${item.id}">
+                        <a href="/performance/view/${item.slug}">
                             <img src="${data.basePath}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
                         </a>
                         </div>
@@ -150,12 +154,12 @@ $('.weekdays').on('click', function () {
                             ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\">"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
                                     item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
                                 <p class="author">${item.author} </p>
-                                <a href="/performance/view?id=${item.id}"><h5 class="mt-0 media-title">${item.title}</h5></a>
+                                <a href="/performance/view/${item.slug}"><h5 class="mt-0 media-title">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
                                 <p class="media-text">${item.desc.substring(0, 270)}${item.desc.length > 270 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <a href="/performance/view?id=${item.id}" class="btn more_btn">
+                                        <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
                                     ${item.show_date > currentTime ? "<button class=\"btn add_cupon\">" + 
@@ -178,10 +182,13 @@ $('.weekdays').on('click', function () {
                     showingInfoSelector: '#showingInfo',
                 });
             });
+            $('.loadIcon').remove();
         }
     });
 });
 $('#nav-tab .active').click();
+
+
 
 
 });

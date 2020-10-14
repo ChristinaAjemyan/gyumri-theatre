@@ -63,16 +63,18 @@ foreach ($column_name as $item){
 
                 <?= $form->field($update_lang[1], "[1]translation")->textInput(['maxlength' => true])->label('Last Name') ?>
 
-                <?= $form->field($update_lang[2], "[2]translation")->textInput(['maxlength' => true])->label('Genre') ?>
+                <?= $form->field($update_lang[2], "[2]translation")->textInput(['maxlength' => true])->label('Slug') ?>
             </div>
             <div class="col">
-                <?= $form->field($update_lang[3], "[3]translation")->textInput(['maxlength' => true])->label('Country') ?>
+                <?= $form->field($update_lang[3], "[3]translation")->textInput(['maxlength' => true])->label('Genre') ?>
 
-                <?= $form->field($update_lang[4], "[4]translation")->textInput(['maxlength' => true])->label('City') ?>
+                <?= $form->field($update_lang[4], "[4]translation")->textInput(['maxlength' => true])->label('Country') ?>
+
+                <?= $form->field($update_lang[5], "[5]translation")->textInput(['maxlength' => true])->label('City') ?>
             </div>
         </div>
 
-        <?= $form->field($update_lang[5], "[5]translation")->widget(CKEditor::className(), [
+        <?= $form->field($update_lang[6], "[6]translation")->widget(CKEditor::className(), [
             'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
         ])->label('Description') ?>
 
@@ -81,18 +83,20 @@ foreach ($column_name as $item){
         <div class="form-row">
             <div class="col-6">
                 <?= $form->field($update_lang[0], '[0]translation')->textInput(['maxlength' => true])->label('Title') ?>
+
+                <?= $form->field($update_lang[1], "[1]translation")->textInput(['maxlength' => true])->label('Slug') ?>
             </div>
             <div class="col-6">
-                <?= $form->field($update_lang[1], '[1]translation')->textInput(['maxlength' => true])->label('Author') ?>
+                <?= $form->field($update_lang[2], '[2]translation')->textInput(['maxlength' => true])->label('Author') ?>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <?= $form->field($message, '[2]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
+                <?= $form->field($update_lang[3], '[3]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
             </div>
             <div class="col-12">
-                <?= $form->field($update_lang[3], '[3]translation')->widget(CKEditor::className(), [
+                <?= $form->field($update_lang[4], '[4]translation')->widget(CKEditor::className(), [
                     'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
                 ])->label('Description'); ?>
             </div>

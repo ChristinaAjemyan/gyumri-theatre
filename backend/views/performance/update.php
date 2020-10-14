@@ -10,7 +10,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Performance */
 
-$this->title = 'Update Performance: ' . $model->title;
+$this->title = 'Update Performance: ' . Main::uppercaseFirstLetter($model->title);
 $this->params['breadcrumbs'][] = ['label' => 'Performances', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
@@ -19,6 +19,7 @@ $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->att
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
 $column[] = $column_name[1];
+$column[] = $column_name[13];
 $column[] = $column_name[8];
 $column[] = $column_name[10];
 $column[] = $column_name[11];

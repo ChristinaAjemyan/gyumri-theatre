@@ -23,7 +23,8 @@ class m200908_144920_create_staff_table extends Migration
             'inst_url' => $this->string(),
             'staff_genre_type' => $this->string(),
             'desc' => $this->text(),
-            'role_id' => $this->integer()
+            'role_id' => $this->integer(),
+            'slug' => $this->string()->notNull()->unique()
         ]);
 
         $this->createIndex(

@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
-$this->title = $model->title;
+$this->title = Main::uppercaseFirstLetter($model->title);
 $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -20,7 +20,7 @@ $column[] = $column_name[2];
 ?>
 <div class="news-view">
     <div class="d-flex justify-content-between">
-        <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode(Main::uppercaseFirstLetter($this->title)) ?></h1>
         <div class="mt-5 mr-5 language_flag_disabled">
             <?= Html::a(Html::img(Url::to('/image/flag_am.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_am']), "/$table_name/update?id=$model->id"); ?>
             <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($model->id, $table_name, $column)); ?>
@@ -48,7 +48,10 @@ $column[] = $column_name[2];
                 'value' =>('<img src =' .'/upload/avatars/news/200/' . $model->img_path . '>')
             ],
             //'id',
-            'title',
+            [
+                'attribute' => 'title',
+                'value' => Main::uppercaseFirstLetter($model->title)
+            ],
             'content:html',
             //'img_path',
             'dt_create',

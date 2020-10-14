@@ -10,7 +10,10 @@ namespace frontend\controllers;
 
 
 use common\models\GenrePerformance;
+use common\models\Main;
+use common\models\Message;
 use common\models\Performance;
+use common\models\SourceMessage;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -22,7 +25,7 @@ use yii\web\NotFoundHttpException;
 class PerformanceController extends Controller
 {
     public function actionIndex(){
-        $this->view->title = Yii::t('home', 'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ');
+        $this->view->title = Yii::t('home', 'Ներկայացումներ');
         $performancesBigHall = Performance::find()->where(['hall' => 0])->orderBy(['id' => SORT_DESC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesBigHall->count(),
@@ -48,7 +51,7 @@ class PerformanceController extends Controller
     }
 
     public function actionSmall(){
-        $this->view->title = Yii::t('home', 'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ').' - '.Yii::t('home', 'ՓՈՔՐ ԹԱՏՐՈՆ');
+        $this->view->title = Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն');
         $performancesBigHall = Performance::find()->where(['hall' => 1])->orderBy(['id' => SORT_DESC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesBigHall->count(),
@@ -79,12 +82,21 @@ class PerformanceController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($slug)
     {
-        $this->view->title = Yii::t('text', $this->findModel($id)->title);
+        $cookieLanguage = Yii::$app->request->cookies->getValue('language');
+        if ($cookieLanguage == 'ru' || $cookieLanguage == 'en'){
+            $message_id = Message::find()->where(['translation' => $slug])->one()->id;
+            $source_message = SourceMessage::find()->where(['id' => $message_id])->one()->message;
+            $model = Performance::find()->where(['slug' => $source_message])->one();
+        }else{
+            $model = Performance::find()->where(['slug' => $slug])->one();
+        }
+        $this->view->title = Main::uppercaseFirstLetter($model->title);
+        empty($model) ? $this->goHome() : false;
 
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

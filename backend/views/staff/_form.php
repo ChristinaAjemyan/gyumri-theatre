@@ -33,6 +33,8 @@ use common\models\Role;
         <div class="col">
             <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
 
+            <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+
             <?= $form->field($model, 'date_of_birth')->textInput(['class' => 'datepicker-here form-control', 'data-date-format' => 'yyyy-mm-dd']) ?>
 
             <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>

@@ -11,7 +11,7 @@ use common\models\Image;
 /* @var $this yii\web\View */
 /* @var $model common\models\Performance */
 
-$this->title = $model->title;
+$this->title = Main::uppercaseFirstLetter($model->title);
 $this->params['breadcrumbs'][] = ['label' => 'Performances', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
 $column[] = $column_name[1];
+$column[] = $column_name[13];
 $column[] = $column_name[8];
 $column[] = $column_name[10];
 $column[] = $column_name[11];
@@ -26,7 +27,7 @@ $column[] = $column_name[11];
 <div class="performance-view">
 
     <div class="d-flex justify-content-between">
-        <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode(Main::uppercaseFirstLetter($this->title)) ?></h1>
         <div class="mt-5 mr-5 language_flag_disabled">
             <?= Html::a(Html::img(Url::to('/image/flag_am.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_am']), "/$table_name/update?id=$model->id"); ?>
             <?= Html::a(Html::img(Url::to('/image/flag_ru.png'), ['style' => 'width:30px; height:25px;', 'class' => 'flag_ru']), Main::createTranslationUrlRU($model->id, $table_name, $column)); ?>
@@ -54,7 +55,11 @@ $column[] = $column_name[11];
                 'value' => ('<img src =' . '/upload/avatars/performance/original/' . $model->img_path . ' width="300"' . '>')
             ],
             //'id',
-            'title',
+            [
+                'attribute' => 'title',
+                'value' => Main::uppercaseFirstLetter($model->title)
+            ],
+            'slug',
             //'img_path',
             [
                 'attribute' => 'staff',
@@ -66,7 +71,7 @@ $column[] = $column_name[11];
                     foreach ($staff as $item) {
                         $first_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['first_name'];
                         $last_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['last_name'];
-                        $arr[$item['staff_id']] = $first_name . ' ' . $last_name;
+                        $arr[$item['staff_id']] = Main::uppercaseFirstLetter($first_name).' '.Main::uppercaseFirstLetter($last_name);
                     }
                     foreach ($arr as $key => $value) {
                         $result .= Html::a($value, "/staff/view?id=$key", ['class' => 'btn btn-info mb-1 px-2 py-0 font-weight-bold']) . " ";
@@ -106,7 +111,10 @@ $column[] = $column_name[11];
             ],
             'age_restriction',
             'performance_length',
-            'author',
+            [
+                'attribute' => 'author',
+                'value' => Main::uppercaseFirstLetter($model->author)
+            ],
             [
                 'attribute' => 'hall',
                 'format' => 'html',
