@@ -24,11 +24,11 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+            [['name', 'email', 'subject', 'body', 'verifyCode'], 'required','message' => Yii::t('home','Դաշտը դատարկ է')],
             // email has to be a valid email address
-            ['email', 'email'],
+            ['email', 'email', 'message' => Yii::t('home','Սխալ Էլ-հասցե')],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha', 'message' => Yii::t('home','Սխալ սիմվոլներ')],
         ];
     }
 
@@ -38,7 +38,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => Yii::t('home', 'Անուն'),
+            'email' => 'E-mail',
+            'subject' => Yii::t('home', 'Թեմա'),
+            'body' => Yii::t('home', 'Հաղորդագրություն'),
+            'verifyCode' => Yii::t('home', 'Ստուգման ծածկագիր')
         ];
     }
 
@@ -52,10 +56,10 @@ class ContactForm extends Model
     {
         return Yii::$app->mailer->compose()
             ->setTo($email)
-            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
+            ->setFrom($this->email)
             ->setReplyTo([$this->email => $this->name])
             ->setSubject($this->subject)
-            ->setTextBody($this->body)
+            ->setHtmlBody("<span>$this->body</span><br>"."<p>$this->email</p>")
             ->send();
     }
 }

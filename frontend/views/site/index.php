@@ -116,8 +116,8 @@ use yii\helpers\Url;
                     </small>
                     <p class="author"><?= Yii::t('text', $performanceSoon->author); ?></p>
                     <p class="media-text">
-                        <?= mb_substr(Yii::t('text', $performanceSoon->desc),0,370, 'utf-8'); ?>
-                        <?= strlen(Yii::t('text', $performanceSoon->desc)) > 370 ? '...' : ''; ?>
+                        <?= mb_substr(Yii::t('text', $performanceSoon->desc),0,190, 'utf-8'); ?>
+                        <?= strlen(Yii::t('text', $performanceSoon->desc)) > 190 ? '...' : ''; ?>
                     </p>
 
                     <div class="media-footer">

@@ -95,9 +95,7 @@ class PerformanceController extends Controller
         $this->view->title = Main::uppercaseFirstLetter($model->title);
         empty($model) ? $this->goHome() : false;
 
-        return $this->render('view', [
-            'model' => $model,
-        ]);
+        return $this->render('view', ['model' => $model]);
     }
 
     /**

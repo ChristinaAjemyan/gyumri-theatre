@@ -114,7 +114,7 @@ AppAsset::register($this);
                     </li>
                     <li class="nav-item">
                         <?= Html::a(Yii::t('home', 'Կապ')."<span class=\"hove_height\"></span>",
-                            '', ['class' => 'nav-link']); ?>
+                            '/site/contact', ['class' => 'nav-link']); ?>
                     </li>
                 </ul>
                 <ul class="social_icons">
@@ -125,13 +125,13 @@ AppAsset::register($this);
                         </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/gyumritheatre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/gyumri_theatre/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-telegram-plane"></i></a>
                     </li>
                     <li class="search_icon_button">
 <!--                        <input type="text" class="form-control" placeholder="Search...">-->
