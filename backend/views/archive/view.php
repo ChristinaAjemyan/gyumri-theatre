@@ -1,5 +1,6 @@
 <?php
 
+use common\models\ArchiveImage;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
@@ -51,8 +52,37 @@ $column[] = $column_name[2];
                 'attribute' => 'title',
                 'value' => Main::uppercaseFirstLetter($model->title)
             ],
+            [
+                'attribute' => 'Galleries',
+                'format' => 'html',
+                'value' => function ($model) {
+                    $images = ArchiveImage::find()->where(['archive_id' => $model->id])->asArray()->all(); ?>
+                    <?php if (!empty($images) && isset($images)): ?>
+                        <?php $result = "<div class=\"card border-0\">
+                            <div class=\"card-body p-0\">"; ?>
+                        <?php foreach ($images as $image): ?>
+                            <?php $image = $image['image']; ?>
+                            <?php $result .= "<div class=\"\">
+                                        <div class=\"card card-block my-block float-left m-2\">
+                                            <img src=\"/upload/galleries/250/$image\" alt=\"$image\" style=\"height: 200px;\">
+                                        </div>
+                                    </div>"; ?>
+                        <?php endforeach; ?>
+                        <?php $result .= "</div>
+                        </div>"; ?>
+                    <?php endif; ?>
+                    <?php
+                    return $result;
+                }
+            ],
             'content:html',
             //'img_path',
+            [
+                'attribute' => 'active season',
+                'value' => function ($data){
+                    return $data->active_season == 1 ? 'YES' : 'NO';
+                }
+            ],
             'dt_create',
         ],
     ]) ?>

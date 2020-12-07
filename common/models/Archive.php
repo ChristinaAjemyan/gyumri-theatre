@@ -33,7 +33,7 @@ class Archive extends \yii\db\ActiveRecord
         return [
             [['title', 'content'], 'required'],
             [['content'], 'string'],
-            [['dt_create'], 'safe'],
+            [['dt_create','active_season'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['title', 'img_path'], 'string', 'max' => 255],
             ['title', 'filter', 'filter' => 'mb_strtolower']

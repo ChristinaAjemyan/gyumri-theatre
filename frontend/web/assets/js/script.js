@@ -31,7 +31,7 @@ $('#current_performance').owlCarousel({
       1200:{
         items:4,
         nav:true,
-        margin:0, 
+        margin:0,
       }
   }
 
@@ -59,11 +59,13 @@ $('#performances-carusel').owlCarousel({
       1200:{
         items:5,
         nav:true,
-        margin:0, 
+        margin:0,
       }
   }
 
 });
+
+
 
 
 $('#searchBtn').click(function() {
@@ -95,7 +97,62 @@ $('.popup_youtube').magnificPopup({
 $('.performances-carusel').magnificPopup({
     type: 'image',
     delegate:'a'
-  });
+});
+
+$('#current_performance_slide').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    nav: true,
+    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+    responsive:{
+        0:{
+            items:1,
+            nav:false,
+        },
+        700:{
+            items:2,
+            nav:false,
+        },
+        1000:{
+            items:3,
+            nav:true,
+        },
+        1200:{
+            items:4,
+            nav:true,
+            margin:0,
+        }
+    }
+});
+
+$('#season_carousel').owlCarousel({
+    loop:true,
+    margin:5,
+    responsiveClass:true,
+    nav: true,
+    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+    responsive:{
+        0:{
+            items:3,
+            nav:false,
+        },
+        700:{
+            items:3,
+            nav:false,
+        },
+        1000:{
+            items:4,
+            nav:true,
+        },
+        1200:{
+            items:6,
+            nav:true,
+            margin:0,
+        }
+    }
+
+});
 
 function getTranslate(data, enText, ruText, amText){
     if (data === 'en'){
@@ -188,8 +245,121 @@ $('.weekdays').on('click', function () {
 });
 $('#nav-tab .active').click();
 
+// archive ----
 
+$('.season_time').on('click',function () {
+    let archive_id = $(this).attr('data-id');
+    $('.theater_season_block').removeClass("active")
+    $(this).parent().addClass('active')
+    $.ajax({
+        url: window.location.href,
+        type: 'post',
+        dataType: 'json',
+        data: {id: archive_id},
+        beforeSend: function() {
+            $('#main_content_perf_data').empty();
+            $('#main_content_perf_data').append('<div class="d-flex justify-content-center load-icon m-5"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
+        },
+        success: function (data) {
+            $('#main_content_perf_data').html(`<div class="main_carousel owl-carousel archive_content_carousel" id="current_performance"></div>`)
+            if (typeof(data.performances) != "undefined" && data.performances !== null){
+                $.each(data.performances,function (i,item) {
+                    $(".archive_page_carousel .owl-carousel").append(`
+                    <div class="carousel_item">
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top" src="${data.backend_url+'/upload/avatars/performance/200/'+item.img_path}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.show_date}</h5>
+                                <p class="card-text">${item.title}</p>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                })
 
+                $('#current_performance').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    nav: true,
+                    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false,
+                        },
+                        700:{
+                            items:2,
+                            nav:false,
+                        },
+                        1000:{
+                            items:3,
+                            nav:true,
+                        },
+                        1200:{
+                            items:4,
+                            nav:true,
+                            margin:0,
+                        }
+                    }
+                });
+                if (typeof(data.season) != "undefined" && data.season !== null){
+                    $('.archive_main_content').html(`
+                    <div class="container">
+                        <h2 class="archive_main_title">${data.season.title} 
+                        ${data.lang === 'en' ? 'THEATER SEASON' : data.lang === 'ru' ? 'ТЕАТРАЛЬНЫЙ СЕЗОН' : 'ԹԱՏԵՐԱՇՐՋԱՆ'}
+                        </h2>
+                        <p class="archive_main_text">${data.season.content}</p>
+                    </div>
+                    `)
+
+                    $('#main_content_season_data').html(`<div class="performances-carusel owl-carousel" id="current_performance_slide"></div>`)
+                    $.each(data.season.images,function (i,item) {
+                        $(".archive_page_images_carousel .owl-carousel").append(`
+                        <div class="block-present">
+                            <a href="${data.backend_url+'/upload/galleries/original/'+item}">
+                                <img src="${data.backend_url+'/upload/galleries/250/'+item}" alt="Photo">
+                            </a>
+                        </div>
+                        `);
+                    })
+                    $('.performances-carusel').magnificPopup({
+                        type: 'image',
+                        delegate:'a'
+                    });
+                    $('#current_performance_slide').owlCarousel({
+                        loop:true,
+                        margin:10,
+                        responsiveClass:true,
+                        nav: true,
+                        navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                        responsive:{
+                            0:{
+                                items:1,
+                                nav:false,
+                            },
+                            700:{
+                                items:2,
+                                nav:false,
+                            },
+                            1000:{
+                                items:3,
+                                nav:true,
+                            },
+                            1200:{
+                                items:4,
+                                nav:true,
+                                margin:0,
+                            }
+                        }
+                    });
+                }
+            }
+            $('.load-icon').remove();
+        }
+    })
+})
+// archive end ----
 
 });
 

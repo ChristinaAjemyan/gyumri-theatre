@@ -2,11 +2,15 @@
 
 namespace backend\controllers;
 
+use common\models\ArchiveImage;
+use common\models\ArchivePerformance;
 use common\models\Main;
 use common\models\SourceMessage;
 use Yii;
 use common\models\Archive;
 use app\models\ArchiveSearch;
+use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -68,6 +72,8 @@ class ArchiveController extends Controller
     public function actionCreate()
     {
         $model = new Archive();
+        $model_image = new ArchiveImage();
+        $model_archive_perform = new ArchivePerformance();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -84,11 +90,40 @@ class ArchiveController extends Controller
                 $model->img_path = 'default.jpg';
                 $model->save();
             }
+
+            if (UploadedFile::getInstances($model_image,'image')){
+                if (!is_dir('upload/galleries/')){
+                    FileHelper::createDirectory('upload/galleries/original/');
+                    FileHelper::createDirectory('upload/galleries/250/');
+                }
+                $images = UploadedFile::getInstances($model_image, 'image');
+                foreach ($images as $image ){
+                    $image_name = time().rand(100, 999) . '.' . $image->extension;
+                    $model_image = new ArchiveImage();
+                    $model_image->archive_id = $model->attributes['id'];
+                    $model_image->image = $image_name;
+                    $model_image->save();
+                    $image->saveAs('upload/galleries/original/' . $image_name);
+                    Main::myResizeImage('galleries', $image_name, ['250']);
+                }
+            }
+
+            if (isset(Yii::$app->request->post('ArchivePerformance')['performance_id'])){
+                foreach (Yii::$app->request->post('ArchivePerformance')['performance_id'] as $performance){
+                    $model_archive_perform = new ArchivePerformance();
+                    $model_archive_perform->performance_id = $performance;
+                    $model_archive_perform->archive_id = $model->attributes['id'];
+                    $model_archive_perform->save();
+                }
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'model_image' => $model_image,
+            'model_archive_perform' => $model_archive_perform
         ]);
     }
 
@@ -102,8 +137,20 @@ class ArchiveController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_image = new ArchiveImage();
+        $model_archive_perform = new ArchivePerformance();
 
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
+
+        if (Yii::$app->request->post('src')){
+            $src = Yii::$app->request->post('src');
+            $img = ArchiveImage::find()->where(['image' => $src])->one();
+            $img->delete();
+            if (file_exists('upload/galleries/original/'.$src)){
+                unlink('upload/galleries/original/'.$src);
+                unlink('upload/galleries/250/'.$src);
+            }
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
@@ -121,12 +168,51 @@ class ArchiveController extends Controller
                     $model->save();
                 }
             }
+
+            if (UploadedFile::getInstances($model_image, 'image')){
+                if (!is_dir('upload/galleries/')){
+                    FileHelper::createDirectory('upload/galleries/original/');
+                    FileHelper::createDirectory('upload/galleries/250/');
+                }
+                $images = UploadedFile::getInstances($model_image, 'image');
+                foreach ($images as $image){
+                    $image_name = time().rand(100, 999) . '.' . $image->extension;
+                    $model_image = new ArchiveImage();
+                    $model_image->archive_id = $model->attributes['id'];
+                    $model_image->image = $image_name;
+                    $model_image->save();
+                    $image->saveAs('upload/galleries/original/' . $image_name);
+                    Main::myResizeImage('galleries', $image_name, ['250']);
+                }
+            }
+
+            ArchivePerformance::deleteAll(['=', 'archive_id', $id]);
+            if (isset(Yii::$app->request->post('ArchivePerformance')['performance_id'])){
+                foreach (Yii::$app->request->post('ArchivePerformance')['performance_id'] as $performance){
+                    $model_archive_perform = new ArchivePerformance();
+                    $model_archive_perform->performance_id = $performance;
+                    $model_archive_perform->archive_id = $model->attributes['id'];
+                    $model_archive_perform->save();
+                }
+            }
+
             unset($_SESSION['img_name']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $arr_performance = ArrayHelper::map(ArchivePerformance::find()->where(['archive_id' => $id])->all(), 'id', 'performance_id');
+
+        $arr_performance_id = [];
+        foreach ($arr_performance as $item){
+            $arr_performance_id[] = $item;
+        }
+        $model_archive_perform->performance_id = $arr_performance_id;
+
+
         return $this->render('update', [
             'model' => $model,
+            'model_image' => $model_image,
+            'model_archive_perform' => $model_archive_perform
         ]);
     }
 

@@ -55,6 +55,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'content:ntext',
             //'img_path',
+            [
+                'header' => 'active season',
+                'content' => function ($data){
+                     return $data->active_season == 1 ? 'YES' : 'NO';
+                }
+            ],
             'dt_create',
             ['class' => 'yii\grid\ActionColumn'],
         ],

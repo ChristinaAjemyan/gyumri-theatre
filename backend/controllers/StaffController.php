@@ -113,7 +113,7 @@ class StaffController extends Controller
                     $model_image->image = $image_name;
                     $model_image->save();
                     $image->saveAs('upload/galleries/original/' . $image_name);
-                    Main::myResizeImage('galleries', $image_name, ['original','250']);
+                    Main::myResizeImage('galleries', $image_name, ['250']);
                 }
             }
 

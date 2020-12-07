@@ -2032,3 +2032,160 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-top: 35px;
     }
 }
+
+.archive_page .archive_header{
+    padding-top: 120px;
+    background: url('../images/about_baner.png') center center;
+    background-size: cover;
+    min-height: 425px;
+    max-height: 395px;
+}
+.archive_page .archive_header_content{
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    max-width: 650px;
+    margin:  0 auto 0;
+}
+.archive_page .archive_header_title{
+    border-bottom: none;
+    font-family: "Arm Hmks";
+    color: #e18848;
+    font-size: 80px;
+    letter-spacing: 5px;
+}
+.archive_page .archive_header_text{
+    font-family: "Arm Hmks";
+    font-size: 30px;
+}
+.theater_season {
+    padding-bottom: 15px;
+    background:#ececec;
+}
+.theater_season .theater_season_block{
+    margin: 10px auto 10px;
+    color: #414141;
+    background: white;
+    text-align: center;
+    box-shadow: 0px -3px 4px -2px rgba(0,0,0,0.50);
+    max-width: 120px;
+    height: 60px;
+    padding-top: 5px;
+    border-radius: 20px;
+
+}
+.theater_season .theater_season_block.active{
+    color: white;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+}
+.theater_season .theater_season_carousel{
+    transform: translateY(-15px);
+}
+.theater_season .seasnon_number{
+    font-size: 25px;
+    font-family: "Arm Hmks";
+
+}
+.theater_season .season_type{
+    margin-top: -10px;
+    font-family: "Arm Hmks";
+}
+.theater_season .owl-nav{
+    height: 0px;
+    width: 100%;
+    position: absolute;
+    top:50%;
+
+}
+.theater_season .owl-nav .owl-prev,
+.theater_season .owl-nav .owl-next{
+    position: absolute;
+
+}
+.theater_season .owl-nav .owl-prev:focus,
+.theater_season .owl-nav .owl-next:focus{
+    border: none;
+    outline: none;
+}
+.theater_season .owl-nav svg{
+    font-size: 50px;
+    color: #999999;
+}
+.theater_season .owl-nav .owl-prev{
+    left: -3%;
+}
+.theater_season .owl-nav .owl-next{
+    right: -4%;
+}
+.archive_page_carousel{
+    background:#ececec ;
+}
+.archive_page_carousel .card{
+    background:#ececec ;
+}
+.archive_page .archive_page_carousel_title{
+    border:none;
+    color: #c2c1c1;
+    font-size: 25px;
+    text-align: center;
+    font-family: "Arm Hmks";
+    letter-spacing: 2px;
+
+}
+.archive_page .archive_page_carousel_title::after{
+    content:'';
+    background: none;
+}
+.archive_line{
+    margin-top: 40px;
+    display: block;
+    border: 1px solid white;
+}
+.archive_main_content {
+    text-align:justify;
+}
+.archive_main_content .archive_main_title{
+    margin-top: 55px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 42px;
+    color: black;
+    font-family: "Arm Hmks";
+    border: none;
+}
+.archive_main_content .archive_main_title::after{
+    display: none;
+}
+.archive_page .pagination{
+    margin: 10px auto 25px;
+    max-width: 200px;
+}
+.archive_page .pagination .page-link{
+    border: none;
+    font-size: 20px;
+    color: #999999;
+    font-weight: 600;
+}
+.archive_page .pagination .active .page-link{
+    color: #e18848;
+    background: none;
+
+    transition: color .5s;
+}
+.archive_page .pagination .page-link:hover{
+    background: none ;
+    color: #e18848;
+}
+.archive_page .pagination span svg{
+    font-size: 13px;
+    color: #e18848;
+
+    transition: color .5s;
+}
+.archive_page .pagination span:hover svg{
+    color: #999999;
+}
+.theater_season_block span{
+    cursor: pointer;
+    margin-bottom: 5px;
+}
