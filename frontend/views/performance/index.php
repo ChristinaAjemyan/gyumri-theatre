@@ -1,9 +1,30 @@
-<?php use yii\helpers\Url;
+<?php use common\models\Type;
+use yii\helpers\Url;
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
-    <div class="container p-3">
-        <div style="margin-top: 120px" class="tab-content" id="nav-tabContent">
-            <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Ներկայացումներ'); ?></b></h2>
+    <div class="archive_page">
+        <div  class="archive_header">
+            <div class="archive_header_content">
+                <h1 class="archive_header_title"><?= Yii::t('home','Ներկայացումներ') ?></h1>
+                <p class="archive_header_text"><?= Yii::t('home','Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online') ?></p>
+            </div>
+        </div>
+
+        <div align="center">
+            <div class="btn-group mb-3 ml-1">
+                <?php $types = Type::find()->all(); ?>
+                <?php if (isset($types)): ?>
+                <?php foreach ($types as $type) : ?>
+                <button type="button" class="performance_tab_cont client_tab" data-toggle="pill" aria-controls="custom-tabs-one-client" data-id="<?= $type->id ?>" aria-selected="false"><?= $type->title ?></button>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container p-3 perf">
+        <div class="tab-content" id="nav-tabContent">
                 <?php if (!empty($performances) && isset($performances)) : ?>
                 <?php foreach ($performances as $performance) : ?>
                 <div class="media d-block">
@@ -43,15 +64,15 @@ use yii\widgets\LinkPager;  ?>
                 <?php endforeach; ?>
                 <?php endif; ?>
             <div>
-                <?= LinkPager::widget([
-                    'pagination' => $pages,
-                    'maxButtonCount' => 6,
-                    'prevPageLabel' => "<i class=\"fas fa-chevron-left\"></i>",
-                    'nextPageLabel' => "<i class=\"fas fa-chevron-right\"></i>",
-                    'options' => [
-                        'class' => 'pagination actros_list_page'
-                    ]
-                ]);?>
+<!--                --><?//= LinkPager::widget([
+//                    'pagination' => $pages,
+//                    'maxButtonCount' => 6,
+//                    'prevPageLabel' => "<i class=\"fas fa-chevron-left\"></i>",
+//                    'nextPageLabel' => "<i class=\"fas fa-chevron-right\"></i>",
+//                    'options' => [
+//                        'class' => 'pagination actros_list_page'
+//                    ]
+//                ]);?>
             </div>
         </div>
     </div>

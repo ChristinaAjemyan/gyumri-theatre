@@ -105,6 +105,7 @@ AppAsset::register($this);
                 <ul class="nav sidebar-nav-sub">
                     <li class="nav-sub-item"><a href="/genre/index" class="nav-sub-link"><i class="fab fa-glide-g"></i> &nbsp;Genre</a></li>
                     <li class="nav-sub-item"><a href="/role/index" class="nav-sub-link"><i class="fas fa-user-friends"></i> &nbsp;Role</a></li>
+                    <li class="nav-sub-item"><a href="/type/index" class="nav-sub-link"><i class="fas fa-user-friends"></i> &nbsp;Type</a></li>
                 </ul>
             </li>
 

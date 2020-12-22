@@ -2189,3 +2189,19 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     cursor: pointer;
     margin-bottom: 5px;
 }
+.client_tab{
+    font-family: "Arm Hmks";
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 15px 35px;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+.client_tab:hover{
+    color: dimgrey;
+}
+.client_tab:focus{
+    border: none;
+    outline: none;
+}

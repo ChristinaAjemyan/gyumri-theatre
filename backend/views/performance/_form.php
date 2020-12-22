@@ -2,6 +2,7 @@
 
 use common\models\Genre;
 use common\models\Performance;
+use common\models\Type;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -84,6 +85,17 @@ use mihaildev\elfinder\ElFinder;
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
+
+    <div class="col-4 p-0">
+        <?= $form->field($model_type_perform, 'type_id')->widget(Select2::className(), [
+            'data' => ArrayHelper::map(Type::find()->all(), 'id', 'title'),
+            'options' => [
+                'placeholder' => 'Select Type ...',
+                'multiple' => true
+            ],
+        ]) ?>
+    </div>
+
 
     <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն', 2 => 'Հյուրախաղ']) ?>
 

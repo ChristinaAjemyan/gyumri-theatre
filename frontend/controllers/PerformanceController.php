@@ -14,11 +14,13 @@ use common\models\Main;
 use common\models\Message;
 use common\models\Performance;
 use common\models\SourceMessage;
+use common\models\TypePerformance;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -47,7 +49,61 @@ class PerformanceController extends Controller
             }
         }
 
+        if (Yii::$app->request->isAjax){
+            $type_id = Yii::$app->request->post('id');
+            $performances_arr = [];
+
+            $performances = TypePerformance::find()->with('performance')->where(['type_id' => $type_id])->asArray()->all();
+
+            foreach ($performances as $i => $item){
+
+                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item['id']])->asArray()->all();
+                $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
+
+                $str = '';
+                foreach ($genre as $value){
+                    $str .= ' '.Yii::t('text', $value).',';
+                }
+
+                $performances_arr[$i]['id'] = $item['performance']['id'];
+                $performances_arr[$i]['author'] = Yii::t('text', $item['performance']['author']);
+                $performances_arr[$i]['title'] = Yii::t('text', $item['performance']['title']);
+                $performances_arr[$i]['genre'] = trim($str, ',');
+            }
+            echo '<pre>';
+            var_dump($performances_arr);
+            return Json::encode([
+                'performances' => $performances_arr,
+            ]);
+        }
+
         return $this->render('index', compact('performances', 'pages'));
+    }
+
+    public function actionBig(){
+        $this->view->title = Yii::t('home', 'Ներկայացումներ');
+        $performancesBigHall = Performance::find()->where(['hall' => 0])->orderBy(['id' => SORT_DESC])->asArray();
+        $pages = new Pagination([
+            'totalCount' => $performancesBigHall->count(),
+            'defaultPageSize' => 15,
+        ]);
+        $performances = $performancesBigHall->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        if (!empty($performances) && isset($performances)){
+            foreach ($performances as $key => $value){
+                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $value['id']])->asArray()->all();
+                $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
+                $str = '';
+                foreach ($genre as $item){
+                    $str .= ' '.Yii::t('text', $item).',';
+                }
+                $performances[$key]['genre'] = trim($str, ',');
+                $performances[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
+            }
+        }
+
+        return $this->render('big', compact('performances', 'pages'));
     }
 
     public function actionSmall(){

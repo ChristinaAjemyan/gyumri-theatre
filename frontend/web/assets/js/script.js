@@ -361,5 +361,57 @@ $('.season_time').on('click',function () {
 })
 // archive end ----
 
+$('.performance_tab_cont').on('click',function () {
+    let type_id = $(this).attr('data-id')
+    console.log(type_id)
+
+    $.ajax({
+        url: window.location.href,
+        type: 'post',
+        dataType: 'json',
+        data: {id: type_id},
+        success: function (data) {
+            console.log(data)
+            $('.perf').html(`<div class="tab-content" id="nav-tabContent"></div>`);
+            if (typeof(data.performances) != "undefined" && data.performances !== null){
+                $.each(data.performances,function (i,item) {
+                    $("#nav-tabContent").append(`
+                    <div class="media d-block">
+                        <div class="row">
+                            <div class="col-md-3  col-12">
+                                <a href="/performance/view/rthrthrt">
+                                    <img src="http://theatre.loc/upload/avatars/performance/200/1602595929105.jpg" class="mr-5" alt="Photo">
+                                </a>
+                            </div>
+                            <div class="col-md-9 col-12">
+                                <div class="media-body">
+                                    <p class="author">ուիլյամ շեքսպիր</p>
+                                    <a href="/performance/view/%D5%A5%D6%80%D5%AF%D5%B6%D5%A1%D5%A3%D5%B8%D6%82%D5%B5%D5%B6-%D5%B7%D5%A1%D5%B6-%D5%A1%D5%B9%D6%84%D5%A5%D6%80">
+                                        <h5 class="mt-0 media-title">երկնագույն շան աչքեր</h5>
+                                    </a>
+                                    <small class="movie-type"> դրամա</small>
+                                    <p class="media-text">
+                                        </p><p>Lorem Ipsum- ը պարզապես տպագրական և տպագրական արդյունաբերության կեղծ տեքստ է: Lorem Ipsum- ը արդյունաբերության ստանդարտ կեղծ տեքստն է եղել 1500-ականներից ի վեր, երբ անհայտ տպիչը վերցրեց տիպի պարկուճ և խառնեց այն ՝ պատրաստելու համար տիպային նմուշնե                                    ...                                </p>
+                                    <div class="media-footer">
+                                        <div class="media_btn-group">
+                                            <a href="/performance/view/%D5%A5%D6%80%D5%AF%D5%B6%D5%A1%D5%A3%D5%B8%D6%82%D5%B5%D5%B6-%D5%B7%D5%A1%D5%B6-%D5%A1%D5%B9%D6%84%D5%A5%D6%80" class="btn more_btn">ԱՎԵԼԻՆ</a>
+                                                                                </div>
+                                        <p class="view-movie">04 Դեկտեմբեր 17:29</p>
+                                        <p class="movie-lenght">80 ՐՈՊԵ<span>17+</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>           
+                `);
+                })
+            }
+
+        }
+    })
+})
+
 });
+
+
 

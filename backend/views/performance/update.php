@@ -54,7 +54,7 @@ $column[] = $column_name[11];
     </div>
     <?= $this->render('_form', [
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
-        'result' => $result, 'model_genre_perform' => $model_genre_perform
+        'result' => $result, 'model_genre_perform' => $model_genre_perform, 'model_type_perform' => $model_type_perform
     ]) ?>
 </div>
 

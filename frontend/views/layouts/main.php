@@ -88,12 +88,12 @@ AppAsset::register($this);
                     <li class="nav-item dropdown <?= Yii::$app->request->pathInfo == 'performance' ||
                     Yii::$app->request->pathInfo == 'performance/small' ? 'active': ''; ?>">
                         <?= Html::a(Yii::t('home', 'Ներկայացումներ')."<span class=\"hove_height\"></span>",
-                            'javascript:void(0)', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
+                            '/performance/index', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                             <li>
                                 <?= Html::a(Yii::t('home', 'Մեծ թատրոն'),
-                                    '/performance', ['class' => 'dropdown-item']); ?>
+                                    '/performance/big', ['class' => 'dropdown-item']); ?>
                             </li>
                             <li>
                                 <?= Html::a(Yii::t('home', 'Փոքր թատրոն'),

@@ -7,6 +7,7 @@ use common\models\Main;
 use common\models\SourceMessage;
 use common\models\StaffPerformance;
 use common\models\Image;
+use common\models\TypePerformance;
 use Yii;
 use common\models\Performance;
 use app\models\PerformanceSearch;
@@ -88,6 +89,7 @@ class PerformanceController extends Controller
         $model_stf_perform = new StaffPerformance();
         $model_image = new Image();
         $model_genre_perform = new GenrePerformance();
+        $model_type_perform = new TypePerformance();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -160,6 +162,15 @@ class PerformanceController extends Controller
                 }
             }
 
+            if (isset(Yii::$app->request->post('typePerformance')['type_id'])){
+                foreach (Yii::$app->request->post('typePerformance')['type_id'] as $type){
+                    $model_type_perform = new TypePerformance();
+                    $model_type_perform->type_id = $type;
+                    $model_type_perform->performance_id = $model->attributes['id'];
+                    $model_type_perform->save();
+                }
+            }
+
             if (UploadedFile::getInstances($model_image, 'image')){
                 if (!is_dir('upload/galleries/')){
                     FileHelper::createDirectory('upload/galleries/original/');
@@ -180,7 +191,8 @@ class PerformanceController extends Controller
         }
         return $this->render('create', [
             'model' => $model, 'model_image' => $model_image,
-            'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform
+            'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform,
+            'model_type_perform' => $model_type_perform
         ]);
     }
 
@@ -197,6 +209,7 @@ class PerformanceController extends Controller
         $model_stf_perform = new StaffPerformance();
         $model_image = new Image();
         $model_genre_perform = new GenrePerformance();
+        $model_type_perform = new TypePerformance();
 
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
         Yii::$app->session->set('banner', $model::find()->asArray()->where(['id' => $id])->one()['banner']);
@@ -295,7 +308,7 @@ class PerformanceController extends Controller
             }
 
             StaffPerformance::deleteAll(['=', 'performance_id', $id]);
-            if (isset(Yii::$app->request->post('StaffPerformance')['staff_id'])){
+            if (!empty(Yii::$app->request->post('StaffPerformance')['staff_id'])){
                 foreach (Yii::$app->request->post('StaffPerformance')['staff_id'] as $staff){
                     $model_stf_present = new StaffPerformance();
                     $model_stf_present->staff_id = $staff;
@@ -305,12 +318,22 @@ class PerformanceController extends Controller
             }
 
             GenrePerformance::deleteAll(['=', 'performance_id', $id]);
-            if (isset(Yii::$app->request->post('GenrePerformance')['genre_id'])){
+            if (!empty(Yii::$app->request->post('GenrePerformance')['genre_id'])){
                 foreach (Yii::$app->request->post('GenrePerformance')['genre_id'] as $genre){
                     $model_genre_perform = new GenrePerformance();
                     $model_genre_perform->genre_id = $genre;
                     $model_genre_perform->performance_id = $model->attributes['id'];
                     $model_genre_perform->save();
+                }
+            }
+
+            TypePerformance::deleteAll(['=', 'performance_id', $id]);
+            if (!empty(Yii::$app->request->post('TypePerformance')['type_id'])){
+                foreach (Yii::$app->request->post('TypePerformance')['type_id'] as $type){
+                    $model_type_perform = new TypePerformance();
+                    $model_type_perform->type_id = $type;
+                    $model_type_perform->performance_id = $model->attributes['id'];
+                    $model_type_perform->save();
                 }
             }
 
@@ -338,7 +361,8 @@ class PerformanceController extends Controller
 
         $arr_staff = ArrayHelper::map(StaffPerformance::find()->where(['performance_id' => $id])->all(), 'id', 'staff_id');
         $arr_genre = ArrayHelper::map(GenrePerformance::find()->where(['performance_id' => $id])->all(), 'id', 'genre_id');
-        $arr_staff_id = []; $arr_genre_id = [];
+        $arr_type = ArrayHelper::map(TypePerformance::find()->where(['performance_id' => $id])->all(),'id','type_id');
+        $arr_staff_id = []; $arr_genre_id = []; $arr_type_id = [];
         foreach ($arr_staff as $item){
             $arr_staff_id[] = $item;
         }
@@ -347,10 +371,15 @@ class PerformanceController extends Controller
             $arr_genre_id[] = $item;
         }
         $model_genre_perform->genre_id = $arr_genre_id;
+        foreach ($arr_type as $item){
+            $arr_type_id[] = $item;
+        }
+        $model_type_perform->type_id = $arr_type_id;
 
         return $this->render('update', [
             'model' => $model, 'model_image' => $model_image,
-            'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform
+            'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform,
+            'model_type_perform' => $model_type_perform
         ]);
     }
 
