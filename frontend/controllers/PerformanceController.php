@@ -48,35 +48,32 @@ class PerformanceController extends Controller
                 $performances[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
             }
         }
-
         if (Yii::$app->request->isAjax){
             $type_id = Yii::$app->request->post('id');
             $performances_arr = [];
-
             $performances = TypePerformance::find()->with('performance')->where(['type_id' => $type_id])->asArray()->all();
-
             foreach ($performances as $i => $item){
-
-                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item['id']])->asArray()->all();
+                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item['performance']['id']])->asArray()->all();
                 $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
-
                 $str = '';
                 foreach ($genre as $value){
                     $str .= ' '.Yii::t('text', $value).',';
                 }
-
                 $performances_arr[$i]['id'] = $item['performance']['id'];
                 $performances_arr[$i]['author'] = Yii::t('text', $item['performance']['author']);
                 $performances_arr[$i]['title'] = Yii::t('text', $item['performance']['title']);
+                $performances_arr[$i]['slug'] = Yii::t('text', $item['performance']['slug']);
+                $performances_arr[$i]['desc'] = Yii::t('text', $item['performance']['desc']);
+                $performances_arr[$i]['img_path'] = Yii::t('text', $item['performance']['img_path']);
                 $performances_arr[$i]['genre'] = trim($str, ',');
+                $performances_arr[$i]['age_restriction'] = $item['performance']['age_restriction'];
+                $performances_arr[$i]['performance_length'] = $item['performance']['performance_length'];
+                $performances_arr[$i]['date'] = Performance::getPerformanceTime($item['performance']['show_date']);
             }
-            echo '<pre>';
-            var_dump($performances_arr);
             return Json::encode([
                 'performances' => $performances_arr,
             ]);
         }
-
         return $this->render('index', compact('performances', 'pages'));
     }
 

@@ -2205,3 +2205,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border: none;
     outline: none;
 }
+
+.active_type{
+    /*border-bottom: 3px solid #e18848;*/
+}

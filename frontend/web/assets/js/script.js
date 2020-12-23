@@ -363,50 +363,56 @@ $('.season_time').on('click',function () {
 
 $('.performance_tab_cont').on('click',function () {
     let type_id = $(this).attr('data-id')
-    console.log(type_id)
-
+    $('.performance_tab_cont').css('border-bottom', 'none');
+    $(this).addClass('active_type');
+    $(this).css('border-bottom', '3px solid #e18848');
+    $('.table-content').empty();
     $.ajax({
         url: window.location.href,
         type: 'post',
         dataType: 'json',
         data: {id: type_id},
+        beforeSend: function() {
+            $('#nav-tabContent').empty();
+            $('#nav-tabContent').append('<div class="d-flex justify-content-center load-icon m-5"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
+        },
         success: function (data) {
-            console.log(data)
-            $('.perf').html(`<div class="tab-content" id="nav-tabContent"></div>`);
             if (typeof(data.performances) != "undefined" && data.performances !== null){
+            $('.perf').html(`<div class="tab-content" id="nav-tabContent"></div>`);
+
                 $.each(data.performances,function (i,item) {
-                    $("#nav-tabContent").append(`
-                    <div class="media d-block">
-                        <div class="row">
-                            <div class="col-md-3  col-12">
-                                <a href="/performance/view/rthrthrt">
-                                    <img src="http://theatre.loc/upload/avatars/performance/200/1602595929105.jpg" class="mr-5" alt="Photo">
+                    $(".tab-content").append(`
+                <div class="media d-block">
+                    <div class="row">
+                        <div class="col-md-3  col-12">
+                            <a href="/performance/view/${item.slug}">
+                                <img src="http://theatre.loc/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <div class="media-body">
+                                <p class="author">${item.author}</p>
+                                <a href="/performance/view/${item.slug}">
+                                    <h5 class="mt-0 media-title">${item.title}</h5>
                                 </a>
-                            </div>
-                            <div class="col-md-9 col-12">
-                                <div class="media-body">
-                                    <p class="author">ուիլյամ շեքսպիր</p>
-                                    <a href="/performance/view/%D5%A5%D6%80%D5%AF%D5%B6%D5%A1%D5%A3%D5%B8%D6%82%D5%B5%D5%B6-%D5%B7%D5%A1%D5%B6-%D5%A1%D5%B9%D6%84%D5%A5%D6%80">
-                                        <h5 class="mt-0 media-title">երկնագույն շան աչքեր</h5>
-                                    </a>
-                                    <small class="movie-type"> դրամա</small>
-                                    <p class="media-text">
-                                        </p><p>Lorem Ipsum- ը պարզապես տպագրական և տպագրական արդյունաբերության կեղծ տեքստ է: Lorem Ipsum- ը արդյունաբերության ստանդարտ կեղծ տեքստն է եղել 1500-ականներից ի վեր, երբ անհայտ տպիչը վերցրեց տիպի պարկուճ և խառնեց այն ՝ պատրաստելու համար տիպային նմուշնե                                    ...                                </p>
-                                    <div class="media-footer">
-                                        <div class="media_btn-group">
-                                            <a href="/performance/view/%D5%A5%D6%80%D5%AF%D5%B6%D5%A1%D5%A3%D5%B8%D6%82%D5%B5%D5%B6-%D5%B7%D5%A1%D5%B6-%D5%A1%D5%B9%D6%84%D5%A5%D6%80" class="btn more_btn">ԱՎԵԼԻՆ</a>
-                                                                                </div>
-                                        <p class="view-movie">04 Դեկտեմբեր 17:29</p>
-                                        <p class="movie-lenght">80 ՐՈՊԵ<span>17+</span></p>
-                                    </div>
+                                <small class="movie-type"> ${item.genre}</small>
+                                <p class="media-text">${item.desc.substring(0, 270)}${item.desc.length > 270 ? ' ...': ''}</p>
+                                <div class="media-footer">
+                                    <div class="media_btn-group"><a href="/performance/view/${item.slug}" class="btn more_btn">ԱՎԵԼԻՆ</a></div>
+                                    <p class="view-movie">${item.date}</p>
+                                    <p class="movie-lenght">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
                                 </div>
                             </div>
                         </div>
-                    </div>           
-                `);
+                    </div>
+                </div>           
+            `);
                 })
+            }else{
+                $(".tab-content").append(`
+                <p class="text-center h2 remove">Ներկայացում չի գտնվել</p>
+                `);
             }
-
         }
     })
 })

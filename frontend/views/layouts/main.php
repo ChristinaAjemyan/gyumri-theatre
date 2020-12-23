@@ -88,7 +88,7 @@ AppAsset::register($this);
                     <li class="nav-item dropdown <?= Yii::$app->request->pathInfo == 'performance' ||
                     Yii::$app->request->pathInfo == 'performance/small' ? 'active': ''; ?>">
                         <?= Html::a(Yii::t('home', 'Ներկայացումներ')."<span class=\"hove_height\"></span>",
-                            '/performance/index', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
+                            '/performance', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                             <li>

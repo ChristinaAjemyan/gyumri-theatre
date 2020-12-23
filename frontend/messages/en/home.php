@@ -48,5 +48,6 @@ return [
     'Շնորհակալություն մեզ հետ կապվելու համար: Մենք ձեզ կպատասխանենք հնարավորինս շուտ:' =>
         'Thank you for contacting us. We will respond to you as soon as possible.',
     'Ձեր հաղորդագրությունն ուղարկելիս սխալ տեղի ունեցավ:' =>
-        'There was an error sending your message.'
+        'There was an error sending your message.',
+    'Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online' => 'TICKETS CAN BE PURCHASED FROM GYUMRI DRAMATIC THEATER OR BY ORDERING ONLINE'
 ];

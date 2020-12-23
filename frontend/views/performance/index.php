@@ -1,6 +1,8 @@
 <?php use common\models\Type;
 use yii\helpers\Url;
-use yii\widgets\LinkPager;  ?>
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax; ?>
+
 <main class="main_movies mb-5">
     <div class="archive_page">
         <div  class="archive_header">
@@ -22,7 +24,7 @@ use yii\widgets\LinkPager;  ?>
         </div>
 
     </div>
-
+    <?php Pjax::begin() ?>
     <div class="container p-3 perf">
         <div class="tab-content" id="nav-tabContent">
                 <?php if (!empty($performances) && isset($performances)) : ?>
@@ -63,17 +65,20 @@ use yii\widgets\LinkPager;  ?>
                 </div>
                 <?php endforeach; ?>
                 <?php endif; ?>
-            <div>
-<!--                --><?//= LinkPager::widget([
-//                    'pagination' => $pages,
-//                    'maxButtonCount' => 6,
-//                    'prevPageLabel' => "<i class=\"fas fa-chevron-left\"></i>",
-//                    'nextPageLabel' => "<i class=\"fas fa-chevron-right\"></i>",
-//                    'options' => [
-//                        'class' => 'pagination actros_list_page'
-//                    ]
-//                ]);?>
+
+            <div class="table-content">
+                <?= LinkPager::widget([
+                    'pagination' => $pages,
+                    'maxButtonCount' => 6,
+                    'prevPageLabel' => "<i class=\"fas fa-chevron-left\"></i>",
+                    'nextPageLabel' => "<i class=\"fas fa-chevron-right\"></i>",
+                    'options' => [
+                        'class' => 'pagination actros_list_page'
+                    ]
+                ]);?>
             </div>
         </div>
     </div>
+    <?php Pjax::end() ?>
+
 </main>
