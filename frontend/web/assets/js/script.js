@@ -386,7 +386,7 @@ $('.performance_tab_cont').on('click',function () {
                     <div class="row">
                         <div class="col-md-3  col-12">
                             <a href="/performance/view/${item.slug}">
-                                <img src="http://theatre.loc/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
+                                <img src="${data.base_path}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
                             </a>
                         </div>
                         <div class="col-md-9 col-12">
