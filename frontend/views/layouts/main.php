@@ -97,7 +97,7 @@ AppAsset::register($this);
                             </li>
                             <li>
                                 <?= Html::a(Yii::t('home', 'Փոքր թատրոն'),
-                                '/performance/small', ['class' => 'dropdown-item']); ?>
+                                    '/performance/small', ['class' => 'dropdown-item']); ?>
                             </li>
                         </ul>
                     </li>
@@ -105,7 +105,7 @@ AppAsset::register($this);
                         <?= Html::a(Yii::t('home', 'Նորություններ')."<span class=\"hove_height\"></span>",
                             '/news', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink3',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
-<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
                             <li>
                                 <?/*= Html::a(Yii::t('home', 'Լրատվամիջոց'),
                                     '', ['class' => 'dropdown-item']); */?>
@@ -134,18 +134,13 @@ AppAsset::register($this);
                         <a href="javascript:void(0)"><i class="fab fa-telegram-plane"></i></a>
                     </li>
                     <li class="search_icon_button">
-<!--                        <input type="text" class="form-control" placeholder="Search...">-->
+                        <!--                        <input type="text" class="form-control" placeholder="Search...">-->
                     </li>
                     <li>
-<!--                        <select name="languaga" class="language_select">-->
-<!--                            <option value="am">Հայ</option>-->
-<!--                            <option value="ru">Рус</option>-->
-<!--                            <option value="en">Eng</option>-->
-<!--                        </select>-->
                         <?= Html::beginForm('/site/language'); ?>
                         <?= Html::dropDownList('language', Yii::$app->language,
-                            ['am' => 'Հայ', 'ru' => 'Рус', 'en' => 'Eng'], [
-                                    'class' => 'language_select',
+                            ['am' => 'ՀԱՅ', 'ru' => 'РУС', 'en' => 'ENG'], [
+                                'class' => 'language_select',
                                 'onChange' => 'this.form.submit()'
                             ]); ?>
                         <?= Html::endForm(); ?>
@@ -185,31 +180,31 @@ AppAsset::register($this);
     <?= $content ?>
 
     <?php if (Yii::$app->request->pathInfo !== 'site/about'): ?>
-    <section class="about-carousel" style="transform: translateY(30px);">
-        <div class="container">
+        <section class="about-carousel" style="transform: translateY(30px);">
+            <div class="container">
 
-            <div class="main_carousel owl-carousel" id="performances-carusel">
-                <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
-                <?php if (!empty($performances) && isset($performances)): ?>
-                <?php foreach ($performances as $item): ?>
-                <div class="carousel_item">
-                    <a href="/performance/view?id=<?= $item->id; ?>">
-                        <div class="card">
-                            <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
-                                <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
+                <div class="main_carousel owl-carousel" id="performances-carusel">
+                    <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
+                    <?php if (!empty($performances) && isset($performances)): ?>
+                        <?php foreach ($performances as $item): ?>
+                            <div class="carousel_item">
+                                <a href="/performance/view?id=<?= $item->id; ?>">
+                                    <div class="card">
+                                        <img class="card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
+                                            <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
-                    </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-                <?php endforeach; ?>
-                <?php endif; ?>
+                <hr class="foote-and-carusel">
             </div>
-            <hr class="foote-and-carusel">
-        </div>
 
-    </section>
+        </section>
     <?php endif; ?>
 
     <div class='footer_year'>
@@ -220,7 +215,7 @@ AppAsset::register($this);
     </div>
 </div>
 
-    <?php $this->endBody() ?>
+<?php $this->endBody() ?>
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>-->
