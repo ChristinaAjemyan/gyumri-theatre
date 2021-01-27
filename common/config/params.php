@@ -6,8 +6,8 @@ return [
     'senderName' => 'Example.com mailer',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
-    'backend-url' => 'http://thadmin.brainfors.com/site/login',
-    'front-url' => 'http://thweb.brainfors.com/',
+    'backend-url' => 'http://thadmin.brainfors.com',
+    'front-url' => 'http://thweb.brainfors.com',
 /*    'backend-url' => 'http://theatre.loc',
     'front-url' => 'http://front.loc',*/
 ];
