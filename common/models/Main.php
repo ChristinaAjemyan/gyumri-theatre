@@ -164,5 +164,9 @@ class Main extends Model
     public static function uppercaseFirstLetter($str){
         return mb_substr(mb_strtoupper(Yii::t('text', $str)), 0, 1).mb_substr(Yii::t('text', $str), 1);
     }
+    public static function uppercaseNames($str){
+        return  mb_convert_case(Yii::t('text', $str), MB_CASE_TITLE, "UTF-8");
+    }
+
 
 }

@@ -26,18 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => null,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             [
                 'header' => 'image',
-                'contentOptions' => ['class' => 'text-center'],
+                'contentOptions' => ['class' => 'text-center st_images'],
                 'content' => function ($data){
                     $images = [
                         [
-                            'src' => Yii::getAlias('@web').'/upload/avatars/staff/400/'.$data['img_path'], ['height' => '50px'],
-                            'title' => $data['first_name'].' '.$data['last_name'],
+                            'src' => Yii::getAlias('@web').'/upload/avatars/staff/400/'.$data['img_path'],
+                            'title' => Main::uppercaseNames($data['first_name']).' '.Main::uppercaseNames($data['last_name']),
                         ]
                     ];
                     return LightBoxWidget::widget([
@@ -50,15 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'id',
             [
-                'header' => 'first_name',
+                'header' => 'first name',
                 'content' => function ($data){
-                    return Main::uppercaseFirstLetter($data->first_name);
+                    return Main::uppercaseNames($data->first_name);
                 },
             ],
             [
-                'header' => 'last_name',
+                'header' => 'last name',
                 'content' => function ($data){
-                    return Main::uppercaseFirstLetter($data->last_name);
+                    return Main::uppercaseNames($data->last_name);
                 },
             ],
 //            'date_of_birth',

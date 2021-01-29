@@ -12921,7 +12921,7 @@ textarea.parsley-success:focus {
         height: 60px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: end;
         text-align: left; } }
 .slim-footer .container p,
 .slim-footer .container-fluid p {
@@ -41175,4 +41175,8 @@ a.hover-white-8:hover, a.hover-white-8:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+td.st_images a img{
+    width:50px;height:50px;object-fit:cover
 }

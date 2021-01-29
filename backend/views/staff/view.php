@@ -57,11 +57,11 @@ $column[] = $column_name[9];
             //'id',
             [
                 'attribute' => 'first_name',
-                'value' => Main::uppercaseFirstLetter($model->first_name)
+                'value' => Main::uppercaseNames($model->first_name)
             ],
             [
                 'attribute' => 'last_name',
-                'value' => Main::uppercaseFirstLetter($model->last_name)
+                'value' => Main::uppercaseNames($model->last_name)
             ],
             'slug',
             [

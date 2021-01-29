@@ -45,7 +45,7 @@ use mihaildev\elfinder\ElFinder;
 
             <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd']) ?>
+            <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off']) ?>
 
             <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
         </div>

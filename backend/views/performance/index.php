@@ -1,6 +1,7 @@
 <?php
 
 use common\models\Main;
+use pcrt\widgets\datepicker\Datepicker;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use slavkovrn\lightbox\LightBoxWidget;
@@ -26,12 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => null,
+
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'header' => 'image',
-                'contentOptions' => ['class' => 'text-center'],
+                'contentOptions' => ['class' => 'text-center st_images'],
                 'content' => function ($data){
                     $images = [
                         [
@@ -70,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach ($staff as $item){
                         $first_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['first_name'];
                         $last_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['last_name'];
-                        $arr[$item['staff_id']] = Main::uppercaseFirstLetter($first_name).' '.Main::uppercaseFirstLetter($last_name);
+                        $arr[$item['staff_id']] = Main::uppercaseNames($first_name).' '.Main::uppercaseNames($last_name);
                     }
                     foreach ($arr as $key => $value){?>
                         <div class="modal fade" id="modalLong<?= $data->id; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
@@ -101,6 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'banner',
             'show_date',
+
             //'slug',
             //'trailer',
             //'age_restriction',

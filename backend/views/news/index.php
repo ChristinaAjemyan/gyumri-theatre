@@ -24,12 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => null,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'header' => 'image',
-                'contentOptions' => ['class' => 'text-center'],
+                'contentOptions' => ['class' => 'text-center st_images'],
                 'content' => function ($data){
                     $images = [
                         [
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return LightBoxWidget::widget([
                         'id'     => 'lightbox',
                         'class'  => 'galary',
-                        'height' => '70px',
+                        'height' => '50px',
                         'images' => $images,
                     ]);
                 }

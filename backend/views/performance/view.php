@@ -71,7 +71,7 @@ $column[] = $column_name[11];
                     foreach ($staff as $item) {
                         $first_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['first_name'];
                         $last_name = Staff::find()->where(['id' => $item['staff_id']])->asArray()->all()[0]['last_name'];
-                        $arr[$item['staff_id']] = Main::uppercaseFirstLetter($first_name).' '.Main::uppercaseFirstLetter($last_name);
+                        $arr[$item['staff_id']] = Main::uppercaseNames($first_name).' '.Main::uppercaseNames($last_name);
                     }
                     foreach ($arr as $key => $value) {
                         $result .= Html::a($value, "/staff/view?id=$key", ['class' => 'btn btn-info mb-1 px-2 py-0 font-weight-bold']) . " ";
@@ -113,7 +113,7 @@ $column[] = $column_name[11];
             'performance_length',
             [
                 'attribute' => 'author',
-                'value' => Main::uppercaseFirstLetter($model->author)
+                'value' => Main::uppercaseNames($model->author)
             ],
             [
                 'attribute' => 'hall',

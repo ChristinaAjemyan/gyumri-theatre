@@ -79,7 +79,7 @@ class StaffController extends Controller
         } else {
             $model = Staff::find()->where(['slug' => $slug])->one();
         }
-        $this->view->title = Main::uppercaseFirstLetter($model->first_name) . ' ' . Main::uppercaseFirstLetter($model->last_name);
+        $this->view->title = Main::uppercaseNames($model->first_name) . ' ' . Main::uppercaseNames($model->last_name);
         empty($model) ? $this->goHome() : false;
 
         return $this->render('view', [

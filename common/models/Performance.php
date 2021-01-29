@@ -88,7 +88,7 @@ class Performance extends \yii\db\ActiveRecord
             $key[] = $k;
         }
         $val = array_map(function($v1, $v2){
-            $result = Main::uppercaseFirstLetter($v1).' '.Main::uppercaseFirstLetter($v2);
+            $result = Main::uppercaseNames($v1).' '.Main::uppercaseNames($v2);
             return $result;
         }, $fist_name, $last_name);
         return array_combine($key, $val);

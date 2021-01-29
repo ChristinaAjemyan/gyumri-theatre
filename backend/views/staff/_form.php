@@ -35,7 +35,7 @@ use common\models\Role;
 
             <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'date_of_birth')->textInput(['class' => 'datepicker-here form-control', 'data-date-format' => 'yyyy-mm-dd']) ?>
+            <?= $form->field($model, 'date_of_birth')->textInput(['class' => 'datepicker-here form-control', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off']) ?>
 
             <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
 
