@@ -33,8 +33,8 @@ use yii\captcha\Captcha;
             </div>
         <?php endif; ?>
         <h2 class="title-type"><?= Html::encode($this->title) ?></h2>
-        <div class="row">
-            <div class="col-4">
+        <div class="d-flex contact">
+            <div class="mr-2 w-50">
                 <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
@@ -55,7 +55,7 @@ use yii\captcha\Captcha;
 
                 <?php ActiveForm::end(); ?>
             </div>
-            <div class="col-8">
+            <div class="w-50">
                 <div class="site-contact-map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.1743778474574!2d43.84538578047872!3d40.79066377176147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041fbf2a2fef76f%3A0xa7bf664eae5715b8!2sVardan%20Ajemyan%20Drama%20Theater!5e0!3m2!1sen!2s!4v1602774799615!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>

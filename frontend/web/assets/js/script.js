@@ -267,7 +267,7 @@ $('.season_time').on('click',function () {
                     $(".archive_page_carousel .owl-carousel").append(`
                     <div class="carousel_item">
                         <div class="card" style="width: 16rem;">
-                            <img class="card-img-top" src="${data.backend_url+'/upload/avatars/performance/200/'+item.img_path}" alt="Card image cap">
+                            <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/200/'+item.img_path}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${item.show_date}</h5>
                                 <p class="card-text">${item.title}</p>

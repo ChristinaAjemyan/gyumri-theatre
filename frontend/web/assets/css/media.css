@@ -191,7 +191,7 @@
     }
     
     .main_movies .media-body .aside_text{
-        top: -300px;
+        top: 0px;
     }
     .video_block iframe{
         width: 500px;

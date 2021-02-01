@@ -13,7 +13,7 @@ use yii\widgets\Pjax; ?>
         </div>
 
         <div align="center">
-            <div class="btn-group mb-3 ml-1">
+            <div class="mb-3 ml-1">
                 <?php $types = Type::find()->all(); ?>
                 <?php if (isset($types)): ?>
                 <?php foreach ($types as $type) : ?>
