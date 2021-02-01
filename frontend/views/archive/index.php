@@ -27,7 +27,7 @@ use yii\helpers\Url;
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <span class="archive_line"></span>
+<!--                <span class="archive_line"></span>-->
             </div>
         </div>
     <div id="nav-tabCont">

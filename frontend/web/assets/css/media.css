@@ -206,7 +206,7 @@
 
     /* performances page */
     .about-present{
-        height: 620px;
+        /*height: 620px;*/
     }
     .about-present .media .movie-type{
         transform: translateY(0px);

@@ -30,10 +30,10 @@ use yii\helpers\ArrayHelper;
         <section class="about-present main_movies">
             <div class="media">
                 <div class="row">
-                    <div class="col-md-3  col-12">
-                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" alt="Photo">
+                    <div class="col-md-3  col-12 view_img_content">
+                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" class="h-auto" alt="Photo">
                     </div>
-                    <div class="col-md-9 col-12">
+                    <div class="col-md-9 col-12 view_text_content">
 
                         <div class="media-body">
                             <p class="author"><?= Yii::t('text', $model->author); ?> </p>
@@ -74,7 +74,7 @@ use yii\helpers\ArrayHelper;
     <?php if (!empty($images) && isset($images)): ?>
     <section class="present-corusel" >
         <div class="container">
-            <h2 class="block_title carousel_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
+            <h2 class="block_title carousel_title mt-0"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
             <span class="title_line"></span>
             <div class="performances-carusel owl-carousel" id="current_performance">
                 <?php foreach ($images as $image): ?>

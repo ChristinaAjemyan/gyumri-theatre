@@ -18,12 +18,11 @@
 
 
     <div class="container">
-
-        <section class="about-present main_movies">
+        <section class="about-present main_movies main_movies_about">
             <div class="media">
                 <div class="row">
                     <div class="col-md-3  col-12">
-                        <img src="/assets/images/director.png" alt="Photo">
+                        <img src="/assets/images/director.png" class="h-auto" alt="Photo">
                     </div>
                     <div class="col-md-9 col-12">
 
@@ -61,7 +60,7 @@
     </div>
 
 
-    <section class="new_section">
+    <section class="new_section mt-0">
         <div class="opacity_baner p-2">
 
             <div class="container ">

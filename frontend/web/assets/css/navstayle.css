@@ -1221,7 +1221,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     /* transform: translateX(-10px); */
     background: rgba(0,0,0,.4);
     bottom: 40px;
-    padding: 8px 7px 20px 10px;
+    padding: 9px 7px 20px 10px;
     text-align: center;
     cursor: pointer;
     border: 2px solid #EC7532;
@@ -1232,12 +1232,21 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about-present{
     position: relative;
-    height: 330px;
+    /*height: 330px;*/
+}
+.main_movies_about{
+    top: -70px;
 }
 .about-present .media{
-    top: -70px;
-    position: absolute;
+/*    top: -70px;
+    position: absolute;*/
     
+}
+.view_img_content{
+    top: -70px;
+}
+.view_text_content{
+    top: -70px;
 }
 .about-present .media .movie-type{
     color: #ad6437;
@@ -1489,7 +1498,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }  
 .actors_lists{
     margin-bottom: 60px;
-    margin-top: 120px;
+    margin-top: 0px;
     display: flex;
     /*justify-content: space-between;*/
     flex-wrap: wrap;
@@ -1602,7 +1611,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .about_pages .new_section{
-    margin-top: 40px;
+    margin-top: 0px;
 }
 /* .performances-page .new_section{
     background-image: url('../images/baner_newsection.png');
@@ -1984,7 +1993,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 520px) {
     .performances-page .present-corusel{
-        margin-top: 100px;
+        margin-top: 10px;
     }
     #nav-tabContent p{
         font-size: 16px;
@@ -2025,7 +2034,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 479px) {
     .performances-page .present-corusel{
-        margin-top: 140px;
+        margin-top: 10px;
     }
     #nav-tabContent p{
         font-size: 16px;
@@ -2063,7 +2072,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 479px) {
     .performances-page .present-corusel{
-        margin-top: 160px;
+        margin-top: 10px;
     }
     .actros_imges .act_img img{
         height: 80px;
@@ -2097,7 +2106,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 376px) {
     .performances-page .present-corusel{
-        margin-top: 190px;
+        margin-top: 0;
     }
     .actros_imges .act_img img{
         height: 70px;
@@ -2146,7 +2155,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 351px) {
     .performances-page .present-corusel{
-        margin-top: 220px;
+        margin-top: 0;
     }
     .actros_imges .act_img img{
         height: 60px;
@@ -2167,7 +2176,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 332px) {
     .performances-page .present-corusel{
-        margin-top: 250px;
+        margin-top: 0;
     }
     #nav-tabContent p{
         font-size: 16px;

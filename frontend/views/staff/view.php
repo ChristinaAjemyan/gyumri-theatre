@@ -48,7 +48,7 @@ use yii\helpers\Url;
             </div>
 
         </section>
-        <h2 class="block_title carousel_title"><?= Yii::t('home', 'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
+        <h2 class="block_title carousel_title mt-0"><?= Yii::t('home', 'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
         <span class="title_line"></span>
         <?php $performances = StaffPerformance::find()->with('performance')->where(['staff_id' => $model->id])->all();
         $performance = ArrayHelper::map($performances, 'id', 'performance'); ?>

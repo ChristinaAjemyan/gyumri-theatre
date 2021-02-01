@@ -45,7 +45,7 @@ use yii\helpers\Url;
 
 <section class="section_carousel">
     <div class="container">
-        <h2 class="block_title carousel_title"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
+        <h2 class="block_title carousel_title mt-3"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
         <span class="title_line"></span>
         <div class="main_carousel owl-carousel" id="current_performance">
         <?php if (!empty($performances) && isset($performances)): ?>
