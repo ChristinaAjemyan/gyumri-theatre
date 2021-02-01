@@ -1521,7 +1521,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .actors_lists .actor img{
-    width: 180px;
     margin: auto;
     display: block;
     height: 240px;
@@ -1533,7 +1532,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     text-align: center;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    font-size: 22px;
+    font-size: 18px;
     margin-top: 5px;
     color: black;
 }
@@ -2007,6 +2006,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 625px;
     }
+    .actors_lists .actor{
+        max-width: 400px;
+    }
+    .actors_lists .actor img{
+        height: 385px;
+    }
 }
 @media screen and (max-width: 515px) {
     .actors_main_my{
@@ -2031,6 +2036,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 530px;
     }
+    .actors_lists .actor{
+        max-width: 385px;
+    }
+    .actors_lists .actor img{
+        height: 375px;
+    }
 }
 @media screen and (max-width: 479px) {
     .performances-page .present-corusel{
@@ -2044,6 +2055,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 530px;
+    }
+    .actors_lists .actor{
+        max-width: 365px;
+    }
+    .actors_lists .actor img{
+        height: 355px;
     }
 
 }
@@ -2069,6 +2086,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 530px;
     }
+    .actors_lists .actor{
+        max-width: 345px;
+    }
+    .actors_lists .actor img{
+        height: 335px;
+    }
 }
 @media screen and (max-width: 479px) {
     .performances-page .present-corusel{
@@ -2086,6 +2109,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .archive_page h1.archive_header_title{
         font-size: 50px;
     }
+    .actors_lists .actor{
+        max-width: 325px;
+    }
+    .actors_lists .actor img{
+        height: 315px;
+    }
 }
 @media screen and (max-width: 425px) {
     .main_movies .weekdays{
@@ -2102,6 +2131,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 530px
+    }
+    .actors_lists .actor{
+        max-width: 285px;
+    }
+    .actors_lists .actor img{
+        height: 280px;
     }
 }
 @media screen and (max-width: 376px) {
@@ -2122,6 +2157,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 490px;
+    }
+    .actors_lists .actor{
+        max-width: 295px;
+    }
+    .actors_lists .actor img{
+        height: 290px;
     }
 }
 @media screen and (max-width: 360px) {
@@ -2152,6 +2193,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 485px;
     }
+    .actors_lists .actor{
+        max-width: 275px;
+    }
+    .actors_lists .actor img{
+        height: 270px;
+    }
 }
 @media screen and (max-width: 351px) {
     .performances-page .present-corusel{
@@ -2172,6 +2219,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 415px;
+    }
+    .actors_lists .actor{
+        max-width: 255px;
+    }
+    .actors_lists .actor img{
+        height: 250px;
     }
 }
 @media screen and (max-width: 332px) {
@@ -2417,4 +2470,13 @@ img.big-carousel{
 }
 .carousel_item .card-body p.card-text,.media-footer p.view-movie,span.view-movie{
     font-family: monospace;
+}
+.footer_year p{
+    font-family: -webkit-pictograph;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+.footer_year p:last-child{
+    font-size: 12px;
+    letter-spacing: 1px;
 }
