@@ -2471,12 +2471,12 @@ img.big-carousel{
 .carousel_item .card-body p.card-text,.media-footer p.view-movie,span.view-movie{
     font-family: monospace;
 }
-.footer_year p{
-    font-family: -webkit-pictograph;
-    font-size: 13px;
+.footer_year p:first-child{
+    font-size: 12px;
     letter-spacing: 1px;
 }
 .footer_year p:last-child{
     font-size: 12px;
     letter-spacing: 1px;
+    font-family: -webkit-pictograph;
 }

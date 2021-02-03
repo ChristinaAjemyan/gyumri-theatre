@@ -209,8 +209,8 @@ AppAsset::register($this);
 
     <div class='footer_year'>
         <div class="container">
-            <p class="pt-4 pb-1 m-0 pb-0">© Brainfors</p>
-            <p class="pt-0 pb-2"><?= date('Y'); ?> Gyumrytheatre</p>
+            <p class="pt-4 pb-1 m-0 pb-0"><?= date('Y'); ?> Gyumrytheatre</p>
+            <p class="pt-0 pb-2">© Brainfors</p>
         </div>
 
     </div>
