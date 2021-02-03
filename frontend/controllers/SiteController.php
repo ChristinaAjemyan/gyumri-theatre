@@ -98,9 +98,9 @@ class SiteController extends Controller
                 $performanceByDays[$key]['slug'] = Yii::t('text', $val['slug']);
             }
             if (empty($performanceByDays)){
-                echo Json::encode(['error' => true, 'lang' => Yii::$app->request->cookies->getValue('language')]);die;
+                return Json::encode(['error' => true, 'lang' => Yii::$app->request->cookies->getValue('language')]);die;
             }
-            echo Json::encode(['success' => $performanceByDays,
+            return Json::encode(['success' => $performanceByDays,
                 'basePath' => Yii::$app->params['backend-url'], 'error' => false,
                 'lang' => Yii::$app->request->cookies->getValue('language')]);die;
         }
