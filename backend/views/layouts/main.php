@@ -1,12 +1,12 @@
-<!DOCTYPE html>
 <?php
 use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
+<?php AppAsset::register($this); ?>
+<!DOCTYPE html>
 <html lang="lang="<?= Yii::$app->language ?>">
 <head>
     <!-- Required meta tags -->
