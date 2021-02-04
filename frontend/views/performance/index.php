@@ -5,7 +5,7 @@ use yii\widgets\Pjax; ?>
 
 <main class="main_movies mb-5">
     <div class="archive_page">
-        <div  class="archive_header">
+        <div class="archive_header">
             <div class="archive_header_content">
                 <h1 class="archive_header_title"><?= Yii::t('home','Ներկայացումներ') ?></h1>
                 <p class="archive_header_text"><?= Yii::t('home','Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online') ?></p>
@@ -30,14 +30,14 @@ use yii\widgets\Pjax; ?>
                 <?php if (!empty($performances) && isset($performances)) : ?>
                 <?php foreach ($performances as $performance) : ?>
                 <div class="media d-block">
-                    <div class="row">
-                        <div class="col-md-3  col-12">
+                    <div class="row performances_main">
+                        <div class="col-md-3  col-12 p-0">
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
                                 <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
                             </a>
                         </div>
                         <div class="col-md-9 col-12">
-                            <div class="media-body">
+                            <div class="media-body mt-4">
                                 <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
                                 <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
                                     <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['title']); ?></h5>

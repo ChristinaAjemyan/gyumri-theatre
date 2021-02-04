@@ -2,7 +2,10 @@
 use yii\widgets\LinkPager; ?>
 <div class="actors_page">
     <div class="container">
-        <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Վարչական մաս'); ?></b></h2>
+        <div class="d-flex">
+            <h2 class="mb-0 title-type" style="width: 12%;"><b><?= Yii::t('home', 'Վարչական մաս'); ?></b></h2>
+            <div class="title-side-line"></div>
+        </div>
         <?php if (!empty($model) && isset($model)): ?>
             <section class="performance_movie">
                 <div class="row">

@@ -3,19 +3,22 @@ use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
     <div class="container p-3">
         <div style="margin-top: 120px" class="tab-content" id="nav-tabContent">
-            <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն'); ?></b></h2>
+            <div class="d-flex">
+                <h2 class="mb-0 title-type" style="width: 32%;"><b><?= Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն'); ?></b></h2>
+                <div class="title-side-line"></div>
+            </div>
             <?php if (!empty($performances) && isset($performances)) : ?>
                 <?php foreach ($performances as $performance) : ?>
                     <div class="media d-block">
-                        <div class="row">
-                            <div class="col-md-3  col-12">
+                        <div class="row performances_main">
+                            <div class="col-md-3  col-12 p-0">
                                 <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
                                     <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
                                 </a>
                             </div>
                             <div class="col-md-9 col-12">
-                                <div class="media-body">
-                                    <aside class="aside_text aside-text_bg text-uppercase"><?= Yii::t('home', 'Փոքր թատրոն'); ?></aside>
+                                <div class="media-body mt-4">
+                                    <aside class="aside_text aside-text_bg text-uppercase" style="margin-right: -14px;"><?= Yii::t('home', 'Փոքր թատրոն'); ?></aside>
                                     <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
                                     <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
                                         <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['title']); ?></h5>

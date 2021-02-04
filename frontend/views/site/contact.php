@@ -32,7 +32,10 @@ use yii\captcha\Captcha;
                 </button>
             </div>
         <?php endif; ?>
-        <h2 class="title-type"><?= Html::encode($this->title) ?></h2>
+        <div class="d-flex mb-4">
+            <h2 class="title-type mb-0"><?= Html::encode($this->title) ?></h2>
+            <div class="title-side-line"></div>
+        </div>
         <div class="d-flex contact">
             <div class="mr-2 w-50">
                 <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>

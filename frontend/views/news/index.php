@@ -4,12 +4,15 @@ use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
     <div class="container p-3">
         <div style="margin-top: 120px" class="tab-content" id="nav-tabContent">
-            <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>
+            <div class="d-flex">
+                <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>
+                <div class="title-side-line"></div>
+            </div>
             <?php if (!empty($contents) && isset($contents)) : ?>
                 <?php foreach ($contents as $content) : ?>
                     <div class="media d-block">
-                        <div class="row">
-                            <div class="col-md-2  col-12">
+                        <div class="row performances_main p-1">
+                            <div class="col-md-2  col-12 p-0">
                                 <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>">
                                     <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/news/200/'.$content['img_path']; ?>" class="w-100" alt="Photo" style="height: 170px;">
                                 </a>

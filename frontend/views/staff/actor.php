@@ -4,7 +4,10 @@ use yii\helpers\Url;
 ?>
 
 <div class="container">
-    <h2 class="mb-0 title-type" style="margin-top: 130px;"><b><?= Yii::t('home', 'Դերասաններ'); ?></b></h2>
+    <div class="d-flex">
+        <h2 class="mb-0 title-type" style="margin-top: 130px;"><b><?= Yii::t('home', 'Դերասաններ'); ?></b></h2>
+        <div class="title-side-line"></div>
+    </div>
     <section class="actors_lists mt-0">
         <?php if (!empty($model) && isset($model)): ?>
         <div class="actors_main_my row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 w-100">

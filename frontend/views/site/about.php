@@ -2,9 +2,7 @@
 <div class="performances-page about_pages">
 
     <div id="hero" class="carousel slide carousel-fade performance_header" data-ride="carousel">
-                <span class="btn_play"><a target="_blank" class="popup_youtube"
-                                          href="https://www.youtube.com/watch?v=uqA-tT3T6FQ&feature=emb_title"><i
-                                class="fas fa-play"></i></a></span>
+
         <div class="carousel-inners">
             <!-- <iframe src="https://www.youtube.com/embed/uqA-tT3T6FQ"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -26,9 +24,12 @@
                     </div>
                     <div class="col-md-9 col-12">
 
-                        <div class="media-body">
+                        <div class="media-body about_big_content">
                             <p class="author">ԹԱՏՐՈՆԻ ՏՆՕՐԵՆ ԵՎ ԳԵՂ.ՂԵԿԱՎԱՐ՝ </p>
                             <h1 class="mt-0 media-title">ԼՅՈՒԴՎԻԳ ՀԱՐՈՒԹՅՈՒՆՅԱՆ</h1>
+                            <span class="btn_play about_popup_youtube"><a target="_blank" class="popup_youtube"
+                                                      href="https://www.youtube.com/watch?v=uqA-tT3T6FQ&feature=emb_title"><i
+                                            class="fas fa-play"></i></a></span>
                             <p class="media-text"> Մեր և Ձեր թատրոնը 155 տարեկան է. թատրոն, որի կամարների տակ
                                 դեռ զգացվում է անցնող տասնամյակների ընթացքում այստեղ ստեղծագործած մեծանուն
                                 արվեստագետների շունչը, նրանց ոտնահետքերը հավերժ դրոշմված են այս բեմի վրա և

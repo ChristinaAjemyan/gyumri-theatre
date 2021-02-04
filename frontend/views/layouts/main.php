@@ -39,7 +39,7 @@ AppAsset::register($this);
 
 <body class="pr-0 overflow-auto">
 <?php $this->beginBody() ?>
-<div class="wrapper">
+<div class="wrapper" style="background: #f6f6f6;">
     <nav class="navbar navbar-expand-lg navbar-pages">
         <div class="container header_flex">
             <?= Html::a(Html::img(Url::to('/assets/images/logo.png')),  Yii::$app->params['front-url'], ['class' => 'navbar-brand logo']); ?>
@@ -58,7 +58,7 @@ AppAsset::register($this);
                     <li class="nav-item dropdown about_us <?= Yii::$app->request->pathInfo == '' ||
                     Yii::$app->request->pathInfo== 'site/about' || Yii::$app->request->pathInfo == 'site/chronicle' ||
                     Yii::$app->request->pathInfo == 'staff' || Yii::$app->request->pathInfo == 'archive' ? 'active': ''; ?>">
-                        <?= Html::a(Yii::t('home', 'Գլխավոր')."<span class=\"hove_height\"></span>",
+                        <?= Html::a(Yii::t('home', 'Գլխավոր')."<span class=\"hove_height\"></span> <i class='fas fa-angle-down fa-xs'></i>",
                             'javascript:void(0)', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -87,7 +87,7 @@ AppAsset::register($this);
                     </li>
                     <li class="nav-item dropdown <?= Yii::$app->request->pathInfo == 'performance' || Yii::$app->request->pathInfo == 'performance/big' ||
                     Yii::$app->request->pathInfo == 'performance/small' ? 'active': ''; ?>">
-                        <?= Html::a(Yii::t('home', 'Ներկայացումներ')."<span class=\"hove_height\"></span>",
+                        <?= Html::a(Yii::t('home', 'Ներկայացումներ')."<span class=\"hove_height\"></span> <i class='fas fa-angle-down fa-xs'></i>",
                             '/performance', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink2',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
@@ -120,7 +120,7 @@ AppAsset::register($this);
                 <ul class="social_icons">
                     <li class="_line"></li>
                     <li>
-                        <a id="searchBtn" data-toggle="modal" data-target="#searchModal">
+                        <a id="searchBtn" data-toggle="modal" data-target="#searchModal" style="color: white">
                             <i class="fas fa-search"></i>
                         </a>
                     </li>
@@ -161,6 +161,7 @@ AppAsset::register($this);
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <div style="border-bottom: 2px solid #ec7532;width: 65%;"></div>
                 <div class="modal-footer modal-has-search">
                     <form action="/site/search" method="get">
                         <p class="mb-1 pl-4"><i class="fas fa-search modal-search_icon mr-1"></i><?= Yii::t('home', 'Որոնել') ?></p>

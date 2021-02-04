@@ -200,15 +200,15 @@ $('.weekdays').on('click', function () {
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
                 <div class="media result d-block">
-                    <div class="row">
-                        <div class="col-md-3 col-12">
+                    <div class="row performances_main">
+                        <div class="col-md-3 col-12 p-0">
                         <a href="/performance/view/${item.slug}">
                             <img src="${data.basePath}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
                         </a>
                         </div>
                         <div class="col-md-9 col-12">
-                            <div class="media-body">
-                            ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\">"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
+                            <div class="media-body mt-4">
+                            ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\" style='margin-right: -14px;'>"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
                                     item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
                                 <p class="author">${item.author} </p>
                                 <a href="/performance/view/${item.slug}"><h5 class="mt-0 media-title">${item.title}</h5></a>
@@ -383,14 +383,14 @@ $('.performance_tab_cont').on('click',function () {
                 $.each(data.performances,function (i,item) {
                     $(".tab-content").append(`
                 <div class="media d-block">
-                    <div class="row">
-                        <div class="col-md-3  col-12">
+                    <div class="row performances_main">
+                        <div class="col-md-3  col-12 p-0">
                             <a href="/performance/view/${item.slug}">
                                 <img src="${data.base_path}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
                             </a>
                         </div>
                         <div class="col-md-9 col-12">
-                            <div class="media-body">
+                            <div class="media-body mt-4">
                                 <p class="author">${item.author}</p>
                                 <a href="/performance/view/${item.slug}">
                                     <h5 class="mt-0 media-title">${item.title}</h5>
