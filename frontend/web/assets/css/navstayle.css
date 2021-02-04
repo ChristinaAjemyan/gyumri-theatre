@@ -549,7 +549,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     box-shadow: none;
 }
 .navbar-collapse{
-    max-width:760px;
+    max-width:768px;;
     border-bottom: 1px solid #5f6769;
     justify-content: flex-end;
 }
