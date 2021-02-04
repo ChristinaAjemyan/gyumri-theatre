@@ -161,5 +161,3 @@ use yii\helpers\Url; ?>
         <?php endif; ?>
     </div>
 </main>
-
-

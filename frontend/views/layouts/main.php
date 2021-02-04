@@ -105,14 +105,8 @@ AppAsset::register($this);
                         <?= Html::a(Yii::t('home', 'Նորություններ')."<span class=\"hove_height\"></span>",
                             '/news', ['class' => 'nav-link dropdown-toggle', 'id' => 'navbarDropdownMenuLink3',
                                 'aria-haspopup' => 'true', 'aria-expanded' => 'false']); ?>
-                        <!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                            <li>
-                                <?/*= Html::a(Yii::t('home', 'Լրատվամիջոց'),
-                                    '', ['class' => 'dropdown-item']); */?>
-                            </li>
-                        </ul>-->
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?= Yii::$app->request->pathInfo == 'site/contact' ? 'active': ''; ?>">
                         <?= Html::a(Yii::t('home', 'Կապ')."<span class=\"hove_height\"></span>",
                             '/site/contact', ['class' => 'nav-link']); ?>
                     </li>

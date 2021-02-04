@@ -85,8 +85,3 @@ use yii\helpers\Url;
         <?php endif; ?>
     </div>
 </div>
-
-
-
-
-

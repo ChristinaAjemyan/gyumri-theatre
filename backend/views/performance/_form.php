@@ -108,4 +108,3 @@ use mihaildev\elfinder\ElFinder;
     <?php ActiveForm::end(); ?>
 
 </div>
-

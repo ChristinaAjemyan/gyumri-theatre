@@ -24,8 +24,3 @@
         </section>
     </div>
 </div>
-
-
-
-
-

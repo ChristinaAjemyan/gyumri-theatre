@@ -52,6 +52,3 @@ use yii\widgets\LinkPager;  ?>
         </div>
     </div>
 </main>
-
-
-

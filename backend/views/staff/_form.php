@@ -72,5 +72,3 @@ use common\models\Role;
     <?php ActiveForm::end(); ?>
 
 </div>
-
-
