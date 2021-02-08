@@ -2564,3 +2564,6 @@ img.big-carousel{
 .carousel_item img{
     border-radius: 10px;
 }
+.weekdays_all{
+    border-bottom: 2px solid #efefef !important
+}

@@ -74,7 +74,7 @@ use yii\helpers\Url;
 <main class="main_movies mb-5">
     <div class="container main_container">
         <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <div class="nav nav-tabs weekdays_all" id="nav-tab" role="tablist">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
                 <a class="nav-item nav-link weekdays active" data-value="all" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
                    aria-controls="nav-cal" aria-selected="true"><i class="far fa-calendar-alt"></i></a>
