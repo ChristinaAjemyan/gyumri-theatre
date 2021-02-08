@@ -72,7 +72,7 @@ use yii\helpers\Url;
 </section>
 
 <main class="main_movies mb-5">
-    <div class="container p-3">
+    <div class="container main_container">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
@@ -99,7 +99,7 @@ use yii\helpers\Url;
 </main>
 
 <section class="new_section p-2">
-    <div class="container ">
+    <div class="container" style="padding: 0 30px;">
         <h3 class="new_section-title"><?= Yii::t('home', 'ՇՈՒՏՈՎ') ?></h3>
         <div class="row">
             <div class="col-md-7 boredr">

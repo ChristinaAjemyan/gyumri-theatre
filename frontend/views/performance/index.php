@@ -25,7 +25,7 @@ use yii\widgets\Pjax; ?>
 
     </div>
     <?php Pjax::begin() ?>
-    <div class="container p-3 perf">
+    <div class="container main_container perf">
         <div class="tab-content" id="nav-tabContent">
                 <?php if (!empty($performances) && isset($performances)) : ?>
                 <?php foreach ($performances as $performance) : ?>

@@ -63,7 +63,7 @@ use yii\helpers\Url;
 
         <?php if(!empty($active_season)) : ?>
             <div class="archive_main_content">
-                <div class="container">
+                <div class="container" style="padding: 0 30px;">
                     <h2 class="archive_main_title  mt-3 mb-3"><?= $active_season->title ?> <?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆ') ?></h2>
                     <p class="archive_main_text"><?= $active_season->content ?></p>
                 </div>

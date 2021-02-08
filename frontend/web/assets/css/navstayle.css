@@ -527,6 +527,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .navbar-brand img{
     max-width: 150px ;
+    margin-left: 30px;
 }
 .navbar_bg{
     background:rgba(10, 10, 10, .95);
@@ -549,7 +550,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     box-shadow: none;
 }
 .navbar-collapse{
-    max-width:768px;;
+    max-width:740px;;
     border-bottom: 1px solid #5f6769;
     justify-content: flex-end;
 }
@@ -570,7 +571,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .performances_main{
     background: white;
-    box-shadow: 0 0 9px #888888;
+    box-shadow: 0 0 9px lightgrey;
     border-radius: 10px;
 }
 
@@ -670,7 +671,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     margin-bottom: 5px;
     position: relative;
     display: inline-block;
-    width: 40px;
+    width: 25px;
     border: 1px solid  #5f6769;
 }
 .language_select{
@@ -791,7 +792,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .main_carousel .owl-nav svg{
     font-size: 50px;
-    color: #999999;
+    color: lightgrey;
 }
 .main_carousel .owl-nav .owl-prev{
     left: -3%;
@@ -1351,7 +1352,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .performances-carusel .owl-nav svg{
     font-size: 50px;
-    color: #999999;
+    color: lightgrey;
 }
 .performances-carusel .owl-nav .owl-prev{
     left: -3%;
@@ -1413,7 +1414,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .actors_page,
 .news_page{
-    margin-top: 150px;
+    margin-top: 120px;
 }
 .about_actros{
     display: flex;
@@ -1422,13 +1423,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about_actros .social_page_act svg{
     font-size: 50px;
-    color: black;
+    color: #F7AB55;
     margin-bottom: 10px;
 
     transition: .5s;
 }
 .about_actros .social_page_act svg:hover{
-    color: #F7AB55;
+    color: black;
 }
 
 .about_act_title .actros_name{
@@ -1682,7 +1683,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .main_movies .media{
     border-bottom: 1px solid #e5e5e5;
-    padding: 30px 0;
+    padding: 30px 15px;
 }
 
 
@@ -1945,6 +1946,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-left: -35px;
     }
 }
+@media screen and (max-width: 1024px) {
+    .main_movies .container{
+        padding: 15px 30px!important;
+    }
+}
 @media screen and (max-width: 992px) {
     .hove_height{
         display: none;
@@ -1980,6 +1986,22 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .about_popup_youtube{
         top: -280px;
     }
+    .main_container .title-type{
+        width: 100%!important;
+    }
+    .chronicle{
+        margin-top: 90px!important;
+    }
+    .actors_title{
+        margin-top: 100px!important;
+        margin-left: 25px;
+    }
+    .performance_title{
+        margin-top: 90px!important;
+    }
+    .actors_lists .actor{
+        margin: 15px auto!important;
+    }
 }
 @media screen and (max-width: 698px) {
     .owl-item .block-present img{
@@ -1993,6 +2015,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 930px;
+    }
+    .navbar-brand img {
+        max-width: 150px;
+        margin-left: 15px;
     }
 }
 @media screen and (max-width: 660px) {
@@ -2070,9 +2096,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         flex: 0 0 50%;
         max-width: 100%;
     }
-    .actors_lists .actor {
+/*    .actors_lists .actor {
         margin: 45px auto!important;
-    }
+    }*/
     #searchModal .modal-has-search .modal-search_input{
         width: 350px;
     }
@@ -2167,7 +2193,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 425px) {
     .main_movies .weekdays{
-        padding: 12px;
+        padding: 10px;
     }
     #nav-tabContent p{
         font-size: 16px;
@@ -2231,7 +2257,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         font-size: 16px;
     }
     .main_movies .weekdays{
-        padding: 10px;
+        padding: 8px;
     }
     .new_section h5.media-title{
         font-size: 17px;
@@ -2306,7 +2332,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-top: 35px;
     }
     .main_movies .weekdays{
-        padding: 8px;
+        padding: 6px;
     }
     #nav-tabContent p{
         font-size: 16px;
@@ -2344,6 +2370,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 80px;
     letter-spacing: 5px;
 }
+.main_container{
+    padding: 0 30px;
+}
 .archive_page .archive_header_text{
     font-family: "Arm Hmks";
     font-size: 30px;
@@ -2360,10 +2389,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #414141;
     background: white;
     text-align: center;
-    box-shadow: 0px -3px 4px -2px rgba(0,0,0,0.50);
-    max-width: 120px;
-    height: 60px;
-    padding-top: 5px;
+    box-shadow: 0px -3px 4px -2px rgb(0 0 0 / 50%);
+    max-width: 160px;
+    height: 70px;
+    padding-top: 4px;
     border-radius: 20px;
 
 }
@@ -2376,7 +2405,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .theater_season .seasnon_number{
     width: 120px;!important;
-    font-size: 25px;
+    font-size: 28px;
     font-family: "Arm Hmks";
 
 }
@@ -2403,7 +2432,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .theater_season .owl-nav svg{
     font-size: 50px;
-    color: #999999;
+    color: lightgrey;
 }
 .theater_season .owl-nav .owl-prev{
     left: -3%;
@@ -2531,4 +2560,7 @@ img.big-carousel{
     font-size: 12px;
     letter-spacing: 1px;
     font-family: -webkit-pictograph;
+}
+.carousel_item img{
+    border-radius: 10px;
 }

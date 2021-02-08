@@ -10,7 +10,7 @@ use yii\helpers\Url;
 
 
 <div class="actors_page">
-    <div class="container">
+    <div class="container main_container">
         <section class="actros_carousel">
             <div class="row">
                 <div class="col-md-3 col-12">

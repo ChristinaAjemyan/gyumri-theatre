@@ -1,10 +1,10 @@
 <?php use yii\helpers\Url;
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
-    <div class="container p-3">
-        <div style="margin-top: 120px" class="tab-content" id="nav-tabContent">
+    <div class="container main_container">
+        <div style="margin-top: 120px" class="tab-content performance_title" id="nav-tabContent">
             <div class="d-flex">
-                <h2 class="mb-0 title-type" style="width: 32%;"><b><?= Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն'); ?></b></h2>
+                <h2 class="mb-0 title-type" style="width: 34%;"><b><?= Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն'); ?></b></h2>
                 <div class="title-side-line"></div>
             </div>
             <?php if (!empty($performances) && isset($performances)) : ?>

@@ -16,7 +16,7 @@ use yii\captcha\Captcha;
 ?>
 
 <div class="site-contact d-flex">
-    <div class="container" style="margin-top: 130px">
+    <div class="container main_container" style="margin-top: 120px">
         <?php if (Yii::$app->session->hasFlash('success')): ?>
             <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
                 <h5 class="m-0 p-0 text-success"><strong><?= Yii::t('home', Yii::$app->session->getFlash('success')); ?></strong></h5>

@@ -25,7 +25,7 @@ use yii\helpers\ArrayHelper;
     </div>
 
 
-    <div class="container">
+    <div class="container main_container">
 
         <section class="about-present main_movies">
             <div class="media">

@@ -21,7 +21,7 @@ use yii\helpers\Url; ?>
 </div>
 
 <main class="main_movies mb-5">
-    <div class="container p-3">
+    <div class="container main_container">
         <?php if (Yii::$app->request->get() && empty($searchInformation['performance']) &&
             empty($searchInformation['staff']) && empty($searchInformation['news']) && empty($searchInformation['archive'])) : ?>
         <div align="center" class="w-100 m-0">

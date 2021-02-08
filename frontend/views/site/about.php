@@ -15,7 +15,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container main_container">
         <section class="about-present main_movies main_movies_about">
             <div class="media">
                 <div class="row">
@@ -64,7 +64,7 @@
     <section class="new_section mt-0">
         <div class="opacity_baner p-2">
 
-            <div class="container ">
+            <div class="container main_container">
                 <h3 class="new_section-title">ՖԻԼՄ</h3>
                 <div class="row">
                     <div class="col-md-7 boredr">
@@ -87,7 +87,7 @@
                     </div>
 
 
-                    <div class="col-md-5">
+                    <div class="col-md-5" style="margin-left: -22px;">
                         <div class="video_block">
 
                             <iframe width="460" height="315" src="https://www.youtube.com/embed/uqA-tT3T6FQ"
