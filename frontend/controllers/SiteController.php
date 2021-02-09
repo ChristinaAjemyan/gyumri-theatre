@@ -221,6 +221,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all();
         $this->view->title = Yii::t('home', 'Կապ');
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -233,6 +234,7 @@ class SiteController extends Controller
         } else {
             return $this->render('contact', [
                 'model' => $model,
+                'performances' => $performances
             ]);
         }
     }

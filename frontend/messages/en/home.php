@@ -42,6 +42,9 @@ return [
     'Հաղորդագրություն' => 'Message',
     'Դաշտը դատարկ է' => 'The field is empty',
     'Սխալ Էլ-հասցե' => 'Wrong Email Address',
+    'Էլ-հասցե' => 'Email',
+    'Անուն Ազգանուն' => 'Name Surname',
+    'Հեռախոսահամար' => 'Phone number',
     'Ուղարկել' => 'Send',
     'Ստուգման ծածկագիր' => 'Verification Code',
     'Սխալ սիմվոլներ' => 'Wrong characters',
@@ -49,5 +52,8 @@ return [
         'Thank you for contacting us. We will respond to you as soon as possible.',
     'Ձեր հաղորդագրությունն ուղարկելիս սխալ տեղի ունեցավ:' =>
         'There was an error sending your message.',
-    'Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online' => 'TICKETS CAN BE PURCHASED FROM GYUMRI DRAMATIC THEATER OR BY ORDERING ONLINE'
+    'Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online' => 'TICKETS CAN BE PURCHASED FROM GYUMRI DRAMATIC THEATER OR BY ORDERING ONLINE',
+    'Քաղաք Գյումրի' => 'City Gyumri',
+    'Սայաթ Նովա 4' => 'Sayat Nova 4',
+    'Երկ-ուրբ 9։30 - 7։30 pm' => 'Mon-fri 9։30 - 7։30 pm'
 ];

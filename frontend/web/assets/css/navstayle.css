@@ -571,7 +571,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .performances_main{
     background: white;
-    box-shadow: 0 0 9px lightgrey;
+    box-shadow: 0px 6px 11px 0px rgb(168 168 168);
     border-radius: 10px;
 }
 
@@ -1276,6 +1276,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     position: absolute;*/
     
 }
+.all_content{
+    display: flex;
+}
 .view_img_content{
     top: -70px;
 }
@@ -1950,6 +1953,15 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .container{
         padding: 15px 30px!important;
     }
+    .actors_page .main_container{
+        margin-top: 140px;!important;
+    }
+    .wv3{
+        padding: 25px 0 0px 0;
+    }
+    .title-type{
+        width: 100%!important;
+    }
 }
 @media screen and (max-width: 992px) {
     .hove_height{
@@ -1964,6 +1976,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .about_big_content{
         margin-left: 0;
+    }
+    .right_side_contact p{
+        font-size: 12px!important;
+    }
+    .right_side_contact span{
+        margin-left: 35px!important;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2002,6 +2020,38 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actors_lists .actor{
         margin: 15px auto!important;
     }
+    .contact_form{
+        padding: 15px 0!important;
+    }
+    .contact-button{
+        right: 25px!important;
+        bottom: 14px!important;
+    }
+    .close_button{
+        right: 40px;
+    }
+    .all_content{
+        display: block!important;
+    }
+    .left_side_cont{
+        width: 100%!important;
+        border-radius: 20px;
+    }
+    .message_icon{
+        display: none;
+    }
+    .close_button{
+        right: 25px!important;
+        padding: 7px 12px 8px 12px!important;
+    }
+    .righ_content{
+        width: 100%!important;
+        padding: 20px;
+    }
+    .map-button{
+        right: 330px;
+    }
+
 }
 @media screen and (max-width: 698px) {
     .owl-item .block-present img{
@@ -2063,6 +2113,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 700px;
+    }
+    .site-contact-map{
+        margin-top: 80px!important;
     }
 }
 @media screen and (max-width: 520px) {
@@ -2566,4 +2619,109 @@ img.big-carousel{
 }
 .weekdays_all{
     border-bottom: 2px solid #efefef !important
+}
+.contact_block_title{
+    border-bottom: 3px solid;
+    width: 330px;
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+.current_performances{
+    border-bottom: 1px solid lightgray;
+    width: 97%;
+    margin: 20px auto;
+}
+.map-button{
+    position: absolute!important;
+    right: 245px;
+    top: 430px;
+    padding: 5px 12px;
+    border-radius: 50%;
+    background: #ec7532;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.map-button:hover{
+    background: white;
+    transition: .5s
+}
+.map-button:hover a{
+    color: #ec7532!important;
+    transition: .5s
+}
+.close_button{
+    position: absolute;
+    top: -20px;
+    right: 90px;
+    border-radius: 50%;
+    color: white;
+    opacity: unset;
+    cursor: pointer;
+}
+.close_button:hover{
+    color: black;
+    opacity: unset!important;
+}
+.close_button:focus{
+    outline: none;
+}
+.contact_form{
+    padding: 45px 75px;
+}
+.contact_form input{
+    border-radius: 50px;
+    padding-left: 20px;
+    background: #efefef;
+    border: none;
+}
+.contact_form textarea{
+    border-radius: 25px;
+    padding-left: 20px;
+    background: #efefef;
+    border: none;
+}
+.contact_button{
+    padding: 7px 10px;
+    background: #ec7532;
+    z-index: 9999;
+    position: absolute;
+    right: 57px;
+    bottom: 120px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+}
+.contact_button:hover{
+    color: black;
+}
+.message_icon{
+    position: absolute;
+    right: 43px;
+    top: 42px;
+    color: #ec7532;
+    font-size: 35px;
+}
+.right_side_contact h3{
+    color: #515151;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.right_side_contact p{
+    color: white;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.right_side_contact span{
+    margin-left: 38px;
+}
+/*
+.soc_ic_contact li a i{
+    color: #515151;
+}*/
+.left_side_cont{
+    border-top-left-radius: 20px 20px;
+    border-bottom-left-radius: 20px 20px;
+    width: 65%;
 }

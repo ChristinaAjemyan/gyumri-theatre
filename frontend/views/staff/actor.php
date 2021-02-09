@@ -4,13 +4,13 @@ use yii\helpers\Url;
 ?>
 
 <div class="container main_container">
-    <div class="d-flex">
+    <div class="d-flex wv3">
         <h2 class="mb-0 title-type actors_title" style="margin-top: 120px;"><b><?= Yii::t('home', 'Դերասաններ'); ?></b></h2>
         <div class="title-side-line"></div>
     </div>
     <section class="actors_lists mt-0">
         <?php if (!empty($model) && isset($model)): ?>
-        <div class="actors_main_my row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
+        <div class="actors_main_my row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2" style="width: 103%!important;">
             <?php foreach ($model as $item): ?>
                 <div class="col">
                     <a href="<?=  Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]);?>">
