@@ -63,7 +63,7 @@ use yii\helpers\Url;
             <div class="all_content" style="border-radius: 20px;background: black">
                 <div class="bg-white left_side_cont">
                     <div class="contact_form position-relative">
-                        <p align="center" class="h5 font-weight-bold pb-3">Ուղարկեք մեզ հաղորդագրություն</p>
+                        <p align="center" class="h5 font-weight-bold pb-3"><?= Yii::t('home', 'Ուղարկեք մեզ հաղորդագրություն') ?></p>
                         <i class="far fa-envelope message_icon"></i>
                         <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 

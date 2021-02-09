@@ -55,5 +55,6 @@ return [
     'Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online' => 'TICKETS CAN BE PURCHASED FROM GYUMRI DRAMATIC THEATER OR BY ORDERING ONLINE',
     'Քաղաք Գյումրի' => 'City Gyumri',
     'Սայաթ Նովա 4' => 'Sayat Nova 4',
-    'Երկ-ուրբ 9։30 - 7։30 pm' => 'Mon-fri 9։30 - 7։30 pm'
+    'Երկ-ուրբ 9։30 - 7։30 pm' => 'Mon-fri 9։30 - 7։30 pm',
+    'Ուղարկեք մեզ հաղորդագրություն' => 'Send us a message',
 ];
