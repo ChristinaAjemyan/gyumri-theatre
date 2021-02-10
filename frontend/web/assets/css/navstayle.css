@@ -2660,7 +2660,7 @@ img.big-carousel{
     cursor: pointer;
 }
 .close_button:hover{
-    color: black;
+    color: white;
     opacity: unset!important;
 }
 .close_button:focus{
@@ -2692,13 +2692,13 @@ img.big-carousel{
     border: none;
     color: white;
 }
-.contact_button:hover{
+.contact_button img:hover{
     color: black;
 }
 .message_icon{
     position: absolute;
-    right: 43px;
-    top: 42px;
+    right: 36px;
+    top: 40px;
     color: #ec7532;
     font-size: 35px;
 }
@@ -2714,7 +2714,7 @@ img.big-carousel{
     font-size: 14px;
 }
 .right_side_contact span{
-    margin-left: 38px;
+    margin-left: 37px;
 }
 /*
 .soc_ic_contact li a i{
@@ -2724,4 +2724,11 @@ img.big-carousel{
     border-top-left-radius: 20px 20px;
     border-bottom-left-radius: 20px 20px;
     width: 65%;
+}
+.contact_button img{
+    margin-right: -3px;
+    margin-top: -3px;
+}
+.contact_button:focus {
+    outline: none;
 }

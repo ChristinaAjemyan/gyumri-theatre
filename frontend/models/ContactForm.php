@@ -15,7 +15,7 @@ class ContactForm extends Model
     public $phone;
     public $body;
     public $subject;
-    /*public $verifyCode;*/
+//    public $verifyCode;
 
 
     /**
@@ -25,11 +25,13 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'phone', 'body', 'verifyCode'], 'required','message' => Yii::t('home','Դաշտը դատարկ է')],
+            [['name', 'email', 'phone', 'body'], 'required','message' => Yii::t('home','Դաշտը դատարկ է')],
+//            [['name', 'email', 'phone', 'body', 'verifyCode'], 'required','message' => Yii::t('home','Դաշտը դատարկ է')],
             // email has to be a valid email address
+            [['subject'],'safe'],
             ['email', 'email', 'message' => Yii::t('home','Սխալ Էլ-հասցե')],
             // verifyCode needs to be entered correctly
-            /*['verifyCode', 'captcha', 'message' => Yii::t('home','Սխալ սիմվոլներ')],*/
+//            ['verifyCode', 'captcha', 'message' => Yii::t('home','Սխալ սիմվոլներ')],
         ];
     }
 
@@ -43,7 +45,7 @@ class ContactForm extends Model
             'email' => Yii::t('home', 'Էլ-հասցե'),
             'phone' => Yii::t('home', 'Հեռախոսահամար'),
             'body' => Yii::t('home', 'Հաղորդագրություն'),
-            /*'verifyCode' => Yii::t('home', 'Ստուգման ծածկագիր')*/
+//            'verifyCode' => Yii::t('home', 'Ստուգման ծածկագիր')
         ];
     }
 
