@@ -550,7 +550,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     box-shadow: none;
 }
 .navbar-collapse{
-    max-width:740px;;
+    max-width:739px;;
     border-bottom: 1px solid #5f6769;
     justify-content: flex-end;
 }
@@ -595,6 +595,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     max-width: 100%;
 }
 .navbar-nav .nav-item.active .hove_height{
+    margin-left: -5px;
     width: 100%;
     max-width: 100%;
 }
@@ -607,7 +608,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     width: 100%;
     max-width: 0px;
     top: 51px;
-
+    opacity: 30;
+    color: #FFFFFF;
     transition: max-width 0.5s;
 }
 .navbar-nav .nav-item .dropdown-toggle{
@@ -832,7 +834,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-bottom-color: #efefef;
     border-bottom-width: 3px;
     justify-content: space-evenly;
-    margin-bottom: 60px;
+    padding: 10px 130px 0px 130px;
+    margin-bottom: 50px;
 }
 .nav-tabs .nav-link{
     border: none !important;
@@ -1071,7 +1074,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #999999;
     font-size: 14px;
     display: block;
-    margin-top: 10px;
     text-transform:uppercase;
     font-weight: 700;
 }
@@ -1095,7 +1097,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .new_section .media-footer .calendar{
     color: #999999;
-    margin: 0px 20px;
+    margin: 0px 12px 0px 24px;
     font-size: 20px;
 }
 .new_section-title{
@@ -1141,6 +1143,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about-carousel .owl-nav{
     top: 30%;
+    left: -30px
+}
+.about-carousel .owl-nav .owl-prev{
+    left: -30px
+}
+.about-carousel .owl-nav .owl-next{
+    right: -70px!important;
 }
 .about-carousel .owl-nav  svg{
     color: #e18848;
@@ -1943,6 +1952,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .title-side-line{
        display: none;
     }
+    .main_movies .nav-tabs {
+        justify-content: center!important;
+    }
 }
 @media screen and (max-width: 1202px) {
     .about_big_content{
@@ -1982,6 +1994,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .right_side_contact span{
         margin-left: 35px!important;
+    }
+    .main_movies .nav-tabs{
+        padding: 10px 80px 0px 80px;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2051,6 +2066,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .map-button{
         right: 330px;
     }
+    .main_movies .nav-tabs{
+        padding: 10px 0px 0px 10px;
+    }
+    .performances_main{
+        padding-bottom: 20px;
+    }
 
 }
 @media screen and (max-width: 698px) {
@@ -2069,6 +2090,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .navbar-brand img {
         max-width: 150px;
         margin-left: 15px;
+    }
+    .main_movies .nav-tabs{
+        padding: 10px 0px 0px 10px;
     }
 }
 @media screen and (max-width: 660px) {
@@ -2117,6 +2141,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .site-contact-map{
         margin-top: 80px!important;
     }
+    .weekdays img{
+        width: 16px!important;
+    }
+    .weekdays_all{
+        padding: 0!important;
+    }
 }
 @media screen and (max-width: 520px) {
     .performances-page .present-corusel{
@@ -2139,6 +2169,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .actors_lists .actor img{
         height: 385px;
+    }
+    .main_movies .nav-tabs{
+        padding: 10px 0px 0px 10px;
     }
 }
 @media screen and (max-width: 515px) {
@@ -2266,6 +2299,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actors_lists .actor img{
         height: 280px;
     }
+    .weekdays img{
+        width: 14px!important;
+    }
+    a.weekdays{
+        font-size: 12px!important;
+        padding: 6px!important;
+    }
 }
 @media screen and (max-width: 376px) {
     .performances-page .present-corusel{
@@ -2326,6 +2366,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .actors_lists .actor img{
         height: 270px;
+    }
+    a.weekdays{
+        font-size: 12px!important;
+    }
+    .weekdays img{
+        width: 13px!important;
     }
 }
 @media screen and (max-width: 351px) {
@@ -2621,10 +2667,12 @@ img.big-carousel{
     border-bottom: 2px solid #efefef !important
 }
 .contact_block_title{
-    border-bottom: 3px solid;
     width: 330px;
     padding-bottom: 10px;
     font-size: 25px;
+}
+.block_title_gred_line{
+    width: 330px; height: 3px;margin: 0px auto 0px; background-image: linear-gradient(to right, #fbbd61, #ec7532);
 }
 .current_performances{
     border-bottom: 1px solid lightgray;

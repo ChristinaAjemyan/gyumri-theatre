@@ -10,7 +10,7 @@ use yii\helpers\Url;
 
 
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
-    <img src="/assets/images/scroll-arrow.svg" alt="Scroll down" class="scroll">
+    <img src="/assets/images/Group 7.svg" alt="Scroll down" class="scroll">
     <div class="scrollme">
         <h1 class="baner_title"><?= Yii::t('home', 'Գյումրու Դրամատիկական թատրոն') ?></h1>
     </div>
@@ -44,8 +44,11 @@ use yii\helpers\Url;
 </div>
 
 <section class="section_carousel">
-    <div class="container">
-        <h2 class="block_title carousel_title mt-3"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
+    <div class="container mt-5">
+        <div class="current_performances">
+            <h2 class="block_title carousel_title mt-3 contact_block_title"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
+            <div class="block_title_gred_line"></div>
+        </div>
         <span class="title_line" style="margin-top: -25px;"></span>
         <div class="main_carousel owl-carousel" id="current_performance">
         <?php if (!empty($performances) && isset($performances)): ?>
@@ -71,13 +74,13 @@ use yii\helpers\Url;
 
 </section>
 
-<main class="main_movies mb-5">
+<main class="main_movies mb-5 pt-2" style="background: white;">
     <div class="container main_container">
         <nav>
             <div class="nav nav-tabs weekdays_all" id="nav-tab" role="tablist">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
                 <a class="nav-item nav-link weekdays active" data-value="all" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
-                   aria-controls="nav-cal" aria-selected="true"><i class="far fa-calendar-alt"></i></a>
+                   aria-controls="nav-cal" aria-selected="true"><img style="width: 27px;" src="<?= Yii::$app->params['frontend-url'].'/assets/images/Векторный смарт-объект.svg'?>" alt=""></a>
                 <a class="nav-item nav-link weekdays" data-id="2" id="nav-tus-tab" data-toggle="tab" href="#nav-tus" role="tab"
                    aria-controls="nav-tus" aria-selected="true"><?= Yii::t('home', 'ԵՐՔ') ?></a>
                 <a class="nav-item nav-link weekdays" data-id="3" id="nav-wed-tab" data-toggle="tab" href="#nav-wed" role="tab"
@@ -98,29 +101,30 @@ use yii\helpers\Url;
 
 </main>
 
-<section class="new_section p-2">
+<section class="new_section p-2" style="min-height: 510px;">
     <div class="container" style="padding: 0 30px;">
-        <h3 class="new_section-title"><?= Yii::t('home', 'ՇՈՒՏՈՎ') ?></h3>
+        <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #808080;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
+        <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
         <div class="row">
             <div class="col-md-7 boredr">
                 <div class="media-body">
-                    <h5 class="mt-0 media-title"><?= Yii::t('text', $performanceSoon->title); ?></h5>
+                    <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', $performanceSoon->title); ?></h5>
                     <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $performanceSoon->id])->asArray()->all();
                     $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
-                    <small class="movie-type">
+                    <small class="movie-type" style="font-family: sans-serif;">
                         <?php $str = '';
                         foreach ($genre as $item){
                             $str .= ' '.Yii::t('text', $item).',';
                         }
                         echo trim($str, ','); ?>
                     </small>
-                    <p class="author"><?= Yii::t('text', $performanceSoon->author); ?></p>
+                    <p class="author" style="font-family: sans-serif;"><?= Yii::t('text', $performanceSoon->author); ?></p>
                     <p class="media-text">
                         <?= mb_substr(Yii::t('text', $performanceSoon->desc),0,190, 'utf-8'); ?>
                         <?= strlen(Yii::t('text', $performanceSoon->desc)) > 190 ? '...' : ''; ?>
                     </p>
 
-                    <div class="media-footer">
+                    <div class="media-footer" style="margin-top: 25px;">
                         <div class="media_btn-group">
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performanceSoon->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                         </div>

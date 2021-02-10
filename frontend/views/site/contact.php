@@ -42,7 +42,10 @@ use yii\helpers\Url;
                 </button>
             </div>
         <?php endif; ?>
-        <div class="current_performances"><h2 class="block_title carousel_title mt-3 contact_block_title"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2></div>
+        <div class="current_performances">
+            <h2 class="block_title carousel_title mt-3 contact_block_title"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
+            <div class="block_title_gred_line"></div>
+        </div>
         <span class="title_line" style="margin-top: -25px;"></span>
         <div class="main_carousel owl-carousel" id="current_performance">
             <?php if (!empty($performances) && isset($performances)): ?>
