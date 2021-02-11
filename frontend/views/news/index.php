@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
-    <div class="container" style="padding: 0 30px; min-height: 465px;">
+    <div class="container" style="padding: 0 30px; min-height: 600px;">
         <div style="margin-top: 120px" class="tab-content" id="nav-tabContent">
             <div class="d-flex">
                 <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>

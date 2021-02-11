@@ -3,7 +3,7 @@ use yii\widgets\LinkPager;
 use yii\helpers\Url;
 ?>
 
-<div class="container main_container" style="min-height: 465px;">
+<div class="container main_container" style="min-height: 600px;">
     <div class="d-flex wv3">
         <h2 class="mb-0 title-type actors_title" style="margin-top: 120px;"><b><?= Yii::t('home', 'Դերասաններ'); ?></b></h2>
         <div class="title-side-line"></div>
