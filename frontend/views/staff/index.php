@@ -12,7 +12,7 @@ use yii\widgets\LinkPager; ?>
                     <?php foreach ($model as $item): ?>
                         <div class="col-md-4">
                             <a href="">
-                                <div class="media_present">
+                                <div class="media_present staff_pres">
                                     <div class="media">
                                         <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
                                              class="align-self-center mr-3 present_baner" alt="...">
