@@ -2702,7 +2702,7 @@ img.big-carousel{
     position: absolute!important;
     right: 25px;
     top: -45px;
-    padding: 5px 12px;
+    padding: 7px 14px;
     border-radius: 50%;
     background-image: linear-gradient(to right, #F0B866, #DB7439);
     color: white;
@@ -2750,7 +2750,7 @@ img.big-carousel{
     border: none;
 }
 .contact_button {
-    padding: 8px 11px;
+    padding: 10px 13px;
     z-index: 9999;
     position: absolute;
     right: 57px;
