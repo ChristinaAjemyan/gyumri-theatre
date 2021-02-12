@@ -162,8 +162,8 @@ class PerformanceController extends Controller
                 }
             }
 
-            if (isset(Yii::$app->request->post('typePerformance')['type_id'])){
-                foreach (Yii::$app->request->post('typePerformance')['type_id'] as $type){
+            if (isset(Yii::$app->request->post('TypePerformance')['type_id'])){
+                foreach (Yii::$app->request->post('TypePerformance')['type_id'] as $type){
                     $model_type_perform = new TypePerformance();
                     $model_type_perform->type_id = $type;
                     $model_type_perform->performance_id = $model->attributes['id'];

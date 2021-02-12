@@ -28,7 +28,7 @@ class PerformanceController extends Controller
 {
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
-        $performancesBigHall = Performance::find()->where(['hall' => 0])->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesBigHall = Performance::find()->orderBy(['id' => SORT_DESC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesBigHall->count(),
             'defaultPageSize' => 15,
@@ -48,6 +48,7 @@ class PerformanceController extends Controller
                 $performances[$key]['func_date'] = Performance::getPerformanceTime($value['show_date']);
             }
         }
+
         if (Yii::$app->request->isAjax){
             $type_id = Yii::$app->request->post('id');
             $performances_arr = [];
