@@ -9,10 +9,9 @@ use yii\helpers\ArrayHelper;
 <div class="performances-page">
 
     <div id="hero" class="carousel slide carousel-fade performance_header" data-ride="carousel"
-         style="background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;">
-        <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-        <span class="btn_play"><a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i class="fas fa-play"></i></a></span>
-        <?php endif; ?>
+         style="position: relative;background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;">
+        <!--style="background-image: url(<?/*= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; */?>)">-->
+
         <div class="carousel-inners" >
             <!-- <iframe src="https://www.youtube.com/embed/uqA-tT3T6FQ"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -35,9 +34,14 @@ use yii\helpers\ArrayHelper;
                     </div>
                     <div class="col-md-9 col-12 view_text_content">
 
-                        <div class="media-body">
+                        <div class="media-body" style="position: relative">
                             <p class="author"><?= Yii::t('text', $model->author); ?> </p>
                             <h1 class="mt-0 media-title"><?= Yii::t('text', $model->title); ?></h1>
+                            <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
+                                <span class="btn_play about_popup_youtube"><a target="_blank" class="popup_youtube"
+                                                                              href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
+                                                class="fas fa-play"></i></a></span>
+                            <?php endif; ?>
                             <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
                             $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
                             <small class="movie-type">

@@ -75,7 +75,7 @@ use yii\helpers\Url;
 </section>
 
 <main class="main_movies mb-5 pt-2" style="background: white;">
-    <div class="container main_container">
+    <div class="container main_container" style="margin-bottom: -50px;">
         <nav>
             <div class="nav nav-tabs weekdays_all" id="nav-tab" role="tablist">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
@@ -95,13 +95,13 @@ use yii\helpers\Url;
                    aria-controls="nav-sun" aria-selected="false"><?= Yii::t('home', 'ԿԻՐ') ?></a>
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent"></div>
+        <div class="tab-content" id="nav-tabContent" style="min-height: 400px"></div>
 
     </div>
 
 </main>
 
-<section class="new_section p-2" style="min-height: 510px;">
+<section class="new_section p-2" style="min-height: 510px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);">
     <div class="container" style="padding: 0 30px;">
         <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #808080;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
         <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
@@ -136,7 +136,7 @@ use yii\helpers\Url;
             </div>
 
 
-            <div class="col-md-5">
+            <div class="col-md-5" style="margin-left: -24px;">
                 <div class="video_block">
 
                     <iframe width="460" height="315" src="https://www.youtube.com/embed/<?= $performanceSoon->trailer; ?>"

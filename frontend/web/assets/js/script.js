@@ -199,8 +199,8 @@ $('.weekdays').on('click', function () {
             }
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
-                <div class="media result d-block">
-                    <div class="row performances_main">
+                <div class="media result d-block" ${data.success.length <= 1 ? 'style="border-bottom:none"' : ''}>
+                    <div class="row performances_main" style="box-shadow: none;">
                         <div class="col-md-3 col-12 p-0">
                         <a href="/performance/view/${item.slug}">
                             <img src="${data.basePath}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
@@ -223,7 +223,7 @@ $('.weekdays').on('click', function () {
                     getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></button>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
-                                    <p class="movie-lenght">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
+                                    <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
                                 </div>
                             </div>
                         </div>

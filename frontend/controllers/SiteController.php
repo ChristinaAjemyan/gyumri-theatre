@@ -181,7 +181,7 @@ class SiteController extends Controller
                     }
                 }
             }
-            $wherePerformance = ''; $whereStaff = ''; $whereNews = ''; $whereArchive = '';
+            $wherePerformance = ''; $whereStaff = ''; $whereNews = '';
             if (!empty($searchName) && isset($searchName)){
                 foreach ($searchName as $item){
                     $wherePerformance .= " `title` LIKE '%{$item}%' or `short_desc` LIKE '%{$item}%' or
@@ -189,12 +189,10 @@ class SiteController extends Controller
                     $whereStaff .= " `first_name` LIKE '%{$item}%' or `last_name` LIKE '%{$item}%' or
                 `country` LIKE '%{$item}%' or `city` LIKE '%{$item}%' or `desc` LIKE '%{$item}%' or";
                     $whereNews .= " `title` LIKE '%{$item}%' or `content` LIKE '%{$item}%' or";
-                    $whereArchive .= " `title` LIKE '%{$item}%' or `content` LIKE '%{$item}%' or";
                 }
                 $searchInformation['performance'] = Performance::find()->where(rtrim($wherePerformance, 'or'))->asArray()->all();
                 $searchInformation['staff'] = Staff::find()->where(rtrim($whereStaff, 'or'))->asArray()->all();
                 $searchInformation['news'] = News::find()->where(rtrim($whereNews, 'or'))->asArray()->all();
-                $searchInformation['archive'] = Archive::find()->where(rtrim($whereArchive, 'or'))->asArray()->all();
 
                 if (!empty($searchInformation['performance']) && isset($searchInformation['performance'])){
                     foreach ($searchInformation['performance'] as $key => $value){

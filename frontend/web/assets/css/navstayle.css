@@ -448,7 +448,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: "ArialAMU";
 } 
 #headerCarousel{
-    max-height: 500px;
+    max-height: 600px;
 }
 #headerCarousel .owl-dots{
     width: 20px;
@@ -481,7 +481,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .scrollme{
     width: 100%;
-    top: 30%;
+    top: 39%;
     right:50%;
     transform: translate(50%,0px);
     z-index:5;
@@ -751,6 +751,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .carousel_item .card{
     border: none;
     margin: auto;
+    background: transparent;
 }
 .carousel_item .card-title{
     border: none;
@@ -762,14 +763,14 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 0px;
-    color: #222;
+    color: #404040;
 }
 .carousel_item .card-title::after{
     display: none;
 }
 .carousel_item .card-text{
     text-align: center;
-    color: #999;
+    color: #999999;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 18px;
@@ -800,10 +801,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: lightgrey;
 }
 .main_carousel .owl-nav .owl-prev{
-    left: -3%;
+    left: -5%;
 }
 .main_carousel .owl-nav .owl-next{
-    right: -4%;
+    right: -6%;
 }
 @media(max-width:1230px){
     .main_carousel .owl-nav .owl-prev{
@@ -1152,18 +1153,18 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     left: -30px
 }
 .about-carousel .owl-nav .owl-next{
-    right: -70px!important;
+    right: -90px!important;
 }
 .about-carousel .owl-nav  svg{
     color: #e18848;
     font-size: 40px;
 }
 .about-carousel .owl-nav .owl-prev{
-    left: 0%;
+    left: -2%;
     
 }
 .about-carousel .owl-nav .owl-next{
-    right: 0%;
+    right: -2%;
 }
 .article-call{
     padding: 60px 0 30px;
@@ -1254,7 +1255,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .performance_header{
     height:400px;
     box-shadow: inset 2px -70px 22px 2px rgba(0,0,0,0.63);
-    background: url('../images/baner_pre.png') no-repeat center;
     background-size: cover;
 }
 .performance_header .btn_play a{
@@ -1370,10 +1370,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: lightgrey;
 }
 .performances-carusel .owl-nav .owl-prev{
-    left: -3%;
+    left: -5%;
 }
 .performances-carusel .owl-nav .owl-next{
-    right: -4%;
+    right: -5%;
 }
 .performances-carusel.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled{
     display: block !important;
@@ -2683,7 +2683,7 @@ img.big-carousel{
     font-family: -webkit-pictograph;
 }
 .carousel_item img{
-    border-radius: 10px;
+    border-radius: 16px;
 }
 .weekdays_all{
     border-bottom: 2px solid #efefef !important
@@ -2697,7 +2697,7 @@ img.big-carousel{
     width: 330px; height: 3px;margin: 0px auto 0px; background-image: linear-gradient(to right, #fbbd61, #ec7532);
 }
 .current_performances{
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #EFEFEF;
     width: 97%;
     margin: 20px auto;
 }
