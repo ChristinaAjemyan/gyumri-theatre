@@ -4,12 +4,14 @@ use common\models\GenrePerformance;
 use common\models\Image;
 use common\models\Performance;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
+
 ?>
 
 <div class="performances-page">
 
     <div id="hero" class="carousel slide carousel-fade performance_header" data-ride="carousel"
-         style="position: relative;background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;">
+         style="position: relative;background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;margin-top: 55px;">
         <!--style="background-image: url(<?/*= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; */?>)">-->
 
         <div class="carousel-inners" >
@@ -29,10 +31,10 @@ use yii\helpers\ArrayHelper;
         <section class="about-present main_movies">
             <div class="media">
                 <div class="row">
-                    <div class="col-md-3  col-12 view_img_content">
-                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" class="h-auto" alt="Photo">
+                    <div class="col-md-4  col-12 view_img_content">
+                        <img style="max-width: 318px;width: 318px;height: 436px;object-fit: cover;border-radius: unset;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" alt="Photo">
                     </div>
-                    <div class="col-md-9 col-12 view_text_content">
+                    <div class="col-md-8 col-12 view_text_content">
 
                         <div class="media-body" style="position: relative">
                             <p class="author"><?= Yii::t('text', $model->author); ?> </p>
@@ -78,7 +80,10 @@ use yii\helpers\ArrayHelper;
     <?php if (!empty($images) && isset($images)): ?>
     <section class="present-corusel" >
         <div class="container">
-            <h2 class="block_title carousel_title mt-0"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
+            <div class="current_performances" style="margin: 0 auto;">
+                <h2 class="block_title carousel_title mt-0 contact_block_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
+                <div class="block_title_gred_line"></div>
+            </div>
             <span class="title_line"></span>
             <div class="performances-carusel owl-carousel" id="current_performance">
                 <?php foreach ($images as $image): ?>
@@ -93,49 +98,59 @@ use yii\helpers\ArrayHelper;
     </section>
     <?php endif; ?>
 
-    <section class="new_section p-2" style="background-image: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);">
-        <div class="container ">
-            <h3 class="new_section-title"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h3>
+    <section class="new_section p-2" style="min-height: 510px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);">
+        <div class="container" style="padding: 0 30px;">
+            <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #808080;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
+            <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
             <div class="row">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
-                        <h5 class="mt-0 media-title"><?= Yii::t('text', $model->title); ?></h5>
+                        <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', $model->title); ?></h5>
+                        <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
+                        $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
+                        <small class="movie-type" style="font-family: sans-serif;">
+                            <?php $str = '';
+                            foreach ($genre as $item){
+                                $str .= ' '.Yii::t('text', $item).',';
+                            }
+                            echo trim($str, ','); ?>
+                        </small>
+                        <p class="author" style="font-family: sans-serif;"><?= Yii::t('text', $model->author); ?></p>
                         <p class="media-text">
-                            <?= mb_substr(Yii::t('text', $model->short_desc),0,370, 'utf-8'); ?>
-                            <?= strlen(Yii::t('text', $model->short_desc)) > 370 ? '...' : ''; ?>
+                            <?= mb_substr(Yii::t('text', $model->desc),0,190, 'utf-8'); ?>
+                            <?= strlen(Yii::t('text', $model->desc)) > 190 ? '...' : ''; ?>
                         </p>
 
-                        <div class="media-footer">
+                        <div class="media-footer" style="margin-top: 25px;">
                             <div class="media_btn-group">
-                                <div class="calendar-block">
-                                    <span class="calendar"><i class="far fa-calendar-alt"></i></span>
-                                    <p class='view-movie'><?= Performance::getPerformanceTime($model->show_date); ?></p>
-                                </div>
-                                <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
-                                    <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
-                                        <i class="fas fa-chevron-right"></i></button>
-                                <?php endif; ?>
-
+                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $model->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                             </div>
-
+                            <span class="calendar"><i class="far fa-calendar-alt"></i></span>
+                            <p class='view-movie'><?= Performance::getPerformanceTime($model->show_date); ?></p>
 
                         </div>
                     </div>
                 </div>
 
+                <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
+                    <div class="col-md-5 position-relative" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
+                <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
+                                                                                 href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
+                                class="fas fa-play"></i></a></span>
+                        <!--                <div class="video_block">
 
-                <div class="col-md-5">
-                    <div class="video_block">
-                        <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-                        <iframe width="460" height="315" src="https://www.youtube.com/embed/<?= $model->trailer; ?>"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        <?php endif; ?>
+                    <iframe width="460" height="315" src="https://www.youtube.com/embed/<?/*= $performanceSoon->trailer; */?>"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>-->
                     </div>
-                </div>
+
+                <?php endif; ?>
+
             </div>
         </div>
     </section>
+
 
     <article class="article-call">
         <p class="number-text"><?= Yii::t('home', 'ՏԵՂԵԿԱՏՈՒ ՀԵՌԱԽՈՍԱՀԱՄԱՐ') ?></p>

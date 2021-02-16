@@ -33,7 +33,7 @@ use yii\helpers\Url;
     <div id="nav-tabCont">
         <section class="section_carousel archive_page_carousel">
             <div class="container">
-                <h2 class="archive_page_carousel_title"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
+                <h2 class="archive_page_carousel_title" style="margin-bottom: 20px;"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
                 <div id="main_content_perf_data">
                     <div class="main_carousel owl-carousel archive_content_carousel" id="current_performance">
 
@@ -64,8 +64,8 @@ use yii\helpers\Url;
         <?php if(!empty($active_season)) : ?>
             <div class="archive_main_content">
                 <div class="container" style="padding: 0 30px;">
-                    <h2 class="archive_main_title  mt-3 mb-3"><?= $active_season->title ?> <?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆ') ?></h2>
-                    <p class="archive_main_text"><?= $active_season->content ?></p>
+                    <h2 class="archive_main_title  mt-5 mb-2"><?= $active_season->title ?> <?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆ') ?></h2>
+                    <?= $active_season->content ?>
                 </div>
             </div>
             <div class="container archive_page_images_carousel">

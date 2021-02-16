@@ -574,7 +574,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .performances_main{
     background: white;
-    box-shadow: 0px 6px 11px 0px rgb(168 168 168);
+    box-shadow: 0px 0px 10px 0px rgb(168 168 168);
     border-radius: 10px;
 }
 
@@ -631,7 +631,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     background:linear-gradient(to right, #fbbd61, #ec7532);
     border-radius: 10px;
     padding: 1px;
-    
+    border: none;
     
 }
 .navbar-nav .dropdown-item:focus, .navbar-nav .dropdown-item:hover{
@@ -739,6 +739,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .carousel_title::after{
     width: 100%;
 }
+.site-index-trailer{
+    right: 41%;top: 34%;padding: 30px 30px 25px 30px;
+}
 .title_line{
    display: block;
    max-width: 100%;
@@ -804,7 +807,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     left: -5%;
 }
 .main_carousel .owl-nav .owl-next{
-    right: -6%;
+    right: -58px;
 }
 @media(max-width:1230px){
     .main_carousel .owl-nav .owl-prev{
@@ -867,6 +870,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-weight: 700;
     font-size: 17px;
     text-transform: uppercase;
+    font-family: Sans-Serif;
 }
 .main_movies .tab-content hr{
     margin-bottom: 40px;
@@ -899,6 +903,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .main_movies .media-body .aside-text_bg{
     color: black !important;
     background: #dedede !important;
+    font-family: sans-serif;
+
 }
 .main_movies .media-title{
     font-family: "Arm Hmks";
@@ -942,8 +948,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     text-align: justify;
 }
 .media-footer .media_btn-group .btn{
-    font-size: 12px;
-    width: 100px;
+    font-size: 15px;
+    width: 135px;
 }
 .media-footer .media_btn-group .more_btn{
     border-radius: 50px !important;
@@ -951,6 +957,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-weight: 600;
     background: linear-gradient(to right, #fab144, #ec7532);
     transition: color .5s;
+    border: none;
+    font-family: sans-serif;
 }
 
 .media-footer .media_btn-group .more_btn:hover{
@@ -961,9 +969,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     width: 150px;
     color:#e18848;
     text-align: left;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 700;
-
+    font-family: sans-serif;
     transition: color .5s;
 }
 .media-footer .media_btn-group .add_cupon:hover{
@@ -983,6 +991,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     text-transform: uppercase;
     color: #999;
     font-weight: 600;
+    font-family: sans-serif;
 }
 .media-footer .movie-lenght span{
     color: white;
@@ -995,6 +1004,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     margin-left: 15px;
     box-sizing: border-box;
     padding:8px 3px 0px 7px;
+    font-family: sans-serif;
 }
 @media(max-width:520px){
     
@@ -1111,6 +1121,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-color: #202020;
     font-size: 18px;
     padding-left: 20px;
+    font-family: sans-serif;
 }
 .new_section-title::after{
     position: relative;
@@ -1171,11 +1182,14 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .article-call .call-number{
     text-decoration: none;
-    color:#e18848 !important;
+    color: #e18848 !important;
     border-bottom: none;
-    font-size: 80px;
+    font-size: 90px;
+    font-weight: bold;
     letter-spacing: 5px;
     text-align: center;
+    font-family: 'Arm Hmks';
+    margin-top: -20px;
 }
 .article-call .call-number::after{
     display: none;
@@ -1188,6 +1202,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     letter-spacing: 1.5px;
     font-size: 26px;
     font-weight: 700;
+    font-family: Sans-Serif;
 
 }
 
@@ -1330,7 +1345,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about-present .media-footer .view-movie{
     color:black !important;
-    font-size: 16px !important;
+    font-size: 22px !important;
 }
 .about-present .media-footer .view-movie svg{
     margin-right: 8px;
@@ -1415,7 +1430,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border: 1px solid #1f1f1f;
 }
 .performances-page .article-call{
-    box-shadow: inset 0px 82px 30px -61px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 60px 31px -55px rgb(0 0 0 / 75%)
 }
 .performances-page .footer{
     margin-bottom: -10px;
@@ -1509,7 +1524,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .performance_movie{
     margin: 20px 0;
-    min-height: 465px;
+    min-height: 600px;
 }
 .performance_movie .author{
     margin-top: 5px;
@@ -1691,6 +1706,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .theater_year span{
     color: #e18848;
+    font-family: 'Arm Hmks';
 }
 
 
@@ -1787,6 +1803,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 #searchModal .modal-content .modal-header .close{
     position: absolute;
     right: 20px;
+    color: white;
+}
+#searchModal .modal-content .modal-header .close:focus{
+    border: none;
+    outline: none;
 }
 #searchModal .modal-has-search{
     margin: 0 auto;
@@ -1815,6 +1836,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     transition: color .5s;
     padding-left: 25px;
     padding-right: 25px;
+    border: none;
+    font-family: Sans-Serif;
 }
 #searchModal .modal-has-search .modal_media_btn-group .search_button:hover{
     color: black;
@@ -1951,6 +1974,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     top: 0;
     right: 30%;
     font-size: 13px;
+    height: 33px;
 }
 @media screen and (max-width: 1220px) {
     .title-side-line{
@@ -1980,6 +2004,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .title-type{
         width: 100%!important;
+    }
+    .about-carousel .owl-nav .owl-prev{
+        left: 2%;
+    }
+    .about-carousel .owl-nav .owl-next {
+        right: -25px!important;
     }
 }
 @media screen and (max-width: 992px) {
@@ -2015,8 +2045,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         max-width: unset;
     }
     .actors_page .main_container {
-        margin-top: 105px;
-    !important: ;
+        margin-top: 105px;!important: ;
+    }
+    .navbar-brand img{
+        margin-left: 10px;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2095,6 +2127,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .news_block img{
         height: auto!important;
     }
+    .site-index-trailer{
+        right: 0;
+    }
 
 }
 @media screen and (max-width: 698px) {
@@ -2158,7 +2193,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         height: 700px;
     }
     .site-contact-map{
-        margin-top: 80px!important;
+        margin-top: 75px!important;
     }
     .weekdays img{
         width: 16px!important;
@@ -2502,7 +2537,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color:#404040
 }
 .theater_season {
-    padding-bottom: 15px;
+    padding-bottom: 25px;
     background:#ececec;
 }
 .theater_season .theater_season_block{
@@ -2556,10 +2591,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: lightgrey;
 }
 .theater_season .owl-nav .owl-prev{
-    left: -3%;
+    left: -5%;
 }
 .theater_season .owl-nav .owl-next{
-    right: -4%;
+    right: -6%;
 }
 .archive_page_carousel{
     background:#ececec ;
@@ -2664,9 +2699,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 img.big-carousel{
     height: 325px; object-fit: cover;
 }
-.performance_tab_cont{
-    border-bottom: 1px solid lightgray;
-}
+
 .weekdays{
     font-family: sans-serif;
 }

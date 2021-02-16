@@ -135,15 +135,21 @@ use yii\helpers\Url;
                 </div>
             </div>
 
+            <?php if (!empty($performanceSoon->trailer) && isset($performanceSoon->trailer)): ?>
+                <div class="col-md-5 position-relative" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);background-size: cover;">
+                <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
+                                                              href="https://www.youtube.com/watch?v=<?= $performanceSoon->trailer; ?>"><i
+                                class="fas fa-play"></i></a></span>
+                    <!--                <div class="video_block">
 
-            <div class="col-md-5" style="margin-left: -24px;">
-                <div class="video_block">
-
-                    <iframe width="460" height="315" src="https://www.youtube.com/embed/<?= $performanceSoon->trailer; ?>"
+                    <iframe width="460" height="315" src="https://www.youtube.com/embed/<?/*= $performanceSoon->trailer; */?>"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
+                </div>-->
                 </div>
-            </div>
+
+            <?php endif; ?>
+
         </div>
     </div>
 </section>

@@ -12,7 +12,7 @@ use yii\widgets\Pjax; ?>
             </div>
         </div>
 
-        <div align="center">
+        <div align="center" style="background: white;">
             <div class="mb-3 ml-1">
                 <?php $types = Type::find()->all(); ?>
                 <?php if (isset($types)): ?>
