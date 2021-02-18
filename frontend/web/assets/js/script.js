@@ -219,8 +219,8 @@ $('.weekdays').on('click', function () {
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
-                                    ${item.show_date > currentTime ? "<button class=\"btn add_cupon\">" + 
-                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></button>" : ''}
+                                    ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"add_cupon\">" + 
+                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
                                     <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
@@ -418,6 +418,155 @@ $('.performance_tab_cont').on('click',function () {
 })
 
 });
+
+function initMap() {
+    var icon = {
+        url: "/assets/images/new_vector_shape_done копия 3.svg", // url
+        scaledSize: new google.maps.Size(50, 50), // scaled size
+        origin: new google.maps.Point(0,0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+    var location = {lat: 40.790858, lng: 43.844993};
+    var map = new google.maps.Map(document.getElementById('myMap'),{
+        zoom: 18,
+        center: location,
+        styles: [
+            {
+                "featureType": "administrative",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": "-100"
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative.province",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": -100
+                    },
+                    {
+                        "lightness": 0
+                    },
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": -100
+                    },
+                    {
+                        "lightness": "0"
+                    },
+                    {
+                        "visibility": "simplified"
+                    }
+                ]
+            },
+            {
+                "featureType": "road",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": "-100"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "simplified"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "lightness": "30"
+                    }
+                ]
+            },
+            {
+                "featureType" : "road.highway",
+                "elementType" : "geometry.stroke",
+                "stylers" : [{ color: "#000000" }]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "lightness": "40"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": -100
+                    },
+                    {
+                        "visibility": "simplified"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "hue": "#ffff00"
+                    },
+                    {
+                        "lightness": -25
+                    },
+                    {
+                        "saturation": -97
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "labels",
+                "stylers": [
+                    {
+                        "lightness": -25
+                    },
+                    {
+                        "saturation": -100
+                    }
+                ]
+            }
+        ]
+    });
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        icon: icon
+    })
+}
 
 
 

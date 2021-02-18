@@ -26,18 +26,28 @@ class StaffController extends Controller
     {
         $this->view->title = Yii::t('home', 'Վարչական մաս');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one()->id;
-        $staff = Staff::find()->where(['!=', 'role_id', $role_id])->orderBy(['last_name' => SORT_ASC]);
-        $pages = new Pagination([
-            'totalCount' => $staff->count(),
-            'defaultPageSize' => 15,
+        $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->orderBy(['last_name' => SORT_ASC]);
+        $staff_artist = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'2'])->orderBy(['last_name' => SORT_ASC]);
+        $pages_staff_admin = new Pagination([
+            'totalCount' => $staff_admin->count(),
+            'defaultPageSize' => 21,
         ]);
-        $model = $staff->offset($pages->offset)
-            ->limit($pages->limit)
+        $pages_staff_artist = new Pagination([
+            'totalCount' => $staff_artist->count(),
+            'defaultPageSize' => 21,
+        ]);
+        $model_staff_admin = $staff_admin->offset($pages_staff_admin->offset)
+            ->limit($pages_staff_admin->limit)
+            ->all();
+        $model_staff_artist = $staff_artist->offset($pages_staff_artist->offset)
+            ->limit($pages_staff_artist->limit)
             ->all();
         return $this->render('index',
             [
-                'model' => $model,
-                'pages' => $pages
+                'model_staff_admin' => $model_staff_admin,
+                'model_staff_artist' => $model_staff_artist,
+                'pages_staff_admin' => $pages_staff_admin,
+                'pages_staff_artist' => $pages_staff_artist
             ]
         );
     }

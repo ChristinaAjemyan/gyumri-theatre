@@ -296,6 +296,9 @@ hr.space-40 {
     list-style: none;
     
 }
+.my_media-body{
+    padding-left: 25px;
+}
 
 .social_icons li{
     display: inline-block;
@@ -553,7 +556,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     box-shadow: none;
 }
 .navbar-collapse{
-    max-width:739px;;
+    max-width:739px;
     border-bottom: 1px solid #5f6769;
     justify-content: flex-end;
 }
@@ -599,8 +602,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .navbar-nav .nav-item.active .hove_height{
     margin-left: -5px;
-    width: 100%;
-    max-width: 100%;
+    width: 110%;
+    max-width: 120%;
 }
 .hove_height{
     display: block;
@@ -965,6 +968,14 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #000;
     
 }
+.media_present_st{
+    background: white;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 50px;
+    box-shadow: 0px 6px 11px 0px rgb(168 168 168);
+}
 .media-footer .media_btn-group .add_cupon{
     width: 150px;
     color:#e18848;
@@ -973,6 +984,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-weight: 700;
     font-family: sans-serif;
     transition: color .5s;
+    margin-left: 15px;
 }
 .media-footer .media_btn-group .add_cupon:hover{
     color: #999;
@@ -1102,6 +1114,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .new_section .media-body p:nth-last-child(2) span{
     color: white!important;
 }
+.footer_links{
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+}
 .new_section .media-footer{
     margin-top: 50px;
     display: flex;
@@ -1122,6 +1139,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 18px;
     padding-left: 20px;
     font-family: sans-serif;
+    font-weight: bold;
 }
 .new_section-title::after{
     position: relative;
@@ -1991,10 +2009,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .header_flex .logo{
         margin-bottom: 0!important;
     }
+    .performance_movie .performance_name{
+        height: auto;!important;
+    }
 }
 @media screen and (max-width: 1024px) {
     .main_movies .container{
-        padding: 15px 30px!important;
+        padding: 5px 10px!important;
     }
     .actors_page .main_container{
         margin-top: 140px;!important;
@@ -2010,6 +2031,24 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .about-carousel .owl-nav .owl-next {
         right: -25px!important;
+    }
+    .footer_links{
+        margin-left: 45px;
+    }
+    .media_present_st .media{
+        display: block;
+    }
+    .my_media-body{
+        padding-left: 0px;
+    }
+    .media_btn-group{
+        margin: 0!important;
+    }
+    .staff_pres{
+        max-width: none!important;
+    }
+    #my_tab-content{
+        margin-top: 0!important;
     }
 }
 @media screen and (max-width: 992px) {
@@ -2129,6 +2168,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .site-index-trailer{
         right: 0;
+    }
+    .footer_links{
+        display: grid;
+        margin-left: 0;
     }
 
 }
@@ -2832,8 +2875,8 @@ img.big-carousel{
     color: #515151;
 }*/
 .left_side_cont{
-    border-top-left-radius: 20px 20px;
-    border-bottom-left-radius: 20px 20px;
+    border-top-left-radius: 18px 18px;
+    border-bottom-left-radius: 18px 18px;
     width: 65%;
 }
 .contact_button img{

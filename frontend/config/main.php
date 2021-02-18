@@ -47,6 +47,7 @@ return [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'rules' => array(
+//                'staff/index/<page:\d+>/<type:\d+>' => 'staff/index',
                 '<controller:\w+>/<action:\w+>/<page:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>/<slug:[Ա-Ֆա-ֆА-Яа-яЁёA-Za-z0-9 -_.]+>' => '<controller>/<action>',
                 //'staff/view/<slug:[Ա-Ֆա-ֆА-Яа-яЁёA-Za-z0-9 -_.]+>' => 'staff/view',

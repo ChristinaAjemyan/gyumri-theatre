@@ -58,8 +58,9 @@ use yii\helpers\Url;
                             <div class="media-footer">
                                 <div class="media_btn-group">
                                     <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
-                                        <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
-                                            <i class="fas fa-chevron-right"></i></button>
+                                        <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
                                     <?php endif; ?>
                                 </div>
                                 <p class='view-movie'><i class="far fa-calendar-alt"></i><?= Performance::getPerformanceTime($model->show_date); ?></p>
@@ -100,7 +101,7 @@ use yii\helpers\Url;
 
     <section class="new_section p-2" style="min-height: 510px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);">
         <div class="container" style="padding: 0 30px;">
-            <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #808080;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
+            <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
             <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
             <div class="row">
                 <div class="col-md-7 boredr">
@@ -123,7 +124,11 @@ use yii\helpers\Url;
 
                         <div class="media-footer" style="margin-top: 25px;">
                             <div class="media_btn-group">
-                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $model->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
+                                <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
+                                    <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                             <span class="calendar"><i class="far fa-calendar-alt"></i></span>
                             <p class='view-movie'><?= Performance::getPerformanceTime($model->show_date); ?></p>
@@ -136,7 +141,7 @@ use yii\helpers\Url;
                     <div class="col-md-5 position-relative" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                                                  href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
-                                class="fas fa-play"></i></a></span>
+                                class="fas fa-play" style="font-size: 23px"></i></a></span>
                         <!--                <div class="video_block">
 
                     <iframe width="460" height="315" src="https://www.youtube.com/embed/<?/*= $performanceSoon->trailer; */?>"

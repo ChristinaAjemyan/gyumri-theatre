@@ -103,7 +103,7 @@ use yii\helpers\Url;
 
 <section class="new_section p-2" style="min-height: 510px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);">
     <div class="container" style="padding: 0 30px;">
-        <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #808080;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
+        <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
         <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
         <div class="row">
             <div class="col-md-7 boredr">
@@ -139,7 +139,7 @@ use yii\helpers\Url;
                 <div class="col-md-5 position-relative" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                               href="https://www.youtube.com/watch?v=<?= $performanceSoon->trailer; ?>"><i
-                                class="fas fa-play"></i></a></span>
+                                class="fas fa-play" style="font-size: 24px"></i></a></span>
                     <!--                <div class="video_block">
 
                     <iframe width="460" height="315" src="https://www.youtube.com/embed/<?/*= $performanceSoon->trailer; */?>"
@@ -161,7 +161,7 @@ use yii\helpers\Url;
             <?php if (!empty($performances) && isset($performances)): ?>
                 <?php foreach ($performances as $item): ?>
                     <div class="carousel_item">
-                        <a href="/performance/view?id=<?= $item->id; ?>">
+                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <div class="card">
                                 <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
