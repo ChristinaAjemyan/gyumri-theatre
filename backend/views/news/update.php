@@ -18,6 +18,19 @@ $column_name = array_keys($model->attributes);
 $column[] = $column_name[1];
 $column[] = $column_name[2];
 ?>
+
+<?php $result = "
+<div class=\"card-body my_card-body\" style='padding: 0 14px;'>
+    <div class=\"scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4\">";?>
+    <?php $result.= "<div class=\"p=0\">
+            <div class=\"card card-block my-card-block\" style='width: 200px'>
+                <img id='userEditProfileImg' src=\"/upload/avatars/news/200/$model->img_path\" alt=\"$model->img_path\">
+            </div>
+        </div>"; ?>
+<?php $result.= "</div>
+</div>
+"; ?>
+
 <div class="news-update">
     <div class="d-flex justify-content-between">
         <h1><?= Html::encode($this->title) ?></h1>
@@ -29,12 +42,18 @@ $column[] = $column_name[2];
     </div>
     <?= $this->render('_form', [
         'model' => $model,
+        'result' => $result
     ]) ?>
 </div>
 
 
 <?php
 $js = <<<JS
+    
+      $(".imageFile").on('change', function() {
+          $('#userEditProfileImg').attr('src', URL.createObjectURL(this.files[0]))
+      });
+
     $('.file-thumbnail-footer').css('display', 'none');
     $('.file-drop-zone').css('min-height', '202px');
     $('#news-avatar_image').on('click', function() {

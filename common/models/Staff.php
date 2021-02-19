@@ -17,9 +17,11 @@ use Yii;
  * @property string|null $inst_url
  * @property string|null $staff_genre_type
  * @property string|null $desc
+ * @property string|null $index_description
  * @property int|null $role_id
  * @property int|null $staff_status
  * @property int|null $slug
+ * @property int|null $primary_key
  */
 class Staff extends \yii\db\ActiveRecord
 {
@@ -42,7 +44,7 @@ class Staff extends \yii\db\ActiveRecord
         return [
             [['first_name', 'last_name', 'role_id', 'slug'], 'required'],
             ['slug', 'unique'],
-            [['date_of_birth','staff_status'], 'safe'],
+            [['date_of_birth','staff_status','primary_key','index_description'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
             [['first_name', 'last_name', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type'], 'string', 'max' => 255],

@@ -31,6 +31,17 @@ $column[] = $column_name[5];
 $column[] = $column_name[6];
 $column[] = $column_name[9];
 ?>
+<?php $result_avatar = "
+<div class=\"card-body my_card-body\" style='padding: 0 14px;'>
+    <div class=\"scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4\">";?>
+<?php $result_avatar.= "<div class=\"p=0\">
+            <div class=\"card card-block my-card-block\" style='width: 200px'>
+                <img id='userEditProfileImg' src=\"/upload/avatars/staff/200/$model->img_path\" alt=\"$model->img_path\">
+            </div>
+        </div>"; ?>
+<?php $result_avatar.= "</div>
+</div>
+"; ?>
 <?php if (!empty($images) && isset($images)): ?>
     <?php $result = "<div class=\"card mb-4\">
     <div class=\"card-body\">
@@ -59,7 +70,7 @@ $column[] = $column_name[9];
     </div>
 
     <?= $this->render('_form', [
-        'model' => $model, 'model_image' => $model_image, 'result' => $result
+        'model' => $model, 'model_image' => $model_image, 'result' => $result,'result_avatar' => $result_avatar
     ]) ?>
 
 </div>
@@ -67,6 +78,10 @@ $column[] = $column_name[9];
 
 <?php
 $js = <<<JS
+
+  $(".imageFile").on('change', function() {
+      $('#userEditProfileImg').attr('src', URL.createObjectURL(this.files[0]))
+  });
     $('.file-thumbnail-footer').css('display', 'none');
     $('.file-drop-zone').css('min-height', '202px');
     $('#staff-avatar_image').on('click', function() {

@@ -26,15 +26,20 @@ class StaffController extends Controller
     {
         $this->view->title = Yii::t('home', 'Վարչական մաս');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one()->id;
-        $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->orderBy(['last_name' => SORT_ASC]);
-        $staff_artist = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'2'])->orderBy(['last_name' => SORT_ASC]);
+
+        $staff_primary = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(["primary_key" => 1])->orderBy(['last_name' => SORT_ASC])->all();
+
+        $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->andWhere(['!=', 'primary_key', 1])->orderBy(['last_name' => SORT_ASC]);
+        $staff_artist = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'2'])->andWhere(['!=', 'primary_key', 1])->orderBy(['last_name' => SORT_ASC]);
         $pages_staff_admin = new Pagination([
             'totalCount' => $staff_admin->count(),
             'defaultPageSize' => 21,
+            'params' => array_merge($_GET, ['role' => 'administrative'])
         ]);
         $pages_staff_artist = new Pagination([
             'totalCount' => $staff_artist->count(),
             'defaultPageSize' => 21,
+            'params' => array_merge($_GET, ['role' => 'artistic'])
         ]);
         $model_staff_admin = $staff_admin->offset($pages_staff_admin->offset)
             ->limit($pages_staff_admin->limit)
@@ -44,6 +49,7 @@ class StaffController extends Controller
             ->all();
         return $this->render('index',
             [
+                'staff_primary' => $staff_primary,
                 'model_staff_admin' => $model_staff_admin,
                 'model_staff_artist' => $model_staff_artist,
                 'pages_staff_admin' => $pages_staff_admin,

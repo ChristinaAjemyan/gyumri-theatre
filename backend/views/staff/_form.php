@@ -49,14 +49,8 @@ use common\models\Role;
         <div class="col">
             <?= $form->field($model, 'staff_genre_type')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'avatars/*'],
-                'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/staff/400')[0],
-                    'initialPreviewAsData' => true,
-                    'showUpload' => false
-                ]
-            ]) ?>
+            <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
+            <?= $result_avatar ? $result_avatar : false; ?>
         </div>
     </div>
 
@@ -67,6 +61,8 @@ use common\models\Role;
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
+    <?= $form->field($model, 'index_description')->textarea() ?>
+    <?= $form->field($model, 'primary_key')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

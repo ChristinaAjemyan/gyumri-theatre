@@ -34,14 +34,8 @@ use mihaildev\elfinder\ElFinder;
                 ],
             ]) ?>
 
-            <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'avatars/*'],
-                'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/performance/400')[0],
-                    'initialPreviewAsData' => true,
-                    'showUpload' => false,
-                ]
-            ]) ?>
+            <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
+            <?= $result_avatar ? $result_avatar : false; ?>
 
             <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 

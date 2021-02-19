@@ -31,15 +31,6 @@ use mihaildev\elfinder\ElFinder;
                 ],
             ]) ?>
 
-            <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'avatars/*'],
-                'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/archive/200')[0],
-                    'initialPreviewAsData' => true,
-                    'showUpload' => false
-                ]
-            ]) ?>
-
         </div>
         <div class="col-lg-6 col-md-8 col-sm-12">
 
@@ -51,7 +42,7 @@ use mihaildev\elfinder\ElFinder;
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
 
-    <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
+    <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true])->label('Galleries') ?>
 
     <?= $result ? $result : false; ?>
 

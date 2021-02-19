@@ -20,14 +20,17 @@ use mihaildev\elfinder\ElFinder;
         <div class="col-lg-6 col-md-8 col-sm-12">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
+            <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
+            <?= $result ? $result : false; ?>
+
+<!--            --><?/*= $form->field($model, 'avatar_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'avatars/*'],
                 'pluginOptions' => [
                     'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/news/200')[0],
                     'initialPreviewAsData' => true,
                     'showUpload' => false
                 ]
-            ]) ?>
+            ]) */?>
         </div>
     </div>
 
