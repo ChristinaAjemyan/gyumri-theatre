@@ -39,7 +39,7 @@ use mihaildev\elfinder\ElFinder;
 
             <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off']) ?>
+            <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off','readonly' => 'readonly']) ?>
 
             <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
         </div>
@@ -54,14 +54,8 @@ use mihaildev\elfinder\ElFinder;
                 ],
             ]) ?>
 
-            <?= $form->field($model, 'banner_image')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'banners/*'],
-                'pluginOptions' => [
-                    'initialPreview' => Main::getInitialPreview($model->attributes['id'], $model, 'avatars/performance/400')[1],
-                    'initialPreviewAsData' => true,
-                    'showUpload' => false
-                ]
-            ]) ?>
+            <?= $form->field($model, 'banner_image')->fileInput(['class' => 'imageFileBanner']) ?>
+            <?= $result_banner ? $result_banner : false; ?>
 
             <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
 

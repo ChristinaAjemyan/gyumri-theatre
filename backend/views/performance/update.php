@@ -36,6 +36,18 @@ $column[] = $column_name[11];
 </div>
 "; ?>
 
+<?php $result_banner = "
+<div class=\"card-body my_card-body\" style='padding: 0 14px;'>
+    <div class=\"scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4\">";?>
+<?php $result_banner.= "<div class=\"p=0\">
+            <div class=\"card card-block my-card-block\" style='width: 200px'>
+                <img id='editBannerImg' src=\"/upload/banners/$model->banner\" alt=\"$model->banner\">
+            </div>
+        </div>"; ?>
+<?php $result_banner.= "</div>
+</div>
+"; ?>
+
 <?php if (!empty($images) && isset($images)): ?>
 <?php $result = "<div class=\"card mb-4\">
     <div class=\"card-body\">
@@ -65,7 +77,8 @@ $column[] = $column_name[11];
     </div>
     <?= $this->render('_form', [
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
-        'result' => $result, 'model_genre_perform' => $model_genre_perform, 'model_type_perform' => $model_type_perform,'result_avatar'=>$result_avatar
+        'result' => $result, 'model_genre_perform' => $model_genre_perform, 'model_type_perform' => $model_type_perform,
+        'result_avatar'=>$result_avatar,'result_banner'=>$result_banner
     ]) ?>
 </div>
 
@@ -75,6 +88,9 @@ $js = <<<JS
 
   $(".imageFile").on('change', function() {
       $('#userEditProfileImg').attr('src', URL.createObjectURL(this.files[0]))
+  });
+  $(".imageFileBanner").on('change', function() {
+      $('#editBannerImg').attr('src', URL.createObjectURL(this.files[0]))
   });
 
     $('.file-thumbnail-footer').css('display', 'none');

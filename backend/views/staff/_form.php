@@ -38,7 +38,7 @@ use common\models\Role;
 
             <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'date_of_birth')->textInput(['class' => 'datepicker-here form-control', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off']) ?>
+            <?= $form->field($model, 'date_of_birth')->textInput(['class' => 'datepicker-here form-control', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off','readonly' => 'readonly']) ?>
 
             <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
 
@@ -47,10 +47,14 @@ use common\models\Role;
             <?= $form->field($model, 'inst_url')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col">
+            <label style="font-weight: lighter;font-size: 11px" class="mt-4 pt-1" for="">Not Required</label>
+            <?= $form->field($model, 'primary_key')->checkbox() ?>
+            <div class="hidden_desc"><?= $form->field($model, 'index_description')->textarea(['rows' => '6']) ?></div>
             <?= $form->field($model, 'staff_genre_type')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
             <?= $result_avatar ? $result_avatar : false; ?>
+
         </div>
     </div>
 
@@ -61,8 +65,6 @@ use common\models\Role;
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
-    <?= $form->field($model, 'index_description')->textarea() ?>
-    <?= $form->field($model, 'primary_key')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
@@ -71,3 +73,17 @@ use common\models\Role;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$js = <<<JS
+
+$('#staff-primary_key').on('change',function() {
+    if (this.checked) {
+        $('.hidden_desc').show();
+    } else {
+        $('.hidden_desc').hide();
+    }
+})
+
+JS;
+$this->registerJs($js);
+?>

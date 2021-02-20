@@ -41140,7 +41140,7 @@ a.hover-white-8:hover, a.hover-white-8:focus {
     overflow-x: auto;
 }
 .my-card-block{
-    height: 160px;
+    height: auto;
     background-color: #fff;
     position: relative;
     overflow: hidden;
@@ -41179,4 +41179,7 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 
 td.st_images a img{
     width:50px;height:50px;object-fit:cover
+}
+.hidden_desc{
+    display: none;
 }
