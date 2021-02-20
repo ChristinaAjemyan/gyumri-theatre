@@ -76,11 +76,14 @@ use common\models\Role;
 <?php
 $js = <<<JS
 
+if ($('#staff-primary_key')[0].checked){
+    $('.hidden_desc').slideDown();
+} 
 $('#staff-primary_key').on('change',function() {
     if (this.checked) {
-        $('.hidden_desc').show();
+        $('.hidden_desc').slideDown();
     } else {
-        $('.hidden_desc').hide();
+        $('.hidden_desc').slideUp();
     }
 })
 
