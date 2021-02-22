@@ -12,7 +12,7 @@
     margin: auto;
     max-width: 1440px;
     padding-left: 80px;
-    padding-right: 80px;   
+    padding-right: 80px;
 }
 
 html,
@@ -294,7 +294,7 @@ hr.space-40 {
 .social_icons{
     padding: 7px 0 0;
     list-style: none;
-    
+
 }
 .my_media-body{
     padding-left: 25px;
@@ -449,7 +449,7 @@ hr.space-40 {
 /* header Carousel */
 h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: "ArialAMU";
-} 
+}
 #headerCarousel{
     max-height: 600px;
 }
@@ -458,7 +458,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     position: absolute;
     z-index: 500;
     right: 50px;
-    bottom: 60px; 
+    bottom: 60px;
 }
 #headerCarousel .owl-dots .owl-dot{
     background: #6a7377;
@@ -499,6 +499,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     letter-spacing: 3px;
     text-transform: uppercase;
     color: #fff !important;
+}
+
+.active_m{
+    border-bottom:3px solid;!important;
 }
 
 /* .carousel-indicators{
@@ -635,7 +639,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-radius: 10px;
     padding: 1px;
     border: none;
-    
+
 }
 .navbar-nav .dropdown-item:focus, .navbar-nav .dropdown-item:hover{
     background:linear-gradient(to right, #fab144, #ec7532);
@@ -649,7 +653,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     padding-bottom: 10px;
 }
 .navbar-nav .about_us .dropdown-menu{
-    
+
     transform: translate(-30px,0px);
 }
 
@@ -748,7 +752,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .title_line{
    display: block;
    max-width: 100%;
-   border: .1em solid #efefef; 
+   border: .1em solid #efefef;
    margin-bottom: 40px;
    position: relative;
    top: -3px;
@@ -966,7 +970,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .media-footer .media_btn-group .more_btn:hover{
     color: #000;
-    
+
 }
 .media_present_st{
     background: white;
@@ -1019,7 +1023,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: sans-serif;
 }
 @media(max-width:520px){
-    
+
     .main_movies .media-footer{
         flex-direction: column;
     }
@@ -1190,7 +1194,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about-carousel .owl-nav .owl-prev{
     left: -2%;
-    
+
 }
 .about-carousel .owl-nav .owl-next{
     right: -2%;
@@ -1234,6 +1238,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 18px;
     letter-spacing: 2px;
     border: none;
+}
+.footer .footer-block_title a{
+    font-family: "Arm Hmks";
+    color: #ad6437;
 }
 .footer .footer-block_list{
     max-width: 200px;
@@ -1319,7 +1327,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .about-present .media{
 /*    top: -70px;
     position: absolute;*/
-    
+
 }
 .all_content{
     display: flex;
@@ -1352,7 +1360,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about-present .media img{
    max-width: 190px;
-    
+
 }
 .about-present .media-footer .media_btn-group .more_btn{
     width: 140px;
@@ -1379,7 +1387,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .performances-carusel .block-present{
     display: block;
-    margin:  0 15px ; 
+    margin:  0 15px ;
 }
 .performances-carusel .owl-nav{
     height: 0px;
@@ -1454,7 +1462,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     margin-bottom: -10px;
 }
 .performances-page .carousel-inners iframe{
-    width:100%; 
+    width:100%;
     height:450px
 }
 
@@ -1571,21 +1579,21 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .performance_movie .performance_name::after{
     display: none;
-    
+
 }
 .performance_movie .movie_type{
     color:#ccc;
     font-weight:700 ;
     display: block;
     font-size: 16px;
-}  
+}
 .actors_lists{
     margin-bottom: 60px;
     margin-top: 0px;
     display: flex;
     /*justify-content: space-between;*/
     flex-wrap: wrap;
-} 
+}
 .actors_lists  a:hover{
     text-decoration:none !important;
 }
@@ -1668,13 +1676,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .about_pages .main_movies .media-title {
     font-size: 46px;
     letter-spacing: 4px;
-    
+
 }
 .about_pages .about-present .media .media-text{
     min-height: 175px;
     text-align: justify;
     text-indent: 20px;
-   
+
 }
 .about_pages .text_director{
     margin-top: 10px;
@@ -1800,6 +1808,44 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .pagingControls ul li a.btn-default{
     background: none ;
     color: #e18848;
+}
+.staff_change_line_art{
+    display: none;
+    height: 6px;
+    background: dodgerblue;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    opacity: 30;
+    color: #FFFFFF;
+    transition: max-width 0.5s;
+    max-width: 50%;
+    left: 133px;
+    padding: 1px;
+}
+.staff_change_line_art div{
+    width: 100%;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    padding: 2px;
+}
+.staff_change_line_adm{
+    display: none;
+    height: 6px;
+    background: dodgerblue;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    opacity: 30;
+    color: #FFFFFF;
+    transition: max-width 0.5s;
+    max-width: 29%;
+    left: 191px;
+    padding: 1px;
+}
+.staff_change_line_adm div{
+    width: 100%;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    padding: 2px;
 }
 
 #searchModal .modal-dialog{
@@ -2088,6 +2134,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .navbar-brand img{
         margin-left: 10px;
+    }
+    .tab_main{
+        font-size: 18px;
+        font-weight: 700;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2721,7 +2771,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 20px;
     letter-spacing: 1px;
     padding: 15px 35px;
-    border: none;
+    /*border: none;*/
     outline: none;
     background-color: white;
 }

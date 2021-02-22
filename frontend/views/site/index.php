@@ -95,7 +95,7 @@ use yii\helpers\Url;
                    aria-controls="nav-sun" aria-selected="false"><?= Yii::t('home', 'ԿԻՐ') ?></a>
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent" style="min-height: 400px"></div>
+        <div class="tab-content" id="nav-tabContent" style="min-height: 330px"></div>
 
     </div>
 

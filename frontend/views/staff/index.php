@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Performance;
 use common\models\Role;
 use common\models\Type;
 use yii\helpers\Url;
@@ -30,7 +31,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                     <div class="col-md-6 col-sm-12" style="border-radius: 10px;">
                         <div class="media_present_st staff_pres mb-0">
                             <div class="media" style="padding:5px;">
-                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>" style="max-width: 40%;min-height: 270px;" class="h-auto" alt="Photo">
+                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>" style="min-height: 297px;max-width: 40%;" class="h-auto" alt="Photo">
                                 <div class="media-body my_media-body">
                                     <h1 class="mt-3 media-title" style="margin-bottom: -5px;font-size: 25px;"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h1>
                                     <p class="author" style="font-size: 13px"><?= Yii::t('text', Role::find()->where(['id' => $item->role_id])->one()->name); ?></p>
@@ -58,13 +59,19 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                             <div class="col-md-12">
                                 <nav>
                                     <div class="nav nav-tabs nav-fill p-0 row" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link col-lg-6 col-md-12 client_tab <?=$role == 'administrative' ? 'active' : '' ?>" id="nav-home-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="administrative"
+                                        <a class="nav-item col-lg-6 col-md-12 client_tab tab_main <?=$role == 'administrative' ? 'active' : '' ?>" id="nav-home-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="administrative"
                                            data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
                                             <?= Yii::t('text', 'Վարչական Կազմ') ?>
+                                            <div class="hove_height staff_change_line_adm">
+                                                <div></div>
+                                            </div>
                                         </a>
-                                        <a class="nav-item nav-link col-lg-6 col-md-12 client_tab <?=$role == 'artistic' ? 'active' : '' ?>" id="nav-profile-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="artistic"
+                                        <a class="nav-item col-lg-6 col-md-12 client_tab tab_main <?=$role == 'artistic' ? 'active' : '' ?>" id="nav-profile-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="artistic"
                                            data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
                                             <?= Yii::t('text', 'Գեղ-ստեղծագործական Կազմ') ?>
+                                            <div class="hove_height staff_change_line_art">
+                                                <div></div>
+                                            </div>
                                         </a>
                                     </div>
                                 </nav>
@@ -151,16 +158,39 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                     </div>
                 </section>
             </div>
-         </div>
-
+        </div>
     </div>
 </main>
+<section class="about-carousel" style="transform: translateY(30px);">
+        <div class="container">
 
+            <div class="main_carousel owl-carousel" id="performances-carusel">
+                <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
+                <?php if (!empty($performances) && isset($performances)): ?>
+                    <?php foreach ($performances as $item): ?>
+                        <div class="carousel_item">
+                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                                <div class="card">
+                                    <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
+                                        <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <hr class="foote-and-carusel">
+        </div>
 
+    </section>
 
 <?php
 
 $script = <<<JS
+
 /*    let pageNumber = 1,
         defaultUrl = new URL(location.href),
         pageIndex = defaultUrl.pathname.search(/\d+/);  
@@ -171,10 +201,16 @@ $script = <<<JS
     $('.client_tab').click(function() {
         let role = $(this).data('role'),
             url = new URL(location.href);
-        console.log(url); 
-        
-        url.searchParams.set('role', role);
-        window.history.pushState({}, '', url);
+            url.searchParams.set('role', role);
+            window.history.pushState({}, '', url);
+            
+         if (url.searchParams.get('role') == 'artistic'){
+             $('.staff_change_line_adm').hide()
+            $('.staff_change_line_art').show()
+         } else if(url.searchParams.get('role') == 'administrative'){
+             $('.staff_change_line_art').hide()
+            $('.staff_change_line_adm').show()
+         }
 /*        if (typeof $('.'+ role +'_pagination').get(1) !== typeof undefined) {
             $('.'+ role +'_pagination').get(1).click();
         }*/

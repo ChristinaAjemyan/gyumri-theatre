@@ -24,10 +24,10 @@ class StaffController extends Controller
 {
     public function actionIndex()
     {
-        $this->view->title = Yii::t('home', 'Վարչական մաս');
+        $this->view->title = Yii::t('home', 'Աշխատակազմ');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one()->id;
 
-        $staff_primary = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(["primary_key" => 1])->orderBy(['last_name' => SORT_ASC])->all();
+        $staff_primary = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(["primary_key" => 1])->orderBy(['last_name' => SORT_ASC])->limit(2)->all();
 
         $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->andWhere(['!=', 'primary_key', 1])->orderBy(['last_name' => SORT_ASC]);
         $staff_artist = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'2'])->andWhere(['!=', 'primary_key', 1])->orderBy(['last_name' => SORT_ASC]);

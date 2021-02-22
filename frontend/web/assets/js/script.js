@@ -189,7 +189,7 @@ $('.weekdays').on('click', function () {
             $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
             if (data.error){
-                $(`#nav-tabContent`).append(`<p class='text-center h2 remove'>
+                $(`#nav-tabContent`).append(`<p class='text-center h2 remove' style="font-family: 'Arm Hmks'">
                    ${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}
                                 </p>`);
             }else {
