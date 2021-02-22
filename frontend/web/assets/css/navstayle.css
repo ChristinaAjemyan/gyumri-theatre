@@ -130,7 +130,7 @@ h3 {
     position: absolute;
     z-index: 4;
     bottom: 0;
-    left: 50%;
+    left: 49%;
     margin-left: -45px;
     -webkit-animation: ScrollDown 1.5s infinite;
     -moz-animation: ScrollDown 1.5s infinite;
@@ -1049,6 +1049,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 20px;
     color: #999999;
     font-weight: 600;
+}
+.staff_img{
+    min-height: 297px;max-width: 40%;
 }
 .main_movies .pagination .active .page-link{
     color: #e18848;
@@ -2058,6 +2061,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .performance_movie .performance_name{
         height: auto;!important;
     }
+    .staff_img{
+        min-height: auto;max-width: 40%;
+    }
 }
 @media screen and (max-width: 1024px) {
     .main_movies .container{
@@ -2138,6 +2144,15 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .tab_main{
         font-size: 18px;
         font-weight: 700;
+    }
+    .staff_change_line_art{
+        display: none;
+    }
+    .staff_change_line_art div{
+        background: none;
+    }
+    .staff_change_line_art{
+        background: none;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2408,6 +2423,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actors_lists .actor img{
         height: 335px;
     }
+    .block_title_gred_line{
+        width: auto!important;
+    }
+    .contact_block_title{
+        width: auto!important;
+    }
 }
 @media screen and (max-width: 479px) {
     .performances-page .present-corusel{
@@ -2430,6 +2451,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .actors_lists .actor img{
         height: 315px;
+    }
+    .tab_main{
+        font-size: 12px!important;
     }
 }
 @media screen and (max-width: 425px) {
@@ -2771,7 +2795,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 20px;
     letter-spacing: 1px;
     padding: 15px 35px;
-    /*border: none;*/
+    border: none;
     outline: none;
     background-color: white;
 }
