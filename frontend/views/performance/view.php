@@ -32,7 +32,7 @@ use yii\helpers\Url;
             <div class="media">
                 <div class="row">
                     <div class="col-md-4  col-12 view_img_content">
-                        <img style="max-width: 318px;width: 318px;height: 436px;object-fit: cover;border-radius: unset;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" alt="Photo">
+                        <img style="max-width: 96%;width: 96%;height: auto;object-fit: cover;border-radius: unset;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" alt="Photo">
                     </div>
                     <div class="col-md-8 col-12 view_text_content">
 
@@ -64,7 +64,10 @@ use yii\helpers\Url;
                                     <?php endif; ?>
                                 </div>
                                 <p class='view-movie'><i class="far fa-calendar-alt"></i><?= Performance::getPerformanceTime($model->show_date); ?></p>
-                                <p class="movie-lenght"><?= $model->performance_length; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?><span><?= $model->age_restriction; ?>+</span></p>
+                                <p class="movie-lenght">
+                                    <?= $model->performance_length; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
+                                    <span ><?= $model->age_restriction; ?>+</span>
+                                </p>
                             </div>
 
                         </div>
@@ -107,22 +110,26 @@ use yii\helpers\Url;
                 <div class="col-md-7 boredr">
                     <div class="media-body">
                         <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', $model->title); ?></h5>
-                        <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
-                        $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
+<!--                        <?php /*$genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
+                        $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); */?>
                         <small class="movie-type" style="font-family: sans-serif;">
-                            <?php $str = '';
+                            <?php /*$str = '';
                             foreach ($genre as $item){
                                 $str .= ' '.Yii::t('text', $item).',';
                             }
-                            echo trim($str, ','); ?>
-                        </small>
-                        <p class="author" style="font-family: sans-serif;"><?= Yii::t('text', $model->author); ?></p>
-                        <p class="media-text">
-                            <?= mb_substr(Yii::t('text', $model->desc),0,190, 'utf-8'); ?>
-                            <?= strlen(Yii::t('text', $model->desc)) > 190 ? '...' : ''; ?>
+                            echo trim($str, ','); */?>
+                        </small>-->
+<!--                        <p class="author" style="font-family: sans-serif;">--><?//= Yii::t('text', $model->author); ?><!--</p>-->
+                        <p class="media-text" style="margin: 0 30px 0px 0px;">
+                            <?= mb_substr(Yii::t('text', $model->short_desc),0,250, 'utf-8'); ?>
+                            <?= strlen(Yii::t('text', $model->short_desc)) > 250 ? '...' : ''; ?>
                         </p>
 
-                        <div class="media-footer" style="margin-top: 25px;">
+                        <div class="media-footer" style="margin-top: 25px; display: block">
+                            <div class="d-flex mb-2">
+                                <span class="calendar ml-0 mr-2 text-white"><i class="far fa-calendar-alt"></i></span>
+                                <p class='view-movie' style="margin-top: -4px;"><?= Performance::getPerformanceTime($model->show_date); ?></p>
+                            </div>
                             <div class="media_btn-group">
                                 <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
                                     <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
@@ -130,15 +137,12 @@ use yii\helpers\Url;
                                     </a>
                                 <?php endif; ?>
                             </div>
-                            <span class="calendar"><i class="far fa-calendar-alt"></i></span>
-                            <p class='view-movie'><?= Performance::getPerformanceTime($model->show_date); ?></p>
-
                         </div>
                     </div>
                 </div>
 
                 <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-                    <div class="col-md-5 position-relative" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
+                    <div class="col-md-5 position-relative banner_perform" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                                                  href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
                                 class="fas fa-play" style="font-size: 23px"></i></a></span>

@@ -242,6 +242,14 @@ $('.weekdays').on('click', function () {
             $('.loadIcon').remove();
         }
     });
+    $('.calendar_icon').removeClass('active');
+    $('.weekdays ').removeClass('active');
+    if ($(this).hasClass('calendar_icon')){
+        $('.calendar_icon').html(`<img style="width: 26px;" src="/assets/images/Векторный смарт-объект копия2.svg" alt=""></a>`)
+        $('.calendar_icon').addClass('active')
+    }else{
+        $('.calendar_icon').html(`<img style="width: 26px;" src="/assets/images/Векторный смарт-объект.svg" alt=""></a>`)
+    }
 });
 $('#nav-tab .active').click();
 

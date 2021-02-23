@@ -79,8 +79,8 @@ use yii\helpers\Url;
         <nav>
             <div class="nav nav-tabs weekdays_all" id="nav-tab" role="tablist">
                 <!-- <input id="datepicker"  class="date-calendar" type="text"> -->
-                <a class="nav-item nav-link weekdays active" data-value="all" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
-                   aria-controls="nav-cal" aria-selected="true"><img style="width: 27px;" src="<?= Yii::$app->params['frontend-url'].'/assets/images/Векторный смарт-объект.svg'?>" alt=""></a>
+                <a class="nav-item nav-link weekdays calendar_icon active" data-value="all" id="nav-cal-tab" data-toggle="tab" href="#nav-cal" role="tab"
+                   aria-controls="nav-cal" aria-selected="true"><img style="width: 26px;" src="<?= Yii::$app->params['frontend-url'].'/assets/images/Векторный смарт-объект.svg'?>" alt=""></a>
                 <a class="nav-item nav-link weekdays" data-id="2" id="nav-tus-tab" data-toggle="tab" href="#nav-tus" role="tab"
                    aria-controls="nav-tus" aria-selected="true"><?= Yii::t('home', 'ԵՐՔ') ?></a>
                 <a class="nav-item nav-link weekdays" data-id="3" id="nav-wed-tab" data-toggle="tab" href="#nav-wed" role="tab"
@@ -119,9 +119,9 @@ use yii\helpers\Url;
                         echo trim($str, ','); ?>
                     </small>
                     <p class="author" style="font-family: sans-serif;"><?= Yii::t('text', $performanceSoon->author); ?></p>
-                    <p class="media-text">
-                        <?= mb_substr(Yii::t('text', $performanceSoon->desc),0,190, 'utf-8'); ?>
-                        <?= strlen(Yii::t('text', $performanceSoon->desc)) > 190 ? '...' : ''; ?>
+                    <p class="media-text" style="margin: 0 30px 0px 0px;">
+                        <?= mb_substr(Yii::t('text', $performanceSoon->short_desc),0,190, 'utf-8'); ?>
+                        <?= strlen(Yii::t('text', $performanceSoon->short_desc)) > 190 ? '...' : ''; ?>
                     </p>
 
                     <div class="media-footer" style="margin-top: 25px;">
@@ -136,7 +136,7 @@ use yii\helpers\Url;
             </div>
 
             <?php if (!empty($performanceSoon->trailer) && isset($performanceSoon->trailer)): ?>
-                <div class="col-md-5 position-relative" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);background-size: cover;">
+                <div class="col-md-5 position-relative site-index-contnet" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                               href="https://www.youtube.com/watch?v=<?= $performanceSoon->trailer; ?>"><i
                                 class="fas fa-play" style="font-size: 24px"></i></a></span>

@@ -1338,6 +1338,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .view_img_content{
     top: -70px;
 }
+/*.view_img_content img{
+    max-width: 318px;
+    width: 318px;
+    height: 436px;
+    object-fit: cover;
+    border-radius: unset;
+}*/
 .view_text_content{
     top: -70px;
 }
@@ -1390,7 +1397,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .performances-carusel .block-present{
     display: block;
-    margin:  0 15px ;
+    margin:  0 4px;
 }
 .performances-carusel .owl-nav{
     height: 0px;
@@ -2064,6 +2071,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .staff_img{
         min-height: auto;max-width: 40%;
     }
+    .site-index-trailer {
+        right: 37%;
+        top: 35%;
+    }
 }
 @media screen and (max-width: 1024px) {
     .main_movies .container{
@@ -2173,7 +2184,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         height: 230px;
     }
     .about_popup_youtube{
-        top: -280px;
+        top: 25px;
+    }
+    .about_popup_youtube a {
+        color: #ec7532;
+    }
+    .banner_perform .btn_play{
+        display: none;
     }
     .main_container .title-type{
         width: 100%!important;
@@ -2237,6 +2254,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .footer_links{
         display: grid;
         margin-left: 0;
+    }
+    .site-index-contnet .about_popup_youtube{
+        top: -235px;
+        padding: 14px 12px 8px 16px;
     }
 
 }
@@ -2341,6 +2362,18 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .nav-tabs{
         padding: 10px 0px 0px 10px;
+    }
+    .movie-lenght{
+        font-size: 19px!important;
+    }
+    p.movie-lenght span{
+        display: block!important;
+        margin: inherit!important;
+    }
+    .about-present .media-footer .media_btn-group .more_btn {
+        width: 225px;
+        color: white;
+        padding: 8px;
     }
 
 }
@@ -2511,6 +2544,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actors_lists .actor img{
         height: 290px;
     }
+    .site-index-contnet .about_popup_youtube{
+        top: -261px;
+        padding: 21px 18px 12px 20px;
+    }
 }
 @media screen and (max-width: 360px) {
     .media-footer .media_btn-group .search_button{
@@ -2579,6 +2616,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actors_lists .actor img{
         height: 250px;
     }
+    .about_popup_youtube {
+        top: -284px;
+    }
 }
 @media screen and (max-width: 332px) {
     .performances-page .present-corusel{
@@ -2596,6 +2636,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 400px;
+    }
+    .about_popup_youtube {
+        top: -284px;
     }
 }
 @media screen and (max-width: 320px) {
@@ -2624,6 +2667,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 400px;
+    }
+    .about_popup_youtube {
+        top: -284px;
     }
 }
 
