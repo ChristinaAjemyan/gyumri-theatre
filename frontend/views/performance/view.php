@@ -56,13 +56,13 @@ use yii\helpers\Url;
                             <p class="media-text"><?= Yii::t('text', $model->desc); ?></p>
 
                             <div class="media-footer">
+                                <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
                                 <div class="media_btn-group">
-                                    <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
-                                        <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
-                                            <i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    <?php endif; ?>
+                                    <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
                                 </div>
+                                <?php endif; ?>
                                 <p class='view-movie'><i class="far fa-calendar-alt"></i><?= Performance::getPerformanceTime($model->show_date); ?></p>
                                 <p class="movie-lenght">
                                     <?= $model->performance_length; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
@@ -106,7 +106,7 @@ use yii\helpers\Url;
         <div class="container" style="padding: 0 30px;">
             <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
             <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
-            <div class="row">
+            <div class="row" style="margin-top: 65px;">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
                         <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', $model->title); ?></h5>

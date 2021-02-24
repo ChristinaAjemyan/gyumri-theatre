@@ -48,12 +48,12 @@ use yii\helpers\Url;
             </div>
 
         </section>
-        <h2 class="block_title carousel_title mt-0"><?= Yii::t('home', 'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
-        <span class="title_line"></span>
         <?php $performances = StaffPerformance::find()->with('performance')->where(['staff_id' => $model->id])->all();
         $performance = ArrayHelper::map($performances, 'id', 'performance'); ?>
         <?php if (!empty($performance) && isset($performance)): ?>
-        <section class="performance_movie" style="min-height: auto;">
+        <h2 class="block_title carousel_title mt-0"><?= Yii::t('home', 'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
+        <span class="title_line"></span>
+        <section class="performance_movie" style="min-height: auto; margin-top: 40px;">
             <div class="row">
                 <?php foreach ($performance as $item): ?>
                 <div class="col-md-4">

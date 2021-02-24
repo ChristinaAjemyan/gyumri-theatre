@@ -59,7 +59,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                             <div class="col-md-12">
                                 <nav>
                                     <div class="nav nav-tabs nav-fill p-0 row" id="nav-tab" role="tablist">
-                                        <a class="nav-item col-lg-6 col-md-12 client_tab tab_main <?=$role == 'administrative' ? 'active' : '' ?>" id="nav-home-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="administrative"
+                                        <a class="nav-item col-lg-6 col-md-12 client_tab tab_main  <?=$role == 'administrative' ? 'active' : '' ?>" id="nav-home-tab" data-role="administrative"
                                            data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
                                             <?= Yii::t('text', 'Վարչական Կազմ') ?>
                                             <div class="hove_height staff_change_line_adm">
@@ -68,7 +68,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                         </a>
                                         <a class="nav-item col-lg-6 col-md-12 client_tab tab_main <?=$role == 'artistic' ? 'active' : '' ?>" id="nav-profile-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="artistic"
                                            data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                            <?= Yii::t('text', 'Գեղ-ստեղծագործական Կազմ') ?>
+                                            <?= Yii::t('text', 'Գեղ.-ստեղծագործական Կազմ') ?>
                                             <div class="hove_height staff_change_line_art">
                                                 <div></div>
                                             </div>
@@ -84,7 +84,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                     <div class="row">
                                                         <?php foreach ($model_staff_admin as $item): ?>
                                                             <div class="col-lg-4 col-md-6 col-sm-12 p-0">
-                                                                <a href="">
+                                                                <a href="<?= Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                                                                     <div class="media_present staff_pres">
                                                                         <div class="media p-0">
                                                                             <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
@@ -121,7 +121,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                     <div class="row">
                                                         <?php foreach ($model_staff_artist as $item): ?>
                                                             <div class="col-lg-4 col-md-6 col-sm-12 p-0">
-                                                                <a href="">
+                                                                <a href="<?= Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                                                                     <div class="media_present staff_pres">
                                                                         <div class="media p-0">
                                                                             <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
@@ -174,7 +174,6 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                     <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
-                                        <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
                                     </div>
                                 </div>
                             </a>

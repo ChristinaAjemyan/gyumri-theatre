@@ -1086,6 +1086,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .new_section .author{
     margin-top: 5px;
+    margin-bottom: 5px;
     color: #e18848;
     font-weight: 700;
     font-size: 20px;
@@ -1430,7 +1431,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     display: block !important;
 }
 .performances-page .new_section{
-    background-image: url('../images/baner_newsection.png');
+    /*background-image: url('../images/baner_newsection.png');*/
     background-position:1px;
     box-shadow: inset 0px -220px 115px 106px rgba(0,0,0,0.95) !important;
 
@@ -1621,6 +1622,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-radius: 10px;
 
 }
+.tab_main{
+    font-family: Sans-Serif!important;
+    text-transform: uppercase;
+    color: #4d4d4d;
+    font-weight: 700;
+}
 .actors_lists .actor img{
     margin: auto;
     display: block;
@@ -1750,7 +1757,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     padding-top: 0;
 }
 .main_movies .media{
-    border-bottom: 1px solid #e5e5e5;
     padding: 30px 15px;
 }
 
@@ -1821,8 +1827,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .staff_change_line_art{
     display: none;
-    height: 6px;
-    background: dodgerblue;
+    height: 4px;
     position: absolute;
     width: 100%;
     top: 60px;
@@ -1840,8 +1845,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .staff_change_line_adm{
     display: none;
-    height: 6px;
-    background: dodgerblue;
+    height: 4px;
     position: absolute;
     width: 100%;
     top: 60px;

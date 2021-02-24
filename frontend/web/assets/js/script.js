@@ -245,7 +245,7 @@ $('.weekdays').on('click', function () {
     $('.calendar_icon').removeClass('active');
     $('.weekdays ').removeClass('active');
     if ($(this).hasClass('calendar_icon')){
-        $('.calendar_icon').html(`<img style="width: 26px;" src="/assets/images/Векторный смарт-объект копия2.svg" alt=""></a>`)
+        $('.calendar_icon').html(`<img style="width: 26px;" src="/assets/images/Векторный смарт-объект.png" alt=""></a>`)
         $('.calendar_icon').addClass('active')
     }else{
         $('.calendar_icon').html(`<img style="width: 26px;" src="/assets/images/Векторный смарт-объект.svg" alt=""></a>`)
@@ -257,8 +257,8 @@ $('#nav-tab .active').click();
 
 $('.season_time').on('click',function () {
     let archive_id = $(this).attr('data-id');
-    $('.theater_season_block').removeClass("active")
-    $(this).parent().addClass('active')
+    $('.theater_season_block').removeClass("active");
+    $(this).addClass('active');
     $.ajax({
         url: window.location.href,
         type: 'post',

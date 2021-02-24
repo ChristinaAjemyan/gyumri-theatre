@@ -14,52 +14,49 @@ use yii\helpers\Url;
 
     <div class="theater_season">
             <div class="container">
+                <?php if (!empty($theatre_seasons) && isset($theatre_seasons)) : ?>
                 <div class="theater_season_carousel owl-carousel" id="season_carousel">
-                    <?php if (!empty($theatre_seasons) && isset($theatre_seasons)) : ?>
-                        <?php foreach ($theatre_seasons as $season) : ?>
+                    <?php foreach ($theatre_seasons as $season) : ?>
 
-                            <!--theater_season_block  -->
-                            <div class="theater_season_block <?= $season->active_season ? 'active' : '' ?>">
-                                <span class="seasnon_number season_time p-4" data-id="<?= $season->id ?>"><?= $season->title ?></span>
-                                <p class="season_type"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆ') ?></p>
-                            </div>
+                        <!--theater_season_block  -->
+                        <div class="theater_season_block season_time <?= $season->active_season ? 'active' : '' ?>" data-id="<?= $season->id ?>">
+                            <span class="seasnon_number"><?= $season->title ?></span>
+                            <p class="season_type"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆ') ?></p>
+                        </div>
 
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
+                <?php endif; ?>
 <!--                <span class="archive_line"></span>-->
             </div>
         </div>
     <div id="nav-tabCont">
+        <?php if(!empty($season_performances)) : ?>
         <section class="section_carousel archive_page_carousel">
             <div class="container">
                 <h2 class="archive_page_carousel_title" style="margin-bottom: 20px;"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
                 <div id="main_content_perf_data">
                     <div class="main_carousel owl-carousel archive_content_carousel" id="current_performance">
-
-                        <?php if(!empty($season_performances)) : ?>
-                            <?php foreach ($season_performances as $performance) : ?>
-                                <div class="carousel_item">
-                                    <div class="card" style="width: 16rem;">
+                        <?php foreach ($season_performances as $performance) : ?>
+                            <div class="carousel_item">
+                                <div class="card" style="width: 16rem;">
+                                    <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
+                                        <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance[0]->img_path; ?>" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body">
                                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
-                                            <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance[0]->img_path; ?>" alt="Card image cap">
+                                            <h5 class="card-title"><?= Yii::t('text',  $performance[0]->title ); ?></h5>
                                         </a>
-                                        <div class="card-body">
-                                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
-                                                <h5 class="card-title"><?= Yii::t('text',  $performance[0]->title ); ?></h5>
-                                            </a>
-                                            <p class="card-text"><?= Performance::getPerformanceTime($performance[0]->show_date) ?></p>
-                                        </div>
+                                        <p class="card-text"><?= Performance::getPerformanceTime($performance[0]->show_date) ?></p>
                                     </div>
                                 </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-
             </div>
         </section>
+        <?php endif; ?>
 
         <?php if(!empty($active_season)) : ?>
             <div class="archive_main_content">
