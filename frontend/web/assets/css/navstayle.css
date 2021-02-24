@@ -985,6 +985,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color:#e18848;
     text-align: left;
     font-size: 17px;
+    vertical-align: middle;
     font-weight: 700;
     font-family: sans-serif;
     transition: color .5s;
@@ -996,6 +997,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .media-footer .media_btn-group .add_cupon svg{
     font-size: 12px;
     margin-left: 10px;
+    margin-bottom: 2px;
 }
 .media-footer .view-movie{
     color:#999;
@@ -1528,7 +1530,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .actros_imges{
     justify-content: flex-start;
     display: flex;
-    margin: 30px 0px;
+    margin: 50px 0px;
 }
 .actros_imges .act_img {
     margin-right: 25px;

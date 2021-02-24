@@ -11,43 +11,42 @@ use yii\helpers\Url;
 
 <div class="actors_page">
     <div class="container main_container">
-        <section class="actros_carousel">
-            <div class="row">
-                <div class="col-md-3 col-12">
-                    <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$model->img_path; ?>" class="mr-3 actors_photo" alt="Photo">
-                </div>
-                <div class="col-md-9 col-12 order-md-1 order-4">
-                    <div class="about_actros">
-                        <div class="about_act_title">
-                            <small class="actros_type"><?= $model->staff_genre_type ? Yii::t('text', $model->staff_genre_type) : ''; ?></small>
-                            <h5 class="mt-0 actros_name"><?= Yii::t('text', $model->first_name).' '.Yii::t('text', $model->last_name); ?></h5>
-                        </div>
-                        <?php if (!empty($model->inst_url) && isset($model->inst_url)): ?>
-                        <a href="https://instagram.com/<?= $model->inst_url; ?>" target="_blank" class="social_page_act"><i class="fab fa-instagram"></i></a>
-                        <?php endif; ?>
-                    </div>
 
-                    <p class="actros_about_text">
-                        <?= Yii::t('text', $model->desc); ?>
-                    </p>
-                </div>
-                <?php $images = StaffImage::find()->where(['staff_id' => $model->id])->all(); ?>
-                <?php if (!empty($images) && isset($images)): ?>
-                <div class="col-12 order-md-2 order-3">
-                    <div class="actros_imges">
-                        <?php foreach ($images as $image): ?>
-                        <div class="act_img">
-                            <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
-                                <img src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
-                            </a>
-                        </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <?php endif; ?>
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <img style="max-width: 96%;width: 96%;height: auto;object-fit: cover;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$model->img_path; ?>" class="mr-3" alt="Photo">
             </div>
+            <div class="col-md-8 col-12 order-md-1 order-4">
+                <div class="about_actros">
+                    <div class="about_act_title">
+                        <small class="actros_type"><?= $model->staff_genre_type ? Yii::t('text', $model->staff_genre_type) : ''; ?></small>
+                        <h5 class="actros_name" style="color:#101010;margin-top: -10px;"><?= Yii::t('text', $model->first_name).' '.Yii::t('text', $model->last_name); ?></h5>
+                    </div>
+                    <?php if (!empty($model->inst_url) && isset($model->inst_url)): ?>
+                    <a href="https://instagram.com/<?= $model->inst_url; ?>" target="_blank" class="social_page_act"><i class="fab fa-instagram"></i></a>
+                    <?php endif; ?>
+                </div>
 
-        </section>
+                <p class="actros_about_text">
+                    <?= Yii::t('text', $model->desc); ?>
+                </p>
+            </div>
+            <?php $images = StaffImage::find()->where(['staff_id' => $model->id])->all(); ?>
+            <?php if (!empty($images) && isset($images)): ?>
+            <div class="col-12 order-md-2 order-3">
+                <div class="actros_imges row">
+                    <?php foreach ($images as $image): ?>
+                    <div class="act_img mb-4">
+                        <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
+                            <img style="height: 129px; width:129px;object-fit: cover;" src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+
         <?php $performances = StaffPerformance::find()->with('performance')->where(['staff_id' => $model->id])->all();
         $performance = ArrayHelper::map($performances, 'id', 'performance'); ?>
         <?php if (!empty($performance) && isset($performance)): ?>
