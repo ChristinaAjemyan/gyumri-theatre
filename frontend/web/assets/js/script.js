@@ -213,13 +213,13 @@ $('.weekdays').on('click', function () {
                                 <p class="author">${item.author} </p>
                                 <a href="/performance/view/${item.slug}"><h5 class="mt-0 media-title">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
-                                <p class="media-text">${item.desc.substring(0, 270)}${item.desc.length > 270 ? ' ...': ''}</p>
+                                <p class="media-text">${item.short_desc.substring(0, 270)}${item.short_desc.length > 270 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
-                                    ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"add_cupon\">" + 
+                                    ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" + 
                     getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
@@ -404,7 +404,7 @@ $('.performance_tab_cont').on('click',function () {
                                     <h5 class="mt-0 media-title">${item.title}</h5>
                                 </a>
                                 <small class="movie-type"> ${item.genre}</small>
-                                <p class="media-text">${item.desc.substring(0, 270)}${item.desc.length > 270 ? ' ...': ''}</p>
+                                <p class="media-text">${item.short_desc.substring(0, 270)}${item.short_desc.length > 270 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group"><a href="/performance/view/${item.slug}" class="btn more_btn">ԱՎԵԼԻՆ</a></div>
                                     <p class="view-movie">${item.date}</p>

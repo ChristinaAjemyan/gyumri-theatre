@@ -1002,7 +1002,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .media-footer .view-movie{
     color:#999;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 .media-footer .movie-lenght{
@@ -1161,6 +1161,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     box-shadow: inset 0px 57px 21px -26px rgba(0,0,0,1);
     padding-top: 80px;
     background: #101010;
+}
+
+.news_sett{
+    display: flex;
+    justify-content: space-between;
 }
 
 .about-carousel  a:hover{
@@ -2171,6 +2176,15 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .staff_change_line_art{
         background: none;
     }
+    .media-footer .media_btn-group .add_cupon svg {
+        margin-left: 2px;
+    }
+    .media-footer .view-movie {
+        font-size: 15px;
+    }
+    .media-footer .media_btn-group .add_cupon {
+        font-size: 16px;
+    }
 }
 @media screen and (max-width: 767px) {
     .search_input_form{
@@ -2265,7 +2279,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         top: -235px;
         padding: 14px 12px 8px 16px;
     }
-
+    .footer-block_title{
+        display: none;
+    }
+    .footer{
+        padding: 30px 0px;
+    }
 }
 @media screen and (max-width: 698px) {
     .owl-item .block-present img{
@@ -2336,14 +2355,21 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .weekdays_all{
         padding: 0!important;
     }
-    #nav-tabContent{
+/*    #nav-tabContent{
         margin-top: 100px!important;
-    }
+    }*/
     .media-footer .movie-lenght span {
         width: 27px!important;
         height: 27px!important;
         padding: 5px 2px 0px 4px!important;
-    }}
+    }
+    .performance_filter{
+        display: grid;
+    }
+    .perf .tab-content{
+        margin-top: 0!important;
+    }
+}
 @media screen and (max-width: 520px) {
     .performances-page .present-corusel{
         margin-top: 10px;
@@ -2381,6 +2407,32 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         color: white;
         padding: 8px;
     }
+    .add_cupon{
+        margin: 15px 0px 0px 0px!important;
+        font-size: 16px!important;
+        padding: 4px 14px 2px 14px;
+        border: 2px solid;
+        border-radius: 20px;
+        width: 137px!important;
+    }
+    .add_cupon i{
+        margin-left: 3px!important;
+        margin-bottom: 1px!important;
+    }
+    .my-media-footer .media_btn-group{
+        display: grid;!important;
+        width: 40%;
+    }
+    .media-footer .media_btn-group .add_cupon svg{
+        margin-bottom: 1px!important;
+    }
+    .media-footer .media_btn-group .more_btn{
+        width: 100%;
+        padding: 10px!important;
+    }
+    .main_movies .media_btn-group{
+        max-width: none;
+    }
 
 }
 @media screen and (max-width: 515px) {
@@ -2390,6 +2442,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .row-cols-2>* {
         flex: 0 0 50%;
         max-width: 100%;
+    }
+    .article-call .number-text{
+        margin-bottom: 5px;
     }
 /*    .actors_lists .actor {
         margin: 45px auto!important;
@@ -2524,6 +2579,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         font-size: 12px!important;
         padding: 6px!important;
     }
+    .media-footer .media_btn-group .add_cupon svg {
+        margin-bottom: 2px!important;
+    }
 }
 @media screen and (max-width: 376px) {
     .performances-page .present-corusel{
@@ -2553,6 +2611,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .site-index-contnet .about_popup_youtube{
         top: -261px;
         padding: 21px 18px 12px 20px;
+    }
+    .media_btn-group .add_cupon svg {
+        margin-bottom: 1px!important;
     }
 }
 @media screen and (max-width: 360px) {
@@ -2646,6 +2707,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .about_popup_youtube {
         top: -284px;
     }
+    .media-footer .media_btn-group .add_cupon svg {
+        margin-bottom: 3px!important;
+    }
+    .about_popup_youtube {
+        top: -280px!important;
+        padding: 15px 15px 8px 16px!important;
+    }
 }
 @media screen and (max-width: 320px) {
 
@@ -2673,9 +2741,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .main_movies .media img{
         height: 400px;
-    }
-    .about_popup_youtube {
-        top: -284px;
     }
 }
 
@@ -2878,7 +2943,7 @@ img.big-carousel{
     font-family: sans-serif;
 }
 .carousel_item .card-body p.card-text,.media-footer p.view-movie,span.view-movie{
-    font-family: monospace;
+    font-family: Sans-Serif;
 }
 .footer_year p:first-child{
     font-size: 12px;

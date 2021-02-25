@@ -132,8 +132,8 @@ use yii\helpers\Url;
                             </div>
                             <div class="media_btn-group">
                                 <?php if ($model->show_date > date("Y-m-d H:i:s")): ?>
-                                    <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
-                                        <i class="fas fa-chevron-right"></i>
+                                    <a href="https://www.tomsarkgh.am/" target="_blank" class="btn more_btn">
+                                        <?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>&nbsp;<i class="fas fa-chevron-right"></i>
                                     </a>
                                 <?php endif; ?>
                             </div>

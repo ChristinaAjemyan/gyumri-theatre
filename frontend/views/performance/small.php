@@ -25,8 +25,8 @@ use yii\widgets\LinkPager;  ?>
                                     </a>
                                     <small class="movie-type"><?= $performance['genre']; ?></small>
                                     <p class="media-text">
-                                        <?= mb_substr(Yii::t('text', $performance['desc']),0,250, 'utf-8'); ?>
-                                        <?= strlen(Yii::t('text', $performance['desc'])) > 250 ? '...' : ''; ?>
+                                        <?= mb_substr(Yii::t('text', $performance['short_desc']),0,250, 'utf-8'); ?>
+                                        <?= strlen(Yii::t('text', $performance['short_desc'])) > 250 ? '...' : ''; ?>
                                     </p>
                                     <div class="media-footer">
                                         <div class="media_btn-group">

@@ -13,7 +13,7 @@ use yii\widgets\Pjax; ?>
         </div>
 
         <div align="center" style="background: white;">
-            <div class="mb-3 ml-1">
+            <div class="mb-3 ml-1 performance_filter">
                 <?php $types = Type::find()->all(); ?>
                 <?php if (isset($types)): ?>
                 <?php foreach ($types as $type) : ?>
@@ -44,8 +44,8 @@ use yii\widgets\Pjax; ?>
                                 </a>
                                 <small class="movie-type"><?= $performance['genre']; ?></small>
                                 <p class="media-text">
-                                    <?= mb_substr(Yii::t('text', $performance['desc']),0,250, 'utf-8'); ?>
-                                    <?= strlen(Yii::t('text', $performance['desc'])) > 250 ? '...' : ''; ?>
+                                    <?= mb_substr(Yii::t('text', $performance['short_desc']),0,250, 'utf-8'); ?>
+                                    <?= strlen(Yii::t('text', $performance['short_desc'])) > 250 ? '...' : ''; ?>
                                 </p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">

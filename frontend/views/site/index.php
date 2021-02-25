@@ -124,7 +124,7 @@ use yii\helpers\Url;
                         <?= strlen(Yii::t('text', $performanceSoon->short_desc)) > 190 ? '...' : ''; ?>
                     </p>
 
-                    <div class="media-footer" style="margin-top: 25px;">
+                    <div class="media-footer my-media-footer" style="margin-top: 25px;">
                         <div class="media_btn-group">
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performanceSoon->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                         </div>

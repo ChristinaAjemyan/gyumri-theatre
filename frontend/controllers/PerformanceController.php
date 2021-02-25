@@ -65,6 +65,7 @@ class PerformanceController extends Controller
                 $performances_arr[$i]['title'] = Yii::t('text', $item['performance']['title']);
                 $performances_arr[$i]['slug'] = Yii::t('text', $item['performance']['slug']);
                 $performances_arr[$i]['desc'] = Yii::t('text', $item['performance']['desc']);
+                $performances_arr[$i]['short_desc'] = Yii::t('text', $item['performance']['short_desc']);
                 $performances_arr[$i]['img_path'] = Yii::t('text', $item['performance']['img_path']);
                 $performances_arr[$i]['genre'] = trim($str, ',');
                 $performances_arr[$i]['age_restriction'] = $item['performance']['age_restriction'];

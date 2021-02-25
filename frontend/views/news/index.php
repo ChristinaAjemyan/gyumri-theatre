@@ -27,7 +27,7 @@ use yii\widgets\LinkPager;  ?>
                                         <?= strlen(Yii::t('text', $content['content'])) > 190 ? '...' : ''; ?>
                                     </p>
                                     <div class="media-footer">
-                                        <div class="media_btn-group d-flex justify-content-between w-100">
+                                        <div class="media_btn-group news_sett w-100">
                                             <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                                             <span class="view-movie"><?= Performance::getPerformanceTime($content['dt_create']); ?></span>
                                         </div>
