@@ -1088,6 +1088,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     box-shadow: 0px 21px 20px -6px rgba(0,0,0,0.75) !important;
 
 }
+.footer_links{
+    margin-left: 25%;
+}
 
 .new_section .author{
     margin-top: 5px;
@@ -1127,11 +1130,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .new_section .media-body p:nth-last-child(2) span{
     color: white!important;
 }
-.footer_links{
+/*.footer_links{
     margin-left: 100px;
     display: flex;
     justify-content: center;
-}
+}*/
 .new_section .media-footer{
     margin-top: 50px;
     display: flex;
@@ -2109,9 +2112,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .about-carousel .owl-nav .owl-next {
         right: -25px!important;
     }
-    .footer_links{
+/*    .footer_links{
         margin-left: 45px;
-    }
+    }*/
     .media_present_st .media{
         display: block;
     }
@@ -2126,6 +2129,15 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     #my_tab-content{
         margin-top: 0!important;
+    }
+    .article-call{
+        padding: 20px 0 30px;
+    }
+    .footer_links {
+        margin-left: 23%;
+    }
+    .footer_big_cont{
+        padding-bottom: 60px;
     }
 }
 @media screen and (max-width: 992px) {
@@ -2187,6 +2199,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .media-footer .media_btn-group .add_cupon {
         font-size: 16px;
+    }
+    .footer_links {
+        margin-left: 22%;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2274,17 +2289,17 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .site-index-trailer{
         right: 0;
     }
-    .footer_links{
+/*    .footer_links{
         display: grid;
         margin-left: 0;
-    }
+    }*/
     .site-index-contnet .about_popup_youtube{
         top: -235px;
         padding: 14px 12px 8px 16px;
     }
-    .footer-block_title{
+/*    .footer-block_title{
         display: none;
-    }
+    }*/
     .footer{
         padding: 30px 0px;
     }
@@ -2371,6 +2386,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .perf .tab-content{
         margin-top: 0!important;
+    }
+    .footer_links {
+        margin-left: 17%;
     }
 }
 @media screen and (max-width: 520px) {
@@ -2584,6 +2602,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .media-footer .media_btn-group .add_cupon svg {
         margin-bottom: 2px!important;
+    }
+    .footer_links {
+        margin-left: 10%;
     }
 }
 @media screen and (max-width: 376px) {

@@ -64,7 +64,7 @@
         <div class="container" style="padding: 0 30px;">
             <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'Ֆիլմ') ?></h2>
             <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
-            <div class="row" style="margin-top: 65px;">
+            <div class="row footer_big_cont" style="margin-top: 65px;">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
                         <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', 'Գյումրու դրամատիկական թատրոն'); ?></h5>
@@ -87,7 +87,10 @@
 
                 <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/images/baner_gray.png');background-size: cover;">
                     <span class="btn_play about_popup_youtube site-index-trailer">
-                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/embed/uqA-tT3T6FQ"><i class="fas fa-play" style="font-size: 23px"></i></a>
+                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=uqA-tT3T6FQ">
+                            <i class="fas fa-play" style="font-size: 24px"></i>
+                        </a>
+<!--                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/embed/uqA-tT3T6FQ"><i class="fas fa-play" style="font-size: 23px"></i></a>-->
                     </span>
                 </div>
 
