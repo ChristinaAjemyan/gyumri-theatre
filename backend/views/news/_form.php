@@ -3,7 +3,6 @@
 use common\models\Main;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\file\FileInput;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
 //\mihaildev\elfinder\Assets::noConflict($this);

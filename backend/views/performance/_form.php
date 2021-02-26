@@ -6,7 +6,6 @@ use common\models\Type;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\file\FileInput;
 use kartik\select2\Select2;
 use common\models\Main;
 use mihaildev\ckeditor\CKEditor;

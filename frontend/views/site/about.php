@@ -85,57 +85,15 @@
                     </div>
                 </div>
 
-                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: url('/assets/images/image_about.png');background-size: cover;">
-                <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
-                                                                                 href="https://www.youtube.com/embed/uqA-tT3T6FQ""><i
-                                class="fas fa-play" style="font-size: 23px"></i></a></span>
-
-                    </div>
-
+                <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/images/baner_gray.png');background-size: cover;">
+                    <span class="btn_play about_popup_youtube site-index-trailer">
+                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/embed/uqA-tT3T6FQ"><i class="fas fa-play" style="font-size: 23px"></i></a>
+                    </span>
+                </div>
 
             </div>
         </div>
     </section>
-
-    <!--<section class="new_section mt-0">
-        <div class="opacity_baner p-2">
-
-            <div class="container main_container">
-                <h3 class="new_section-title">ՖԻԼՄ</h3>
-                <div class="row">
-                    <div class="col-md-7 boredr">
-                        <div class="media-body">
-                            <h5 class="mt-0 media-title">Գյումրու դրամատիկական թատրոն</h5>
-                            <p class="media-text">Ակնդետ ինձ էր նայում։ Ոչ մի կերպ չէի հասկանում՝
-                                որտե՞ղ
-                                եմ
-                                տեսել։ Խոնավ, տագնապած
-                                հայացքը փայլկտաց նավթալամպի ընդհատուն լույսի մեջ։ Հիշեցի, ամեն գիշեր
-                                երազում այս
-                                սենյակն ու այս լամպն եմ տեսնում եւ տագնապած հայացքով այս աղջկան։
-                                Այո,
-                                այո, ամեն
-                                անգամ, երբ հատում եմ երազատեսության երերուն սահմանը՝ իրականության եւ
-                                ...
-                            </p>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-5" style="margin-left: -22px;">
-                        <div class="video_block">
-
-                            <iframe width="460" height="315" src="https://www.youtube.com/embed/uqA-tT3T6FQ"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
 
     <article class="article-call">
         <h6 class="theater_year">Մեր և Ձեր թատրոնը <span>155</span> տարեկան է</h6>

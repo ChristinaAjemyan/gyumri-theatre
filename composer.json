@@ -19,7 +19,6 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "pcrt/yii2-datepicker": "*",
-        "kartik-v/yii2-widget-fileinput": "dev-master",
         "kartik-v/yii2-widget-select2": "dev-master",
         "slavkovrn/yii2-lightbox": "^1.0",
         "mihaildev/yii2-ckeditor": "*",

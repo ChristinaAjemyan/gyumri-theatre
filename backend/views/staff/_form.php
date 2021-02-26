@@ -5,7 +5,6 @@ use mihaildev\ckeditor\CKEditor;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\file\FileInput;
 use mihaildev\elfinder\ElFinder;
 use common\models\Role;
 //\mihaildev\elfinder\Assets::noConflict($this);
@@ -58,7 +57,7 @@ use common\models\Role;
         </div>
     </div>
 
-    <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
+    <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true])->label('Galleries') ?>
 
     <?= $result ? $result : false; ?>
 

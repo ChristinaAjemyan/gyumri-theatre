@@ -729,6 +729,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 /* navbar */
 
+.chronicle_par p{
+    margin: 0;
+}
 
 /* section 2 carousel */
 .main_carousel .carousel_item{
