@@ -21,7 +21,7 @@ use yii\helpers\Url;
         </div>
 
         <div class="carusel_block">
-            <img src="/assets/images/baner.png" alt="Photo">
+            <img src="/assets/images/baner_gray.jpg" alt="Photo">
         </div>
 
         <div class="carusel_block">
