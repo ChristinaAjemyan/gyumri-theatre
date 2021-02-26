@@ -74,7 +74,8 @@ class PerformanceController extends Controller
             }
             return Json::encode([
                 'performances' => $performances_arr,
-                'base_path' => Yii::$app->params['backend-url']
+                'base_path' => Yii::$app->params['backend-url'],
+                'lang' => Yii::$app->request->cookies->getValue('language')
             ]);
         }
         return $this->render('index', compact('performances', 'pages'));

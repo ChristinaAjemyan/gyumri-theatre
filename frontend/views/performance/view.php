@@ -65,8 +65,12 @@ use yii\helpers\Url;
                                 <?php endif; ?>
                                 <p class='view-movie'><i class="far fa-calendar-alt"></i><?= Performance::getPerformanceTime($model->show_date); ?></p>
                                 <p class="movie-lenght">
+                                    <?php if (!empty($model->performance_length) && isset($model->performance_length)) : ?>
                                     <?= $model->performance_length; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
-                                    <span ><?= $model->age_restriction; ?>+</span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($model->age_restriction) && isset($model->age_restriction)) : ?>
+                                    <span ><?= $model->age_restriction; ?>+</span
+                                    <?php endif; ?>
                                 </p>
                             </div>
 

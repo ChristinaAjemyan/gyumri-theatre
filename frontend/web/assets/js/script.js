@@ -201,7 +201,7 @@ $('.weekdays').on('click', function () {
                 $(`#nav-tabContent #${weekHref}`).append(`
                 <div class="media result d-block" ${data.success.length <= 1 ? 'style="border-bottom:none"' : ''}>
                     <div class="row performances_main" style="box-shadow: none;">
-                        <div class="col-md-3 col-12 p-0">
+                        <div class="col-md-3 col-12 p-0" style="padding: 0px 15px;">
                         <a href="/performance/view/${item.slug}">
                             <img src="${data.basePath}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
                         </a>
@@ -220,15 +220,18 @@ $('.weekdays').on('click', function () {
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
                                     ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" + 
-                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
-                                    <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
+                                    <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
+                                        ${item.age_restriction ? '<span>'+item.age_restriction +'+</span>' : ''}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr>   
             `);
             });
             $(function () {
@@ -385,8 +388,14 @@ $('.performance_tab_cont').on('click',function () {
             $('#nav-tabContent').append('<div class="d-flex justify-content-center load-icon m-5"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
         },
         success: function (data) {
-            if (typeof(data.performances) != "undefined" && data.performances !== null){
-            $('.perf').html(`<div class="tab-content" id="nav-tabContent"></div>`);
+            console.log(data.performances)
+            if (data.performances.length < 1){
+                $(".tab-content").append(`
+                <p class="text-center h2 remove">${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}</p>
+                `);
+                $('.load-icon').remove();
+            }else{
+                $('.perf').html(`<div class="tab-content" id="nav-tabContent"></div>`);
 
                 $.each(data.performances,function (i,item) {
                     $(".tab-content").append(`
@@ -416,10 +425,6 @@ $('.performance_tab_cont').on('click',function () {
                 </div>           
             `);
                 })
-            }else{
-                $(".tab-content").append(`
-                <p class="text-center h2 remove">Ներկայացում չի գտնվել</p>
-                `);
             }
         }
     })

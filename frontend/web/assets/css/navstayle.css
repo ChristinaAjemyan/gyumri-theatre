@@ -1024,7 +1024,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     text-align: center;
     margin-left: 15px;
     box-sizing: border-box;
-    padding:8px 3px 0px 7px;
+    padding:9px 6px 0px 6px;
     font-family: sans-serif;
 }
 @media(max-width:520px){
@@ -1770,7 +1770,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     padding-top: 0;
 }
 .main_movies .media{
-    padding: 30px 15px;
+    padding: 10px 15px;
 }
 
 

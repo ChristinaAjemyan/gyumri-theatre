@@ -37,7 +37,14 @@ use yii\widgets\LinkPager;  ?>
                                             <?php endif; ?>
                                         </div>
                                         <p class='view-movie'><?= $performance['func_date']; ?></p>
-                                        <p class="movie-lenght"><?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?><span><?= $performance['age_restriction']; ?>+</span></p>
+                                        <p class="movie-lenght">
+                                            <?php if (!empty($performance['performance_length']) && isset($performance['performance_length'])) : ?>
+                                            <?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
+                                            <?php endif; ?>
+                                            <?php if (!empty($performance['age_restriction']) && isset($performance['age_restriction'])) : ?>
+                                            <span><?= $performance['age_restriction']; ?>+</span>
+                                            <?php endif; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
