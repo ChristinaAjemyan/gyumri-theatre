@@ -84,7 +84,7 @@ class StaffController extends Controller
         $model = new Staff();
         $model_image = new StaffImage();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             Main::createUploadDirectories('avatars/staff', ['original', '400', '200']);
             if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
@@ -108,16 +108,17 @@ class StaffController extends Controller
                 $images = UploadedFile::getInstances($model_image, 'image');
                 foreach ($images as $image ){
                     $image_name = time().rand(100, 999) . '.' . $image->extension;
+                    $image->saveAs('upload/galleries/original/' . $image_name);
                     $model_image = new StaffImage();
                     $model_image->staff_id = $model->attributes['id'];
                     $model_image->image = $image_name;
                     $model_image->save();
-                    $image->saveAs('upload/galleries/original/' . $image_name);
+
                     Main::myResizeImage('galleries', $image_name, ['250']);
                 }
             }
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [

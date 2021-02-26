@@ -60,8 +60,44 @@
 
     </div>
 
+    <section class="new_section p-2" style="min-height: 640px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/images/baner_gray.jpg');">
+        <div class="container" style="padding: 0 30px;">
+            <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'Ֆիլմ') ?></h2>
+            <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
+            <div class="row" style="margin-top: 65px;">
+                <div class="col-md-7 boredr">
+                    <div class="media-body">
+                        <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', 'Գյումրու դրամատիկական թատրոն'); ?></h5>
+                        <p class="media-text" style="margin: 0 30px 0px 0px; color: white;">
+                            Ակնդետ ինձ էր նայում։ Ոչ մի կերպ չէի հասկանում՝
+                            որտե՞ղ
+                            եմ
+                            տեսել։ Խոնավ, տագնապած
+                            հայացքը փայլկտաց նավթալամպի ընդհատուն լույսի մեջ։ Հիշեցի, ամեն գիշեր
+                            երազում այս
+                            սենյակն ու այս լամպն եմ տեսնում եւ տագնապած հայացքով այս աղջկան։
+                            Այո,
+                            այո, ամեն
+                            անգամ, երբ հատում եմ երազատեսության երերուն սահմանը՝ իրականության եւ
+                            ...
+                        </p>
 
-    <section class="new_section mt-0">
+                    </div>
+                </div>
+
+                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: url('/assets/images/image_about.png');background-size: cover;">
+                <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
+                                                                                 href="https://www.youtube.com/embed/uqA-tT3T6FQ""><i
+                                class="fas fa-play" style="font-size: 23px"></i></a></span>
+
+                    </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="new_section mt-0">
         <div class="opacity_baner p-2">
 
             <div class="container main_container">
@@ -98,7 +134,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
 
     <article class="article-call">

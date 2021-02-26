@@ -136,7 +136,7 @@ use yii\helpers\Url;
             </div>
 
             <?php if (!empty($performanceSoon->trailer) && isset($performanceSoon->trailer)): ?>
-                <div class="col-md-5 position-relative site-index-contnet" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);background-size: cover;">
+                <div class="col-md-5 position-relative site-index-contnet" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                               href="https://www.youtube.com/watch?v=<?= $performanceSoon->trailer; ?>"><i
                                 class="fas fa-play" style="font-size: 24px"></i></a></span>

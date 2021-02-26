@@ -142,7 +142,7 @@ use yii\helpers\Url;
                 </div>
 
                 <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-                    <div class="col-md-5 position-relative banner_perform" style="margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
+                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                                                  href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
                                 class="fas fa-play" style="font-size: 23px"></i></a></span>
