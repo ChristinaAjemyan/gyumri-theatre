@@ -25,12 +25,12 @@ use yii\helpers\Url; ?>
         <?php if (Yii::$app->request->get() && empty($searchInformation['performance']) &&
             empty($searchInformation['staff']) && empty($searchInformation['news']) && empty($searchInformation['archive'])) : ?>
         <div align="center" class="w-100 m-0">
-            <h1 class="mt-3 mb-3 w-50"><?= Yii::t('home','Որևէ տվյալ չի գտնվել։') ?></h1>
+            <h1 class="mt-3 mb-3" style="font-family: 'Arm Hmks';"><?= Yii::t('home','Որևէ տվյալ չի գտնվել') ?></h1>
         </div>
         <?php endif; ?>
 
         <?php if(!empty($searchInformation['performance']) && isset($searchInformation['performance'])) : ?>
-        <div class="d-flex">
+        <div class="d-flex mb-3 wv3">
             <h2 class="mb-0 title-type" style="width: 15%;"><b><?= Yii::t('home', 'ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ'); ?></b></h2>
             <div class="title-side-line"></div>
         </div>
@@ -73,7 +73,7 @@ use yii\helpers\Url; ?>
         <?php endif; ?>
 
         <?php if(!empty($searchInformation['staff']) && isset($searchInformation['staff'])) : ?>
-        <div class="d-flex">
+        <div class="d-flex mb-3 wv3">
             <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'ԴԵՐԱՍԱՆՆԵՐ'); ?></b></h2>
             <div class="title-side-line"></div>
         </div>
@@ -96,7 +96,7 @@ use yii\helpers\Url; ?>
         <?php endif; ?>
 
         <?php if (!empty($searchInformation['news']) && isset($searchInformation['news'])) : ?>
-        <div class="d-flex">
+        <div class="d-flex mb-3 wv3">
             <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>
             <div class="title-side-line"></div>
         </div>

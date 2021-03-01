@@ -88,6 +88,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Main::uppercaseFirstLetter($data->city);
                 },
             ],
+            [
+                'header' => 'is member?',
+                'content' => function ($data){
+                    return $data->is_member == 1 ? 'Yes' : 'No';
+                },
+            ],
             //'slug,'
             //'inst_url',
             //'staff_genre_type',

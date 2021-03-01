@@ -104,6 +104,12 @@ $column[] = $column_name[9];
                 }
             ],
             'desc:html',
+            [
+                'attribute' => 'is_member',
+                'value' => function ($model){
+                    return $model->is_member == 1 ? 'Yes' : 'No';
+                },
+            ],
         ],
     ]) ?>
 </div>

@@ -65,6 +65,8 @@ use common\models\Role;
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
     ]); ?>
 
+    <?= $form->field($model, 'is_member')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

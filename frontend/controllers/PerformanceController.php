@@ -28,12 +28,21 @@ class PerformanceController extends Controller
 {
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
-        $performancesBigHall = Performance::find()->orderBy(['id' => SORT_DESC])->asArray();
+
+        $performancesEvening = TypePerformance::find()->with('performance')->where(['type_id' => 2])->orderBy(['id' => SORT_DESC])->asArray();
+//        $performancesEven = Performance::find()->orderBy(['id' => SORT_DESC])->asArray()->all();
+//        echo '<pre>';
+//        var_dump($performance_type);
+/*        foreach ($performance_type as $item){
+
+            $performancesEvening = $item['performance'];
+        }
+        die();*/
         $pages = new Pagination([
-            'totalCount' => $performancesBigHall->count(),
+            'totalCount' => $performancesEvening->count(),
             'defaultPageSize' => 15,
         ]);
-        $performances = $performancesBigHall->offset($pages->offset)
+        $performances = $performancesEvening->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
         if (!empty($performances) && isset($performances)){

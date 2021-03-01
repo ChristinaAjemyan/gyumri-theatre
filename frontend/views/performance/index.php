@@ -1,7 +1,6 @@
 <?php use common\models\Type;
 use yii\helpers\Url;
-use yii\widgets\LinkPager;
-use yii\widgets\Pjax; ?>
+use yii\widgets\LinkPager; ?>
 
 <main class="main_movies mb-5">
     <div class="archive_page">
@@ -17,7 +16,7 @@ use yii\widgets\Pjax; ?>
                 <?php $types = Type::find()->all(); ?>
                 <?php if (isset($types)): ?>
                 <?php foreach ($types as $type) : ?>
-                <button type="button" class="performance_tab_cont client_tab" data-toggle="pill" aria-controls="custom-tabs-one-client" data-id="<?= $type->id ?>" aria-selected="false"><?= $type->title ?></button>
+                <button type="button" class="performance_tab_cont client_tab" data-toggle="pill" aria-controls="custom-tabs-one-client" data-id="<?= $type->id ?>" aria-selected="false" style="<?= $type->title == 'երեկոյան' ? 'border-bottom: 3px solid rgb(225, 136, 72);' : '' ?>"><?= $type->title ?></button>
                 <?php endforeach; ?>
                 <?php endif; ?>
             </div>
@@ -25,38 +24,44 @@ use yii\widgets\Pjax; ?>
 
     </div>
     <div class="container main_container perf">
-        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content" id="nav-tabContent" style="min-height: 330px">
                 <?php if (!empty($performances) && isset($performances)) : ?>
                 <?php foreach ($performances as $performance) : ?>
                 <div class="media d-block">
                     <div class="row performances_main">
                         <div class="col-md-3  col-12 p-0">
-                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
+                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['performance']['slug'])]); ?>">
+                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance['performance']['img_path']; ?>" class="mr-5" alt="Photo">
                             </a>
                         </div>
                         <div class="col-md-9 col-12">
                             <div class="media-body mt-4">
-                                <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
-                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                                    <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['title']); ?></h5>
+                                <p class="author"><?= Yii::t('text', $performance['performance']['author']); ?></p>
+                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['performance']['slug'])]); ?>">
+                                    <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['performance']['title']); ?></h5>
                                 </a>
-                                <small class="movie-type"><?= $performance['genre']; ?></small>
+                                <small class="movie-type"><?= $performance['performance']['genre']; ?></small>
                                 <p class="media-text">
-                                    <?= mb_substr(Yii::t('text', $performance['short_desc']),0,250, 'utf-8'); ?>
-                                    <?= strlen(Yii::t('text', $performance['short_desc'])) > 250 ? '...' : ''; ?>
+                                    <?= mb_substr(Yii::t('text', $performance['performance']['short_desc']),0,250, 'utf-8'); ?>
+                                    <?= strlen(Yii::t('text', $performance['performance']['short_desc'])) > 250 ? '...' : ''; ?>
                                 </p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
-                                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
-                                        <?php if ($performance['show_date'] > date("Y-m-d H:i:s")): ?>
+                                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['performance']['slug'])]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
+                                        <?php if ($performance['performance']['show_date'] > date("Y-m-d H:i:s")): ?>
                                         <button class="btn add_cupon"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
                                             <i class="fas fa-chevron-right"></i>
                                         </button>
                                         <?php endif; ?>
                                     </div>
-                                    <p class='view-movie'><?= $performance['func_date']; ?></p>
-                                    <p class="movie-lenght"><?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?><span><?= $performance['age_restriction']; ?>+</span></p>
+                                    <p class="movie-lenght">
+                                        <?php if (!empty($performance['performance']['performance_length']) && isset($performance['performance']['performance_length'])) : ?>
+                                            <?= $performance['performance']['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
+                                        <?php endif; ?>
+                                        <?php if (!empty($performance['performance']['age_restriction']) && isset($performance['performance']['age_restriction'])) : ?>
+                                            <span><?= $performance['performance']['age_restriction']; ?>+</span>
+                                        <?php endif; ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>

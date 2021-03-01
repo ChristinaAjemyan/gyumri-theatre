@@ -33,7 +33,7 @@ return [
     'ՀՅՈՒՐԱԽԱՂ' => 'TOUR',
     'Որոնել' => 'Search',
     'Որոնման արդյունք' => 'Search result',
-    'Որևէ տվյալ չի գտնվել։' => 'No result.',
+    'Որևէ տվյալ չի գտնվել' => 'No result',
     'Անուն' => 'Name',
     'Թեմա' => 'Subject',
     'Այս բաժնում ներկայացված է թատրոնի արխիվային նյութերը և  Տարեգրությունը՝ ըստ թատերաշրջանի' => 'This section presents the archived materials of the theater and the chronicles according to the season',

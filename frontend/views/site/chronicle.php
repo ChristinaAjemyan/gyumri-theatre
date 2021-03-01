@@ -1,7 +1,7 @@
 <main class="main_movies mb-5">
     <div class="container main_container">
         <div style="margin-top: 120px" class="tab-content chronicle">
-            <div class="d-flex mb-4">
+            <div class="d-flex mb-3 wv3">
                 <h2 class="title-type  mb-0"><b><?= Yii::t('home', 'Տարեգրություն'); ?></b></h2>
                 <div class="title-side-line"></div>
             </div>

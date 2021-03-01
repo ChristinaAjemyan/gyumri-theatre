@@ -2239,7 +2239,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .actors_title{
         margin-top: 85px!important;
-        margin-left: 25px;
     }
     .performance_title{
         margin-top: 90px!important;
@@ -2403,9 +2402,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .performances-page .present-corusel{
         margin-top: 10px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 25px;
     }
@@ -2449,15 +2448,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-bottom: 1px!important;
     }
     .my-media-footer .media_btn-group{
-        display: grid;!important;
-        width: 40%;
+        display: block!important;
     }
     .media-footer .media_btn-group .add_cupon svg{
         margin-bottom: 1px!important;
     }
     .media-footer .media_btn-group .more_btn{
-        width: 100%;
-        padding: 10px!important;
+        display: block;
     }
     .main_movies .media_btn-group{
         max-width: none;
@@ -2490,9 +2487,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     #searchModal .modal-has-search .modal-search_input{
         width: 350px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 25px;
     }
@@ -2510,9 +2507,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .performances-page .present-corusel{
         margin-top: 10px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 25px;
     }
@@ -2540,9 +2537,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .owl-item .block-present img{
         height: 250px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 20px;
     }
@@ -2569,9 +2566,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actros_imges .act_img img{
         height: 80px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 20px;
     }
@@ -2592,9 +2589,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .weekdays{
         padding: 10px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 17px;
     }
@@ -2631,9 +2628,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actros_imges .act_img img{
         height: 70px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 17px;
     }
@@ -2670,9 +2667,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .owl-item .block-present img{
         height: 200px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .main_movies .weekdays{
         padding: 8px;
     }
@@ -2705,9 +2702,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .actros_imges .act_img img{
         height: 60px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 16px;
     }
@@ -2727,14 +2724,27 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .about_popup_youtube {
         top: -284px;
     }
+    .new_section .media-footer{
+        display: block;!important;
+    }
+    .new_section .media-footer:last-child span{
+        margin-left: 0!important;
+    }
+    .new_section .media-footer:last-child{
+        margin-top: 20px;!important;
+    }
+    .site-index-contnet .about_popup_youtube {
+        top: -305px;
+        padding: 21px 18px 12px 20px;
+    }
 }
 @media screen and (max-width: 332px) {
     .performances-page .present-corusel{
         margin-top: 0;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 15px;
     }
@@ -2770,9 +2780,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .weekdays{
         padding: 6px;
     }
-    #nav-tabContent p{
+/*    #nav-tabContent p{
         font-size: 16px;
-    }
+    }*/
     .new_section h5.media-title{
         font-size: 15px;
     }
@@ -2814,7 +2824,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size: 30px;
 }
 .media-body p.media-text{
-    color:#404040
+    color:#404040;
+    font-family: Sans-Serif;
 }
 .theater_season {
     padding-bottom: 25px;

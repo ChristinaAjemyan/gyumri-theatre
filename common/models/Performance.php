@@ -111,5 +111,9 @@ class Performance extends \yii\db\ActiveRecord
         }
         return date("d",strtotime($date)) .' '. $monthsAM[(int)$month-1] .' '. date("H:i",strtotime($date));
     }
+    public function getType()
+    {
+        return $this->hasMany(Performance::className(), ['id' => 'type_id']);
+    }
 }
 

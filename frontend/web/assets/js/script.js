@@ -186,7 +186,6 @@ $('.weekdays').on('click', function () {
             $('#nav-tabContent').append('<div class="d-flex justify-content-center loadIcon"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
         },
         success: function (data) {
-            $('#nav-tabContent .tab-pane').removeClass('show active');
             $('#nav-tabContent .remove').remove();
             if (data.error){
                 $(`#nav-tabContent`).append(`<p class='text-center h2 remove' style="font-family: 'Arm Hmks'">
@@ -391,11 +390,11 @@ $('.performance_tab_cont').on('click',function () {
             console.log(data.performances)
             if (data.performances.length < 1){
                 $(".tab-content").append(`
-                <p class="text-center h2 remove">${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}</p>
+                <p class="text-center h2 remove m-5" style="font-family: 'Arm Hmks'">${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}</p>
                 `);
                 $('.load-icon').remove();
             }else{
-                $('.perf').html(`<div class="tab-content" id="nav-tabContent"></div>`);
+                $('.perf').html(`<div class="tab-content" id="nav-tabContent" style="min-height: 330px"></div>`);
 
                 $.each(data.performances,function (i,item) {
                     $(".tab-content").append(`

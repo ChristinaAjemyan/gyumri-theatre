@@ -22,6 +22,7 @@ use Yii;
  * @property int|null $staff_status
  * @property int|null $slug
  * @property int|null $primary_key
+ * @property int|null $is_member
  */
 class Staff extends \yii\db\ActiveRecord
 {
@@ -42,9 +43,9 @@ class Staff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_name', 'last_name', 'role_id', 'slug'], 'required'],
+            [['first_name', 'last_name'], 'required'],
             ['slug', 'unique'],
-            [['date_of_birth','staff_status','primary_key','index_description'], 'safe'],
+            [['date_of_birth','staff_status','primary_key','index_description','is_member','slug','role_id'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
             [['first_name', 'last_name', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type'], 'string', 'max' => 255],
@@ -70,6 +71,7 @@ class Staff extends \yii\db\ActiveRecord
             'desc' => 'Description',
             'role' => 'Role',
             'slug' => 'Slug',
+            'is_member' => 'Is Member?',
         ];
     }
 

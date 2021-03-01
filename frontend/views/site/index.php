@@ -95,7 +95,7 @@ use yii\helpers\Url;
                    aria-controls="nav-sun" aria-selected="false"><?= Yii::t('home', 'ԿԻՐ') ?></a>
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent" style="min-height: 330px"></div>
+        <div class="tab-content pb-3" id="nav-tabContent" style="min-height: 330px"></div>
 
     </div>
 
@@ -128,8 +128,10 @@ use yii\helpers\Url;
                         <div class="media_btn-group">
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performanceSoon->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                         </div>
-                        <span class="calendar"><i class="far fa-calendar-alt"></i></span>
-                        <p class='view-movie'><?= Performance::getPerformanceTime($performanceSoon->show_date); ?></p>
+                        <div class="d-flex">
+                            <span class="calendar"><i class="far fa-calendar-alt"></i></span>
+                            <p class='view-movie'><?= Performance::getPerformanceTime($performanceSoon->show_date); ?></p>
+                        </div>
 
                     </div>
                 </div>
