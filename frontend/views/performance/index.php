@@ -24,7 +24,6 @@ use yii\widgets\Pjax; ?>
         </div>
 
     </div>
-    <?php Pjax::begin() ?>
     <div class="container main_container perf">
         <div class="tab-content" id="nav-tabContent">
                 <?php if (!empty($performances) && isset($performances)) : ?>
@@ -66,7 +65,7 @@ use yii\widgets\Pjax; ?>
                 <?php endforeach; ?>
                 <?php endif; ?>
 
-            <div class="table-content">
+            <div class="table-content mt-5">
                 <?= LinkPager::widget([
                     'pagination' => $pages,
                     'maxButtonCount' => 6,
@@ -79,6 +78,5 @@ use yii\widgets\Pjax; ?>
             </div>
         </div>
     </div>
-    <?php Pjax::end() ?>
 
 </main>

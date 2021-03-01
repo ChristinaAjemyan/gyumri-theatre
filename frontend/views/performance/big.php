@@ -3,7 +3,7 @@ use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
     <div class="container main_container" style="min-height: 600px;">
         <div style="margin-top: 120px" class="tab-content performance_title" id="nav-tabContent">
-            <div class="d-flex">
+            <div class="d-flex mb-3 wv3">
                 <h2 class="mb-0 title-type" style="width: 32%;"><b><?= Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Մեծ թատրոն'); ?></b></h2>
                 <div class="title-side-line"></div>
             </div>
@@ -52,7 +52,7 @@ use yii\widgets\LinkPager;  ?>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <div>
+            <div class="mt-5">
                 <?= LinkPager::widget([
                     'pagination' => $pages,
                     'maxButtonCount' => 6,

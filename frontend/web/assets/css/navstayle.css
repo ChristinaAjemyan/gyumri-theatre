@@ -1779,6 +1779,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .actros_list_page {
     margin: 20px auto;
     max-width: 200px;
+    padding: revert;
 }
 
 .actros_list_page a{
@@ -2243,9 +2244,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .performance_title{
         margin-top: 90px!important;
     }
-    .actors_lists .actor{
+/*    .actors_lists .actor{
         margin: 15px auto!important;
-    }
+    }*/
     .contact_form{
         padding: 15px 0!important;
     }
@@ -2288,6 +2289,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .site-index-trailer{
         right: 0;
+    }
+    .actros_list_page{
+        margin: 0!important;
+        padding: 0!important;
+    }
+    .table-content{
+        margin-top: 15px;
     }
 /*    .footer_links{
         display: grid;
@@ -2454,6 +2462,15 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media_btn-group{
         max-width: none;
     }
+    .news_sett{
+        display: block;
+    }
+    .news_more{
+        margin-bottom: 15px;
+    }
+/*    .actors_lists .actor{
+        margin: 15px 0;!important;
+    }*/
 
 }
 @media screen and (max-width: 515px) {

@@ -3,9 +3,9 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
     <div class="container" style="padding: 0 30px; min-height: 600px;">
-        <div style="margin-top: 120px" class="tab-content" id="nav-tabContent">
-            <div class="d-flex">
-                <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="d-flex mb-3 wv3">
+                <h2 class="mb-0 title-type actors_title" style="margin-top: 120px"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>
                 <div class="title-side-line"></div>
             </div>
             <?php if (!empty($contents) && isset($contents)) : ?>
@@ -28,7 +28,7 @@ use yii\widgets\LinkPager;  ?>
                                     </p>
                                     <div class="media-footer">
                                         <div class="media_btn-group news_sett w-100">
-                                            <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
+                                            <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>" class="btn more_btn news_more"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                                             <span class="view-movie"><?= Performance::getPerformanceTime($content['dt_create']); ?></span>
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@ use yii\widgets\LinkPager;  ?>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <div>
+            <div class="mt-5">
                 <?= LinkPager::widget([
                     'pagination' => $pages,
                     'maxButtonCount' => 6,

@@ -29,9 +29,9 @@
     .nav{
         border-bottom: none;
     }
-    .about-carousel .main_carousel .card{
+/*    .about-carousel .main_carousel .card{
         width: 16rem;
-    }
+    }*/
 } 
 @media(max-width:991px){
     .logo {
