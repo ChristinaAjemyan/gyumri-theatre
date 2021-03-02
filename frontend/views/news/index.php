@@ -37,6 +37,10 @@ use yii\widgets\LinkPager;  ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
+            <?php else: ?>
+                <p class="text-center h2 remove" style="font-family: 'Arm Hmks'">
+                    <?= Yii::t('app', 'Արդյունք չի գտնվել') ?>
+                </p>
             <?php endif; ?>
             <div class="mt-5">
                 <?= LinkPager::widget([

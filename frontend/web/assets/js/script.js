@@ -198,7 +198,7 @@ $('.weekdays').on('click', function () {
             }
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
-                <div class="media result d-block" ${data.success.length <= 1 ? 'style="border-bottom:none"' : ''}>
+                <div class="media result d-block mb-4" ${data.success.length <= 1 ? 'style="border-bottom:none"' : ''}>
                     <div class="row performances_main" style="box-shadow: none;">
                         <div class="col-md-3 col-12 p-0" style="padding: 0px 15px;">
                         <a href="/performance/view/${item.slug}">
@@ -219,7 +219,7 @@ $('.weekdays').on('click', function () {
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
                                     ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" + 
-                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + "<i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                     <p class='view-movie'>${item.func_date}</p>
                                     <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
@@ -229,8 +229,7 @@ $('.weekdays').on('click', function () {
                             </div>
                         </div>
                     </div>
-                </div>
-                <hr>   
+                </div>          
             `);
             });
             $(function () {
@@ -387,7 +386,6 @@ $('.performance_tab_cont').on('click',function () {
             $('#nav-tabContent').append('<div class="d-flex justify-content-center load-icon m-5"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
         },
         success: function (data) {
-            console.log(data.performances)
             if (data.performances.length < 1){
                 $(".tab-content").append(`
                 <p class="text-center h2 remove m-5" style="font-family: 'Arm Hmks'">${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}</p>

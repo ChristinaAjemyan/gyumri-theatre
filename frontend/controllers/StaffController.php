@@ -68,7 +68,7 @@ class StaffController extends Controller
         $actors = Staff::find()->where(['role_id' => $role_id->id])->andWhere(['is_member' => 1]);
         $pages = new Pagination([
             'totalCount' => $actors->count(),
-            'defaultPageSize' => 15,
+            'defaultPageSize' => 20,
         ]);
         $model = $actors->offset($pages->offset)
             ->limit($pages->limit)

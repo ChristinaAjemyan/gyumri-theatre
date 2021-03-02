@@ -2762,8 +2762,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-bottom: 3px!important;
     }
     .about_popup_youtube {
-        top: -280px!important;
-        padding: 15px 15px 8px 16px!important;
+        top: -280px;
+        padding: 15px 15px 8px 16px;
     }
 }
 @media screen and (max-width: 320px) {
