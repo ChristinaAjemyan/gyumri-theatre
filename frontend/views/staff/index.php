@@ -66,7 +66,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                 <div></div>
                                             </div>
                                         </a>
-                                        <a class="nav-item col-lg-6 col-md-12 client_tab tab_main <?=$role == 'artistic' ? 'active' : '' ?>" id="nav-profile-tab" style="font-family: Sans-Serif;text-transform: uppercase;" data-role="artistic"
+                                        <a class="nav-item col-lg-6 col-md-12 client_tab tab_main <?=$role == 'artistic' ? 'active' : '' ?>" id="nav-profile-tab" data-role="artistic"
                                            data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
                                             <?= Yii::t('text', 'Գեղ.-ստեղծագործական Կազմ') ?>
                                             <div class="hove_height staff_change_line_art">
@@ -84,7 +84,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                     <div class="row">
                                                         <?php foreach ($model_staff_admin as $item): ?>
                                                             <div class="col-lg-4 col-md-6 col-sm-12 p-0">
-                                                                <a href="<?= Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                                                                <a href="javascript:void(0)">
                                                                     <div class="media_present staff_pres">
                                                                         <div class="media p-0">
                                                                             <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
@@ -121,7 +121,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                     <div class="row">
                                                         <?php foreach ($model_staff_artist as $item): ?>
                                                             <div class="col-lg-4 col-md-6 col-sm-12 p-0">
-                                                                <a href="<?= Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                                                                <a href="javascript:void(0)">
                                                                     <div class="media_present staff_pres">
                                                                         <div class="media p-0">
                                                                             <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
@@ -196,19 +196,26 @@ $script = <<<JS
     
     if (pageIndex !== -1) {
         pageNumber = defaultUrl.pathname.slice(pageIndex);
-    }   */ 
+    }   */
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
     $('.client_tab').click(function() {
         let role = $(this).data('role'),
             url = new URL(location.href);
             url.searchParams.set('role', role);
             window.history.pushState({}, '', url);
-            
+            $('.client_tab').css('border-bottom','none')
          if (url.searchParams.get('role') == 'artistic'){
+             if (width < 1025){
+                $(this).css('border-bottom','5px solid #f28c39')
+             }
              $('.staff_change_line_adm').hide()
-            $('.staff_change_line_art').show()
+             $('.staff_change_line_art').show()
          } else if(url.searchParams.get('role') == 'administrative'){
+             if (width < 1025){
+                $(this).css('border-bottom','5px solid #f28c39')
+             }
              $('.staff_change_line_art').hide()
-            $('.staff_change_line_adm').show()
+             $('.staff_change_line_adm').show()
          }
 /*        if (typeof $('.'+ role +'_pagination').get(1) !== typeof undefined) {
             $('.'+ role +'_pagination').get(1).click();

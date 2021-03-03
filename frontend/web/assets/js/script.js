@@ -1,5 +1,20 @@
 $( document ).ready(function() {
 
+
+let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+if (width < 1124){
+    $('.footer_links_items').removeClass('footer_links_items');
+    $('.footer_links').addClass('row');
+}
+
+
+
+let url = new URL(location.href);
+if (url.pathname !== '/'){
+    $('.navbar-pages').css('background','#000');
+}
+
 $('#datepicker').datepicker({
 	uiLibrary: 'bootstrap4'
 });
@@ -210,9 +225,9 @@ $('.weekdays').on('click', function () {
                             ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\" style='margin-right: -14px;'>"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
                                     item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
                                 <p class="author">${item.author} </p>
-                                <a href="/performance/view/${item.slug}"><h5 class="mt-0 media-title">${item.title}</h5></a>
+                                <a href="/performance/view/${item.slug}"><h5 class="media-title" style="margin-top: -13px;margin-bottom: -8px;">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
-                                <p class="media-text">${item.short_desc.substring(0, 270)}${item.short_desc.length > 270 ? ' ...': ''}</p>
+                                <p class="media-text" style="min-height: 112px;">${item.short_desc.substring(0, 425)}${item.short_desc.length > 425 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
@@ -221,7 +236,7 @@ $('.weekdays').on('click', function () {
                                     ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" + 
                                         getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
-                                    <p class='view-movie'>${item.func_date}</p>
+                                    ${item.show_date > currentTime ? "<p class='view-movie'>"+item.func_date+"</p>" : ''}
                                     <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
                                         ${item.age_restriction ? '<span>'+item.age_restriction +'+</span>' : ''}
                                     </p>
@@ -370,11 +385,29 @@ $('.season_time').on('click',function () {
 })
 // archive end ----
 
-$('.performance_tab_cont').on('click',function () {
-    let type_id = $(this).attr('data-id')
+$('.performance_tab_cont').on('click',function (e) {
+    let type_id = 0;
     $('.performance_tab_cont').css('border-bottom', 'none');
-    $(this).addClass('active_type');
-    $(this).css('border-bottom', '3px solid #e18848');
+
+    if ($(this).hasClass('active')) {
+        setTimeout(function () {
+            $('button.performance_tab_cont.client_tab.active').removeClass('active');
+            $(this).css('border-bottom', 'none');
+        })
+    } else {
+        type_id = $(this).attr('data-id');
+        $(this).css('border-bottom', '3px solid #e18848');
+        $('button.performance_tab_cont.client_tab.active').removeClass('active');
+    }
+
+    var myDate = new Date();
+    let currentTime = myDate.getFullYear() + '-'
+        +('0' + (myDate.getMonth()+1)).slice(-2)+ '-' +
+        ('0' + myDate.getDate()).slice(-2) + ' '+myDate.getHours()
+        + ':'+('0' + (myDate.getMinutes())).slice(-2)+ ':'+myDate.getSeconds();
+
+    // $('.performance_tab_cont').css('border-bottom', 'none');
+    // $(this).css('border-bottom', '3px solid #e18848');
     $('.table-content').empty();
     $.ajax({
         url: window.location.href,
@@ -412,9 +445,17 @@ $('.performance_tab_cont').on('click',function () {
                                 <small class="movie-type"> ${item.genre}</small>
                                 <p class="media-text">${item.short_desc.substring(0, 270)}${item.short_desc.length > 270 ? ' ...': ''}</p>
                                 <div class="media-footer">
-                                    <div class="media_btn-group"><a href="/performance/view/${item.slug}" class="btn more_btn">ԱՎԵԼԻՆ</a></div>
-                                    <p class="view-movie">${item.date}</p>
-                                    <p class="movie-lenght">${item.performance_length} ${getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ')}<span>${item.age_restriction}+</span></p>
+                                    <div class="media_btn-group">
+                                        <a href="/performance/view/${item.slug}" class="btn more_btn">
+                                            ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
+                                        </a>
+                                    ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" +
+                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                    </div>
+                                   
+                                    <p class="movie-lenght">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
+                                        ${item.age_restriction ? '<span>'+item.age_restriction +'+</span>' : ''}
+                                    </p>
                                 </div>
                             </div>
                         </div>

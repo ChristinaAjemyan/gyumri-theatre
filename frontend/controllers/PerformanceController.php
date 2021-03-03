@@ -29,7 +29,10 @@ class PerformanceController extends Controller
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
 
-        $performancesEvening = TypePerformance::find()->with('performance')->where(['type_id' => 2])->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesEvening = Performance::find()->orderBy(['id' => SORT_DESC])->asArray();
+
+
+//        $performancesEvening = TypePerformance::find()->with('performance')->where(['type_id' => 2])->orderBy(['id' => SORT_DESC])->asArray();
 //        $performancesEven = Performance::find()->orderBy(['id' => SORT_DESC])->asArray()->all();
 //        echo '<pre>';
 //        var_dump($performance_type);
@@ -46,6 +49,7 @@ class PerformanceController extends Controller
             ->limit($pages->limit)
             ->all();
         if (!empty($performances) && isset($performances)){
+
             foreach ($performances as $key => $value){
                 $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $value['id']])->asArray()->all();
                 $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
@@ -61,25 +65,39 @@ class PerformanceController extends Controller
         if (Yii::$app->request->isAjax){
             $type_id = Yii::$app->request->post('id');
             $performances_arr = [];
-            $performances = TypePerformance::find()->with('performance')->where(['type_id' => $type_id])->asArray()->all();
+
+            if ($type_id != 0) {
+                $performances = TypePerformance::find()->with('performance')->where(['type_id' => $type_id])->orderBy(['id' => SORT_DESC])->asArray()->all();
+            } else {
+                $performances = Performance::find()->orderBy(['id' => SORT_DESC])->asArray()->all();
+
+            }
+
+            $val = null;
             foreach ($performances as $i => $item){
-                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item['performance']['id']])->asArray()->all();
+                if ($type_id == 0){
+                    $val = $item;
+                }else{
+                    $val = $item['performance'];
+                }
+                $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $val['id']])->asArray()->all();
                 $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name');
                 $str = '';
                 foreach ($genre as $value){
                     $str .= ' '.Yii::t('text', $value).',';
                 }
                 $performances_arr[$i]['id'] = $item['performance']['id'];
-                $performances_arr[$i]['author'] = Yii::t('text', $item['performance']['author']);
-                $performances_arr[$i]['title'] = Yii::t('text', $item['performance']['title']);
-                $performances_arr[$i]['slug'] = Yii::t('text', $item['performance']['slug']);
-                $performances_arr[$i]['desc'] = Yii::t('text', $item['performance']['desc']);
-                $performances_arr[$i]['short_desc'] = Yii::t('text', $item['performance']['short_desc']);
-                $performances_arr[$i]['img_path'] = Yii::t('text', $item['performance']['img_path']);
+                $performances_arr[$i]['author'] = Yii::t('text', $val['author']);
+                $performances_arr[$i]['title'] = Yii::t('text', $val['title']);
+                $performances_arr[$i]['slug'] = Yii::t('text', $val['slug']);
+                $performances_arr[$i]['desc'] = Yii::t('text', $val['desc']);
+                $performances_arr[$i]['short_desc'] = Yii::t('text', $val['short_desc']);
+                $performances_arr[$i]['show_date'] = $val['show_date'];
+                $performances_arr[$i]['img_path'] = Yii::t('text', $val['img_path']);
                 $performances_arr[$i]['genre'] = trim($str, ',');
-                $performances_arr[$i]['age_restriction'] = $item['performance']['age_restriction'];
-                $performances_arr[$i]['performance_length'] = $item['performance']['performance_length'];
-                $performances_arr[$i]['date'] = Performance::getPerformanceTime($item['performance']['show_date']);
+                $performances_arr[$i]['age_restriction'] = $val['age_restriction'];
+                $performances_arr[$i]['performance_length'] = $val['performance_length'];
+                $performances_arr[$i]['date'] = Performance::getPerformanceTime($val['show_date']);
             }
             return Json::encode([
                 'performances' => $performances_arr,

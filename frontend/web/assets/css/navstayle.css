@@ -122,7 +122,7 @@ h3 {
 
 #hero {
     overflow: hidden;
-    max-height: 600px
+    /*max-height: 825px*/
 }
 
 #hero .scroll,
@@ -196,6 +196,33 @@ span.title {
 *:focus {
     outline: none;
     box-shadow: none
+}
+
+.carusel_block{
+    position:relative;
+    display:inline-block;
+}
+.carusel_block:after {
+    content:'';
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:100%;
+    display:inline-block;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.95) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.95)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.95) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.95) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.95) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.95) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.carusel_block img{
+    display:block;
+}
+
+.archive_page_images_carousel .carusel_block:hover{
+    height: 0;
 }
 
 blockquote {
@@ -451,14 +478,14 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: "ArialAMU";
 }
 #headerCarousel{
-    max-height: 600px;
+    max-height: 850px;
 }
 #headerCarousel .owl-dots{
     width: 20px;
     position: absolute;
     z-index: 500;
     right: 50px;
-    bottom: 60px;
+    bottom: 385px;
 }
 #headerCarousel .owl-dots .owl-dot{
     background: #6a7377;
@@ -484,7 +511,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .scrollme{
     width: 100%;
-    top: 39%;
+    top: 28%;
     right:50%;
     transform: translate(50%,0px);
     z-index:5;
@@ -532,11 +559,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 /* navbar */
 
-.navbar-pages{
+/*.navbar-pages{
     background: #000;
-}
+}*/
 .navbar-brand img{
-    max-width: 150px ;
+    max-width: 135px ;
     margin-left: 30px;
 }
 .navbar_bg{
@@ -589,10 +616,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     float: right;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 15px;
     border: 2px solid #EC7532;
     border-radius: 50%;
-    padding: 6px 10px 5px 12px;
+    padding: 12px 15px 9px 16px;
 }
 .about_popup_youtube a{
     color: white;
@@ -651,6 +678,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #fff;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.my_media_title{
+    margin-top: -35px;
 }
 .navbar-nav .about_us .dropdown-menu{
 
@@ -775,8 +805,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 0px;
     color: #404040;
+    margin-bottom: -5px;
+    font-size: 22px;
 }
 .carousel_item .card-title::after{
     display: none;
@@ -916,6 +947,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: sans-serif;
 
 }
+.result{
+    border-bottom: 1px solid #d3d3d3;
+}
 .main_movies .media-title{
     font-family: "Arm Hmks";
     font-weight: 600;
@@ -924,7 +958,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-bottom: 0px;
     padding-bottom: 0px;
     margin-bottom: 0px;
-    font-size: 30px;
+    font-size: 39px;
     color: #222;
 }
 .main_movies .media-title::after{
@@ -937,6 +971,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #999999;
     font-size: 17px;
     font-weight: 700;
+    font-family: sans-serif;
 }
 .main_movies .media-text{
     margin-top: 15px;
@@ -981,7 +1016,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 50px;
-    box-shadow: 0px 6px 11px 0px rgb(168 168 168);
+    box-shadow: -2px 2px 23px -7px rgb(168 168 168);
 }
 .media-footer .media_btn-group .add_cupon{
     width: 150px;
@@ -1089,7 +1124,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .footer_links{
-    margin-left: 25%;
+    margin-left: 0;
+    display: flex;
 }
 
 .new_section .author{
@@ -1104,8 +1140,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     text-transform: uppercase;
     border-bottom: 0px;
     padding-bottom: 0px;
-    margin-bottom: 0px;
-    font-size: 50px;
+    margin-bottom: -12px;
+    font-size: 60px;
     color: white;
 
 }
@@ -1169,6 +1205,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     background: #101010;
 }
 
+.footer_links_items{
+    margin-right: 43px;
+}
+
 .news_sett{
     display: flex;
     justify-content: space-between;
@@ -1224,8 +1264,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #e18848 !important;
     border-bottom: none;
     font-size: 90px;
-    font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     text-align: center;
     font-family: 'Arm Hmks';
     margin-top: -20px;
@@ -1339,7 +1378,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     /*height: 330px;*/
 }
 .main_movies_about{
-    top: -70px;
+    top: -87px;
 }
 .about-present .media{
 /*    top: -70px;
@@ -1378,7 +1417,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-size:14px;
 }
 .about-present .media .media-text{
-    margin-top: 10px;
+    margin-top: 35px;
     max-height: 193px;
     overflow: hidden;
 }
@@ -1401,13 +1440,17 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     margin-right: 8px;
 }
 .performances-page #hero {
-    min-height: 350px;
-    max-height: 395px
+    min-height: 430px;
+    max-height: 430px
+}
+.theater_season_carousel .theater_season .owl-nav svg{
+    font-size: 40px!important;
+    color: lightgrey;
 }
 
 .performances-carusel{
     margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 .performances-carusel .block-present{
     display: block;
@@ -1564,7 +1607,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 50px;
-    box-shadow: 0px 6px 11px 0px rgba(168,168,168,1);
+    box-shadow: -2px 2px 23px -7px rgb(168 168 168);
 }
 .media_present:hover{
     background: linear-gradient(to right, #fbbd61, #ec7532) ;
@@ -1715,13 +1758,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .about_pages .text_director{
-    margin-top: 10px;
     font-size: 15px;
     text-indent: 20px;
     text-align: justify;
     min-height: 100px;
     max-height: 250px ;
     overflow: hidden;
+    color: #404040;
 }
 .about_pages .new_section{
     background-image: url('../images/about_main_baner.png');
@@ -1753,11 +1796,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .theater_year{
     border: none;
-    font-size: 80px;
+    font-size: 74px;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 700;
-    letter-spacing: 6px;
+    font-weight: 600;
+    letter-spacing: 4px;
     font-family: "Arm Hmks";
 }
 .theater_year span{
@@ -2135,7 +2178,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         padding: 20px 0 30px;
     }
     .footer_links {
-        margin-left: 23%;
+        margin-left: 5%;
     }
     .footer_big_cont{
         padding-bottom: 60px;
@@ -2143,7 +2186,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 @media screen and (max-width: 992px) {
     .hove_height{
-        display: none;
+        display: none!important;
     }
     .owl-item .block-present img{
         height: 280px;
@@ -2182,6 +2225,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .tab_main{
         font-size: 18px;
         font-weight: 700;
+        max-width: fit-content!important;
     }
     .staff_change_line_art{
         display: none;
@@ -2202,7 +2246,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         font-size: 16px;
     }
     .footer_links {
-        margin-left: 22%;
+        margin-left: 5%;
     }
 }
 @media screen and (max-width: 767px) {
@@ -2301,7 +2345,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-left: 0;
     }*/
     .site-index-contnet .about_popup_youtube{
-        top: -235px;
+        top: -320px;
         padding: 14px 12px 8px 16px;
     }
 /*    .footer-block_title{
@@ -2379,6 +2423,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .weekdays_all{
         padding: 0!important;
+    }
+    .media-title{
+        margin: 0!important;
     }
 /*    #nav-tabContent{
         margin-top: 100px!important;
@@ -2647,7 +2694,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         height: 290px;
     }
     .site-index-contnet .about_popup_youtube{
-        top: -261px;
+        top: -340px;
         padding: 21px 18px 12px 20px;
     }
     .media_btn-group .add_cupon svg {
@@ -2734,7 +2781,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         margin-top: 20px;!important;
     }
     .site-index-contnet .about_popup_youtube {
-        top: -305px;
+        top: -400px;
         padding: 21px 18px 12px 20px;
     }
 }
@@ -2836,7 +2883,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     color: #414141;
     background: white;
     text-align: center;
-    box-shadow: 0px -3px 4px -2px rgb(0 0 0 / 50%);
+    box-shadow: -2px 2px 23px -7px rgb(168 168 168);
     max-width: 160px;
     height: 70px;
     padding-top: 4px;
@@ -2850,6 +2897,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 .theater_season .theater_season_carousel{
     transform: translateY(-15px);
 }
+.theater_season_block:hover{
+    color: white;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+}
 .theater_season .seasnon_number{
     width: 120px;!important;
     font-size: 28px;
@@ -2857,7 +2908,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .theater_season .season_type{
-    margin-top: -10px;
+    margin-top: -14px;
     font-family: "Arm Hmks";
 }
 .theater_season .owl-nav{
@@ -2878,14 +2929,16 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     outline: none;
 }
 .theater_season .owl-nav svg{
-    font-size: 50px;
+    font-size: 40px;
     color: lightgrey;
 }
 .theater_season .owl-nav .owl-prev{
-    left: -5%;
+    left: -3%;
+    bottom: -50px;
 }
 .theater_season .owl-nav .owl-next{
-    right: -6%;
+    right: -4%;
+    bottom: -50px;
 }
 .archive_page_carousel{
     background:#ececec ;
@@ -2980,9 +3033,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     /*border-bottom: 3px solid #e18848;*/
 }
 .language_select,.language_select option{
-    font-family: system-ui;
-    font-size: 16px;
+    font-family: 'Arm Hmks';
+    font-size: 22px;
     font-weight: 700;
+    letter-spacing: 2px;
 }
 .week_days_perf{
     height: 300px; object-fit: cover;

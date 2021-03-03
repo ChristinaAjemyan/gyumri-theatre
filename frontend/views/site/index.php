@@ -101,7 +101,7 @@ use yii\helpers\Url;
 
 </main>
 
-<section class="new_section p-2" style="min-height: 510px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);">
+<section class="new_section p-2" style="min-height: 650px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);">
     <div class="container" style="padding: 0 30px;">
         <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
         <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
@@ -120,8 +120,8 @@ use yii\helpers\Url;
                     </small>
                     <p class="author" style="font-family: sans-serif;"><?= Yii::t('text', $performanceSoon->author); ?></p>
                     <p class="media-text" style="margin: 0 30px 0px 0px;">
-                        <?= mb_substr(Yii::t('text', $performanceSoon->short_desc),0,190, 'utf-8'); ?>
-                        <?= strlen(Yii::t('text', $performanceSoon->short_desc)) > 190 ? '...' : ''; ?>
+                        <?= mb_substr(Yii::t('text', $performanceSoon->short_desc),0,350, 'utf-8'); ?>
+                        <?= strlen(Yii::t('text', $performanceSoon->short_desc)) > 350 ? '...' : ''; ?>
                     </p>
 
                     <div class="media-footer my-media-footer" style="margin-top: 25px;">

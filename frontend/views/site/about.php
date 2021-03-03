@@ -67,7 +67,9 @@
             <div class="row footer_big_cont" style="margin-top: 65px;">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
-                        <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', 'Գյումրու դրամատիկական թատրոն'); ?></h5>
+                        <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', 'Գյումրու'); ?></h5>
+                        <h5 class="media-title my_media_title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', 'դրամատիկական'); ?></h5>
+                        <h5 class="media-title my_media_title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', 'թատրոն'); ?></h5>
                         <p class="media-text" style="margin: 0 30px 0px 0px; color: white;">
                             Ակնդետ ինձ էր նայում։ Ոչ մի կերպ չէի հասկանում՝
                             որտե՞ղ
@@ -99,7 +101,7 @@
     </section>
 
     <article class="article-call">
-        <h6 class="theater_year">Մեր և Ձեր թատրոնը <span>155</span> տարեկան է</h6>
+        <h6 class="theater_year">Մեր եվ Ձեր թատրոնը <span>155</span> տարեկան է</h6>
     </article>
 
 </div>

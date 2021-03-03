@@ -45,10 +45,16 @@ use yii\helpers\Url;
                                     </a>
                                     <div class="card-body">
                                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
-                                            <h5 class="card-title"><?= Yii::t('text',  $performance[0]->title ); ?></h5>
+                                            <h5 class="card-title"><?= Yii::t('text', $performance[0]->title); ?></h5>
                                         </a>
-                                        <p class="card-text"><?= Performance::getPerformanceTime($performance[0]->show_date) ?></p>
+                                        <p class="card-text"><?= Performance::getPerformanceTime($performance[0]->show_date); ?></p>
                                     </div>
+<!--                                    <div class="card-body">
+                                        <a href="<?/*= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); */?>">
+                                            <h5 class="card-title"><?/*= Yii::t('text',  $performance[0]->title ); */?></h5>
+                                        </a>
+                                        <p class="card-text"><?/*= Performance::getPerformanceTime($performance[0]->show_date) */?></p>
+                                    </div>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -70,7 +76,7 @@ use yii\helpers\Url;
                     <div class="performances-carusel owl-carousel" id="current_performance_slide">
                         <?php $archive_images = ArchiveImage::find()->where(['archive_id' => $active_season->id])->all(); ?>
                         <?php foreach ($archive_images as $archive_image) : ?>
-                            <div class="block-present">
+                            <div class="block-present carusel_block">
                                 <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$archive_image->image; ?>">
                                     <img src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$archive_image->image; ?>" alt="Photo">
                                 </a>
