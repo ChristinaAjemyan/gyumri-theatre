@@ -91,7 +91,7 @@ class PerformanceController extends Controller
         $model_genre_perform = new GenrePerformance();
         $model_type_perform = new TypePerformance();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
 
             try {
                 Main::createUploadDirectories('avatars/performance', ['original', '400', '200']);
@@ -232,7 +232,7 @@ class PerformanceController extends Controller
             }
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
 
             $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
             $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
@@ -258,7 +258,8 @@ class PerformanceController extends Controller
                 foreach ($imageArray as $value){
                     $model->$value = UploadedFile::getInstance($model, $value);
                     if ($value == 'avatar_image'){
-                        $model->$value->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
+                        $file_name_avatar = iconv('UTF-8', 'language//TRANSLIT',$arr_dir[0]);
+                        $model->$value->saveAs('upload/avatars/performance/original/' . $file_name_avatar);
                     }
                     if ($value == 'banner_image'){
                         $model->$value->saveAs('upload/banners/' . $arr_dir[1]);

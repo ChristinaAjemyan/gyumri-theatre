@@ -221,7 +221,7 @@ span.title {
     display:block;
 }
 
-.archive_page_images_carousel .carusel_block:hover{
+.page_images_carousel .carusel_block:hover{
     height: 0;
 }
 
@@ -608,7 +608,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .performances_main{
     background: white;
-    box-shadow: 0px 0px 10px 0px rgb(168 168 168);
+    box-shadow: -2px 2px 23px -7px rgb(168 168 168);
     border-radius: 10px;
 }
 
@@ -1389,7 +1389,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     display: flex;
 }
 .view_img_content{
-    top: -70px;
+    top: -90px;
 }
 /*.view_img_content img{
     max-width: 318px;
@@ -1399,7 +1399,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border-radius: unset;
 }*/
 .view_text_content{
-    top: -70px;
+    top: -80px;
 }
 .about-present .media .movie-type{
     color: #ad6437;
@@ -1546,7 +1546,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .about_actros .social_page_act svg{
     font-size: 50px;
-    color: #F7AB55;
+    color: #E18848;
     margin-bottom: 10px;
 
     transition: .5s;
@@ -1566,10 +1566,12 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     display: none;
 }
 .about_act_title .actros_type{
-    font-family: 'Arm Hmks';
+    font-family: sans-serif;
     font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
     letter-spacing: 1.5px;
-    color:#F7AB55 ;
+    color: #F7AB55;
     display: block;
     transform: translateY(10px);
 }
@@ -1623,16 +1625,18 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     margin-top: 5px;
     display: block;
     color: #e18848;
-    font-weight: 100;
-    letter-spacing: 2px;
-    font-size: 16px;
-    font-family:'Arm Hmks';
+    font-weight: 700;
+    letter-spacing: 0px;
+    font-size: 14px;
     height: 25px;
     text-transform: uppercase;
     overflow-y: hidden;
+    font-family: sans-serif;
 }
 .performance_movie .performance_name{
     font-family:'Arm Hmks';
+    margin-top: -7px;
+    margin-bottom: 2px;
     font-size: 26px;
     border: none;
     height: 25px;

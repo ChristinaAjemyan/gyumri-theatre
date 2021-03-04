@@ -185,3 +185,19 @@ use yii\helpers\Url;
 
 
 </div>-->
+<?php
+$js = <<<JS
+    
+
+$(function() {
+    $('#contactBtn').click();
+    $(window).scroll(function(){
+        $('.close_button').click();
+    });
+});
+
+
+
+JS;
+$this->registerJs($js);
+?>

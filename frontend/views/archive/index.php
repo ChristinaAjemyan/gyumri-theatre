@@ -71,7 +71,7 @@ use yii\helpers\Url;
                     <?= $active_season->content ?>
                 </div>
             </div>
-            <div class="container archive_page_images_carousel">
+            <div class="container page_images_carousel">
                 <div id="main_content_season_data">
                     <div class="performances-carusel owl-carousel" id="current_performance_slide">
                         <?php $archive_images = ArchiveImage::find()->where(['archive_id' => $active_season->id])->all(); ?>

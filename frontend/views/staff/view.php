@@ -1,6 +1,7 @@
 <?php
 
 use common\models\GenrePerformance;
+use common\models\Performance;
 use common\models\StaffImage;
 use common\models\StaffPerformance;
 use yii\helpers\ArrayHelper;
@@ -63,7 +64,10 @@ use yii\helpers\Url;
                                      class="align-self-center mr-3 present_baner" alt="...">
                                 <div class="media-body">
                                     <span class="author"><?= Yii::t('text', $item->author); ?></span>
-                                    <h5 class="mt-0 performance_name"><?= Yii::t('text', $item->title); ?></h5>
+                                    <h5 class="performance_name">
+                                        <?= mb_substr(Yii::t('text', Yii::t('text', $item->title)),0,25, 'utf-8'); ?>
+                                        <?= strlen(Yii::t('text', $item->title)) > 25 ? '...' : ''; ?>
+                                    </h5>
                                     <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $item->id])->asArray()->all();
                                     $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
                                     <small class="movie_type">
@@ -84,3 +88,27 @@ use yii\helpers\Url;
         <?php endif; ?>
     </div>
 </div>
+<section class="about-carousel" style="transform: translateY(30px);">
+    <div class="container">
+
+        <div class="main_carousel owl-carousel" id="performances-carusel">
+            <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
+            <?php if (!empty($performances) && isset($performances)): ?>
+                <?php foreach ($performances as $item): ?>
+                    <div class="carousel_item">
+                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                            <div class="card">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <hr class="foote-and-carusel">
+    </div>
+
+</section>

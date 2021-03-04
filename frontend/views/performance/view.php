@@ -87,7 +87,7 @@ use yii\helpers\Url;
     <?php $images = Image::find()->where(['performance_id' => $model->id])->all(); ?>
     <?php if (!empty($images) && isset($images)): ?>
     <section class="present-corusel" >
-        <div class="container">
+        <div class="container page_images_carousel">
             <div class="current_performances" style="margin: 0 auto;">
                 <h2 class="block_title carousel_title mt-0 contact_block_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
                 <div class="block_title_gred_line"></div>
@@ -95,7 +95,7 @@ use yii\helpers\Url;
             <span class="title_line"></span>
             <div class="performances-carusel owl-carousel" id="current_performance">
                 <?php foreach ($images as $image): ?>
-                <div class="block-present">
+                <div class="block-present carusel_block">
                     <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
                         <img src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
                     </a>
@@ -146,7 +146,7 @@ use yii\helpers\Url;
                 </div>
 
                 <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);background-size: cover;">
+                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$model->img_path; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                                                  href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
                                 class="fas fa-play" style="font-size: 23px"></i></a></span>
@@ -172,3 +172,27 @@ use yii\helpers\Url;
 
 
 </div>
+<section class="about-carousel" style="transform: translateY(30px);">
+    <div class="container">
+
+        <div class="main_carousel owl-carousel" id="performances-carusel">
+            <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
+            <?php if (!empty($performances) && isset($performances)): ?>
+                <?php foreach ($performances as $item): ?>
+                    <div class="carousel_item">
+                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                            <div class="card">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <hr class="foote-and-carusel">
+    </div>
+
+</section>
