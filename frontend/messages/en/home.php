@@ -15,7 +15,7 @@ return [
     'Կապ' => 'Contact',
     'Գյումրու Դրամատիկական թատրոն' => 'Gyumri drama theatre',
     'Գյումրու' => 'Gyumri',
-    'Դրամատիկական' => 'drama',
+    'դրամատիկական' => 'drama',
     'թատրոն' => 'theatre',
     'Ընթացիկ ներկայացումներ' => 'Current performances',
     'ԵՐՔ' => 'TUS',
