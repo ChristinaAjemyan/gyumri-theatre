@@ -93,99 +93,107 @@ class PerformanceController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            Main::createUploadDirectories('avatars/performance', ['original', '400', '200']);
+            try {
+                Main::createUploadDirectories('avatars/performance', ['original', '400', '200']);
 
-            if (!is_dir('upload/banners/')){
-                FileHelper::createDirectory('upload/banners/');
-            }
+                if (!is_dir('upload/banners/')) {
+                    FileHelper::createDirectory('upload/banners/');
+                }
 
-            $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
-            $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
+                $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
+                $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
 
-            if ($imgAvatar !== null && $imgBanner !== null){
-                $arr_dir = [];
-                $imageArray = ['avatar_image', 'banner_image'];
-                foreach ($imageArray as $item){
-                    $model->$item = UploadedFile::getInstance($model, $item);
-                    $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                    $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                    $arr_dir[0] = $avatar_name;
-                    $arr_dir[1] = $banner_name;
-                    $model->img_path = $avatar_name;
-                    $model->banner = $banner_name;
+                if ($imgAvatar !== null && $imgBanner !== null) {
+                    $arr_dir = [];
+                    $imageArray = ['avatar_image', 'banner_image'];
+                    foreach ($imageArray as $item) {
+                        $model->$item = UploadedFile::getInstance($model, $item);
+                        $avatar_name = time() . rand(100, 999) . '.' . $model->$item->extension;
+                        $banner_name = time() . rand(100, 999) . '.' . $model->$item->extension;
+                        $arr_dir[0] = $avatar_name;
+                        $arr_dir[1] = $banner_name;
+                        $model->img_path = $avatar_name;
+                        $model->banner = $banner_name;
+                        $model->save();
+                    }
+                    foreach ($imageArray as $value) {
+                        $model->$value = UploadedFile::getInstance($model, $value);
+                        if ($value == 'avatar_image') {
+                            $model->$value->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
+                        }
+                        if ($value == 'banner_image') {
+                            $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                        }
+                    }
+                    Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
+                } elseif ($imgAvatar !== null && $imgBanner === null) {
+                    $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
+                    $img_name = time() . '.' . $model->avatar_image->extension;
+                    $model->img_path = $img_name;
+                    $model->save();
+                    $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
+                    Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
+                } elseif ($imgAvatar === null && $imgBanner !== null) {
+                    $model->img_path = 'default.jpg';
+                    $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
+                    $img_name = time() . '.' . $model->banner_image->extension;
+                    $model->banner = $img_name;
+                    $model->save();
+                    $model->banner_image->saveAs('upload/banners/' . $img_name);
+                } else {
+                    $model->img_path = 'default.jpg';
                     $model->save();
                 }
-                foreach ($imageArray as $value){
-                    $model->$value = UploadedFile::getInstance($model, $value);
-                    if ($value == 'avatar_image'){
-                        $model->$value->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
+
+                if (isset(Yii::$app->request->post('StaffPerformance')['staff_id'])) {
+                    foreach (Yii::$app->request->post('StaffPerformance')['staff_id'] as $staff) {
+                        $model_stf_present = new StaffPerformance();
+                        $model_stf_present->staff_id = $staff;
+                        $model_stf_present->performance_id = $model->attributes['id'];
+                        $model_stf_present->save();
                     }
-                    if ($value == 'banner_image'){
-                        $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                }
+
+                if (isset(Yii::$app->request->post('GenrePerformance')['genre_id'])) {
+                    foreach (Yii::$app->request->post('GenrePerformance')['genre_id'] as $genre) {
+                        $model_genre_perform = new GenrePerformance();
+                        $model_genre_perform->genre_id = $genre;
+                        $model_genre_perform->performance_id = $model->attributes['id'];
+                        $model_genre_perform->save();
                     }
                 }
-                Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
-            }elseif ($imgAvatar !== null && $imgBanner === null){
-                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $img_name = time() . '.' . $model->avatar_image->extension;
-                $model->img_path = $img_name;
-                $model->save();
-                $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
-                Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
-            }elseif ($imgAvatar === null && $imgBanner !== null){
-                $model->img_path = 'default.jpg';
-                $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
-                $img_name = time() . '.' . $model->banner_image->extension;
-                $model->banner = $img_name;
-                $model->save();
-                $model->banner_image->saveAs('upload/banners/' . $img_name);
-            }else{
-                $model->img_path = 'default.jpg';
-                $model->save();
-            }
 
-            if (isset(Yii::$app->request->post('StaffPerformance')['staff_id'])){
-                foreach (Yii::$app->request->post('StaffPerformance')['staff_id'] as $staff){
-                    $model_stf_present = new StaffPerformance();
-                    $model_stf_present->staff_id = $staff;
-                    $model_stf_present->performance_id = $model->attributes['id'];
-                    $model_stf_present->save();
-                }
-            }
+                $type_id = Yii::$app->request->post('TypePerformance')['type_id'];
 
-            if (isset(Yii::$app->request->post('GenrePerformance')['genre_id'])){
-                foreach (Yii::$app->request->post('GenrePerformance')['genre_id'] as $genre){
-                    $model_genre_perform = new GenrePerformance();
-                    $model_genre_perform->genre_id = $genre;
-                    $model_genre_perform->performance_id = $model->attributes['id'];
-                    $model_genre_perform->save();
+                if (isset($type_id) && is_array($type_id)) {
+                    foreach (Yii::$app->request->post('TypePerformance')['type_id'] as $type) {
+                        $model_type_perform = new TypePerformance();
+                        $model_type_perform->type_id = $type;
+                        $model_type_perform->performance_id = $model->attributes['id'];
+                        $model_type_perform->save();
+                    }
                 }
-            }
 
-            if (isset(Yii::$app->request->post('TypePerformance')['type_id'])){
-                foreach (Yii::$app->request->post('TypePerformance')['type_id'] as $type){
-                    $model_type_perform = new TypePerformance();
-                    $model_type_perform->type_id = $type;
-                    $model_type_perform->performance_id = $model->attributes['id'];
-                    $model_type_perform->save();
+                if (UploadedFile::getInstances($model_image, 'image')) {
+                    if (!is_dir('upload/galleries/')) {
+                        FileHelper::createDirectory('upload/galleries/original/');
+                        FileHelper::createDirectory('upload/galleries/250/');
+                    }
+                    $images = UploadedFile::getInstances($model_image, 'image');
+                    foreach ($images as $image) {
+                        $image_name = time() . rand(100, 999) . '.' . $image->extension;
+                        $model_image = new Image();
+                        $model_image->performance_id = $model->attributes['id'];
+                        $model_image->image = $image_name;
+                        $model_image->save();
+                        $image->saveAs('upload/galleries/original/' . $image_name);
+                        Main::myResizeImage('galleries', $image_name, ['250']);
+                    }
                 }
-            }
-
-            if (UploadedFile::getInstances($model_image, 'image')){
-                if (!is_dir('upload/galleries/')){
-                    FileHelper::createDirectory('upload/galleries/original/');
-                    FileHelper::createDirectory('upload/galleries/250/');
-                }
-                $images = UploadedFile::getInstances($model_image, 'image');
-                foreach ($images as $image){
-                    $image_name = time().rand(100, 999) . '.' . $image->extension;
-                    $model_image = new Image();
-                    $model_image->performance_id = $model->attributes['id'];
-                    $model_image->image = $image_name;
-                    $model_image->save();
-                    $image->saveAs('upload/galleries/original/' . $image_name);
-                    Main::myResizeImage('galleries', $image_name, ['250']);
-                }
+            } catch (\Exception $exception) {
+                echo '<pre>';
+                var_dump($exception);
+                die;
             }
             return $this->redirect(['view', 'id' => $model->id]);
         }
