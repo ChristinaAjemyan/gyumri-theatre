@@ -14,7 +14,7 @@ use yii\widgets\LinkPager;  ?>
                         <div class="row performances_main p-1 news_block">
                             <div class="col-md-2  col-12 p-0">
                                 <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>">
-                                    <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/news/200/'.$content['img_path']; ?>" class="w-100" alt="Photo" style="height: 170px;">
+                                    <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/news/400/'.$content['img_path']; ?>" class="w-100" alt="Photo" style="height: 170px;">
                                 </a>
                             </div>
                             <div class="col-md-10 col-12">

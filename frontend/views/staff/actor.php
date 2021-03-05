@@ -17,7 +17,7 @@ use yii\helpers\Url;
                 <div class="col">
                     <a href="<?=  Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]);?>">
                         <div class="actor">
-                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>" alt="Photo">
+                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>" alt="Photo">
                             <h6 class="actor_name"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h6>
                             <span class="actor_type"><?= Yii::t('text', $item->staff_genre_type) ?></span>
                         </div>
@@ -51,7 +51,7 @@ use yii\helpers\Url;
                     <div class="carousel_item">
                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <div class="card">
-                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                 </div>

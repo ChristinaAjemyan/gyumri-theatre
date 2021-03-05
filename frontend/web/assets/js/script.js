@@ -217,7 +217,7 @@ $('.weekdays').on('click', function () {
                     <div class="row performances_main" style="box-shadow: none;">
                         <div class="col-md-3 col-12 p-0" style="padding: 0px 15px;">
                         <a href="/performance/view/${item.slug}">
-                            <img src="${data.basePath}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
+                            <img src="${data.basePath}/upload/avatars/performance/400/${item.img_path}" class="mr-5" alt="Photo">
                         </a>
                         </div>
                         <div class="col-md-9 col-12">
@@ -291,7 +291,7 @@ $('.season_time').on('click',function () {
                     $(".archive_page_carousel .owl-carousel").append(`
                     <div class="carousel_item">
                         <div class="card" style="width: 16rem;">
-                            <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/200/'+item.img_path}" alt="Card image cap">
+                            <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/400/'+item.img_path}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${item.show_date}</h5>
                                 <p class="card-text">${item.title}</p>
@@ -432,8 +432,8 @@ $('.performance_tab_cont').on('click',function (e) {
                 <div class="media d-block">
                     <div class="row performances_main">
                         <div class="col-md-3  col-12 p-0">
-                            <a href="/performance/view?slug=${item.slug}">
-                                <img src="${data.base_path}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
+                            <a href="/performance/view/${item.slug}">
+                                <img src="${data.base_path}/upload/avatars/performance/400/${item.img_path}" class="mr-5" alt="Photo">
                             </a>
                         </div>
                         <div class="col-md-9 col-12">
