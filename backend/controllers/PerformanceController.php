@@ -232,7 +232,7 @@ class PerformanceController extends Controller
             }
         }
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             $imgAvatar = UploadedFile::getInstance($model, 'avatar_image')->name;
             $imgBanner = UploadedFile::getInstance($model, 'banner_image')->name;
