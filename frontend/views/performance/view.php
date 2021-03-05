@@ -32,7 +32,7 @@ use yii\helpers\Url;
             <div class="media">
                 <div class="row">
                     <div class="col-md-4  col-12 view_img_content">
-                        <img style="max-width: 96%;width: 96%;height: auto;object-fit: cover;border-radius: unset;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$model->img_path; ?>" alt="Photo">
+                        <img style="max-width: 96%;width: 96%;height: auto;object-fit: cover;border-radius: unset;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$model->img_path; ?>" alt="Photo">
                     </div>
                     <div class="col-md-8 col-12 view_text_content">
 

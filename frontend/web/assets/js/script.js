@@ -225,9 +225,9 @@ $('.weekdays').on('click', function () {
                             ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\" style='margin-right: -14px;'>"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
                                     item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
                                 <p class="author">${item.author} </p>
-                                <a href="/performance/view/${item.slug}"><h5 class="media-title" style="margin-top: -13px;margin-bottom: -8px;">${item.title}</h5></a>
+                                <a href="/performance/view/${item.slug}"><h5 class="media-title" style="margin-top: -5px;margin-bottom: -8px;">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
-                                <p class="media-text" style="min-height: 112px;">${item.short_desc.substring(0, 425)}${item.short_desc.length > 425 ? ' ...': ''}</p>
+                                <p class="media-text" style="min-height: 112px; font-size: 16px">${item.short_desc.substring(0, 370)}${item.short_desc.length > 370 ? '<span>...</span>': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
@@ -443,7 +443,7 @@ $('.performance_tab_cont').on('click',function (e) {
                                     <h5 class="mt-0 media-title">${item.title}</h5>
                                 </a>
                                 <small class="movie-type"> ${item.genre}</small>
-                                <p class="media-text">${item.short_desc.substring(0, 270)}${item.short_desc.length > 270 ? ' ...': ''}</p>
+                                <p class="media-text">${item.short_desc.substring(0, 370)}${item.short_desc.length > 370 ? ' ...': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">

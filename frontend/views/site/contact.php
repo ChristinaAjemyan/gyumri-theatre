@@ -16,7 +16,8 @@ use yii\captcha\Captcha;
 use yii\helpers\Url;
 
 ?>
-<div id="myMap" class="site-contact-map" style="margin-top: 100px; width: 100%; height: 575px">
+<div id="asdasd" data-target=""></div>
+<div id="myMap" class="site-contact-map" style="margin-top: 100px; width: 100%; height: 450px">
 <!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.1743778474574!2d43.84538578047872!3d40.79066377176147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041fbf2a2fef76f%3A0xa7bf664eae5715b8!2sVardan%20Ajemyan%20Drama%20Theater!5e0!3m2!1sen!2s!4v1602774799615!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
 </div>
 
@@ -70,11 +71,11 @@ use yii\helpers\Url;
     </div>
 
 </section>
-<div class="modal fade pr-0" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
+<div class="modal modal_main fade pr-0" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
 
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1090px;margin-top: 75px;">
 
-        <div class="modal-content position-relative" style="border-radius: 20px;background: black;border: none;box-shadow: 0px 6px 11px 0px rgb(168 168 168);">
+        <div class="modal-content position-relative" style="border-radius: 20px;background: black;border: none;box-shadow:-2px 2px 23px -7px rgb(168 168 168);">
             <button type="button" class="close close_button" style="padding: 9px 14px;background-image: linear-gradient(to right, #F0B866, #DB7439); z-index: 9999" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -194,9 +195,13 @@ $(function() {
     $(window).scroll(function(){
         $('.close_button').click();
     });
+    var start_time = setInterval(function() {
+        if ($('.modal_main').hasClass('show') == false){
+            $('#myMap').css('height','690px')
+            clearInterval(start_time);
+        } 
+    },500)   
 });
-
-
 
 JS;
 $this->registerJs($js);
