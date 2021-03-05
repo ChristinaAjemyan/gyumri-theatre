@@ -432,7 +432,7 @@ $('.performance_tab_cont').on('click',function (e) {
                 <div class="media d-block">
                     <div class="row performances_main">
                         <div class="col-md-3  col-12 p-0">
-                            <a href="/performance/view/${item.slug}">
+                            <a href="/performance/view?slug=${item.slug}">
                                 <img src="${data.base_path}/upload/avatars/performance/200/${item.img_path}" class="mr-5" alt="Photo">
                             </a>
                         </div>

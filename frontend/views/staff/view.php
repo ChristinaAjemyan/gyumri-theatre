@@ -36,6 +36,13 @@ use yii\helpers\Url;
             <?php if (!empty($images) && isset($images)): ?>
             <div class="col-12 order-md-2 order-3">
                 <div class="actros_imges row">
+<!--                    --><?php
+/*
+                    $image_count = count($images);
+
+                    if ($image_count)
+
+                    */?>
                     <?php foreach ($images as $image): ?>
                     <div class="act_img mb-4">
                         <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
