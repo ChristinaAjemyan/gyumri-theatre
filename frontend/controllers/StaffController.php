@@ -29,6 +29,7 @@ class StaffController extends Controller
 
         $staff_primary = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(["primary_key" => 1])->
         andWhere(['is_member' => 1])->orderBy(['last_name' => SORT_ASC])->limit(2)->all();
+        
 
         $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->
         andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['last_name' => SORT_ASC]);

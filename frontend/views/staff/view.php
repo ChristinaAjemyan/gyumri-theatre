@@ -62,7 +62,7 @@ use yii\helpers\Url;
                             <div class="media">
                                 <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>"
                                      class="align-self-center mr-3 present_baner" alt="...">
-                                <div class="media-body">
+                                <div class="media-body" style="margin-top: 5px;">
                                     <span class="author"><?= Yii::t('text', $item->author); ?></span>
                                     <h5 class="performance_name">
                                         <?= mb_substr(Yii::t('text', Yii::t('text', $item->title)),0,25, 'utf-8'); ?>
