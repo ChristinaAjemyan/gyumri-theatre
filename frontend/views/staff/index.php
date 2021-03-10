@@ -87,7 +87,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                                 <a href="javascript:void(0)">
                                                                     <div class="media_present staff_pres">
                                                                         <div class="media p-0">
-                                                                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
+                                                                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>"
                                                                                  class="align-self-center mr-3 present_baner" alt="...">
                                                                             <div class="media-body" style="text-align: left;">
                                                                                 <h5 class="mt-0 performance_name"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h5>
@@ -124,7 +124,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                                 <a href="javascript:void(0)">
                                                                     <div class="media_present staff_pres">
                                                                         <div class="media p-0">
-                                                                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item->img_path; ?>"
+                                                                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>"
                                                                                  class="align-self-center mr-3 present_baner" alt="...">
                                                                             <div class="media-body" style="text-align: left;">
                                                                                 <h5 class="mt-0 performance_name"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h5>
@@ -171,7 +171,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                         <div class="carousel_item">
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                                 <div class="card">
-                                    <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                    <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                     </div>

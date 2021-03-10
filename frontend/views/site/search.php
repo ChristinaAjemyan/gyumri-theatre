@@ -39,7 +39,7 @@ use yii\helpers\Url; ?>
             <div class="row performances_main">
                 <div class="col-md-3  col-12 p-0">
                     <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
+                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
                     </a>
                 </div>
                 <div class="col-md-9 col-12">
@@ -83,7 +83,7 @@ use yii\helpers\Url; ?>
                 <div class="col">
                     <a href="<?=  Url::to(['/staff/view', 'slug' => Yii::t('text', $item['slug'])]);?>">
                         <div class="actor">
-                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/200/'.$item['img_path']; ?>" alt="Photo">
+                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item['img_path']; ?>" alt="Photo">
                             <h6 class="actor_name"><?= Yii::t('text', $item['first_name']).' '.Yii::t('text', $item['last_name']); ?></h6>
                             <span class="actor_type"><?= Yii::t('home', 'Դերասան') ?></span>
                         </div>
@@ -105,7 +105,7 @@ use yii\helpers\Url; ?>
             <div class="row performances_main p-1 news_block">
                 <div class="col-md-2  col-12 p-0">
                     <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>">
-                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/news/200/'.$content['img_path']; ?>" class="w-100" alt="Photo" style="height: 170px;">
+                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/news/400/'.$content['img_path']; ?>" class="w-100" alt="Photo" style="height: 170px;">
                     </a>
                 </div>
                 <div class="col-md-10 col-12">

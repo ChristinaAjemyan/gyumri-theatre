@@ -36,6 +36,13 @@ use yii\helpers\Url;
             <?php if (!empty($images) && isset($images)): ?>
             <div class="col-12 order-md-2 order-3">
                 <div class="actros_imges row">
+<!--                    --><?php
+/*
+                    $image_count = count($images);
+
+                    if ($image_count)
+
+                    */?>
                     <?php foreach ($images as $image): ?>
                     <div class="act_img mb-4">
                         <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
@@ -98,7 +105,7 @@ use yii\helpers\Url;
                     <div class="carousel_item">
                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <div class="card">
-                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                 </div>

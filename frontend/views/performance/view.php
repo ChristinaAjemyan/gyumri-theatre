@@ -46,7 +46,7 @@ use yii\helpers\Url;
                             <?php endif; ?>
                             <?php $genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
                             $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); ?>
-                            <small class="movie-type">
+                            <small class="movie-type" style="margin-top: 8px;">
                                 <?php $str = '';
                                 foreach ($genre as $item){
                                     $str .= ' '.Yii::t('text', $item).',';
@@ -106,14 +106,17 @@ use yii\helpers\Url;
     </section>
     <?php endif; ?>
 
-    <section class="new_section p-2" style="min-height: 510px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);">
+    <section class="new_section p-2" style="min-height: 580px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>);">
         <div class="container" style="padding: 0 30px;">
             <h2 class="new_section-title mb-0" style="border-bottom: 1px solid #202020;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
             <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
             <div class="row" style="margin-top: 65px;">
                 <div class="col-md-7 boredr">
                     <div class="media-body">
-                        <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';"><?= Yii::t('text', $model->title); ?></h5>
+                        <h5 class="mt-0 media-title" style="font-family: 'Arm Hmks';">
+                            <?= mb_substr(Yii::t('text', $model->title),0,25, 'utf-8'); ?>
+                            <?= strlen(Yii::t('text', $model->title)) > 25 ? '...' : ''; ?>
+                        </h5>
 <!--                        <?php /*$genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
                         $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); */?>
                         <small class="movie-type" style="font-family: sans-serif;">
@@ -182,7 +185,7 @@ use yii\helpers\Url;
                     <div class="carousel_item">
                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <div class="card">
-                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                 </div>

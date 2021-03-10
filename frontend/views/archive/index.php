@@ -41,7 +41,7 @@ use yii\helpers\Url;
                             <div class="carousel_item">
                                 <div class="card" style="width: 16rem;">
                                     <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
-                                        <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance[0]->img_path; ?>" alt="Card image cap">
+                                        <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$performance[0]->img_path; ?>" alt="Card image cap">
                                     </a>
                                     <div class="card-body">
                                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">

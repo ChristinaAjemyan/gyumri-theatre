@@ -139,53 +139,6 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-<!--<div class="site-contact d-flex">
-    <div class="container main_container" style="margin-top: 120px">
-        <?php /*if (Yii::$app->session->hasFlash('success')): */?>
-            <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-                <h5 class="m-0 p-0 text-success"><strong><?/*= Yii::t('home', Yii::$app->session->getFlash('success')); */?></strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php /*elseif (Yii::$app->session->hasFlash('error')): */?>
-            <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-                <h5 class="m-0 p-0 text-danger"><strong><?/*= Yii::t('home', Yii::$app->session->getFlash('error')); */?></strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php /*endif; */?>
-        <div class="d-flex contact">
-            <div class="mr-2 w-50">
-                <?php /*$form = ActiveForm::begin(['id' => 'contact-form']); */?>
-
-                <?/*= $form->field($model, 'name')->textInput(['autofocus' => true]) */?>
-
-                <?/*= $form->field($model, 'email') */?>
-
-                <?/*= $form->field($model, 'subject') */?>
-
-                <?/*= $form->field($model, 'body')->textarea(['rows' => 6]) */?>
-
-                <?/*= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                ]) */?>
-
-                <div class="form-group">
-                    <?/*= Html::submitButton(Yii::t('home','Ուղարկել'), ['class' => 'contact-button', 'name' => 'contact-button']) */?>
-                </div>
-
-                <?php /*ActiveForm::end(); */?>
-            </div>
-            <div class="w-50">
-
-            </div>
-        </div>
-    </div>
-
-
-</div>-->
 <?php
 $js = <<<JS
     

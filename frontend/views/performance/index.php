@@ -35,7 +35,7 @@ use yii\widgets\LinkPager; ?>
                     <div class="row performances_main">
                         <div class="col-md-3  col-12 p-0">
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
+                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
                             </a>
                         </div>
                         <div class="col-md-9 col-12">
@@ -99,7 +99,7 @@ use yii\widgets\LinkPager; ?>
                     <div class="carousel_item">
                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <div class="card">
-                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/200/'.$item->img_path; ?>" alt="Card image cap">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                 </div>
