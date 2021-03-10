@@ -563,8 +563,8 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     background: #000;
 }*/
 .navbar-brand img{
-    max-width: 135px ;
-    margin-left: 30px;
+    max-width: 120px;
+    margin-left: 22px;
 }
 .navbar_bg{
     background:rgba(10, 10, 10, .95);
@@ -1635,7 +1635,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .performance_movie .performance_name{
     font-family:'Arm Hmks';
-    margin-top: -7px;
+    margin-top: -10px;
     margin-bottom: 2px;
     font-size: 26px;
     border: none;
@@ -1657,6 +1657,10 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-weight:700 ;
     display: block;
     font-size: 16px;
+        overflow: hidden;
+    white-space: nowrap;
+    width: 80%;
+    text-overflow: ellipsis;
 }
 .actors_lists{
     margin-bottom: 60px;
@@ -1752,7 +1756,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .about_pages .main_movies .media-title {
     font-size: 46px;
-    letter-spacing: 4px;
+ 
 
 }
 .about_pages .about-present .media .media-text{
@@ -1800,11 +1804,11 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 .theater_year{
     border: none;
-    font-size: 74px;
+    font-size: 66px;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 600;
-    letter-spacing: 4px;
+ 
+    letter-spacing: 0px;
     font-family: "Arm Hmks";
 }
 .theater_year span{
@@ -2865,14 +2869,16 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: "Arm Hmks";
     color: #e18848;
     font-size: 80px;
-    letter-spacing: 5px;
+
 }
 .main_container{
     padding: 0 30px;
 }
 .archive_page .archive_header_text{
-    font-family: "Arm Hmks";
-    font-size: 30px;
+ font-family: "ArialAmu";
+    /* font-size: 30px; */
+    font-weight: bold;
+    margin-top: -20px;
 }
 .media-body p.media-text{
     color:#404040;
