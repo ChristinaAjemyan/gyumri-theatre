@@ -36,20 +36,22 @@ use yii\helpers\Url;
             <?php if (!empty($images) && isset($images)): ?>
             <div class="col-12 order-md-2 order-3">
                 <div class="actros_imges row">
-<!--                    --><?php
-/*
-                    $image_count = count($images);
-
-                    if ($image_count)
-
-                    */?>
+                    <?php
+                        $image_count = count($images); $squares = 0;
+                        if ($image_count < 8) $squares = $image_count - 8;
+                    ?>
                     <?php foreach ($images as $image): ?>
                     <div class="act_img mb-4">
                         <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
-                            <img style="height: 129px; width:129px;object-fit: cover;" src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
+                            <img style="height: 114px; width:114px;object-fit: cover;" src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
                         </a>
                     </div>
                     <?php endforeach; ?>
+                    <?php if(abs($squares) != 0) : ?>
+                        <?php for ($x = 0; $x < abs($squares); $x++) {
+                            echo '<div class="act_img mb-4 empty-squares" style="height: 114px; width:114px; background: lightgrey"></div>';
+                        } ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php endif; ?>
@@ -61,7 +63,7 @@ use yii\helpers\Url;
         <h2 class="block_title carousel_title mt-0"><?= Yii::t('home', 'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
         <span class="title_line"></span>
         <section class="performance_movie" style="min-height: auto; margin-top: 40px;">
-            <div class="row">
+            <div class="row played_perform">
                 <?php foreach ($performance as $item): ?>
                 <div class="col-md-4">
                     <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">

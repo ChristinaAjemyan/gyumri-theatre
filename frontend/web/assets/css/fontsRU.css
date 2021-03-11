@@ -1,4 +1,10 @@
 @font-face {
     font-family: 'Arm Hmks';
     src: url('../libs/fonts/17302.otf');
+    src: local('Arm Hmks'), local('ArmHmks-Light'),
+    url('../libs/fonts/ArmHmksBebasNeueRegular.eot') format('embedded-opentype'),
+    url('../libs/fonts/ArmHmksBebasNeueRegular.woff') format('woff'),
+    url('../libs/fonts/ArmHmksBebasNeueRegular.ttf ') format('truetype');
+    font-weight: 300;
+    font-style: normal;
 }

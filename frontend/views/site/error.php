@@ -1,5 +1,5 @@
 <?php
-Yii::$app->response->redirect(Yii::$app->params['front-url']);
+Yii::$app->response->redirect(Yii::$app->params['frontend-url']);
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */

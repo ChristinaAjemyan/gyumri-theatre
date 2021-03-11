@@ -227,7 +227,7 @@ $('.weekdays').on('click', function () {
                                 <p class="author">${item.author} </p>
                                 <a href="/performance/view/${item.slug}"><h5 class="media-title" style="margin-top: -5px;margin-bottom: -8px;">${item.title}</h5></a>
                                 <small class="movie-type">${item.genre}</small>
-                                <p class="media-text" style="min-height: 112px; font-size: 16px">${item.short_desc.substring(0, 370)}${item.short_desc.length > 370 ? '<span>...</span>': ''}</p>
+                                <p class="media-text" style="min-height: 112px; font-size: 16px">${item.short_desc.substring(0, 345)}${item.short_desc.length > 345 ? '<span>...</span>': ''}</p>
                                 <div class="media-footer">
                                     <div class="media_btn-group">
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
