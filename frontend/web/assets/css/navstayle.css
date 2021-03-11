@@ -478,7 +478,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: "ArialAMU";
 }
 #headerCarousel{
-    max-height: 850px;
+    max-height: 100vh;
 }
 #headerCarousel .owl-dots{
     width: 20px;
