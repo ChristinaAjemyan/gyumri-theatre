@@ -425,11 +425,12 @@ $('.performance_tab_cont').on('click',function (e) {
                 `);
                 $('.load-icon').remove();
             }else{
-                $('.perf').html(`<div class="tab-content" id="nav-tabContent" style="min-height: 330px"></div>`);
+                $('.perf').html(`<div class="tab-content content_row" id="nav-tabContent" style="min-height: 330px"></div>
+                <div class="pagingControls paginator--list remove"></div>`);
 
                 $.each(data.performances,function (i,item) {
                     $(".tab-content").append(`
-                <div class="media d-block">
+                <div class="media d-block result">
                     <div class="row performances_main">
                         <div class="col-md-3  col-12 p-0">
                             <a href="/performance/view/${item.slug}">
@@ -463,6 +464,14 @@ $('.performance_tab_cont').on('click',function (e) {
                 </div>           
             `);
                 })
+                $(function () {
+                    $('.content_row').flexiblePagination({
+                        itemsPerPage: 15,
+                        itemSelector: 'div.result:visible',
+                        pagingControlsContainer: '.pagingControls',
+                        showingInfoSelector: '#showingInfo',
+                    });
+                });
             }
         }
     })

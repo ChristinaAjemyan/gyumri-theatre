@@ -34,7 +34,9 @@ use mihaildev\elfinder\ElFinder;
             ]) ?>
 
             <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
+            <?php if (isset($result_avatar)) : ?>
             <?= $result_avatar ? $result_avatar : false; ?>
+            <?php endif; ?>
 
             <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
@@ -54,7 +56,10 @@ use mihaildev\elfinder\ElFinder;
             ]) ?>
 
             <?= $form->field($model, 'banner_image')->fileInput(['class' => 'imageFileBanner']) ?>
-            <?= $result_banner ? $result_banner : false; ?>
+
+            <?php if (isset($result_banner)) : ?>
+                <?= $result_banner ? $result_banner : false; ?>
+            <?php endif; ?>
 
             <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
 
@@ -65,7 +70,9 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true]) ?>
 
-    <?= $result ? $result : false; ?>
+    <?php if (isset($result)) : ?>
+        <?= $result ? $result : false; ?>
+    <?php endif; ?>
 
     <?= $form->field($model, 'short_desc')->textarea(['rows' => 6]); ?>
 
