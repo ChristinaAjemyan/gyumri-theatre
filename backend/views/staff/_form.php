@@ -52,14 +52,18 @@ use common\models\Role;
             <?= $form->field($model, 'staff_genre_type')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
+            <?php if (isset($result_avatar)) : ?>
             <?= $result_avatar ? $result_avatar : false; ?>
+            <?php endif; ?>
 
         </div>
     </div>
 
     <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true])->label('Galleries') ?>
 
-    <?= $result ? $result : false; ?>
+    <?php if (isset($result)) : ?>
+        <?= $result ? $result : false; ?>
+    <?php endif; ?>
 
     <?= $form->field($model, 'desc')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),

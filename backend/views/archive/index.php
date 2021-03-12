@@ -29,25 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'header' => 'image',
-                'contentOptions' => ['class' => 'text-center st_images'],
-                'content' => function ($data){
-                    $images = [
-                        [
-                            'src' => Yii::getAlias('@web').'/upload/avatars/archive/200/'.$data['img_path'],
-                            'title' => $data['title'],
-                        ]
-                    ];
-                    return LightBoxWidget::widget([
-                        'id'     => 'lightbox',
-                        'class'  => 'galary',
-                        'height' => '50px',
-                        'images' => $images,
-                    ]);
-                }
-            ],
-            //'id',
-            [
                 'header' => 'title',
                 'content' => function ($data){
                     return Main::uppercaseFirstLetter($data->title);

@@ -106,7 +106,7 @@ $column[] = $column_name[11];
                         </div>"; ?>
                     <?php endif; ?>
                     <?php
-                    return $result;
+                    return isset($result) ? $result : '';
                 }
             ],
             'age_restriction',

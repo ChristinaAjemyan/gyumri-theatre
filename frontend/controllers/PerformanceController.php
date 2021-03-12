@@ -86,7 +86,7 @@ class PerformanceController extends Controller
                 foreach ($genre as $value){
                     $str .= ' '.Yii::t('text', $value).',';
                 }
-                $performances_arr[$i]['id'] = $item['performance']['id'];
+                $performances_arr[$i]['id'] = $val['id'];
                 $performances_arr[$i]['author'] = Yii::t('text', $val['author']);
                 $performances_arr[$i]['title'] = Yii::t('text', $val['title']);
                 $performances_arr[$i]['slug'] = Yii::t('text', $val['slug']);

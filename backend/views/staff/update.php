@@ -70,7 +70,7 @@ $column[] = $column_name[9];
     </div>
 
     <?= $this->render('_form', [
-        'model' => $model, 'model_image' => $model_image, 'result' => $result,'result_avatar' => $result_avatar
+        'model' => $model, 'model_image' => $model_image, 'result' => isset($result)?$result:'','result_avatar' => $result_avatar
     ]) ?>
 
 </div>

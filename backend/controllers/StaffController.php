@@ -87,7 +87,7 @@ class StaffController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             Main::createUploadDirectories('avatars/staff', ['original', '400', '200']);
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+            if (UploadedFile::getInstance($model, 'avatar_image')){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
@@ -152,7 +152,7 @@ class StaffController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+            if (UploadedFile::getInstance($model, 'avatar_image')){
                 Main::unlinkImages('avatars/staff', ['original', '400', '200']);
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;

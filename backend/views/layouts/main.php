@@ -7,7 +7,7 @@ use yii\helpers\Url;
 <?php $this->beginPage() ?>
 <?php AppAsset::register($this); ?>
 <!DOCTYPE html>
-<html lang="lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -37,6 +37,7 @@ use yii\helpers\Url;
     <meta name="author" content="ThemePixels">
 
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="icon" type="image/png" href="/image/logo.svg" />
 
     <!-- vendor css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -57,7 +58,7 @@ use yii\helpers\Url;
     <div class="my-container-fluid">
         <div class="slim-header-left">
 
-            <h2 class="slim-logo"><?= Html::a(Html::img(Url::to('/image/logo.png')),  Yii::$app->params['backend-url'])  ?></h2>
+            <h2 class="slim-logo"><?= Html::a(Html::img(Url::to('/image/logo.svg'),["class" => 'mb-4','style' => 'width:150px']),  Yii::$app->params['backend-url'])  ?></h2>
             <a href="" id="slimSidebarMenu" class="slim-sidebar-menu"><span></span></a>
 <!--            <div class="search-box">
                 <input type="text" class="form-control" placeholder="Search">

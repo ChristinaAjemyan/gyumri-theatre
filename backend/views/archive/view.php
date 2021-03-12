@@ -43,12 +43,6 @@ $column[] = $column_name[2];
         'model' => $model,
         'attributes' => [
             [
-                'attribute' => 'image',
-                'format' => 'html',
-                'value' =>('<img src =' .'/upload/avatars/archive/200/' . $model->img_path . '>')
-            ],
-            //'id',
-            [
                 'attribute' => 'title',
                 'value' => Main::uppercaseFirstLetter($model->title)
             ],
@@ -72,7 +66,7 @@ $column[] = $column_name[2];
                         </div>"; ?>
                     <?php endif; ?>
                     <?php
-                    return $result;
+                    return isset($result) ? $result : '';
                 }
             ],
             'content:html',

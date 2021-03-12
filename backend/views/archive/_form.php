@@ -43,7 +43,9 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model_image, 'image[]')->fileInput(['multiple' => true])->label('Galleries') ?>
 
+    <?php if (isset($result)) : ?>
     <?= $result ? $result : false; ?>
+    <?php endif; ?>
 
     <?= $form->field($model, 'active_season')->checkbox() ?>
 

@@ -48,7 +48,7 @@ $column[] = $column_name[2];
         </div>
     </div>
     <?= $this->render('_form', [
-        'model' => $model,'model_image' => $model_image,'result' => $result,
+        'model' => $model,'model_image' => $model_image,'result' => isset($result) ? $result : '',
         'model_archive_perform' => $model_archive_perform
     ]) ?>
 

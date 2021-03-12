@@ -84,8 +84,7 @@ class NewsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             Main::createUploadDirectories('avatars/news', ['original', '200']);
-
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+            if (UploadedFile::getInstance($model, 'avatar_image')){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
@@ -118,7 +117,7 @@ class NewsController extends Controller
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
+            if (UploadedFile::getInstance($model, 'avatar_image')){
                 Main::unlinkImages('avatars/news', ['original', '200']);
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
@@ -127,7 +126,7 @@ class NewsController extends Controller
                 $model->avatar_image->saveAs('upload/avatars/news/original/' . $img_name);
                 Main::myResizeImage('avatars/news', $img_name, ['200']);
             }else{
-                if (Yii::$app->request->post('token') !== null){
+                if (Yii::$app->request->post('token')){
                     Main::unlinkImages('avatars/news', ['original', '200']);
                     $model->img_path = 'default.jpg';
                     $model->save();

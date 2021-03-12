@@ -77,20 +77,6 @@ class ArchiveController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            Main::createUploadDirectories('avatars/archive', ['original', '200']);
-
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
-                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $img_name = time() . '.' . $model->avatar_image->extension;
-                $model->img_path = $img_name;
-                $model->save();
-                $model->avatar_image->saveAs('upload/avatars/archive/original/' . $img_name);
-                Main::myResizeImage('avatars/archive', $img_name, ['200']);
-            }else{
-                $model->img_path = 'default.jpg';
-                $model->save();
-            }
-
             if (UploadedFile::getInstances($model_image,'image')){
                 if (!is_dir('upload/galleries/')){
                     FileHelper::createDirectory('upload/galleries/original/');
@@ -140,7 +126,6 @@ class ArchiveController extends Controller
         $model_image = new ArchiveImage();
         $model_archive_perform = new ArchivePerformance();
 
-        Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
 
         if (Yii::$app->request->post('src')){
             $src = Yii::$app->request->post('src');
@@ -153,21 +138,6 @@ class ArchiveController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if (UploadedFile::getInstance($model, 'avatar_image')->name !== null){
-                Main::unlinkImages('avatars/archive', ['original', '200']);
-                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $img_name = time() . '.' . $model->avatar_image->extension;
-                $model->img_path = $img_name ;
-                $model->save();
-                $model->avatar_image->saveAs('upload/avatars/archive/original/' . $img_name);
-                Main::myResizeImage('avatars/archive', $img_name, ['200']);
-            }else{
-                if (Yii::$app->request->post('token') !== null){
-                    Main::unlinkImages('avatars/archive', ['original', '200']);
-                    $model->img_path = 'default.jpg';
-                    $model->save();
-                }
-            }
 
             if (UploadedFile::getInstances($model_image, 'image')){
                 if (!is_dir('upload/galleries/')){
@@ -225,8 +195,8 @@ class ArchiveController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = new Archive();
-        Main::unlinkAllImagesById($model, $id, 'avatars/archive', ['200', 'original']);
+//        $model = new Archive();
+//        Main::unlinkAllImagesById($model, $id, 'avatars/archive', ['200', 'original']);
         $data = $this->findModel($id);
         $colData = [$data->title, $data->content];
         foreach ($colData as $item){

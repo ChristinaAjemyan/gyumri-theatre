@@ -100,7 +100,7 @@ $column[] = $column_name[9];
                         </div>"; ?>
                     <?php endif; ?>
                     <?php
-                    return $result;
+                    return isset($result)?$result:'';
                 }
             ],
             'desc:html',
