@@ -141,7 +141,7 @@ use yii\helpers\Url;
             </div>
 
             <?php if (!empty($performanceSoon->trailer) && isset($performanceSoon->trailer)): ?>
-                <div class="col-md-5 position-relative site-index-contnet" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$performanceSoon->img_path; ?>);background-size: cover;">
+                <div class="col-md-5 position-relative site-index-contnet" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/mobile_banners/'.$performanceSoon->mobile_banner; ?>);background-size: cover;">
                     <span class="btn_play about_popup_youtube site-index-trailer">
                         <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=<?= $performanceSoon->trailer; ?>">
                             <i class="fas fa-play" style="font-size: 24px"></i>
@@ -162,7 +162,7 @@ use yii\helpers\Url;
                     <div class="carousel_item">
                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <div class="card">
-                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/mobile_banners/'.$item->img_path; ?>" alt="Card image cap">
+                                <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                                     <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
