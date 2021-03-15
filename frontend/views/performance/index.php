@@ -42,7 +42,7 @@ use yii\widgets\LinkPager; ?>
                             <div class="media-body mt-4">
                                 <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
                                 <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                                    <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['title']); ?></h5>
+                                    <h5 class="mt-0 media-title" style="max-width: 100%;"><?= Yii::t('text', $performance['title']); ?></h5>
                                 </a>
                                 <small class="movie-type"><?= $performance['genre']; ?></small>
                                 <p class="media-text">

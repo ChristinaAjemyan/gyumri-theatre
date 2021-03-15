@@ -61,6 +61,12 @@ use mihaildev\elfinder\ElFinder;
                 <?= $result_banner ? $result_banner : false; ?>
             <?php endif; ?>
 
+            <?= $form->field($model, 'mobile_banner_image')->fileInput(['class' => 'imageFileMobileBanner']) ?>
+
+            <?php if (isset($result_mobile_banner)) : ?>
+                <?= $result_mobile_banner ? $result_mobile_banner : false; ?>
+            <?php endif; ?>
+
             <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'age_restriction')->textInput(['type' => 'number', 'min' => 0]); ?>

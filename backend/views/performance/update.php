@@ -48,6 +48,18 @@ $column[] = $column_name[11];
 </div>
 "; ?>
 
+<?php $result_mobile_banner = "
+<div class=\"card-body my_card-body\" style='padding: 0 14px;'>
+    <div class=\"scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4\">";?>
+<?php $result_mobile_banner.= "<div class=\"p=0\">
+            <div class=\"card card-block my-card-block\" style='width: 200px'>
+                <img id='editMobileBannerImg' src=\"/upload/mobile_banners/$model->mobile_banner\" alt=\"$model->mobile_banner\">
+            </div>
+        </div>"; ?>
+<?php $result_mobile_banner.= "</div>
+</div>
+"; ?>
+
 <?php if (!empty($images) && isset($images)): ?>
 <?php $result = "<div class=\"card mb-4\">
     <div class=\"card-body\">
@@ -78,7 +90,8 @@ $column[] = $column_name[11];
     <?= $this->render('_form', [
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
         'result' => isset($result) ? $result : '', 'model_genre_perform' => $model_genre_perform, 'model_type_perform' => $model_type_perform,
-        'result_avatar'=>isset($result_avatar) ? $result_avatar : '','result_banner'=>isset($result_banner) ? $result_banner : ''
+        'result_avatar'=>isset($result_avatar) ? $result_avatar : '','result_banner'=>isset($result_banner) ? $result_banner : '',
+        'result_mobile_banner' => isset($result_mobile_banner)?$result_mobile_banner:''
     ]) ?>
 </div>
 
@@ -91,6 +104,9 @@ $js = <<<JS
   });
   $(".imageFileBanner").on('change', function() {
       $('#editBannerImg').attr('src', URL.createObjectURL(this.files[0]))
+  });
+    $(".imageFileMobileBanner").on('change', function() {
+      $('#editMobileBannerImg').attr('src', URL.createObjectURL(this.files[0]))
   });
 
     $('.file-thumbnail-footer').css('display', 'none');

@@ -97,21 +97,28 @@ class PerformanceController extends Controller
             if (!is_dir('upload/banners/')) {
                 FileHelper::createDirectory('upload/banners/');
             }
+            if (!is_dir('upload/mobile_banners/')) {
+                FileHelper::createDirectory('upload/mobile_banners/');
+            }
 
             $imgAvatar = UploadedFile::getInstance($model, 'avatar_image');
             $imgBanner = UploadedFile::getInstance($model, 'banner_image');
+            $imgBannerMobile = UploadedFile::getInstance($model, 'mobile_banner_image');
 
-            if ($imgAvatar && $imgBanner) {
+            if ($imgAvatar && ($imgBanner && $imgBannerMobile)) {
                 $arr_dir = [];
-                $imageArray = ['avatar_image', 'banner_image'];
+                $imageArray = ['avatar_image', 'banner_image','mobile_banner_image'];
                 foreach ($imageArray as $item) {
                     $model->$item = UploadedFile::getInstance($model, $item);
                     $avatar_name = time() . rand(100, 999) . '.' . $model->$item->extension;
                     $banner_name = time() . rand(100, 999) . '.' . $model->$item->extension;
+                    $mobile_banner_name = time() . rand(100, 999) . '.' . $model->$item->extension;
                     $arr_dir[0] = $avatar_name;
                     $arr_dir[1] = $banner_name;
+                    $arr_dir[2] = $mobile_banner_name;
                     $model->img_path = $avatar_name;
                     $model->banner = $banner_name;
+                    $model->mobile_banner = $mobile_banner_name;
                     $model->save();
                 }
                 foreach ($imageArray as $value) {
@@ -122,22 +129,29 @@ class PerformanceController extends Controller
                     if ($value == 'banner_image') {
                         $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
                     }
+                    if ($value == 'mobile_banner_image') {
+                        $model->$value->saveAs('upload/mobile_banners/' . $arr_dir[2]);
+                    }
                 }
                 Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
-            } elseif ($imgAvatar && !$imgBanner) {
+            } elseif ($imgAvatar && (!$imgBanner && !$imgBannerMobile)) {
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name;
                 $model->save();
                 $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
                 Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
-            } elseif (!$imgAvatar && $imgBanner) {
+            } elseif (!$imgAvatar && ($imgBanner && $imgBannerMobile)) {
                 $model->img_path = 'default.jpg';
                 $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
+                $model->mobile_banner_image = UploadedFile::getInstance($model, 'mobile_banner_image');
                 $img_name = time() . '.' . $model->banner_image->extension;
+                $mob_img_name = time() . '.' . $model->mobile_banner_image->extension;
                 $model->banner = $img_name;
+                $model->mobile_banner = $mob_img_name;
                 $model->save();
                 $model->banner_image->saveAs('upload/banners/' . $img_name);
+                $model->mobile_banner_image->saveAs('upload/mobile_banners/' . $mob_img_name);
             } else {
                 $model->img_path = 'default.jpg';
                 $model->save();
@@ -215,6 +229,7 @@ class PerformanceController extends Controller
 
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
         Yii::$app->session->set('banner', $model::find()->asArray()->where(['id' => $id])->one()['banner']);
+        Yii::$app->session->set('mobile_banner', $model::find()->asArray()->where(['id' => $id])->one()['mobile_banner']);
 
         if (Yii::$app->request->post('src')){
             $src = Yii::$app->request->post('src');
@@ -230,23 +245,30 @@ class PerformanceController extends Controller
 
             $imgAvatar = UploadedFile::getInstance($model, 'avatar_image');
             $imgBanner = UploadedFile::getInstance($model, 'banner_image');
+            $imgBannerMobile = UploadedFile::getInstance($model, 'mobile_banner_image');
 
-            if ($imgAvatar && $imgBanner){
+            if ($imgAvatar && ($imgBanner && $imgBannerMobile)){
 
                 Main::unlinkImages('avatars/performance', ['original', '400', '200']);
                 if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
                     unlink('upload/banners/'.$_SESSION['banner']);
                 }
+                if ($_SESSION['mobile_banner'] !== null && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
+                    unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
+                }
                 $arr_dir = [];
-                $imageArray = ['avatar_image', 'banner_image'];
+                $imageArray = ['avatar_image', 'banner_image','mobile_banner_image'];
                 foreach ($imageArray as $item){
                     $model->$item = UploadedFile::getInstance($model, $item);
                     $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
                     $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                    $mobile_banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
                     $arr_dir[0] = $avatar_name;
                     $arr_dir[1] = $banner_name;
+                    $arr_dir[2] = $mobile_banner_name;
                     $model->img_path = $avatar_name;
                     $model->banner = $banner_name;
+                    $model->mobile_banner = $mobile_banner_name;
                     $model->save();
                 }
                 foreach ($imageArray as $value){
@@ -257,9 +279,12 @@ class PerformanceController extends Controller
                     if ($value == 'banner_image'){
                         $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
                     }
+                    if ($value == 'mobile_banner_image'){
+                        $model->$value->saveAs('upload/mobile_banners/' . $arr_dir[2]);
+                    }
                 }
                 Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
-            }elseif ($imgAvatar && !$imgBanner){
+            }elseif ($imgAvatar && (!$imgBanner && !$imgBannerMobile)){
 
                 Main::unlinkImages('avatars/performance', ['original', '400', '200']);
 
@@ -268,23 +293,33 @@ class PerformanceController extends Controller
                 $model->img_path = $img_name;
                 $model->save();
                 if (Yii::$app->request->post('token2') == 2){
-                    if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
+                    if ($_SESSION['banner'] && file_exists('upload/banners/'.$_SESSION['banner'])){
                         unlink('upload/banners/'.$_SESSION['banner']);
                     }
+                    if ($_SESSION['mobile_banner'] && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
+                        unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
+                    }
                     $model->banner = null;
+                    $model->mobile_banner = null;
                     $model->save();
                 }
                 $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
                 Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
 
-            }elseif (!$imgAvatar && $imgBanner){
+            }elseif (!$imgAvatar && ($imgBanner && $imgBannerMobile)){
 
                 if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
                     unlink('upload/banners/'.$_SESSION['banner']);
                 }
+                if ($_SESSION['mobile_banner'] !== null && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
+                    unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
+                }
                 $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
+                $model->mobile_banner_image = UploadedFile::getInstance($model, 'mobile_banner_image');
                 $img_name = time() . '.' . $model->banner_image->extension;
+                $mobile_img_name = time() . '.' . $model->mobile_banner_image->extension;
                 $model->banner = $img_name;
+                $model->mobile_banner = $mobile_img_name;
                 $model->save();
 
                 if (Yii::$app->request->post('token1') == 1){
@@ -293,6 +328,7 @@ class PerformanceController extends Controller
                     $model->save();
                 }
                 $model->banner_image->saveAs('upload/banners/' . $img_name);
+                $model->mobile_banner_image->saveAs('upload/mobile_banners/' . $mobile_img_name);
 
             }else{
                 if (Yii::$app->request->post('token1') == 1){
@@ -301,10 +337,14 @@ class PerformanceController extends Controller
                     $model->save();
                 }
                 if (Yii::$app->request->post('token2') == 2){
-                    if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
+                    if ($_SESSION['banner'] && file_exists('upload/banners/'.$_SESSION['banner'])){
                         unlink('upload/banners/'.$_SESSION['banner']);
                     }
+                    if ($_SESSION['mobile_banner'] && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
+                        unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
+                    }
                     $model->banner = null;
+                    $model->mobile_banner = null;
                     $model->save();
                 }
             }
@@ -358,6 +398,7 @@ class PerformanceController extends Controller
             }
             unset($_SESSION['img_name']);
             unset($_SESSION['banner']);
+            unset($_SESSION['mobile_banner']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -16,6 +16,7 @@ use yii\helpers\ArrayHelper;
  * @property int|null $age_restriction
  * @property int|null $performance_length
  * @property string|null $banner
+ * @property string|null $mobile_banner
  * @property string|null $author
  * @property int|null $hall
  * @property string|null $short_desc
@@ -31,6 +32,7 @@ class Performance extends \yii\db\ActiveRecord
 
     public $avatar_image;
     public $banner_image;
+    public $mobile_banner_image;
 
     public static function tableName()
     {
@@ -47,7 +49,7 @@ class Performance extends \yii\db\ActiveRecord
             ['slug', 'unique'],
             [['show_date'], 'safe'],
             [['desc', 'short_desc'], 'string'],
-            [['avatar_image', 'banner_image'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
+            [['avatar_image', 'banner_image','mobile_banner'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['age_restriction', 'performance_length', 'hall', 'is_new'], 'integer'],
             ['age_restriction', 'integer', 'min' => 0],
             ['performance_length', 'integer', 'min' => 1],
@@ -70,6 +72,7 @@ class Performance extends \yii\db\ActiveRecord
             'age_restriction' => 'Age Restriction',
             'performance_length' => 'Performance Length',
             'banner' => 'Banner',
+            'mobile_banner' => 'Mobile Banner',
             'author' => 'Author',
             'hall' => 'Hall',
             'short_desc' => 'Short Description',

@@ -189,10 +189,7 @@
     .main_movies .author{
         margin-top: 20px;
     }
-    
-    .main_movies .media-body .aside_text{
-        top: 0px;
-    }
+
     .video_block iframe{
         width: 500px;
         display: block;

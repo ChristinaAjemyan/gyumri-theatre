@@ -10,21 +10,13 @@ use yii\helpers\Url;
 
 <div class="performances-page">
 
-    <div id="hero" class="carousel slide carousel-fade performance_header" data-ride="carousel"
-         style="position: relative;background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;margin-top: 55px;">
-        <!--style="background-image: url(<?/*= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; */?>)">-->
-
-        <div class="carousel-inners" >
-            <!-- <iframe src="https://www.youtube.com/embed/uqA-tT3T6FQ"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe> -->
-
-            <!-- item 2 -->
-
-        </div>
-
-    </div>
-
+    <div id="hero" class="carousel slide carousel-fade performance_header <?= $model->mobile_banner ? 'big_background' : '' ?>" data-ride="carousel"
+         style="position: relative;background: url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$model->banner; ?>) no-repeat center;"></div>
+    <?php if ($model->mobile_banner) : ?>
+    <div id="hero" class="carousel slide carousel-fade performance_header small_background" data-ride="carousel"
+         style="position: relative;background: url(<?= Yii::$app->params['backend-url'].'/upload/mobile_banners/'.$model->mobile_banner; ?>)
+         no-repeat center;background-size: cover;min-height: 0;height: 30vh;margin-top: 70px;"></div>
+    <?php endif; ?>
 
     <div class="container main_container">
 
@@ -38,7 +30,7 @@ use yii\helpers\Url;
 
                         <div class="media-body" style="position: relative">
                             <p class="author"><?= Yii::t('text', $model->author); ?> </p>
-                            <h1 class="mt-0 media-title"><?= Yii::t('text', $model->title); ?></h1>
+                            <h1 class="mt-0 media-title" style="max-width: 100%;"><?= Yii::t('text', $model->title); ?></h1>
                             <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
                                 <span class="btn_play about_popup_youtube"><a target="_blank" class="popup_youtube"
                                                                               href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
@@ -117,16 +109,7 @@ use yii\helpers\Url;
                             <?= mb_substr(Yii::t('text', $model->title),0,25, 'utf-8'); ?>
                             <?= strlen(Yii::t('text', $model->title)) > 25 ? '...' : ''; ?>
                         </h5>
-<!--                        <?php /*$genres = GenrePerformance::find()->with('genre')->where(['performance_id' => $model->id])->asArray()->all();
-                        $genre = ArrayHelper::map(ArrayHelper::map($genres, 'id', 'genre'), 'id', 'name'); */?>
-                        <small class="movie-type" style="font-family: sans-serif;">
-                            <?php /*$str = '';
-                            foreach ($genre as $item){
-                                $str .= ' '.Yii::t('text', $item).',';
-                            }
-                            echo trim($str, ','); */?>
-                        </small>-->
-<!--                        <p class="author" style="font-family: sans-serif;">--><?//= Yii::t('text', $model->author); ?><!--</p>-->
+
                         <p class="media-text" style="margin: 0 30px 0px 0px;">
                             <?= mb_substr(Yii::t('text', $model->short_desc),0,250, 'utf-8'); ?>
                             <?= strlen(Yii::t('text', $model->short_desc)) > 250 ? '...' : ''; ?>
@@ -149,16 +132,10 @@ use yii\helpers\Url;
                 </div>
 
                 <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$model->img_path; ?>);background-size: cover;">
+                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/mobile_banners/'.$model->mobile_banner; ?>);background-size: cover;">
                 <span class="btn_play about_popup_youtube site-index-trailer"><a target="_blank" class="popup_youtube"
                                                                                  href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i
                                 class="fas fa-play" style="font-size: 23px"></i></a></span>
-                        <!--                <div class="video_block">
-
-                    <iframe width="460" height="315" src="https://www.youtube.com/embed/<?/*= $performanceSoon->trailer; */?>"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                </div>-->
                     </div>
 
                 <?php endif; ?>

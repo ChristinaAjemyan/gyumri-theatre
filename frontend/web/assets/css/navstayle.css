@@ -919,7 +919,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 }
 .main_movies .media img{
     width: 85%;
-    height: 295px;
+    height: 320px;
     object-fit: cover;
     border-radius: 10px
 }
@@ -930,7 +930,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     font-family: sans-serif;
     position: absolute;
     right: 0px;
-    top: 5px;
+    top: -8px;
     font-weight: 600;
     font-size: 14px;
     width: 160px;
@@ -950,7 +950,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
 
 }
 .result{
-    border-bottom: 1px solid #d3d3d3;
+    border-bottom: 1px solid #efefef;
 }
 .main_movies .media-title{
     font-family: "Arm Hmks";
@@ -1355,6 +1355,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     height:400px;
     box-shadow: inset 2px -70px 22px 2px rgba(0,0,0,0.63);
     background-size: cover;
+    margin-top: 95px;
 }
 .performance_header .btn_play a{
     display: block;
@@ -2031,6 +2032,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     border: none;
     padding: 0;
 }
+.small_background{
+    display: none;
+}
 
 
 /* header css */
@@ -2203,9 +2207,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .footer_big_cont{
         padding-bottom: 60px;
     }
-    .main_movies .media-title {
+/*    .main_movies .media-title {
         max-width: 65%;
-    }
+    }*/
 }
 @media screen and (max-width: 992px) {
     .hove_height{
@@ -2275,6 +2279,15 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         height: 285px;
         width: 210px;
     }
+    .performance_header{
+        margin-top: 75px;
+    }
+    #hero .scroll, #content_hero .scroll {
+        bottom: 5px;
+        left: 50%;
+        margin-left: -62px;
+    }
+
 }
 @media screen and (max-width: 767px) {
     .search_input_form{
@@ -2375,11 +2388,21 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
         top: -320px;
         padding: 14px 12px 8px 16px;
     }
-/*    .footer-block_title{
+
+    .big_background{
         display: none;
-    }*/
+    }
+    .small_background{
+        display: block;
+    }
     .footer{
         padding: 30px 0px;
+    }
+    .view_img_content,.view_text_content{
+        top: -40px;
+    }
+    .main_movies .media-body .aside_text {
+        padding: 4px 4px 2px 4px;
     }
 }
 @media screen and (max-width: 698px) {
@@ -2473,6 +2496,9 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .footer_links {
         margin-left: 13%;
+    }
+    .performance_header{
+        margin-top: 70px;
     }
 }
 @media screen and (max-width: 520px) {
@@ -2826,7 +2852,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .about_popup_youtube {
         top: 60px;
-        padding: 15px 15px 8px 16px;
+        padding: 12px 15px 9px 16px;
     }
 }
 @media screen and (max-width: 320px) {
@@ -3060,7 +3086,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     height: 300px; object-fit: cover;
 }
 img.big-carousel{
-    height: 325px; object-fit: cover;
+    height: 355px; object-fit: cover;
 }
 
 .weekdays{

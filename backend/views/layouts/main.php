@@ -121,7 +121,7 @@ use yii\helpers\Url;
 
         <div class="slim-footer mg-t-0">
             <div class="container-fluid">
-                <p>Copyright 2020 &copy; <b>Brainfors</b></p>
+                <p>Copyright <?= date('Y'); ?> <a href="https://brainfors.com" style="font-family: sans-serif;color: #505051; font-weight: bold" target="_blank">© Brainfors</a></p>
             </div><!-- container-fluid -->
         </div><!-- slim-footer -->
     </div><!-- slim-mainpanel -->
