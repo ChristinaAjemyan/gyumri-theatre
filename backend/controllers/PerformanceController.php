@@ -247,88 +247,41 @@ class PerformanceController extends Controller
             $imgBanner = UploadedFile::getInstance($model, 'banner_image');
             $imgBannerMobile = UploadedFile::getInstance($model, 'mobile_banner_image');
 
-            if ($imgAvatar && ($imgBanner && $imgBannerMobile)){
 
-                Main::unlinkImages('avatars/performance', ['original', '400', '200']);
-                if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
-                    unlink('upload/banners/'.$_SESSION['banner']);
-                }
-                if ($_SESSION['mobile_banner'] !== null && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
-                    unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
-                }
+            if ($imgAvatar || $imgBanner || $imgBannerMobile){
+
                 $arr_dir = [];
-                $imageArray = ['avatar_image', 'banner_image','mobile_banner_image'];
+                $imageArray = [];
+
+                if($imgAvatar)$imageArray[]='avatar_image';
+                if($imgBanner)$imageArray[]='banner_image';
+                if($imgBannerMobile)$imageArray[]='mobile_banner_image';
+
                 foreach ($imageArray as $item){
                     $model->$item = UploadedFile::getInstance($model, $item);
-                    $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                    $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                    $mobile_banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
-                    $arr_dir[0] = $avatar_name;
-                    $arr_dir[1] = $banner_name;
-                    $arr_dir[2] = $mobile_banner_name;
-                    $model->img_path = $avatar_name;
-                    $model->banner = $banner_name;
-                    $model->mobile_banner = $mobile_banner_name;
-                    $model->save();
-                }
-                foreach ($imageArray as $value){
-                    $model->$value = UploadedFile::getInstance($model, $value);
-                    if ($value == 'avatar_image'){
-                        $model->$value->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
+                    if($imgAvatar){
+                        $avatar_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                        $arr_dir[0] = $avatar_name;
+                        $model->img_path = $avatar_name;
+                        $model->save();
+                        $model->$item->saveAs('upload/avatars/performance/original/' . $arr_dir[0]);
+                        Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
                     }
-                    if ($value == 'banner_image'){
-                        $model->$value->saveAs('upload/banners/' . $arr_dir[1]);
+                    if($imgBanner){
+                        $banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                        $arr_dir[1] = $banner_name;
+                        $model->banner = $banner_name;
+                        $model->save();
+                        $model->$item->saveAs('upload/banners/' . $arr_dir[1]);
                     }
-                    if ($value == 'mobile_banner_image'){
-                        $model->$value->saveAs('upload/mobile_banners/' . $arr_dir[2]);
+                    if($imgBannerMobile){
+                        $mobile_banner_name = time().rand(100, 999) . '.' . $model->$item->extension;
+                        $arr_dir[2] = $mobile_banner_name;
+                        $model->mobile_banner = $mobile_banner_name;
+                        $model->save();
+                        $model->$item->saveAs('upload/mobile_banners/' . $arr_dir[2]);
                     }
                 }
-                Main::myResizeImage('avatars/performance', $arr_dir[0], ['400', '200']);
-            }elseif ($imgAvatar && (!$imgBanner && !$imgBannerMobile)){
-
-                Main::unlinkImages('avatars/performance', ['original', '400', '200']);
-
-                $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
-                $img_name = time() . '.' . $model->avatar_image->extension;
-                $model->img_path = $img_name;
-                $model->save();
-                if (Yii::$app->request->post('token2') == 2){
-                    if ($_SESSION['banner'] && file_exists('upload/banners/'.$_SESSION['banner'])){
-                        unlink('upload/banners/'.$_SESSION['banner']);
-                    }
-                    if ($_SESSION['mobile_banner'] && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
-                        unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
-                    }
-                    $model->banner = null;
-                    $model->mobile_banner = null;
-                    $model->save();
-                }
-                $model->avatar_image->saveAs('upload/avatars/performance/original/' . $img_name);
-                Main::myResizeImage('avatars/performance', $img_name, ['400', '200']);
-
-            }elseif (!$imgAvatar && ($imgBanner && $imgBannerMobile)){
-
-                if ($_SESSION['banner'] !== null && file_exists('upload/banners/'.$_SESSION['banner'])){
-                    unlink('upload/banners/'.$_SESSION['banner']);
-                }
-                if ($_SESSION['mobile_banner'] !== null && file_exists('upload/mobile_banners/'.$_SESSION['mobile_banner'])){
-                    unlink('upload/mobile_banners/'.$_SESSION['mobile_banner']);
-                }
-                $model->banner_image = UploadedFile::getInstance($model, 'banner_image');
-                $model->mobile_banner_image = UploadedFile::getInstance($model, 'mobile_banner_image');
-                $img_name = time() . '.' . $model->banner_image->extension;
-                $mobile_img_name = time() . '.' . $model->mobile_banner_image->extension;
-                $model->banner = $img_name;
-                $model->mobile_banner = $mobile_img_name;
-                $model->save();
-
-                if (Yii::$app->request->post('token1') == 1){
-                    Main::unlinkImages('avatars/performance', ['original', '400', '200']);
-                    $model->img_path = 'default.jpg';
-                    $model->save();
-                }
-                $model->banner_image->saveAs('upload/banners/' . $img_name);
-                $model->mobile_banner_image->saveAs('upload/mobile_banners/' . $mobile_img_name);
 
             }else{
                 if (Yii::$app->request->post('token1') == 1){
