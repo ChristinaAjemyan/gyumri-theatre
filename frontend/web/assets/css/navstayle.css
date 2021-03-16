@@ -2585,7 +2585,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     }
     .actors_lists .actor img {
         height: 435px;
-        width: 300px;
+        width: 335px;
     }
 /*    .actors_lists .actor {
         margin: 45px auto!important;
@@ -2602,9 +2602,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 530px;
     }
-    .actors_lists .actor{
-        max-width: 385px;
-    }
+
 }
 @media screen and (max-width: 479px) {
     .performances-page .present-corusel{
@@ -2619,9 +2617,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 530px;
     }
-    .actors_lists .actor{
-        max-width: 365px;
-    }
+
     .performance_movie .performance_name{
         margin-top: -4px;
     }
@@ -2652,9 +2648,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 530px;
     }
-    .actors_lists .actor{
-        max-width: 345px;
-    }
+
     .block_title_gred_line{
         width: auto!important;
     }
@@ -2678,9 +2672,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .archive_page h1.archive_header_title{
         font-size: 50px;
     }
-    .actors_lists .actor{
-        max-width: 325px;
-    }
+
     .tab_main{
         font-size: 12px!important;
     }
@@ -2701,9 +2693,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 530px
     }
-    .actors_lists .actor{
-        max-width: 285px;
-    }
+
     .weekdays img{
         width: 14px!important;
     }
@@ -2737,9 +2727,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 490px;
     }
-    .actors_lists .actor{
-        max-width: 295px;
-    }
+
     .site-index-contnet .about_popup_youtube{
         top: -340px;
         padding: 17px 18px 12px 20px;
@@ -2776,9 +2764,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 485px;
     }
-    .actors_lists .actor{
-        max-width: 275px;
-    }
+
     a.weekdays{
         font-size: 12px!important;
     }
@@ -2806,9 +2792,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,button,small{
     .main_movies .media img{
         height: 415px;
     }
-    .actors_lists .actor{
-        max-width: 255px;
-    }
+
     .about_popup_youtube {
         top: -284px;
     }

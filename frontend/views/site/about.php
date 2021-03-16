@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/images/baner_gray.png');background-size: cover;">
+                <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/images/image_about.png');background-size: cover;">
                     <span class="btn_play about_popup_youtube site-index-trailer">
                         <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=uqA-tT3T6FQ">
                             <i class="fas fa-play" style="font-size: 24px"></i>
