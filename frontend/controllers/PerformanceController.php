@@ -29,23 +29,13 @@ class PerformanceController extends Controller
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
 
-        $performancesEvening = Performance::find()->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesAll = Performance::find()->orderBy(['id' => SORT_DESC])->asArray();
 
-
-//        $performancesEvening = TypePerformance::find()->with('performance')->where(['type_id' => 2])->orderBy(['id' => SORT_DESC])->asArray();
-//        $performancesEven = Performance::find()->orderBy(['id' => SORT_DESC])->asArray()->all();
-//        echo '<pre>';
-//        var_dump($performance_type);
-/*        foreach ($performance_type as $item){
-
-            $performancesEvening = $item['performance'];
-        }
-        die();*/
         $pages = new Pagination([
-            'totalCount' => $performancesEvening->count(),
+            'totalCount' => $performancesAll->count(),
             'defaultPageSize' => 15,
         ]);
-        $performances = $performancesEvening->offset($pages->offset)
+        $performances = $performancesAll->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
         if (!empty($performances) && isset($performances)){
@@ -136,12 +126,12 @@ class PerformanceController extends Controller
 
     public function actionSmall(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն');
-        $performancesBigHall = Performance::find()->where(['hall' => 1])->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy(['id' => SORT_DESC])->asArray();
         $pages = new Pagination([
-            'totalCount' => $performancesBigHall->count(),
+            'totalCount' => $performancesSmallHall->count(),
             'defaultPageSize' => 15,
         ]);
-        $performances = $performancesBigHall->offset($pages->offset)
+        $performances = $performancesSmallHall->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
         if (!empty($performances) && isset($performances)){

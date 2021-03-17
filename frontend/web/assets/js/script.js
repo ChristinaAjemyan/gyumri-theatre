@@ -209,7 +209,7 @@ $('.weekdays').on('click', function () {
             }else {
                 $('#nav-tabContent').append(`
                     <div class="tab-pane fade show active remove content_row" id="${weekHref}" role="tabpanel" aria-labelledby="${weekId}"></div>
-                    <div class="pagingControls paginator--list remove"></div>`);
+                    <div class="pagingControls paginator--list remove mb-4"></div>`);
             }
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
@@ -385,7 +385,7 @@ $('.season_time').on('click',function () {
 })
 // archive end ----
 
-$('.performance_tab_cont').on('click',function (e) {
+$('.performance_tab_cont').on('click',function () {
     let type_id = 0;
     $('.performance_tab_cont').css('border-bottom', 'none');
 
@@ -426,7 +426,7 @@ $('.performance_tab_cont').on('click',function (e) {
                 $('.load-icon').remove();
             }else{
                 $('.perf').html(`<div class="tab-content content_row" id="nav-tabContent" style="min-height: 330px"></div>
-                <div class="pagingControls paginator--list remove"></div>`);
+                <div class="pagingControls paginator--list remove mb-4"></div>`);
 
                 $.each(data.performances,function (i,item) {
                     $(".tab-content").append(`
