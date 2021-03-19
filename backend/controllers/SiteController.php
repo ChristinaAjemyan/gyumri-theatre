@@ -26,7 +26,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','index'],
+                        'actions' => ['logout','index','ordering-view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -99,5 +99,25 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionOrderingView()
+    {
+        $this->layout = 'main';
+        $this->view->title = '';
+
+        $curl_handle=curl_init();
+
+        $lng = "hy";
+        curl_setopt($curl_handle, CURLOPT_URL,'https://api.haytoms.am/get/8a52a9c75db7a1f42c8c10fc62d397de/'.$lng);
+
+        curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+        $haytoms_data = curl_exec($curl_handle);
+        curl_close($curl_handle);
+
+        $result = json_decode($haytoms_data, false);
+
+        return $this->render('ordering-view',compact('result'));
     }
 }

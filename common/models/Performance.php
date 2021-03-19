@@ -23,6 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $desc
  * @property int|null $is_new
  * @property int|null $slug
+ * @property string|null $external_id
  */
 class Performance extends \yii\db\ActiveRecord
 {
@@ -47,7 +48,7 @@ class Performance extends \yii\db\ActiveRecord
         return [
             [['title', 'slug'], 'required'],
             ['slug', 'unique'],
-            [['show_date'], 'safe'],
+            [['show_date','external_id'], 'safe'],
             [['desc', 'short_desc'], 'string'],
             [['avatar_image', 'banner_image','mobile_banner'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['age_restriction', 'performance_length', 'hall', 'is_new'], 'integer'],
@@ -79,6 +80,7 @@ class Performance extends \yii\db\ActiveRecord
             'desc' => 'Description',
             'is_new' => 'Is New',
             'slug' => 'Slug',
+            'external_id' => '',
         ];
     }
 

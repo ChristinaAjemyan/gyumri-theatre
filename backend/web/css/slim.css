@@ -41180,6 +41180,10 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 td.st_images a img{
     width:50px;height:50px;object-fit:cover
 }
-.hidden_desc{
+.hidden_desc,.hidden_external_table{
     display: none;
+}
+.clear_all .field-performance-external_id{
+    display: inline-flex;
+    margin-bottom: 0;
 }

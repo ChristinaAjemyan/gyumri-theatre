@@ -8,9 +8,11 @@ if (width < 1124){
     $('.footer_links').addClass('row');
 }
 
+    $('.hy_timeline br').remove();
+    $('.hy_timeline').css('font-size','14px');
 
 
-let url = new URL(location.href);
+    let url = new URL(location.href);
 if (url.pathname !== '/'){
     $('.navbar-pages').css('background','#000');
 }

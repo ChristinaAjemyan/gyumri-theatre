@@ -221,18 +221,6 @@ class PerformanceController extends Controller
      */
     public function actionUpdate($id)
     {
-
-        $x = [8,4,6];
-        $y = [];
-
-        for ($i = 0; $i <= count($x); $i++){
-            if ($i > $i++){
-                $y[] = $i[0];
-            }
-        }
-        echo '<pre>';
-        var_dump($y);die;
-
         $model = $this->findModel($id);
         $model_stf_perform = new StaffPerformance();
         $model_image = new Image();
