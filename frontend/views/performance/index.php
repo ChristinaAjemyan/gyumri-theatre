@@ -54,35 +54,9 @@ use yii\widgets\LinkPager; ?>
                                     <div class="media_btn-group">
                                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                                         <?php if ($performance['external_id']) : ?>
-                                        <?php $timelines = TicketController::getTicketTimelines($performance['external_id']); ?>
-<!--                                        --><?php // echo '<pre>';var_dump($timelines);?>
-                                            <div class="media_btn-group">
-                                                <div id="orderingBtn" data-toggle="modal" data-target="#orderingModal_index" style="color: white">
-                                                    <button class="btn more_btn"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
-                                                        <i class="fas fa-chevron-right"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="modal modal_main fade pr-0" id="orderingModal_index" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
-
-                                                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 702px;margin-top: 2%;">
-
-                                                    <div class="modal-content position-relative text-white" style="border-radius: 20px;background: black;border: none;box-shadow:-2px 2px 23px -7px rgb(168 168 168);">
-                                                        <button type="button" class="close close_button" style="padding: 9px 14px;background-image: linear-gradient(to right, #F0B866, #DB7439);right: 23px; z-index: 9999" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <div class="ordering_content">
-
-                                                            <?php foreach ($timelines->data[0]->timeline as $item) : ?>
-                                                                <div class="d-flex position-relative mb-2">
-                                                                    <?=$item->time?>
-                                                                    <button class="btn btn-sm ordering_button" style="background: linear-gradient(to right, #fab144, #ec7532);" data-openticket="<?=$item->id?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?></button>
-                                                                </div>
-                                                            <?php endforeach; ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <a class="btn add_cupon showModalOrdering" data-id="<?=$performance['external_id']?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
                                         <?php endif; ?>
                                     </div>
                                     <p class="movie-lenght">
@@ -141,7 +115,3 @@ use yii\widgets\LinkPager; ?>
     </div>
 
 </section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src=“https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js” integrity=“sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx” crossorigin=“anonymous”></script>
-<?=$timelines->script?>

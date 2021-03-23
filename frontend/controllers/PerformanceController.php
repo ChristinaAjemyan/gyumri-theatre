@@ -88,6 +88,7 @@ class PerformanceController extends Controller
                 $performances_arr[$i]['age_restriction'] = $val['age_restriction'];
                 $performances_arr[$i]['performance_length'] = $val['performance_length'];
                 $performances_arr[$i]['date'] = Performance::getPerformanceTime($val['show_date']);
+                $performances_arr[$i]['external_id'] = $val['external_id'];
             }
             return Json::encode([
                 'performances' => $performances_arr,
@@ -172,6 +173,14 @@ class PerformanceController extends Controller
         $timelines = TicketController::getTicketTimelines($model->external_id);
 
         return $this->render('view', ['model' => $model,'timelines'=>$timelines]);
+    }
+
+    public function actionModalOrdering()
+    {
+        if (Yii::$app->request->isAjax && isset($_GET['id'])){
+
+            return $this->renderAjax('modal_ordering',['id' => $_GET['id']]);
+        }
     }
 
     /**

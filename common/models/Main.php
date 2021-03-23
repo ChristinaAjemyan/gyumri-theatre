@@ -105,10 +105,10 @@ class Main extends Model
             $col = trim($str, '&');
             foreach ($columnName as $value){
                 if (in_array($modelClass::findOne($id)->$value, $arrSourceMessageAll)){
-                    $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->all()[0]->id;
-                    $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'ru'])->all()[0];
+                    $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()->id;
+                    $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'ru'])->one();
                     if ($hasMessage !== null){
-                        $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'ru'])->all()[0]->id."&";
+                        $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'ru'])->one()->id."&";
                         $count = 1;
                     }else{
                         $i = 1;
@@ -139,10 +139,10 @@ class Main extends Model
             $col = trim($str, '&');
             foreach ($columnName as $value){
                 if (in_array($modelClass::findOne($id)->$value, $arrSourceMessageAll)){
-                    $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->all()[0]->id;
-                    $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'en'])->all()[0];
+                    $message_id = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()->id;
+                    $hasMessage = Message::find()->where(['id' => $message_id, 'language' => 'en'])->one();
                     if ($hasMessage !== null){
-                        $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'en'])->all()[0]->id."&";
+                        $translation_id .= "tr_id[]=".Message::find()->where(['id' => $message_id, 'language' => 'en'])->one()->id."&";
                         $count = 1;
                     }else{
                         $i = 1;

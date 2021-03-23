@@ -33,15 +33,15 @@ class TranslateController extends Controller
                 if (!in_array($modelClass::findOne($id)->$value, ArrayHelper::map(SourceMessage::find()->all(), 'id', 'message'))){
                     $sourceMessage->save();
                 }
-                $arr[] = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()->id;
+                $arr[] = SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()['id'];
                 $arrColumnName .= "col[]=$value&";
                 $columnName = trim($arrColumnName, '&');
-                $translation_id .= "tr_id[]=".SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()->id."&";
+                $translation_id .= "tr_id[]=".SourceMessage::find()->where(['message' => $modelClass::findOne($id)->$value])->one()['id']."&";
                 $tr_id = trim($translation_id, '&');
             }
             foreach (Yii::$app->request->post('Message') as $key => $item){
-                if (Message::find()->where(['id' => $arr[$key], 'language' => $lang])->all()[0]){
-                    $message = Message::find()->where(['id' => $arr[$key], 'language' => $lang])->all()[0];
+                if (Message::find()->where(['id' => $arr[$key], 'language' => $lang])->one()){
+                    $message = Message::find()->where(['id' => $arr[$key], 'language' => $lang])->one();
                 }else{
                     $message = new Message();
                 }
@@ -67,7 +67,7 @@ class TranslateController extends Controller
         $tr_id = Yii::$app->request->get('tr_id');
         if ($message->load(Yii::$app->request->post())) {
             foreach (Yii::$app->request->post('Message') as $key => $item){
-                $message_model = Message::find()->where(['id' => $tr_id[$key], 'language' => $lang])->all()[0];
+                $message_model = Message::find()->where(['id' => $tr_id[$key], 'language' => $lang])->one();
                 $message_model->language = $lang;
                 $message_model->translation = $item['translation'];
                 $message_model->save();
@@ -77,7 +77,7 @@ class TranslateController extends Controller
         }
         $arrTranslations = [];
         foreach ($tr_id as $value){
-            $arrTranslations[] = Message::find()->where(['id' => $value, 'language' => $lang])->all()[0];
+            $arrTranslations[] = Message::find()->where(['id' => $value, 'language' => $lang])->one();
         }
         return $this->render('update', [
             'update_lang' => $arrTranslations

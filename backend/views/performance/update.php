@@ -19,9 +19,9 @@ $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->att
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
 $column[] = $column_name[1];
-$column[] = $column_name[13];
-$column[] = $column_name[8];
-$column[] = $column_name[10];
+$column[] = $column_name[12];
+$column[] = $column_name[9];
+$column[] = $column_name[14];
 $column[] = $column_name[11];
 ?>
 <?php $result_avatar = "

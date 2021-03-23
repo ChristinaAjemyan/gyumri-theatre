@@ -53,7 +53,7 @@ use mihaildev\elfinder\ElFinder;
                             <th scope="col">Avatar Image</th>
                             <th scope="col">Title</th>
                             <th scope="col">Count By Date</th>
-                            <th scope="col">Show Date Time And Id</th>
+                            <th scope="col">Show Date And Time</th>
                         </tr>
                         </thead>
                         <tbody>

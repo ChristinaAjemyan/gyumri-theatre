@@ -8,11 +8,7 @@ if (width < 1124){
     $('.footer_links').addClass('row');
 }
 
-    $('.hy_timeline br').remove();
-    $('.hy_timeline').css('font-size','14px');
-
-
-    let url = new URL(location.href);
+let url = new URL(location.href);
 if (url.pathname !== '/'){
     $('.navbar-pages').css('background','#000');
 }
@@ -235,10 +231,10 @@ $('.weekdays').on('click', function () {
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
-                                    ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" + 
-                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                        ${item.external_id ? `<a class=\"btn add_cupon showModalOrdering\" data-id=\"${item.external_id}\">` +
+                                            getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
-                                    ${item.show_date > currentTime ? "<p class='view-movie'>"+item.func_date+"</p>" : ''}
+                                    ${!item.external_id && item.show_date > currentTime ? "<p class='view-movie'>"+item.func_date+"</p>" : ''}
                                     <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
                                         ${item.age_restriction ? '<span>'+item.age_restriction +'+</span>' : ''}
                                     </p>
@@ -385,6 +381,18 @@ $('.season_time').on('click',function () {
         }
     })
 })
+
+$(document).on('click','.showModalOrdering',function () {
+    $('#modal_popups').empty();
+    let id = $(this).attr('data-id');
+    $.ajax({url: '/performance/modal-ordering?id='+id,type: 'get',dataType: 'html',
+        success: (data) => {
+            $("#modal_popups").html(data);
+            $("#orderingModal_index").modal();
+        }
+    })
+});
+
 // archive end ----
 
 $('.performance_tab_cont').on('click',function () {
@@ -452,7 +460,7 @@ $('.performance_tab_cont').on('click',function () {
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
-                                    ${item.show_date > currentTime ? "<a href='https://www.tomsarkgh.am/' target='_blank' class=\"btn add_cupon\">" +
+                                    ${!item.external_id && item.external_id ? `<a class=\"btn add_cupon showModalOrdering\" data-id=\"${item.external_id}\">` +
                                         getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                    
@@ -628,6 +636,7 @@ function initMap() {
         map: map,
         icon: icon
     })
+
 }
 
 

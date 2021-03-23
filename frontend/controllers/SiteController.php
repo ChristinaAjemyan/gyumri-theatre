@@ -96,6 +96,7 @@ class SiteController extends Controller
                 $performanceByDays[$key]['short_desc'] = Yii::t('text', $val['short_desc']);
                 $performanceByDays[$key]['desc'] = Yii::t('text', $val['desc']);
                 $performanceByDays[$key]['slug'] = Yii::t('text', $val['slug']);
+                $performanceByDays[$key]['external_id'] = $val['external_id'];
             }
             if (empty($performanceByDays)){
                 return Json::encode(['error' => true, 'lang' => Yii::$app->request->cookies->getValue('language')]);die;

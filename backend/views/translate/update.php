@@ -64,6 +64,10 @@ foreach ($column_name as $item){
                 <?= $form->field($update_lang[1], "[1]translation")->textInput(['maxlength' => true])->label('Last Name') ?>
 
                 <?= $form->field($update_lang[2], "[2]translation")->textInput(['maxlength' => true])->label('Slug') ?>
+
+                <?= $form->field($update_lang[6], "[6]translation")->widget(CKEditor::className(), [
+                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+                ])->label('Description') ?>
             </div>
             <div class="col">
                 <?= $form->field($update_lang[3], "[3]translation")->textInput(['maxlength' => true])->label('Genre') ?>
@@ -71,12 +75,10 @@ foreach ($column_name as $item){
                 <?= $form->field($update_lang[4], "[4]translation")->textInput(['maxlength' => true])->label('Country') ?>
 
                 <?= $form->field($update_lang[5], "[5]translation")->textInput(['maxlength' => true])->label('City') ?>
+
+                <?= $form->field($update_lang[7], "[7]translation")->textarea(['rows' => 8])->label('Index Description') ?>
             </div>
         </div>
-
-        <?= $form->field($update_lang[6], "[6]translation")->widget(CKEditor::className(), [
-            'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-        ])->label('Description') ?>
 
     <?php elseif ($table_name == 'performance'): ?>
 

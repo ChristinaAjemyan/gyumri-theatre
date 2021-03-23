@@ -31,10 +31,10 @@ use yii\widgets\LinkPager;  ?>
                                     <div class="media-footer">
                                         <div class="media_btn-group">
                                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
-                                            <?php if ($performance['show_date'] > date("Y-m-d H:i:s")): ?>
-                                                <button class="btn add_cupon"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                            <?php if ($performance['external_id']) : ?>
+                                                <a class="btn add_cupon showModalOrdering" data-id="<?=$performance['external_id']?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
                                                     <i class="fas fa-chevron-right"></i>
-                                                </button>
+                                                </a>
                                             <?php endif; ?>
                                         </div>
                                         <p class='view-movie'><?= $performance['func_date']; ?></p>

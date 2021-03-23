@@ -23,13 +23,16 @@ $column_name = array_keys($model->attributes);
 
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
+//echo '<pre>';
+//var_dump($column_name);die;
 $column[] = $column_name[1];
 $column[] = $column_name[2];
-$column[] = $column_name[11];
-$column[] = $column_name[8];
 $column[] = $column_name[5];
 $column[] = $column_name[6];
+$column[] = $column_name[8];
 $column[] = $column_name[9];
+$column[] = $column_name[10];
+$column[] = $column_name[14];
 ?>
 <?php $result_avatar = "
 <div class=\"card-body my_card-body\" style='padding: 0 14px;'>
