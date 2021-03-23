@@ -27,8 +27,14 @@ class StaffController extends Controller
         $this->view->title = Yii::t('home', 'Աշխատակազմ');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one()->id;
 
-        $staff_primary = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(["primary_key" => 1])->
-        andWhere(['is_member' => 1])->orderBy(['last_name' => SORT_ASC])->limit(2)->all();
+        $staff_primary = Staff::find()
+            ->with('role')
+            ->where(['!=', 'role_id', $role_id])
+            ->andWhere(["primary_key" => 1])
+            ->andWhere(['is_member' => 1])
+            ->orderBy(['last_name' => SORT_ASC])
+            ->limit(2)
+            ->all();
         
 
         $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->

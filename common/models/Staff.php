@@ -75,4 +75,9 @@ class Staff extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getRole()
+    {
+        return $this->hasOne(Role::class, ['id' => 'role_id']);
+    }
+
 }
