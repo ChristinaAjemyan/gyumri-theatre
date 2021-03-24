@@ -14,7 +14,7 @@ use yii\helpers\Url;
         <?php if (!empty($model) && isset($model)): ?>
         <div class="actors_main_my row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2" style="width: 103%!important;">
             <?php foreach ($model as $item): ?>
-                <div class="col">
+                <div class="col" style="padding-right: 10px;padding-left: 10px;">
                     <a href="<?=  Url::to(['/staff/view', 'slug' => Yii::t('text', $item->slug)]);?>">
                         <div class="actor">
                             <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>" alt="Photo">

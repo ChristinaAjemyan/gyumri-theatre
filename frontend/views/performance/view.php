@@ -19,7 +19,8 @@ use yii\helpers\Url;
          no-repeat center;background-size: cover;min-height: 0;height: 30vh;margin-top: 70px;"></div>
     <?php endif; ?>
 
-    <div class="container main_container">
+    <div class="bg-white mb-5">
+        <div class="container main_container">
 
         <section class="about-present main_movies">
             <div class="media">
@@ -46,7 +47,7 @@ use yii\helpers\Url;
                                 }
                                 echo trim($str, ','); ?>
                             </small>
-                            <p class="media-text"><?= Yii::t('text', $model->desc); ?></p>
+                            <div class="performance_ckeditor_content"><?= Yii::t('text', $model->desc); ?></div>
 
                             <div class="media-footer">
                                 <?php if ($model->external_id) : ?>
@@ -73,6 +74,7 @@ use yii\helpers\Url;
             </div>
         </section>
 
+    </div>
     </div>
 
 

@@ -16,15 +16,15 @@ use yii\helpers\Url;
     </div>
     <div class="header_carousel owl-carousel" id="headerCarousel">
 
-        <div class="carusel_block">
+        <div class="">
             <img src="/assets/images/baner.png" alt="Photo">
         </div>
 
-        <div class="carusel_block">
+        <div class="">
             <img src="/assets/images/baner_gray.jpg" alt="Photo">
         </div>
 
-        <div class="carusel_block">
+        <div class="">
             <img src="/assets/images/baner.png" alt="Photo">
         </div>
 
@@ -58,7 +58,7 @@ use yii\helpers\Url;
                     <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                         <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="image">
                     </a>
-                    <div class="card-body">
+                    <div class="card-body" style="padding: 1.25rem 0;">
                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
                             <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
                         </a>

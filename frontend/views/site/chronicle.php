@@ -1,10 +1,13 @@
 <main class="main_movies mb-5">
-    <div class="container main_container">
-        <div style="margin-top: 120px" class="tab-content chronicle">
-            <div class="d-flex mb-3 wv3">
-                <h2 class="title-type  mb-0"><b><?= Yii::t('home', 'Տարեգրություն'); ?></b></h2>
-                <div class="title-side-line"></div>
+    <div class="archive_page" style="background: white;">
+        <div class="archive_header">
+            <div class="archive_header_content">
+                <h1 class="archive_header_title mt-5"><?= Yii::t('home', 'Տարեգրություն'); ?></h1>
             </div>
+        </div>
+    </div>
+    <div class="container main_container">
+        <div class="tab-content chronicle" style="margin-top: 50px;">
             <div class="chronicle_par">
                 <p>&nbsp; Հայ մշակույթի խոշորագույն կենտրոն Ալեքպոլը իր բազմադարյա պատմության ընթացքում ծնունդ տվեց բազմաթիվ հայտնի անհատների, որոնց հետագայում ամբողջ առաջադեմ մարդկությունը պիտի ճանաչեր։</p>
 
