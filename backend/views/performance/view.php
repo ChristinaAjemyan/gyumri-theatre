@@ -119,7 +119,7 @@ $column[] = $column_name[11];
                 'attribute' => 'hall',
                 'format' => 'html',
                 'value' => function ($model) {
-                    return $model->hall == 0 ? 'Մեծ թատրոն' : $model->hall == 1 ? 'Փոքր թատրոն' : 'Հյուրախաղ';
+                    return $model->hall == 0 ? 'Մեծ բեմ' : $model->hall == 1 ? 'Փոքր թատրոն' : 'Հյուրախաղ';
                 }
             ],
             'short_desc:html',

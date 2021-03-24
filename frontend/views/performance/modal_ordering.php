@@ -11,7 +11,7 @@ use frontend\controllers\TicketController;
             </button>
             <?php if (isset($_GET['id'])) : ?>
                 <?php $timelines = TicketController::getTicketTimelines($_GET['id']); ?>
-                <h3 class="new_section-title mb-0"><?= $timelines->data[0]->name ?></h3>
+                <h3 class="new_section-title mb-0">«<?= $timelines->data[0]->name ?>»</h3>
                 <div class="ordering_content">
                 <?php foreach ($timelines->data as $item) : ?>
                 <?php foreach ($item->timeline as $val) : ?>

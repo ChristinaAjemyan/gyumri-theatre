@@ -179,5 +179,5 @@ use yii\helpers\Url;
 </section>
 <article class="article-call">
     <p class="number-text"><?= Yii::t('home', 'ՏԵՂԵԿԱՏՈՒ ՀԵՌԱԽՈՍԱՀԱՄԱՐ') ?></p>
-    <h5 class="call-number">060 96 10 10</h5>
+    <h5 class="call-number">060 38 10 10</h5>
 </article>

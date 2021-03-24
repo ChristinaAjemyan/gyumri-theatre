@@ -1756,12 +1756,13 @@ hr.space-40 {
     color: black;
 }
 .actors_lists .actor_type{
-    font-family: 'Arm Hmks';
+    font-family: sans-serif;
     color: #F7AB55;
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
     display: block;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
+    font-weight: bold;
 }
 
 .actros_list_pag {
@@ -2033,8 +2034,8 @@ hr.space-40 {
 }
 
 .title-type{
-    font-family: 'Arm Hmks';
-    letter-spacing: 2.5px;
+    font-family: sans-serif;
+    letter-spacing: 0;
     color: #c7c8c8;
 }
 
@@ -3017,13 +3018,13 @@ hr.space-40 {
     background:#ececec ;
 }
 .archive_page .archive_page_carousel_title{
-    border:none;
+    border: none;
     color: #c2c1c1;
-    font-size: 25px;
+    font-size: 18px;
     text-align: center;
-    font-family: "Arm Hmks";
-    letter-spacing: 2px;
-
+    font-family: sans-serif;
+    letter-spacing: 0px;
+    font-weight: bold;
 }
 .archive_page .archive_page_carousel_title::after{
     content:'';

@@ -2,14 +2,11 @@
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
     <div class="container main_container" style="min-height: 600px;">
-        <div style="margin-top: 120px" class="tab-content performance_title" id="nav-tabContent">
-            <div class="d-flex mb-3 wv3">
-                <h2 class="mb-0 title-type" style="width: 34%;"><b><?= Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն'); ?></b></h2>
-                <div class="title-side-line"></div>
-            </div>
+        <div style="padding-top: 120px" class="tab-content performance_title" id="nav-tabContent">
+
             <?php if (!empty($performances) && isset($performances)) : ?>
                 <?php foreach ($performances as $performance) : ?>
-                    <div class="media d-block">
+                    <div class="media d-block pt-4">
                         <div class="row performances_main">
                             <div class="col-md-3  col-12 p-0">
                                 <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">

@@ -291,8 +291,8 @@ $('.season_time').on('click',function () {
                         <div class="card" style="width: 16rem;">
                             <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/400/'+item.img_path}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">${item.show_date}</h5>
-                                <p class="card-text">${item.title}</p>
+                                <h5 class="card-title">${item.title}</h5>
+                                <p class="card-text">${item.show_date}</p>
                             </div>
                         </div>
                     </div>
@@ -335,15 +335,15 @@ $('.season_time').on('click',function () {
                     </div>
                     `)
 
-                    $('#main_content_season_data').html(`<div class="performances-carusel owl-carousel" id="current_performance_slide"></div>`)
+                    $('#main_content_season_data').html(`<div class="performances-carusel owl-carousel" id="current_performance_slide"></div>`);
                     $.each(data.season.images,function (i,item) {
-                        $(".archive_page_images_carousel .owl-carousel").append(`
-                        <div class="block-present">
+                        $('#current_performance_slide').append(`
+                        <div class="block-present carusel_block">
                             <a href="${data.backend_url+'/upload/galleries/original/'+item}">
                                 <img src="${data.backend_url+'/upload/galleries/250/'+item}" alt="Photo">
                             </a>
                         </div>
-                        `);
+                        `)
                     })
                     $('.performances-carusel').magnificPopup({
                         type: 'image',
@@ -382,6 +382,9 @@ $('.season_time').on('click',function () {
     })
 })
 
+// archive end ----
+
+// booking system
 $(document).on('click','.showModalOrdering',function () {
     $('#modal_popups').empty();
     let id = $(this).attr('data-id');
@@ -392,8 +395,6 @@ $(document).on('click','.showModalOrdering',function () {
         }
     })
 });
-
-// archive end ----
 
 $('.performance_tab_cont').on('click',function () {
     let type_id = 0;

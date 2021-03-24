@@ -29,7 +29,7 @@ class PerformanceController extends Controller
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
 
-        $performancesAll = Performance::find()->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesAll = Performance::find()->orderBy(['show_date' => SORT_ASC])->asArray();
 
         $pages = new Pagination([
             'totalCount' => $performancesAll->count(),

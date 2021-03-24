@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'hall',
                 'format' => 'html',
                 'value' => function ($model) {
-                    return $model->hall == 0 ? 'Մեծ թատրոն' : 'Փոքր թատրոն';
+                    return $model->hall == 0 ? 'Մեծ բեմ' : 'Փոքր թատրոն';
                 }
             ],
             //'short_desc:html',

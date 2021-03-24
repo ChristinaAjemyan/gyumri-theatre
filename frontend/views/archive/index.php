@@ -34,7 +34,7 @@ use yii\helpers\Url;
         <?php if(!empty($season_performances)) : ?>
         <section class="section_carousel archive_page_carousel">
             <div class="container">
-                <h2 class="archive_page_carousel_title" style="margin-bottom: 20px;"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
+                <h2 class="archive_page_carousel_title" style="margin-bottom: 35px;"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
                 <div id="main_content_perf_data">
                     <div class="main_carousel owl-carousel archive_content_carousel" id="current_performance">
                         <?php foreach ($season_performances as $performance) : ?>

@@ -49,7 +49,7 @@ class Staff extends \yii\db\ActiveRecord
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
             [['first_name', 'last_name', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type'], 'string', 'max' => 255],
-            [['first_name', 'last_name', 'country', 'city', 'staff_genre_type'], 'filter', 'filter' => 'mb_strtolower'],
+            [['first_name', 'last_name', 'country', 'city'], 'filter', 'filter' => 'mb_strtolower'],
         ];
     }
 

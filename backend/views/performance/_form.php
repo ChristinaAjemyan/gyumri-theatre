@@ -159,7 +159,7 @@ use mihaildev\elfinder\ElFinder;
     </div>
 
 
-    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ թատրոն', 1 => 'Փոքր թատրոն', 2 => 'Հյուրախաղ']) ?>
+    <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ բեմ', 1 => 'Փոքր թատրոն', 2 => 'Հյուրախաղ']) ?>
 
     <?= $form->field($model, 'is_new')->checkbox() ?>
 

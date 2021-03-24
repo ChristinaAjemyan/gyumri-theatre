@@ -9,7 +9,7 @@ use yii\widgets\LinkPager; ?>
         <div class="archive_header">
             <div class="archive_header_content">
                 <h1 class="archive_header_title"><?= Yii::t('home','Ներկայացումներ') ?></h1>
-                <p class="archive_header_text"><?= Yii::t('home','Տոմսերը կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել online') ?></p>
+                <p class="archive_header_text"><?= Yii::t('home','Տոմսեր կարող եք ձեռք բերել գյումրու դրամատիկական թատրոնի տոմսարկղից կամ պատվիրել առցանց') ?></p>
             </div>
         </div>
 

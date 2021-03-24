@@ -2,15 +2,12 @@
 use yii\helpers\Url;
 use yii\widgets\LinkPager;  ?>
 <main class="main_movies mb-5">
-    <div class="container" style="padding: 0 30px; min-height: 600px;">
+    <div class="container" style="padding: 120px 30px; min-height: 600px;">
         <div class="tab-content" id="nav-tabContent">
-            <div class="d-flex mb-3 wv3">
-                <h2 class="mb-0 title-type actors_title" style="margin-top: 120px"><b><?= Yii::t('home', 'Նորություններ'); ?></b></h2>
-                <div class="title-side-line"></div>
-            </div>
+
             <?php if (!empty($contents) && isset($contents)) : ?>
                 <?php foreach ($contents as $content) : ?>
-                    <div class="media d-block">
+                    <div class="media d-block pt-4">
                         <div class="row performances_main p-1 news_block">
                             <div class="col-md-2  col-12 p-0">
                                 <a href="<?=  Url::to(['/news/view', 'id' => $content['id']]); ?>">

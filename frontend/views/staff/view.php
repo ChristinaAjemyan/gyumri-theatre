@@ -10,8 +10,8 @@ use yii\helpers\Url;
 ?>
 
 
-<div class="actors_page bg-white">
-    <div class="container main_container" >
+<div class="bg-white" style="padding-top: 120px">
+    <div class="container main_container pt-4" >
 
         <div class="row">
                 <div class="col-md-4 col-12">
@@ -32,7 +32,7 @@ use yii\helpers\Url;
                 <?php $images = StaffImage::find()->where(['staff_id' => $model->id])->all(); ?>
                 <?php if (!empty($images) && isset($images)): ?>
                     <div class="col-12 order-md-2 order-3">
-                        <div class=ս"actros_imges row">
+                        <div class="actros_imges row">
                             <?php
                             $image_count = count($images); $squares = 0;
                             if ($image_count < 8) $squares = $image_count - 8;
@@ -58,7 +58,7 @@ use yii\helpers\Url;
     $performance = ArrayHelper::map($performances, 'id', 'performance'); ?>
     <?php if (!empty($performance) && isset($performance)): ?>
         <div style="background: #f6f6f6;">
-            <div class="container">
+            <div class="container pt-5">
                 <div class="current_performances" style="margin: 0 auto;">
                     <h2 class="block_title carousel_title mt-0 contact_block_title"><?= Yii::t('home', 'ԽԱՂԱՑԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
                     <div class="block_title_gred_line"></div>
