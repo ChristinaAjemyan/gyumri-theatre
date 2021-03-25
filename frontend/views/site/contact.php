@@ -17,7 +17,7 @@ use yii\helpers\Url;
 
 ?>
 <div id="asdasd" data-target=""></div>
-<div id="myMap" class="site-contact-map" style="margin-top: 97px; width: 100%; height: 600px">
+<div id="myMap" class="site-contact-map" style="margin-top: 97px; width: 100%; height: 60vh">
 <!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.1743778474574!2d43.84538578047872!3d40.79066377176147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041fbf2a2fef76f%3A0xa7bf664eae5715b8!2sVardan%20Ajemyan%20Drama%20Theater!5e0!3m2!1sen!2s!4v1602774799615!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
 </div>
 
@@ -163,7 +163,7 @@ $(function() {
     $('#contactBtn').on('click',function() {
         $("html, body").animate({ scrollTop: 0 });
         setTimeout(function() {
-           $('#myMap').css('height','600px')
+           $('#myMap').css('height','60vh')
            $('.contact_block_title').css('padding-top','130px')
         },500)
     })
