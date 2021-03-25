@@ -145,7 +145,7 @@ h3 {
 }
 
 .ckeditor_content{
-    max-height: 420px;
+    max-height: 395px;
     overflow: hidden;
     overflow-y: auto;
 }
@@ -2944,6 +2944,7 @@ hr.space-40 {
 .media-body p.media-text{
     color:#404040;
     font-family: Sans-Serif;
+    min-height: 110px;
 }
 .theater_season {
     padding-bottom: 25px;
@@ -3141,6 +3142,7 @@ img.big-carousel{
     width: 330px;
     padding-bottom: 15px;
     font-size: 18px;
+    padding-top: 65px;
 }
 .block_title_gred_line{
     width: 330px; height: 3px;margin: 0px auto 0px; background-image: linear-gradient(to right, #fbbd61, #ec7532);

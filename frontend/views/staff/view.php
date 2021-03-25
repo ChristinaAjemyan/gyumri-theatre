@@ -30,9 +30,11 @@ use yii\helpers\Url;
                     <div class="ckeditor_content"><?= Yii::t('text', $model->desc); ?></div>
                 </div>
                 <?php $images = StaffImage::find()->where(['staff_id' => $model->id])->all(); ?>
-                <?php if (!empty($images) && isset($images)): ?>
+
                     <div class="col-12 order-md-2 order-3">
+
                         <div class="actros_imges row">
+                            <?php if (!empty($images) && isset($images)): ?>
                             <?php
                             $image_count = count($images); $squares = 0;
                             if ($image_count < 8) $squares = $image_count - 8;
@@ -49,9 +51,12 @@ use yii\helpers\Url;
                                     echo '<div class="act_img mb-4 empty-squares" style="height: 114px; width:114px; background: #f6f6f6;"></div>';
                                 } ?>
                             <?php endif; ?>
+
+                            <?php endif; ?>
                         </div>
+
                     </div>
-                <?php endif; ?>
+
             </div>
     </div>
     <?php $performances = StaffPerformance::find()->with('performance')->where(['staff_id' => $model->id])->all();

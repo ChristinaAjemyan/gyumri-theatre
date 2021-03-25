@@ -23,7 +23,7 @@ use yii\helpers\Url;
 
 <section class="section_carousel">
     <div class="container position-relative">
-        <div class="map-button" id="contactBtn" data-toggle="modal" data-target="#contactModal" style="color: white">
+        <div class="map-button" id="contactBtn" data-toggle="modal" style="color: white">
             <a>
                 <i class="fas fa-map-marker-alt"></i>
             </a>
@@ -82,7 +82,7 @@ use yii\helpers\Url;
             <div class="all_content" style="border-radius: 20px;background: black">
                 <div class="bg-white left_side_cont">
                     <div class="contact_form position-relative">
-                        <p align="center" class="h4 font-weight-bold pb-3"><?= Yii::t('home', 'Ուղարկեք մեզ հաղորդագրություն') ?></p>
+                        <p align="center" style="font-family: sans-serif;" class="h4 font-weight-bold pb-3"><?= Yii::t('home', 'Ուղարկեք մեզ հաղորդագրություն') ?></p>
                         <!--<i class="far fa-envelope message_icon"></i>-->
                         <img class="message_icon" src="<?= Yii::$app->params['frontend-url'].'/assets/images/let.svg'?>" alt="">
                         <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
@@ -95,13 +95,6 @@ use yii\helpers\Url;
 
                         <?= $form->field($model, 'body')->textarea(['rows' => 6,'placeholder' => Yii::t('home', 'Հաղորդագրություն')])->label(false) ?>
 
-<!--                        --><?/*= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                            'template' => '<div class="d-flex justify-content-end"><div>{image}</div><div>{input}</div></div>',
-                        ])->label(false) */?>
-
-<!--                        <div class="form-group">
-                            <?/*= Html::submitButton(Yii::t('home','Ուղարկել'), ['class' => 'contact-button', 'name' => 'contact-button']) */?>
-                        </div>-->
                         <button type="submit" name="contact-button" class="contact-button contact_button">
                             <img src="<?= Yii::$app->params['frontend-url'].'/assets/images/location.svg'?>" alt="">
                         </button>
@@ -144,16 +137,36 @@ $js = <<<JS
     
 
 $(function() {
-    $('#contactBtn').click();
+    $( document ).ready(function() {
+      $('#contactModal').modal();
+      $('.contact_block_title').css('padding-top','130px')
+    })
+    $('#contactBtn').on('click',function() {
+        $('#contactModal').modal();
+        $('.contact_block_title').css('padding-top','130px')
+    })
     $(window).scroll(function(){
-        $('.close_button').click();
+        $('#contactModal').modal('hide');
+        $('#myMap').css('height','90vh');
+        $('.contact_block_title').css('padding-top','65px')
     });
-    var start_time = setInterval(function() {
-        if ($('.modal_main').hasClass('show') == false){
-            $('#myMap').css('height','90vh')
-            clearInterval(start_time);
-        } 
-    },500)   
+        $(window).on('click',function(){
+        $('#contactModal').modal('hide');
+        $('#myMap').css('height','90vh');
+        $('.contact_block_title').css('padding-top','65px')
+    });
+    $('.close_button').on('click',function() {
+      $('#myMap').css('height','90vh');
+      $('.contact_block_title').css('padding-top','65px')
+
+    })
+    $('#contactBtn').on('click',function() {
+        $("html, body").animate({ scrollTop: 0 });
+        setTimeout(function() {
+           $('#myMap').css('height','600px')
+           $('.contact_block_title').css('padding-top','130px')
+        },500)
+    })
 });
 
 JS;
