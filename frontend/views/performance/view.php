@@ -50,13 +50,15 @@ use yii\helpers\Url;
                             <div class="performance_ckeditor_content"><?= Yii::t('text', $model->desc); ?></div>
 
                             <div class="media-footer">
-                                <?php if ($model->external_id) : ?>
+
                                 <div class="media_btn-group">
+                                    <?php if ($model->external_id) : ?>
                                     <div id="orderingBtn" data-toggle="modal" data-target="#orderingModal" style="color: white">
                                         <button class="btn more_btn showModalOrdering" data-id="<?=$model->external_id?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?></button>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
-                                <?php endif; ?>
+
                                 <p class="movie-lenght">
                                     <?php if (!empty($model->performance_length) && isset($model->performance_length)) : ?>
                                     <?= $model->performance_length; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>

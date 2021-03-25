@@ -43,12 +43,12 @@ class StaffController extends Controller
         andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_DESC]);
         $pages_staff_admin = new Pagination([
             'totalCount' => $staff_admin->count(),
-            'defaultPageSize' => 21,
+            'defaultPageSize' => 15,
             'params' => array_merge($_GET, ['role' => 'administrative'])
         ]);
         $pages_staff_artist = new Pagination([
             'totalCount' => $staff_artist->count(),
-            'defaultPageSize' => 21,
+            'defaultPageSize' => 15,
             'params' => array_merge($_GET, ['role' => 'artistic'])
         ]);
         $model_staff_admin = $staff_admin->offset($pages_staff_admin->offset)
