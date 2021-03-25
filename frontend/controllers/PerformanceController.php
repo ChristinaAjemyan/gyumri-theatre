@@ -83,6 +83,7 @@ class PerformanceController extends Controller
                 $performances_arr[$i]['desc'] = Yii::t('text', $val['desc']);
                 $performances_arr[$i]['short_desc'] = Yii::t('text', $val['short_desc']);
                 $performances_arr[$i]['show_date'] = $val['show_date'];
+                $performances_arr[$i]['hall'] = $val['hall'];
                 $performances_arr[$i]['img_path'] = Yii::t('text', $val['img_path']);
                 $performances_arr[$i]['genre'] = trim($str, ',');
                 $performances_arr[$i]['age_restriction'] = $val['age_restriction'];
@@ -180,6 +181,21 @@ class PerformanceController extends Controller
         if (Yii::$app->request->isAjax && isset($_GET['id'])){
 
             return $this->renderAjax('modal_ordering',['id' => $_GET['id']]);
+        }
+    }
+
+    public function actionMultipleVideos(){
+        if (Yii::$app->request->isAjax && isset($_GET['id'])){
+            $model = $this->findModel($_GET['id']);
+
+            return $this->renderAjax('multiple-videos',['id' => $_GET['id'],'model' => $model]);
+        }
+    }
+
+    public function actionMultipleGalleries(){
+        if (Yii::$app->request->isAjax && isset($_GET['id'])){
+
+            return $this->renderAjax('multiple-galleries',['id' => $_GET['id']]);
         }
     }
 

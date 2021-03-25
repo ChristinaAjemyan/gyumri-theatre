@@ -15,7 +15,7 @@ use yii\widgets\LinkPager;  ?>
                             </div>
                             <div class="col-md-9 col-12">
                                 <div class="media-body mt-4">
-                                    <aside class="aside_text aside-text_bg text-uppercase" style="margin-right: -14px;"><?= Yii::t('home', 'Փոքր թատրոն'); ?></aside>
+                                    <?= \common\models\Performance::asideHallName($performance['hall'])  ?>
                                     <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
                                     <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
                                         <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['title']); ?></h5>

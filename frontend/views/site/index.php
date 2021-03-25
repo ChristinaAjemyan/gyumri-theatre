@@ -132,8 +132,10 @@ use yii\helpers\Url;
                             <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performanceSoon->slug)]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
                         </div>
                         <div class="d-flex">
+                            <?php if (!is_null($performanceSoon->show_date)) : ?>
                             <span class="calendar"><i class="far fa-calendar-alt"></i></span>
                             <p class='view-movie'><?= Performance::getPerformanceTime($performanceSoon->show_date); ?></p>
+                            <?php endif; ?>
                         </div>
 
                     </div>
@@ -165,7 +167,9 @@ use yii\helpers\Url;
                                 <img class="card-img-top" style="height: 275px; max-width: 200px; object-fit: cover;margin: 0px 15px;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
+                                    <?php if (!is_null($item->show_date)) : ?>
                                     <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </a>

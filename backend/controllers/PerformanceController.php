@@ -8,6 +8,7 @@ use common\models\SourceMessage;
 use common\models\StaffPerformance;
 use common\models\Image;
 use common\models\TypePerformance;
+use common\models\Videolink;
 use Yii;
 use common\models\Performance;
 use app\models\PerformanceSearch;
@@ -90,6 +91,7 @@ class PerformanceController extends Controller
         $model_image = new Image();
         $model_genre_perform = new GenrePerformance();
         $model_type_perform = new TypePerformance();
+        $model_videolink_perform = new Videolink();
 
         if ($model->load(Yii::$app->request->post())) {
             Main::createUploadDirectories('avatars/performance', ['original', '400', '200']);
@@ -202,13 +204,24 @@ class PerformanceController extends Controller
                     Main::myResizeImage('galleries', $image_name, ['250']);
                 }
             }
+            if (!is_null(Yii::$app->request->post("Videolink")['link'])){
+                $links = Yii::$app->request->post("Videolink")['link'];
+                $filtered_links = array_filter($links, function($value) { return !is_null($value) && $value !== ''; });
+
+                foreach ($filtered_links as $item){
+                    $links_model = new Videolink();
+                    $links_model->performance_id = $model->attributes['id'];
+                    $links_model->link = $item ? $item : false;
+                    $links_model->save(false);
+                }
+            }
 
             return $this->redirect(['view', 'id' => $model->id]);
         }
         return $this->render('create', [
             'model' => $model, 'model_image' => $model_image,
             'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform,
-            'model_type_perform' => $model_type_perform
+            'model_type_perform' => $model_type_perform, 'model_videolink_perform' => $model_videolink_perform
         ]);
     }
 
@@ -226,6 +239,7 @@ class PerformanceController extends Controller
         $model_image = new Image();
         $model_genre_perform = new GenrePerformance();
         $model_type_perform = new TypePerformance();
+        $model_videolink_perform = new Videolink();
 
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
         Yii::$app->session->set('banner', $model::find()->asArray()->where(['id' => $id])->one()['banner']);
@@ -349,6 +363,19 @@ class PerformanceController extends Controller
                     Main::myResizeImage('galleries', $image_name, ['250']);
                 }
             }
+
+            if (!is_null(Yii::$app->request->post("Videolink")['link'])){
+                $links = Yii::$app->request->post("Videolink")['link'];
+                $filtered_links = array_filter($links, function($value) { return !is_null($value) && $value !== ''; });
+
+                foreach ($filtered_links as $item){
+                    $links_model = new Videolink();
+                    $links_model->performance_id = $id;
+                    $links_model->link = $item ? $item : false;
+                    $links_model->save(false);
+                }
+            }
+
             unset($_SESSION['img_name']);
             unset($_SESSION['banner']);
             unset($_SESSION['mobile_banner']);
@@ -375,7 +402,7 @@ class PerformanceController extends Controller
         return $this->render('update', [
             'model' => $model, 'model_image' => $model_image,
             'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform,
-            'model_type_perform' => $model_type_perform
+            'model_type_perform' => $model_type_perform,'model_videolink_perform' => $model_videolink_perform
         ]);
     }
 

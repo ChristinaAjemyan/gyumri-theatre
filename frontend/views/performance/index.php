@@ -41,6 +41,7 @@ use yii\widgets\LinkPager; ?>
                         </div>
                         <div class="col-md-9 col-12">
                             <div class="media-body mt-4">
+                                <?= \common\models\Performance::asideHallName($performance['hall'])  ?>
                                 <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
                                 <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
                                     <h5 class="mt-0 media-title" style="max-width: 100%;"><?= Yii::t('text', $performance['title']); ?></h5>
@@ -59,6 +60,7 @@ use yii\widgets\LinkPager; ?>
                                         </a>
                                         <?php endif; ?>
                                     </div>
+
                                     <p class="movie-lenght">
                                         <?php if (!empty($performance['performance_length']) && isset($performance['performance_length'])) : ?>
                                             <?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
@@ -95,7 +97,7 @@ use yii\widgets\LinkPager; ?>
     <div class="container">
 
         <div class="main_carousel owl-carousel" id="performances-carusel">
-            <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
+            <?php $performances = Performance::find()->orderBy(['show_date' => SORT_DESC])->limit(6)->all(); ?>
             <?php if (!empty($performances) && isset($performances)): ?>
                 <?php foreach ($performances as $item): ?>
                     <div class="carousel_item">

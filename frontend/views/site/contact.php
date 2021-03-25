@@ -44,7 +44,7 @@ use yii\helpers\Url;
             </div>
         <?php endif; ?>
         <div class="current_performances">
-            <h2 class="block_title carousel_title mt-3 contact_block_title"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
+            <h2 class="block_title carousel_title mt-3 contact_block_title" style="padding-top: 65px;"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
             <div class="block_title_gred_line"></div>
         </div>
         <span class="title_line" style="margin-top: -25px;"></span>
@@ -139,6 +139,8 @@ $js = <<<JS
 $(function() {
     $( document ).ready(function() {
       $('#contactModal').modal();
+      $('#myMap').css('transition','.5s');
+      $('#contactModal').css('transition','.5s');
       $('.contact_block_title').css('padding-top','130px')
     })
     $('#contactBtn').on('click',function() {
@@ -150,11 +152,12 @@ $(function() {
         $('#myMap').css('height','90vh');
         $('.contact_block_title').css('padding-top','65px')
     });
-        $(window).on('click',function(){
+    /*$(window).on('click',function(){
         $('#contactModal').modal('hide');
         $('#myMap').css('height','90vh');
+        $('#myMap').css('transition','.5s');
         $('.contact_block_title').css('padding-top','65px')
-    });
+    });*/
     $('.close_button').on('click',function() {
       $('#myMap').css('height','90vh');
       $('.contact_block_title').css('padding-top','65px')

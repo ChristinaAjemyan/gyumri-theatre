@@ -84,19 +84,26 @@ use yii\helpers\Url;
     <?php if (!empty($images) && isset($images)): ?>
     <section class="present-corusel" >
         <div class="container page_images_carousel">
-            <div class="current_performances" style="margin: 0 auto;">
-                <h2 class="block_title carousel_title mt-0 contact_block_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
-                <div class="block_title_gred_line"></div>
-            </div>
-            <span class="title_line"></span>
-            <div class="performances-carusel owl-carousel" id="current_performance">
-                <?php foreach ($images as $image): ?>
-                <div class="block-present carusel_block">
-                    <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
-                        <img src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
-                    </a>
+            <div class="current_performances d-flex justify-content-around" style="margin: 0 auto;">
+                <div class="performance_galleries" data-id="<?=$model->id?>">
+                    <h2 class="block_title carousel_title mt-0 contact_block_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
+                    <div class="block_title_gred_line"></div>
                 </div>
-                <?php endforeach; ?>
+                <div class="performance_videos" data-id="<?=$model->id?>">
+                    <h2 class="block_title carousel_title mt-0 contact_block_title" style="color: #c2c1c1;"><?= Yii::t('home', 'ՏԵՍԱՆՅՈՒԹԵՐ') ?></h2>
+                </div>
+            </div>
+            <div class="ph_v_content">
+                <span class="title_line"></span>
+                <div class="performances-carusel owl-carousel" id="current_performance">
+                    <?php foreach ($images as $image): ?>
+                        <div class="block-present carusel_block">
+                            <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
+                                <img src="<?= Yii::$app->params['backend-url'].'/upload/galleries/250/'.$image->image; ?>" alt="Photo">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </section>
@@ -121,8 +128,10 @@ use yii\helpers\Url;
 
                         <div class="media-footer" style="margin-top: 25px; display: block">
                             <div class="d-flex mb-2">
+                                <?php if (!is_null($model->show_date)) : ?>
                                 <span class="calendar ml-0 mr-2 text-white"><i class="far fa-calendar-alt"></i></span>
                                 <p class='view-movie' style="margin-top: -4px;"><?= Performance::getPerformanceTime($model->show_date); ?></p>
+                                <?php endif; ?>
                             </div>
                             <?php if ($model->external_id) : ?>
                             <div class="media_btn-group">
@@ -160,7 +169,7 @@ use yii\helpers\Url;
     <div class="container">
 
         <div class="main_carousel owl-carousel" id="performances-carusel">
-            <?php $performances = Performance::find()->orderBy(['id' => SORT_DESC])->limit(6)->all(); ?>
+            <?php $performances = Performance::find()->orderBy(['show_date' => SORT_DESC])->limit(6)->all(); ?>
             <?php if (!empty($performances) && isset($performances)): ?>
                 <?php foreach ($performances as $item): ?>
                     <div class="carousel_item">
@@ -180,3 +189,93 @@ use yii\helpers\Url;
     </div>
 
 </section>
+<?php
+$js = <<<JS
+$( document ).ready(function() {
+    $('.performance_videos').on('click',function() {
+        let id = $(this).attr('data-id');
+        $('.performance_videos').append(`<div class="block_title_gred_line"></div>`);
+        $('.performance_videos h2').css('color','#ec7532');
+        
+        $('.performance_galleries .block_title_gred_line').remove();
+        $('.performance_galleries h2').css('color','#c2c1c1');
+        $.ajax({url: '/performance/multiple-videos?id='+id,type: 'get',dataType: 'html',
+            success: (data) => {
+                $('.ph_v_content').html(data);
+                $('#current_performance_v').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    nav: true,
+                    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false,
+                        },
+                        700:{
+                            items:2,
+                            nav:false,
+                        },
+                        1000:{
+                            items:3,
+                            nav:true,
+                        },
+                        1200:{
+                            items:4,
+                            nav:true,
+                            margin:0,
+                        }
+                    }
+
+                });
+            }
+        })
+    })
+    
+    $('.performance_galleries').on('click',function() {
+        let id = $(this).attr('data-id');
+        $('.performance_videos .block_title_gred_line').remove();
+        $('.performance_videos h2').css('color','#c2c1c1');
+        
+        $('.performance_galleries').append(`<div class="block_title_gred_line"></div>`);
+        $('.performance_galleries h2').css('color','#ec7532');
+        
+        $.ajax({url: '/performance/multiple-galleries?id='+id,type: 'get',dataType: 'html',
+            success: (data) => {
+                $('.ph_v_content').html(data)
+                $('#current_performance_ph').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    nav: true,
+                    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false,
+                        },
+                        700:{
+                            items:2,
+                            nav:false,
+                        },
+                        1000:{
+                            items:3,
+                            nav:true,
+                        },
+                        1200:{
+                            items:4,
+                            nav:true,
+                            margin:0,
+                        }
+                    }
+
+                });
+            }
+        })
+    })
+})
+
+JS;
+$this->registerJs($js);
+?>

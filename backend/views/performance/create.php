@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_form', [
         'model' => $model, 'model_image' => $model_image,
         'model_stf_perform' => $model_stf_perform, 'model_genre_perform' => $model_genre_perform,
-        'model_type_perform' => $model_type_perform
+        'model_type_perform' => $model_type_perform,'model_videolink_perform' => $model_videolink_perform
     ]) ?>
 
 </div>

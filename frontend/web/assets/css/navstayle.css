@@ -239,6 +239,13 @@ span.title {
     box-shadow: none
 }
 
+.performance_galleries{
+    cursor: pointer;
+}
+.performance_videos{
+    cursor: pointer;
+}
+
 .carusel_block{
     position:relative;
     display:inline-block;
@@ -3142,7 +3149,6 @@ img.big-carousel{
     width: 330px;
     padding-bottom: 15px;
     font-size: 18px;
-    padding-top: 65px;
 }
 .block_title_gred_line{
     width: 330px; height: 3px;margin: 0px auto 0px; background-image: linear-gradient(to right, #fbbd61, #ec7532);

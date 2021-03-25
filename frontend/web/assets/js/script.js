@@ -450,6 +450,8 @@ $('.performance_tab_cont').on('click',function () {
                         </div>
                         <div class="col-md-9 col-12">
                             <div class="media-body mt-4">
+                            ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\" style='margin-right: -14px;'>"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" :
+                        item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
                                 <p class="author">${item.author}</p>
                                 <a href="/performance/view/${item.slug}">
                                     <h5 class="mt-0 media-title">${item.title}</h5>

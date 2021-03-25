@@ -120,5 +120,13 @@ class Performance extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Performance::className(), ['id' => 'type_id']);
     }
+
+    public static function asideHallName($hallId){
+        if ($hallId == 1){
+            return '<aside class="aside_text aside-text_bg text-uppercase" style="margin-right: -14px;">'.Yii::t('home', 'Փոքր թատրոն').'</aside>';
+        }else if ($hallId == 2){
+            return '<aside class="aside_text text-uppercase" style="margin-right: -14px;">'.Yii::t('home', 'Հյուրախաղ').'</aside>';
+        }
+    }
 }
 
