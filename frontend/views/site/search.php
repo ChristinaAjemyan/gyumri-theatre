@@ -86,19 +86,19 @@ use yii\helpers\Url; ?>
             <div class="title-side-line"></div>
         </div>
         <section class="actors_lists mt-0">
-            <div class="actors_main_my row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 w-100">
-            <?php foreach ($searchInformation['staff'] as $item): ?>
-                <div class="col">
-                    <a href="<?=  Url::to(['/staff/view', 'slug' => Yii::t('text', $item['slug'])]);?>">
-                        <div class="actor">
-                            <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item['img_path']; ?>" alt="Photo">
-                            <h6 class="actor_name"><?= Yii::t('text', $item['first_name']).' '.Yii::t('text', $item['last_name']); ?></h6>
-                            <span class="actor_type"><?= Yii::t('home', 'Դերասան') ?></span>
+                <div class="actors_main_my row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2" style="width: 103%!important;">
+                    <?php foreach ($searchInformation['staff'] as $item): ?>
+                        <div class="col" style="padding-right: 10px;padding-left: 10px;">
+                            <a href="<?=  Url::to(['/staff/view', 'slug' => Yii::t('text', $item['slug'])]);?>">
+                                <div class="actor">
+                                    <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item['img_path']; ?>" alt="Photo">
+                                    <h6 class="actor_name"><?= Yii::t('text', $item['first_name']).' '.Yii::t('text', $item['last_name']); ?></h6>
+                                    <span class="actor_type"><?= Yii::t('text', $item['staff_genre_type']) ?></span>
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
-            </div>
         </section>
         <hr>
         <?php endif; ?>

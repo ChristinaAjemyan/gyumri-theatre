@@ -192,7 +192,7 @@ class SiteController extends Controller
                     $whereNews .= " `title` LIKE '%{$item}%' or `content` LIKE '%{$item}%' or";
                 }
                 $searchInformation['performance'] = Performance::find()->where(rtrim($wherePerformance, 'or'))->asArray()->all();
-                $searchInformation['staff'] = Staff::find()->where(rtrim($whereStaff, 'or'))->asArray()->all();
+                $searchInformation['staff'] = Staff::find()->where(['role_id' => 1])->andwhere(rtrim($whereStaff, 'or'))->asArray()->all();
                 $searchInformation['news'] = News::find()->where(rtrim($whereNews, 'or'))->asArray()->all();
 
                 if (!empty($searchInformation['performance']) && isset($searchInformation['performance'])){
