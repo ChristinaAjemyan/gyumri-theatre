@@ -19,6 +19,8 @@ use mihaildev\elfinder\ElFinder;
         <div class="col-lg-6 col-md-8 col-sm-12">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+            <?= $form->field($model, 'videolink')->textInput(['maxlength' => true]) ?>
+
             <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
 
             <?php if (isset($result)) : ?>
