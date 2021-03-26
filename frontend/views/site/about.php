@@ -74,7 +74,7 @@
 
                 <div class="col-md-5 position-relative banner_perform" style="margin-top: 23px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/images/image_about.png');background-size: cover;">
                     <span class="btn_play about_popup_youtube site-index-trailer">
-                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=uqA-tT3T6FQ">
+                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=YrIRBWptUI8">
                             <i class="fas fa-play" style="font-size: 24px"></i>
                         </a>
 <!--                        <a target="_blank" class="popup_youtube" href="https://www.youtube.com/embed/uqA-tT3T6FQ"><i class="fas fa-play" style="font-size: 23px"></i></a>-->
