@@ -23,7 +23,7 @@ $('#datepicker').datepicker({
 
 
 $('#current_performance').owlCarousel({
-  loop:true,
+  loop:false,
   margin:10,
   responsiveClass:true,
   nav: true,
@@ -51,7 +51,7 @@ $('#current_performance').owlCarousel({
 });
 
 $('#performances-carusel').owlCarousel({
-  loop:true,
+  loop:false,
   margin:0,
   responsiveClass:true,
   nav: true,
@@ -92,6 +92,9 @@ $('#headerCarousel').owlCarousel({
   lazyLoad:true,
   loop:true,
   margin:0,
+  autoplay:true,
+  autoplayTimeout:4000,
+  autoplaySpeed:1500
   
 });
 
@@ -113,7 +116,7 @@ $('.performances-carusel').magnificPopup({
 });
 
 $('#current_performance_slide').owlCarousel({
-    loop:true,
+    loop:false,
     margin:10,
     responsiveClass:true,
     nav: true,
@@ -140,7 +143,7 @@ $('#current_performance_slide').owlCarousel({
 });
 
 $('#season_carousel').owlCarousel({
-    loop:true,
+    loop:false,
     margin:5,
     responsiveClass:true,
     nav: true,
@@ -285,46 +288,47 @@ $('.season_time').on('click',function () {
         success: function (data) {
             $('#main_content_perf_data').html(`<div class="main_carousel owl-carousel archive_content_carousel" id="current_performance"></div>`)
             if (typeof(data.performances) != "undefined" && data.performances !== null){
-                $.each(data.performances,function (i,item) {
-                    $(".archive_page_carousel .owl-carousel").append(`
+                    $.each(data.performances,function (i,item) {
+                        $(".archive_page_carousel .owl-carousel").append(`
                     <div class="carousel_item">
                         <div class="card" style="width: 16rem;">
                             <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/400/'+item.img_path}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${item.title}</h5>
-                                <p class="card-text">${item.show_date}</p>
+                                <p class="card-text">${item.show_date != '01 Հունվար 01:00' ? item.show_date : ''}</p>
                             </div>
                         </div>
                     </div>
                 `);
-                })
+                    })
 
-                $('#current_performance').owlCarousel({
-                    loop:true,
-                    margin:10,
-                    responsiveClass:true,
-                    nav: true,
-                    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
-                    responsive:{
-                        0:{
-                            items:1,
-                            nav:false,
-                        },
-                        700:{
-                            items:2,
-                            nav:false,
-                        },
-                        1000:{
-                            items:3,
-                            nav:true,
-                        },
-                        1200:{
-                            items:4,
-                            nav:true,
-                            margin:0,
+                    $('#current_performance').owlCarousel({
+                        loop:false,
+                        margin:10,
+                        responsiveClass:true,
+                        nav: true,
+                        navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                        responsive:{
+                            0:{
+                                items:1,
+                                nav:false,
+                            },
+                            700:{
+                                items:2,
+                                nav:false,
+                            },
+                            1000:{
+                                items:3,
+                                nav:true,
+                            },
+                            1200:{
+                                items:4,
+                                nav:true,
+                                margin:0,
+                            }
                         }
-                    }
-                });
+                    });
+
                 if (typeof(data.season) != "undefined" && data.season !== null){
                     $('.archive_main_content').html(`
                     <div class="container">
@@ -350,7 +354,7 @@ $('.season_time').on('click',function () {
                         delegate:'a'
                     });
                     $('#current_performance_slide').owlCarousel({
-                        loop:true,
+                        loop:false,
                         margin:10,
                         responsiveClass:true,
                         nav: true,

@@ -35,45 +35,53 @@ use yii\helpers\Url; ?>
             <div class="title-side-line"></div>
         </div>
         <?php foreach ($searchInformation['performance'] as $performance) : ?>
-        <div class="media d-block">
-            <div class="row performances_main">
-                <div class="col-md-3  col-12 p-0">
-                    <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                        <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
-                    </a>
-                </div>
-                <div class="col-md-9 col-12">
-                    <div class="media-body mt-4">
-                        <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
-                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
-                            <h5 class="mt-0 media-title"><?= Yii::t('text', $performance['title']); ?></h5>
-                        </a>
-                        <small class="movie-type"><?= $performance['genre']; ?></small>
-                        <p class="media-text">
-                            <?= mb_substr(Yii::t('text', $performance['desc']),0,250, 'utf-8'); ?>
-                            <?= strlen(Yii::t('text', $performance['desc'])) > 250 ? '...' : ''; ?>
-                        </p>
-                        <div class="media-footer">
-                            <div class="media_btn-group">
-                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
-                                <?php if ($performance['show_date'] > date("Y-m-d H:i:s")): ?>
-                                    <button class="btn add_cupon"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </button>
-                                <?php endif; ?>
+                <div class="media d-block">
+                    <div class="row performances_main">
+                        <div class="col-md-3  col-12 p-0">
+                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
+                                <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$performance['img_path']; ?>" class="mr-5" alt="Photo">
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <div class="media-body mt-4">
+                                <?= \common\models\Performance::asideHallName($performance['hall'])  ?>
+                                <p class="author"><?= Yii::t('text', $performance['author']); ?></p>
+                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>">
+                                    <h5 class="mt-0 media-title" style="max-width: 100%;"><?= Yii::t('text', $performance['title']); ?></h5>
+                                </a>
+                                <small class="movie-type"><?= $performance['genre']; ?></small>
+                                <p class="media-text">
+                                    <?= mb_substr(Yii::t('text', $performance['short_desc']),0,370, 'utf-8'); ?>
+                                    <?= strlen(Yii::t('text', $performance['short_desc'])) > 370 ? '...' : ''; ?>
+                                </p>
+                                <div class="media-footer">
+                                    <div class="media_btn-group">
+                                        <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance['slug'])]); ?>" class="btn more_btn"><?= Yii::t('home', 'ԱՎԵԼԻՆ') ?></a>
+                                        <?php if ($performance['external_id']) : ?>
+                                            <a class="btn add_cupon showModalOrdering" data-id="<?=$performance['external_id']?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <p class="movie-lenght">
+                                        <?php if (!empty($performance['performance_length']) && isset($performance['performance_length'])) : ?>
+                                            <?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>
+                                        <?php endif; ?>
+                                        <?php if (!empty($performance['age_restriction']) && isset($performance['age_restriction'])) : ?>
+                                            <span><?= $performance['age_restriction']; ?>+</span>
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
                             </div>
-                            <p class='view-movie'><?= $performance['func_date']; ?></p>
-                            <p class="movie-lenght"><?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?><span><?= $performance['age_restriction']; ?>+</span></p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
         <?php endforeach; ?>
         <?php endif; ?>
 
         <?php if(!empty($searchInformation['staff']) && isset($searchInformation['staff'])) : ?>
-        <div class="d-flex mb-3 wv3">
+        <div class="d-flex m2-3 mt-4 wv3">
             <h2 class="mb-0 title-type"><b><?= Yii::t('home', 'ԴԵՐԱՍԱՆՆԵՐ'); ?></b></h2>
             <div class="title-side-line"></div>
         </div>

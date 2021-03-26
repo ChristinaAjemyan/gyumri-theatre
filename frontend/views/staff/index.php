@@ -34,10 +34,10 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                 <img src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$item->img_path; ?>" class="staff_img h-auto" alt="Photo">
                                 <div class="media-body my_media-body">
                                     <h1 class="mt-3 media-title" style="margin-bottom: -5px;font-size: 25px;"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h1>
-                                    <p class="author" style="font-size: 13px"><?= $item->role->name; ?></p>
-                                    <p style="text-indent: 20px;font-size: 15px;margin-bottom: 13px;font-family: sans-serif;">
-                                        <?= mb_substr(Yii::t('text', $item->index_description),0,230, 'utf-8'); ?>
-                                        <?= strlen(Yii::t('text', $item->index_description)) > 230 ? '...' : ''; ?>
+                                    <p class="author mb-2" style="font-size: 13px"><?= $item->role->name; ?></p>
+                                    <p style="text-indent: 20px;font-size: 14px;margin-bottom: 13px;font-family: sans-serif;">
+                                        <?= mb_substr(Yii::t('text', $item->index_description),0,215, 'utf-8'); ?>
+                                        <?= strlen(Yii::t('text', $item->index_description)) > 215 ? '...' : ''; ?>
                                     </p>
                                     <div class="media-footer">
                                         <div class="media_btn-group m-auto">
@@ -91,7 +91,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                                                  class="align-self-center mr-3 present_baner" alt="...">
                                                                             <div class="media-body" style="text-align: left;">
                                                                                 <h5 class="mt-0 performance_name"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h5>
-                                                                                <span class="author"><?= Yii::t('text', Role::find()->where(['id' => $item->role_id])->one()->name); ?></span>
+                                                                                <span class="author" style="height: unset"><?= Yii::t('text', Role::find()->where(['id' => $item->role_id])->one()->name); ?></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -128,7 +128,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                                                  class="align-self-center mr-3 present_baner" alt="...">
                                                                             <div class="media-body" style="text-align: left;">
                                                                                 <h5 class="mt-0 performance_name"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h5>
-                                                                                <span class="author"><?= Yii::t('text', Role::find()->where(['id' => $item->role_id])->one()->name); ?></span>
+                                                                                <span class="author" style="height: unset"><?= Yii::t('text', Role::find()->where(['id' => $item->role_id])->one()->name); ?></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -163,7 +163,6 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
 </main>
 <section class="about-carousel" style="transform: translateY(30px);">
         <div class="container">
-
             <div class="main_carousel owl-carousel" id="performances-carusel">
                 <?php $performances = Performance::find()->orderBy(['show_date' => SORT_DESC])->limit(6)->all(); ?>
                 <?php if (!empty($performances) && isset($performances)): ?>

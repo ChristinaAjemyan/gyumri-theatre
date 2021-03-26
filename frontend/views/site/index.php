@@ -8,24 +8,27 @@ use yii\helpers\Url;
 
 ?>
 
-
+<!--<div class="scrollme">
+    <h1 class="baner_title"><?/*= Yii::t('home', 'Գյումրու Դրամատիկական թատրոն') */?></h1>
+</div>-->
 <div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
     <img src="/assets/images/Group 7.svg" alt="Scroll down" class="scroll">
-    <div class="scrollme">
-        <h1 class="baner_title"><?= Yii::t('home', 'Գյումրու Դրամատիկական թատրոն') ?></h1>
-    </div>
     <div class="header_carousel owl-carousel" id="headerCarousel">
 
         <div class="">
-            <img src="/assets/images/baner.png" alt="Photo">
+            <img src="/assets/images/IMG_5753.JPG" alt="Photo">
         </div>
-
         <div class="">
-            <img src="/assets/images/baner_gray.jpg" alt="Photo">
+            <img src="/assets/images/IMG_5755.JPG" alt="Photo">
         </div>
-
         <div class="">
-            <img src="/assets/images/baner.png" alt="Photo">
+            <img src="/assets/images/IMG_5752.JPG" alt="Photo">
+        </div>
+        <div class="">
+            <img src="/assets/images/IMG_5754.JPG" alt="Photo">
+        </div>
+        <div class="">
+            <img src="/assets/images/IMG_5756.JPG" alt="Photo">
         </div>
 
     </div>
@@ -103,7 +106,7 @@ use yii\helpers\Url;
 
 <section class="new_section p-2" style="min-height: 650px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ), url(<?= Yii::$app->params['backend-url'].'/upload/banners/'.$performanceSoon->banner; ?>);">
     <div class="container" style="padding: 0 30px;">
-        <h2 class="new_section-title mb-0" style="border-bottom: 1px solid dimgrey;padding-bottom: 10px;"><?= Yii::t('home', 'ԱՆՈՆՍ') ?></h2>
+        <h2 class="new_section-title mb-0" style="border-bottom: 1px solid dimgrey;padding-bottom: 10px;"><?= Yii::t('home', 'ՇՈՒՏՈՎ') ?></h2>
         <div class="block_title_gred_line m-0 mb-2" style="width: 115px;"></div>
         <div class="row" style="margin-top: 65px;">
             <div class="col-md-7 boredr">

@@ -145,7 +145,7 @@ use yii\helpers\Url;
                 </div>
 
                 <?php if (!empty($model->trailer) && isset($model->trailer)): ?>
-                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?= Yii::$app->params['backend-url'].'/upload/mobile_banners/'.$model->mobile_banner; ?>);background-size: cover;">
+                    <div class="col-md-5 position-relative banner_perform" style="margin-top: 15px;margin-left: -15px; background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(<?= Yii::$app->params['backend-url'].'/upload/mobile_banners/'.$model->mobile_banner; ?>);background-size: cover;">
                         <span class="btn_play about_popup_youtube site-index-trailer">
                             <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=<?= $model->trailer; ?>"><i class="fas fa-play" style="font-size: 23px"></i></a>
                         </span>
@@ -203,7 +203,7 @@ $( document ).ready(function() {
             success: (data) => {
                 $('.ph_v_content').html(data);
                 $('#current_performance_v').owlCarousel({
-                    loop:true,
+                    loop:false,
                     margin:10,
                     responsiveClass:true,
                     nav: true,
@@ -245,7 +245,7 @@ $( document ).ready(function() {
             success: (data) => {
                 $('.ph_v_content').html(data)
                 $('#current_performance_ph').owlCarousel({
-                    loop:true,
+                    loop:false,
                     margin:10,
                     responsiveClass:true,
                     nav: true,

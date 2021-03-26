@@ -39,7 +39,7 @@ return [
     'Որևէ տվյալ չի գտնվել' => 'No result',
     'Անուն' => 'Name',
     'Թեմա' => 'Subject',
-    'Այս բաժնում ներկայացված է թատրոնի արխիվային նյութերը և  Տարեգրությունը՝ ըստ թատերաշրջանի' => 'This section presents the archived materials of the theater and the chronicles according to the season',
+    'Այս բաժնում ներկայացված է թատրոնի արխիվային նյութերը եվ  Տարեգրությունը՝ ըստ թատերաշրջանի' => 'This section presents the archived materials of the theater and the chronicles according to the season',
     'ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ' => 'Perfomances of this teathre season',
     'ԹԱՏԵՐԱՇՐՋԱՆ' => 'Theater season',
     'Հաղորդագրություն' => 'Message',

@@ -8,7 +8,7 @@ use yii\helpers\Url;
     <div  class="archive_header">
         <div class="archive_header_content">
             <h1 class="archive_header_title"><?= Yii::t('home','Արխիվ') ?></h1>
-            <p class="archive_header_text"><?= Yii::t('home','Այս բաժնում ներկայացված է թատրոնի արխիվային նյութերը և  Տարեգրությունը՝ ըստ թատերաշրջանի') ?></p>
+            <p class="archive_header_text"><?= Yii::t('home','Այս բաժնում ներկայացված է թատրոնի արխիվային նյութերը եվ  Տարեգրությունը՝ ըստ թատերաշրջանի') ?></p>
         </div>
     </div>
 
@@ -47,7 +47,8 @@ use yii\helpers\Url;
                                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
                                             <h5 class="card-title"><?= Yii::t('text', $performance[0]->title); ?></h5>
                                         </a>
-                                        <p class="card-text"><?= Performance::getPerformanceTime($performance[0]->show_date); ?></p>
+                                        <p class='card-text'><?= Performance::getPerformanceTime($performance[0]->show_date) != '01 Հունվար 01:00' ? Performance::getPerformanceTime($performance[0]->show_date) : ''; ?></p>
+
                                     </div>
 <!--                                    <div class="card-body">
                                         <a href="<?/*= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); */?>">

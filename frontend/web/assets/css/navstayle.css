@@ -529,7 +529,7 @@ hr.space-40 {
     /*font-family: "sans-serif";*/
 /*}*/
 #headerCarousel{
-    max-height: 100vh;
+    max-height: 90vh;
 }
 #headerCarousel .owl-dots{
     width: 20px;
@@ -776,39 +776,40 @@ hr.space-40 {
     color: #E18848;
     background: none;
     border: none;
+    background: -webkit-linear-gradient(45deg,#F0B866, #DB7439);-webkit-background-clip: text;-webkit-text-fill-color: transparent;
 }
 .language_select:active{
-    background: none;
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0) !important;
+background: none;
+box-shadow: 0px 0px 0px 0px rgba(0,0,0,0) !important;
 }
 .language_select option{
-    background: black;
-    border: none;
+background: black;
+border: none;
 }
 
 
 
 .carousel-indicators{
-    display: initial !important;
-    left: initial !important;
-    right: -11% !important;
-    top: 43%;
-    z-index: 9 !important;
+display: initial !important;
+left: initial !important;
+right: -11% !important;
+top: 43%;
+z-index: 9 !important;
 }
 .carousel-indicators li,
 .carousel-indicators li.active {
-    display: block;
-    text-align: center;
-    width: 15px !important;
-    height: 15px !important;
-    margin:8px 0px !important;
-    border-radius: 50%;
-    border: none !important;
-    background: #6a7377;
+display: block;
+text-align: center;
+width: 15px !important;
+height: 15px !important;
+margin:8px 0px !important;
+border-radius: 50%;
+border: none !important;
+background: #6a7377;
 }
 .carousel-indicators li.active{
-    background: #e18848;
-    border:2px solid  #e18848;
+background: #e18848;
+border:2px solid  #e18848;
 }
 
 
@@ -1476,7 +1477,7 @@ hr.space-40 {
     font-size:14px;
 }
 .about-present .media .media-text{
-    margin-top: 35px;
+    margin-top: 50px;
     max-height: 193px;
     overflow: hidden;
 }
@@ -1740,7 +1741,7 @@ hr.space-40 {
 }
 .actors_lists .actor{
     margin-top: 20px;
-    max-width: 230px;
+    max-width: 255px;
     box-shadow: 0px 0px 16px -7px rgb(168 168 168);
     padding: 10px;
     border-radius: 10px;
@@ -2953,7 +2954,11 @@ hr.space-40 {
     font-family: "Arm Hmks";
     color: #e18848;
     font-size: 80px;
-
+    background: -webkit-linear-gradient(
+            45deg
+            ,#F0B866, #DB7439);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .main_container{
     padding: 0 30px;
