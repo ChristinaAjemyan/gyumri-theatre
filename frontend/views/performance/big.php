@@ -33,7 +33,7 @@ use yii\widgets\LinkPager;  ?>
                                                 </a>
                                             <?php endif; ?>
                                         </div>
-                                        <p class='view-movie'><?= $performance['func_date'] != '01 Հունվար 01:00' ? $performance['func_date'] : ''; ?></p>
+                                        <p class='view-movie'><?= $performance['func_date'] ? $performance['func_date'] : ''; ?></p>
                                         <p class="movie-lenght">
                                             <?php if (!empty($performance['performance_length']) && isset($performance['performance_length'])) : ?>
                                             <?= $performance['performance_length']; ?> <?= Yii::t('home', 'ՐՈՊԵ') ?>

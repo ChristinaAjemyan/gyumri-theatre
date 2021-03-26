@@ -47,7 +47,7 @@ use yii\helpers\Url;
                                         <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $performance[0]->slug)]); ?>">
                                             <h5 class="card-title"><?= Yii::t('text', $performance[0]->title); ?></h5>
                                         </a>
-                                        <p class='card-text'><?= Performance::getPerformanceTime($performance[0]->show_date) != '01 Հունվար 01:00' ? Performance::getPerformanceTime($performance[0]->show_date) : ''; ?></p>
+                                        <p class='card-text'><?= Performance::getPerformanceTime($performance[0]->show_date) != '01 Հունվար 01:00' || Performance::getPerformanceTime($performance[0]->show_date) != '01 Հունվար 00:00' ? Performance::getPerformanceTime($performance[0]->show_date) : ''; ?></p>
 
                                     </div>
 <!--                                    <div class="card-body">

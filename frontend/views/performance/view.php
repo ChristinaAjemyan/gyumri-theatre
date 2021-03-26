@@ -194,6 +194,8 @@ $js = <<<JS
 $( document ).ready(function() {
     $('.performance_videos').on('click',function() {
         let id = $(this).attr('data-id');
+        $('.performance_galleries .block_title_gred_line').remove();
+        $('.performance_videos .block_title_gred_line').remove();
         $('.performance_videos').append(`<div class="block_title_gred_line"></div>`);
         $('.performance_videos h2').css('color','#ec7532');
         
@@ -234,8 +236,9 @@ $( document ).ready(function() {
     })
     
     $('.performance_galleries').on('click',function() {
-        let id = $(this).attr('data-id');
+        $('.performance_galleries .block_title_gred_line').remove();
         $('.performance_videos .block_title_gred_line').remove();
+        let id = $(this).attr('data-id');
         $('.performance_videos h2').css('color','#c2c1c1');
         
         $('.performance_galleries').append(`<div class="block_title_gred_line"></div>`);

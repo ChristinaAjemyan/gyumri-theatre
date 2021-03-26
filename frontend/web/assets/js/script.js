@@ -295,7 +295,7 @@ $('.season_time').on('click',function () {
                             <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/400/'+item.img_path}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${item.title}</h5>
-                                <p class="card-text">${item.show_date != '01 Հունվար 01:00' ? item.show_date : ''}</p>
+                                <p class="card-text">${item.show_date ? item.show_date : ''}</p>
                             </div>
                         </div>
                     </div>

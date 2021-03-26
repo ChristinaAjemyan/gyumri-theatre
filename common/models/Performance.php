@@ -100,21 +100,26 @@ class Performance extends \yii\db\ActiveRecord
     }
 
     public static function getPerformanceTime($date){
-        $monthsAM = ['Հունվար', 'Փետրվար', 'Մարտ', 'Ապրիլ', 'Մայիս', 'Հունիս',
-            'Հուլիս', 'Օգոստոս', 'Սեպտեմբեր', 'Հոկտեմբեր', 'Նոյեմբեր', 'Դեկտեմբեր'];
-        $monthsRU = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль',
-            'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-        $monthsEN = ['January', 'February', 'March', 'April', 'May', 'June', 'July ',
-            'August', 'September', 'October', 'November', 'December',];
-        $month = date("m",strtotime($date));
-        $cookieLanguage = Yii::$app->request->cookies->getValue('language');
-        if ($cookieLanguage == 'en'){
-            return date("d",strtotime($date)) .' '. $monthsEN[(int)$month-1] .' '. date("H:i",strtotime($date));
+        if ($date){
+            $monthsAM = ['Հունվար', 'Փետրվար', 'Մարտ', 'Ապրիլ', 'Մայիս', 'Հունիս',
+                'Հուլիս', 'Օգոստոս', 'Սեպտեմբեր', 'Հոկտեմբեր', 'Նոյեմբեր', 'Դեկտեմբեր'];
+            $monthsRU = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль',
+                'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+            $monthsEN = ['January', 'February', 'March', 'April', 'May', 'June', 'July ',
+                'August', 'September', 'October', 'November', 'December',];
+            $month = date("m",strtotime($date));
+            $cookieLanguage = Yii::$app->request->cookies->getValue('language');
+            if ($cookieLanguage == 'en'){
+                return date("d",strtotime($date)) .' '. $monthsEN[(int)$month-1] .' '. date("H:i",strtotime($date));
+            }
+            if ($cookieLanguage == 'ru'){
+                return date("d",strtotime($date)) .' '. $monthsRU[(int)$month-1] .' '. date("H:i",strtotime($date));
+            }
+            return date("d",strtotime($date)) .' '. $monthsAM[(int)$month-1] .' '. date("H:i",strtotime($date));
+        }else{
+            return '';
         }
-        if ($cookieLanguage == 'ru'){
-            return date("d",strtotime($date)) .' '. $monthsRU[(int)$month-1] .' '. date("H:i",strtotime($date));
-        }
-        return date("d",strtotime($date)) .' '. $monthsAM[(int)$month-1] .' '. date("H:i",strtotime($date));
+
     }
     public function getType()
     {
