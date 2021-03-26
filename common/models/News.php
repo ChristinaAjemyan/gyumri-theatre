@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string|null $title
+ * @property string|null $videolink
  * @property string|null $content
  * @property string|null $img_path
  * @property string|null $dt_create
@@ -32,9 +33,8 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content'], 'required'],
             [['content'], 'string'],
-            [['dt_create'], 'safe'],
+            [['dt_create','videolink','title', 'content'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['title', 'img_path'], 'string', 'max' => 255],
             ['title', 'filter', 'filter' => 'mb_strtolower']
@@ -50,6 +50,7 @@ class News extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'content' => 'Content',
+            'videolink' => 'Video Link',
             //'img_path' => 'Img Path'
         ];
     }

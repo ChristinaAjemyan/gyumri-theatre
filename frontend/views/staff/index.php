@@ -35,7 +35,7 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                 <div class="media-body my_media-body">
                                     <h1 class="mt-3 media-title" style="margin-bottom: -5px;font-size: 25px;"><?= Yii::t('text', $item->first_name).' '.Yii::t('text', $item->last_name); ?></h1>
                                     <p class="author" style="font-size: 13px"><?= $item->role->name; ?></p>
-                                    <p style="text-indent: 20px;font-size: 15px;margin-bottom: 13px;">
+                                    <p style="text-indent: 20px;font-size: 15px;margin-bottom: 13px;font-family: sans-serif;">
                                         <?= mb_substr(Yii::t('text', $item->index_description),0,230, 'utf-8'); ?>
                                         <?= strlen(Yii::t('text', $item->index_description)) > 230 ? '...' : ''; ?>
                                     </p>

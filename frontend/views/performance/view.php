@@ -84,7 +84,7 @@ use yii\helpers\Url;
     <?php if (!empty($images) && isset($images)): ?>
     <section class="present-corusel" >
         <div class="container page_images_carousel">
-            <div class="current_performances d-flex justify-content-around" style="margin: 0 auto;">
+            <div class="current_performances video_photo_links" style="margin: 0 auto;">
                 <div class="performance_galleries" data-id="<?=$model->id?>">
                     <h2 class="block_title carousel_title mt-0 contact_block_title"><?= Yii::t('home', 'ԼՈՒՍԱՆԿԱՐՆԵՐ') ?></h2>
                     <div class="block_title_gred_line"></div>

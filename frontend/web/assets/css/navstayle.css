@@ -250,6 +250,9 @@ span.title {
     position:relative;
     display:inline-block;
 }
+.video_carousel{
+    background: black; height: 175px;width: 270px
+}
 .carusel_block:after {
     content:'';
     position:absolute;
@@ -763,6 +766,10 @@ hr.space-40 {
     display: inline-block;
     width: 25px;
     border: 1px solid  #5f6769;
+}
+.video_photo_links{
+    display: flex;
+    justify-content: space-evenly;
 }
 .language_select{
     font-size: 18px;
@@ -2337,6 +2344,9 @@ hr.space-40 {
         left: 50%;
         margin-left: -62px;
     }
+    .video_carousel{
+        width: unset;
+    }
 
 }
 @media screen and (max-width: 767px) {
@@ -2549,6 +2559,12 @@ hr.space-40 {
     }
     .performance_header{
         margin-top: 70px;
+    }
+    .video_photo_links{
+        display: block;
+    }
+    .performance_galleries{
+        margin-bottom: 10px;
     }
 }
 @media screen and (max-width: 520px) {
