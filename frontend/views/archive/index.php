@@ -32,7 +32,7 @@ use yii\helpers\Url;
         </div>
     <div id="nav-tabCont">
         <?php if(!empty($season_performances)) : ?>
-        <section class="section_carousel archive_page_carousel">
+        <section class="section_carousel archive_page_carousel pb-2">
             <div class="container">
                 <h2 class="archive_page_carousel_title" style="margin-bottom: 35px;"><?= Yii::t('home','ԹԱՏԵՐԱՇՐՋԱՆՈՒՄ ԲԵՄԱԴՐՎԱԾ ՆԵՐԿԱՅԱՑՈՒՄՆԵՐ') ?></h2>
                 <div id="main_content_perf_data">

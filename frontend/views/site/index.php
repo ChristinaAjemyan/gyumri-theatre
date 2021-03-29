@@ -15,20 +15,20 @@ use yii\helpers\Url;
     <img src="/assets/images/Group 7.svg" alt="Scroll down" class="scroll">
     <div class="header_carousel owl-carousel" id="headerCarousel">
 
-        <div class="">
-            <img src="/assets/images/IMG_5753.JPG" alt="Photo">
+        <div class="banner-item">
+            <img class="h-100" src="/assets/images/IMG_5753.JPG" alt="Photo">
         </div>
-        <div class="">
-            <img src="/assets/images/IMG_5755.JPG" alt="Photo">
+        <div class="banner-item">
+            <img class="h-100" src="/assets/images/IMG_5755.JPG" alt="Photo">
         </div>
-        <div class="">
-            <img src="/assets/images/IMG_5752.JPG" alt="Photo">
+        <div class="banner-item">
+            <img class="h-100" src="/assets/images/IMG_5752.JPG" alt="Photo">
         </div>
-        <div class="">
-            <img src="/assets/images/IMG_5754.JPG" alt="Photo">
+        <div class="banner-item">
+            <img class="h-100" src="/assets/images/IMG_5754.JPG" alt="Photo">
         </div>
-        <div class="">
-            <img src="/assets/images/IMG_5756.JPG" alt="Photo">
+        <div class="banner-item">
+            <img class="h-100" src="/assets/images/IMG_5756.JPG" alt="Photo">
         </div>
 
     </div>

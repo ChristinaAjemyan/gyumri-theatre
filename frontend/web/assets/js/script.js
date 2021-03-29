@@ -21,34 +21,93 @@ $('#datepicker').datepicker({
     $('.navbar').toggleClass('navbar_bg', $(this).scrollTop() > 200);
 });
 
-
-$('#current_performance').owlCarousel({
-  loop:false,
-  margin:10,
-  responsiveClass:true,
-  nav: true,
-       navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
-  responsive:{
-      0:{
-          items:1,
-          nav:false,
-      },
-      700:{
-        items:2,
-          nav:false,
-      },
-      1000:{
-          items:3,
-          nav:true,
-      },
-      1200:{
-        items:4,
-        nav:true,
-        margin:0,
-      }
-  }
+$('#view_performance').owlCarousel({
+    loop:false,
+    margin:10,
+    responsiveClass:true,
+    nav: true,
+    navText: $('#view_performance').attr('data-content') > 4 ? [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : '',
+    responsive:{
+        0:{
+            items:1,
+            nav:false,
+        },
+        700:{
+            items:2,
+            nav:false,
+        },
+        1000:{
+            items:3,
+            nav:true,
+        },
+        1200:{
+            items:4,
+            nav:true,
+            margin:0,
+        }
+    }
 
 });
+
+$.ajax({
+    url: '/archive/active-season', type: "post", dataType: "JSON",
+    success: function (data) {
+        $('#current_performance').owlCarousel({
+            loop:false,
+            margin:10,
+            responsiveClass:true,
+            nav: true,
+            navText: data.performances.length > 4 ? [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : '',
+            responsive:{
+                0:{
+                    items:1,
+                    nav:false,
+                },
+                700:{
+                    items:2,
+                    nav:false,
+                },
+                1000:{
+                    items:3,
+                    nav:true,
+                },
+                1200:{
+                    items:4,
+                    nav:true,
+                    margin:0,
+                }
+            }
+
+        });
+        $('#current_performance_slide').owlCarousel({
+            loop:false,
+            margin:10,
+            responsiveClass:true,
+            nav: true,
+            navText: data.images_length > 4 ? [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : '',
+            responsive:{
+                0:{
+                    items:1,
+                    nav:false,
+                },
+                700:{
+                    items:2,
+                    nav:false,
+                },
+                1000:{
+                    items:3,
+                    nav:true,
+                },
+                1200:{
+                    items:4,
+                    nav:true,
+                    margin:0,
+                }
+            }
+        });
+    }
+});
+
 
 $('#performances-carusel').owlCarousel({
   loop:false,
@@ -99,8 +158,13 @@ $('#headerCarousel').owlCarousel({
 });
 
 $('.actros_imges').magnificPopup({
-  type: 'image',
-  delegate:'a'
+    type: 'image',
+    delegate:'a',
+    removalDelay: 400,
+    mainClass: 'mfp-fade',
+    gallery:{
+      enabled:true, navigateByImgClick: true
+    }
 });
 
 $('.popup_youtube').magnificPopup({
@@ -112,35 +176,12 @@ $('.popup_youtube').magnificPopup({
 
 $('.performances-carusel').magnificPopup({
     type: 'image',
-    delegate:'a'
+    delegate:'a',
+    removalDelay: 400,
+    mainClass: 'mfp-fade',
+    gallery:{enabled:true,navigateByImgClick: true}
 });
 
-$('#current_performance_slide').owlCarousel({
-    loop:false,
-    margin:10,
-    responsiveClass:true,
-    nav: true,
-    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
-    responsive:{
-        0:{
-            items:1,
-            nav:false,
-        },
-        700:{
-            items:2,
-            nav:false,
-        },
-        1000:{
-            items:3,
-            nav:true,
-        },
-        1200:{
-            items:4,
-            nav:true,
-            margin:0,
-        }
-    }
-});
 
 $('#season_carousel').owlCarousel({
     loop:false,
@@ -307,7 +348,7 @@ $('.season_time').on('click',function () {
                         margin:10,
                         responsiveClass:true,
                         nav: true,
-                        navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                        navText: data.performances.length > 4 ? [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : '',
                         responsive:{
                             0:{
                                 items:1,
@@ -358,7 +399,7 @@ $('.season_time').on('click',function () {
                         margin:10,
                         responsiveClass:true,
                         nav: true,
-                        navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                        navText: data.season.images > 4 ? [`<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : "",
                         responsive:{
                             0:{
                                 items:1,

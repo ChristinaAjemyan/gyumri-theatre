@@ -71,6 +71,22 @@ class ArchiveController extends Controller
         ]);
     }
 
+    public function actionActiveSeason(){
+        if (Yii::$app->request->isAjax){
+            $active_season = Archive::find()->where(['active_season' => 1])->one();
+            $images = ArchiveImage::find()->where(['archive_id' => $active_season->id])->all();
+            $season_arr = [];
+            foreach ($images as $i => $item){
+                $season_arr['images'][] = $item->image;
+            }
+            return Json::encode([
+                'performances' => ArchivePerformance::find()->where(['archive_id' => $active_season->id])->all(),
+                'images_length' => count($season_arr['images'])
+            ]);
+        }
+    }
+
+
     /**
      * Finds the News model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

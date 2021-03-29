@@ -73,7 +73,7 @@ use yii\helpers\Url;
 </section>
 <div class="modal modal_main fade pr-0" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
 
-    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1090px;margin-top: 30px;">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1090px;margin-top: 10px;">
 
         <div class="modal-content position-relative" style="border-radius: 20px;background: black;border: none;box-shadow:-2px 2px 23px -7px rgb(168 168 168);">
             <button type="button" class="close close_button" style="padding: 9px 14px;background-image: linear-gradient(to right, #F0B866, #DB7439); z-index: 9999" data-dismiss="modal" aria-label="Close">
@@ -150,7 +150,7 @@ $(function() {
     $(window).scroll(function(){
         $('#contactModal').modal('hide');
         $('#myMap').css('height','90vh');
-        $('.contact_block_title').css('padding-top','65px')
+        $('.contact_block_title').css('padding-top','25px')
     });
     /*$(window).on('click',function(){
         $('#contactModal').modal('hide');
@@ -160,7 +160,7 @@ $(function() {
     });*/
     $('.close_button').on('click',function() {
       $('#myMap').css('height','90vh');
-      $('.contact_block_title').css('padding-top','65px')
+      $('.contact_block_title').css('padding-top','25px')
 
     })
     $('#contactBtn').on('click',function() {

@@ -31,6 +31,10 @@ use frontend\controllers\TicketController;
 
 <?php
 $js = <<<JS
+    $('.ordering_button').on('click',function() {
+        $(document).off("focusin");
+        $(document).off("focus");
+    });   
     $('.hy_timeline br').remove();
     $('.hy_timeline').css('font-size','14px');
     $(function() {

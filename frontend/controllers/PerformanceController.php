@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use common\models\GenrePerformance;
+use common\models\Image;
 use common\models\Main;
 use common\models\Message;
 use common\models\Performance;
@@ -196,6 +197,17 @@ class PerformanceController extends Controller
         if (Yii::$app->request->isAjax && isset($_GET['id'])){
 
             return $this->renderAjax('multiple-galleries',['id' => $_GET['id']]);
+        }
+    }
+
+    public function actionViewGalleries(){
+        if (Yii::$app->request->isAjax){
+
+            $images = Image::find()->where(['performance_id' => $model->id])->all();
+
+            return Json::encode([
+                'images_length' => count($season_arr['images'])
+            ]);
         }
     }
 

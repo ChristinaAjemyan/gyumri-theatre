@@ -17,11 +17,11 @@ use yii\helpers\Url;
                 <div class="col-md-4 col-12">
                     <img style="max-width: 96%;width: 96%;height: auto;object-fit: cover;" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/staff/400/'.$model->img_path; ?>" class="mr-3" alt="Photo">
                 </div>
-                <div class="col-md-8 col-12 order-md-1 order-4">
+                <div class="col-md-8 col-12 order-md-1 order-4 staff-text-content">
                     <div class="about_actros">
                         <div class="about_act_title">
                             <small class="actros_type"><?= $model->staff_genre_type ? Yii::t('text', $model->staff_genre_type) : ''; ?></small>
-                            <h5 class="actros_name" style="color:#101010;margin-top: -10px;"><?= Yii::t('text', $model->first_name).' '.Yii::t('text', $model->last_name); ?></h5>
+                            <h5 class="actros_name actors-name"><?= Yii::t('text', $model->first_name).' '.Yii::t('text', $model->last_name); ?></h5>
                         </div>
                         <?php if (!empty($model->inst_url) && isset($model->inst_url)): ?>
                             <a href="https://instagram.com/<?= $model->inst_url; ?>" target="_blank" class="social_page_act"><i class="fab fa-instagram"></i></a>

@@ -95,7 +95,7 @@ use yii\helpers\Url;
             </div>
             <div class="ph_v_content">
                 <span class="title_line"></span>
-                <div class="performances-carusel owl-carousel" id="current_performance">
+                <div class="performances-carusel owl-carousel" data-content="<?=count($images)?>" id="view_performance">
                     <?php foreach ($images as $image): ?>
                         <div class="block-present carusel_block">
                             <a href="<?= Yii::$app->params['backend-url'].'/upload/galleries/original/'.$image->image; ?>">
@@ -209,7 +209,7 @@ $( document ).ready(function() {
                     margin:10,
                     responsiveClass:true,
                     nav: true,
-                    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                    navText: $('#current_performance_v').attr('data-content') > 4 ? [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : '',
                     responsive:{
                         0:{
                             items:1,
@@ -252,7 +252,7 @@ $( document ).ready(function() {
                     margin:10,
                     responsiveClass:true,
                     nav: true,
-                    navText: [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`],
+                    navText: $('#current_performance_ph').attr('data-content') > 4 ? [ `<i class="fas fa-chevron-left"></i>`, `<i class="fas fa-chevron-right"></i>`] : '',
                     responsive:{
                         0:{
                             items:1,

@@ -155,11 +155,21 @@ h3 {
 .performance_ckeditor_content p,span{
     font-family: Sans-Serif;
 }
+.actors-name{
+    color:#101010;margin-top: -10px;
+}
 .performance_ckeditor_content{
     margin: 35px 0 20px 0px;
     overflow: hidden;
     overflow-y: auto;
     max-height: 280px;
+}
+.mfp-fade .mfp-arrow-left:after {
+    border-right: 17px solid #ec7532;
+}
+
+.mfp-fade .mfp-arrow-right:after {
+    border-left: 17px solid #ec7532;
 }
 
 #hero .scroll,
@@ -2268,6 +2278,12 @@ border:2px solid  #e18848;
 /*    .main_movies .media-title {
         max-width: 65%;
     }*/
+    #headerCarousel .banner-item{
+        height: 46vh!important;
+    }
+    #hero .scroll, #content_hero .scroll {
+        bottom: -3px;
+    }
 }
 @media screen and (max-width: 992px) {
     .hove_height{
@@ -2348,7 +2364,15 @@ border:2px solid  #e18848;
     .video_carousel{
         width: unset;
     }
-
+    #headerCarousel .banner-item{
+        height: 40vh!important;
+    }
+    #hero .scroll, #content_hero .scroll {
+        bottom: -3px;
+    }
+    .staff-text-content{
+        margin-bottom: 35px;
+    }
 }
 @media screen and (max-width: 767px) {
     .search_input_form{
@@ -2499,6 +2523,9 @@ border:2px solid  #e18848;
     .main_movies .media img{
         height: 750px;
     }
+    #headerCarousel .banner-item{
+        height: 35vh!important;
+    }
 }
 @media screen and (max-width: 576px) {
     .media-footer .media_btn-group .search_button{
@@ -2540,6 +2567,9 @@ border:2px solid  #e18848;
     }
     .empty-squares{
         display: none;
+    }
+    #headerCarousel .banner-item{
+        height: 43vh!important;
     }
 /*    #nav-tabContent{
         margin-top: 100px!important;
@@ -2672,12 +2702,6 @@ border:2px solid  #e18848;
 
 }
 @media screen and (max-width: 479px) {
-    .performances-page .present-corusel{
-        margin-top: 10px;
-    }
-/*    #nav-tabContent p{
-        font-size: 16px;
-    }*/
     .new_section h5.media-title{
         font-size: 26px;
     }
@@ -2691,7 +2715,23 @@ border:2px solid  #e18848;
     .performance_movie .movie_type {
         margin-top: 5px;!important;
     }
+    .performances-page .present-corusel{
+        margin-top: 10px;
+    }
+    .actros_imges .act_img img{
+        height: 80px;
+    }
+    .archive_page h1.archive_header_title{
+        font-size: 50px;
+    }
 
+    .tab_main{
+        font-size: 12px!important;
+    }
+    .actors-name {
+        color: #101010;
+        margin-top: 0;
+    }
 }
 @media screen and (max-width: 470px) {
     .media-footer .media_btn-group .search_button{
@@ -2722,26 +2762,8 @@ border:2px solid  #e18848;
     .contact_block_title{
         width: auto!important;
     }
-}
-@media screen and (max-width: 479px) {
-    .performances-page .present-corusel{
-        margin-top: 10px;
-    }
-    .actros_imges .act_img img{
-        height: 80px;
-    }
-/*    #nav-tabContent p{
-        font-size: 16px;
-    }*/
-    .new_section h5.media-title{
-        font-size: 26px;
-    }
-    .archive_page h1.archive_header_title{
-        font-size: 50px;
-    }
-
-    .tab_main{
-        font-size: 12px!important;
+    #headerCarousel .banner-item{
+        height: 33vh!important;
     }
 }
 @media screen and (max-width: 425px) {
@@ -2751,9 +2773,6 @@ border:2px solid  #e18848;
 /*    #nav-tabContent p{
         font-size: 16px;
     }*/
-    .new_section h5.media-title{
-        font-size: 26px;
-    }
     .archive_page h1.archive_header_title{
         font-size: 50px;
     }
@@ -2932,6 +2951,9 @@ border:2px solid  #e18848;
     }
     .main_movies .media img{
         height: 400px;
+    }
+    #headerCarousel .banner-item{
+        height: 28vh!important;
     }
 }
 
