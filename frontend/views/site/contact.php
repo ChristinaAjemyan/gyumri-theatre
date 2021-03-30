@@ -16,61 +16,63 @@ use yii\captcha\Captcha;
 use yii\helpers\Url;
 
 ?>
-<div id="asdasd" data-target=""></div>
-<div id="myMap" class="site-contact-map" style="margin-top: 97px; width: 100%; height: 50vh">
-<!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.1743778474574!2d43.84538578047872!3d40.79066377176147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041fbf2a2fef76f%3A0xa7bf664eae5715b8!2sVardan%20Ajemyan%20Drama%20Theater!5e0!3m2!1sen!2s!4v1602774799615!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
-</div>
-
-<section class="section_carousel">
-    <div class="container position-relative">
-        <div class="map-button" id="contactBtn" data-toggle="modal" style="color: white">
-            <a>
-                <i class="fas fa-map-marker-alt"></i>
-            </a>
-        </div>
-        <?php if (Yii::$app->session->hasFlash('success')): ?>
-            <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-                <h5 class="m-0 p-0 text-success"><strong><?= Yii::t('home', Yii::$app->session->getFlash('success')); ?></strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php elseif (Yii::$app->session->hasFlash('error')): ?>
-            <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-                <h5 class="m-0 p-0 text-danger"><strong><?= Yii::t('home', Yii::$app->session->getFlash('error')); ?></strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php endif; ?>
-        <div class="current_performances">
-            <h2 class="block_title carousel_title mt-3 contact_block_title" style="padding-top: 120px;"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
-            <div class="block_title_gred_line"></div>
-        </div>
-        <span class="title_line" style="margin-top: -25px;"></span>
-        <div class="main_carousel owl-carousel" id="current_performance">
-            <?php if (!empty($performances) && isset($performances)): ?>
-                <?php foreach ($performances as $item): ?>
-                    <div class="carousel_item">
-                        <div class="card" style="width: 16rem;">
-                            <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
-                                <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="image">
-                            </a>
-                            <div class="card-body">
-                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
-                                    <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
-                                </a>
-                                <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-
+<div class="contact-big-content">
+    <div id="asdasd" data-target=""></div>
+    <div id="myMap" class="site-contact-map" style="margin-top: 97px; width: 100%; height: 50vh">
+        <!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.1743778474574!2d43.84538578047872!3d40.79066377176147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041fbf2a2fef76f%3A0xa7bf664eae5715b8!2sVardan%20Ajemyan%20Drama%20Theater!5e0!3m2!1sen!2s!4v1602774799615!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
     </div>
 
-</section>
+    <section class="section_carousel">
+        <div class="container position-relative">
+            <div class="map-button" id="contactBtn" data-toggle="modal" style="color: white">
+                <a>
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+            </div>
+            <?php if (Yii::$app->session->hasFlash('success')): ?>
+                <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                    <h5 class="m-0 p-0 text-success"><strong><?= Yii::t('home', Yii::$app->session->getFlash('success')); ?></strong></h5>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php elseif (Yii::$app->session->hasFlash('error')): ?>
+                <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                    <h5 class="m-0 p-0 text-danger"><strong><?= Yii::t('home', Yii::$app->session->getFlash('error')); ?></strong></h5>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <div class="current_performances">
+                <h2 class="block_title carousel_title mt-3 contact_block_title" style="padding-top: 120px;"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
+                <div class="block_title_gred_line"></div>
+            </div>
+            <span class="title_line" style="margin-top: -25px;"></span>
+            <div class="main_carousel owl-carousel" id="current_performance">
+                <?php if (!empty($performances) && isset($performances)): ?>
+                    <?php foreach ($performances as $item): ?>
+                        <div class="carousel_item">
+                            <div class="card" style="width: 16rem;">
+                                <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                                    <img class="big-carousel card-img-top" src="<?= Yii::$app->params['backend-url'].'/upload/avatars/performance/400/'.$item->img_path; ?>" alt="image">
+                                </a>
+                                <div class="card-body">
+                                    <a href="<?= Url::to(['/performance/view', 'slug' => Yii::t('text', $item->slug)]); ?>">
+                                        <h5 class="card-title"><?= Yii::t('text', $item->title); ?></h5>
+                                    </a>
+                                    <p class="card-text"><?= Performance::getPerformanceTime($item->show_date); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+        </div>
+
+    </section>
+</div>
 <div class="modal modal_main fade pr-0" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
 
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1090px;margin-top: 10px;">
@@ -137,6 +139,11 @@ $js = <<<JS
     
 
 $(function() {
+    
+    $('.contact-big-content').on("click", function(event) {
+        console.log('gtgt')
+    });
+    
     $( document ).ready(function() {
       $('#contactModal').modal();
       $('#myMap').css('transition','.5s');

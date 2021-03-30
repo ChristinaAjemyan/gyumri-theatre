@@ -36,7 +36,7 @@ class PerformanceController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update', 'view', 'delete'],
+                        'actions' => ['index', 'create', 'update', 'view', 'delete', 'delete-videolink'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -442,5 +442,13 @@ class PerformanceController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionDeleteVideolink(){
+        if (Yii::$app->request->post('link')){
+            $link = Yii::$app->request->post('link');
+            $link = Videolink::find()->where(['link' => $link])->one();
+            $link->delete();
+        }
     }
 }

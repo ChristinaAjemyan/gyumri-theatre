@@ -165,11 +165,11 @@ h3 {
     max-height: 280px;
 }
 .mfp-fade .mfp-arrow-left:after {
-    border-right: 17px solid #ec7532;
+    border-right: 30px solid #ec7532;
 }
 
 .mfp-fade .mfp-arrow-right:after {
-    border-left: 17px solid #ec7532;
+    border-left: 30px solid #ec7532;
 }
 
 #hero .scroll,

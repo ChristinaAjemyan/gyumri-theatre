@@ -17,7 +17,7 @@ class TicketController extends Controller
 
     public static function getTicketTimelines($id = '')
     {
-        $par = (isset($_GET['orderID'])) ? "?" . http_build_query($_GET) : "";
+        $par = (isset($_GET['orderID']) || isset($_GET['external_order_id']) && isset($_GET['order_id'])) ? "?" . http_build_query($_GET) : "";
 
         $curl_handle=curl_init();
 

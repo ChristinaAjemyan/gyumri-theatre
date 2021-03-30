@@ -3,6 +3,7 @@
 
 use common\models\Image;
 use common\models\Main;
+use common\models\Videolink;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -15,14 +16,17 @@ $this->params['breadcrumbs'][] = ['label' => 'Performances', 'url' => ['index']]
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 
+$video_links = ArrayHelper::map(Videolink::find()->where(['performance_id' => $model->attributes['id']])->all(), 'id', 'link');
 $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->attributes['id']])->all(), 'id', 'image');
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
+/*echo '<pre>';
+var_dump($column_name);die;*/
 $column[] = $column_name[1];
-$column[] = $column_name[12];
+$column[] = $column_name[11];
 $column[] = $column_name[9];
 $column[] = $column_name[14];
-$column[] = $column_name[11];
+$column[] = $column_name[12];
 ?>
 <?php $result_avatar = "
 <div class=\"card-body my_card-body\" style='padding: 0 14px;'>
@@ -77,6 +81,23 @@ $column[] = $column_name[11];
 </div>"; ?>
 <?php endif; ?>
 
+<?php if (!empty($video_links) && isset($video_links)): ?>
+    <?php $links_result = "<div class=\"card mb-4\">
+    <div class=\"card-body pt-0 pb-0\">
+        <div class=\"scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4\">";?>
+    <?php foreach ($video_links as $link): ?>
+        <?php $links_result.= "<div class='rem mr-4'>
+                <div class=\"card card-block my-card-block\">
+                    <iframe width='175' height=\"135\" src=\"https://www.youtube.com/embed/$link\"></iframe>
+                    <button type=\"button\" class=\"link_remove\"><i class=\"fas fa-times\"></i></button>
+                </div>
+            </div>"; ?>
+    <?php endforeach; ?>
+    <?php $links_result.= "</div>
+    </div>
+</div>"; ?>
+<?php endif; ?>
+
 
 <div class="performance-update">
     <div class="d-flex justify-content-between">
@@ -91,7 +112,7 @@ $column[] = $column_name[11];
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
         'result' => isset($result) ? $result : '', 'model_genre_perform' => $model_genre_perform, 'model_type_perform' => $model_type_perform,
         'result_avatar'=>isset($result_avatar) ? $result_avatar : '','result_banner'=>isset($result_banner) ? $result_banner : '',
-        'result_mobile_banner' => isset($result_mobile_banner)?$result_mobile_banner:'','model_videolink_perform' => $model_videolink_perform
+        'result_mobile_banner' => isset($result_mobile_banner)?$result_mobile_banner:'','model_videolink_perform' => $model_videolink_perform,'links_result' => $links_result
     ]) ?>
 </div>
 
@@ -151,6 +172,35 @@ $js = <<<JS
                 data: {src: result}
             });
             $(this).closest('.col-2').remove();
+          }
+        })   
+});
+    
+        $('.link_remove').on('click', function() {
+        let link_src = $(this).prev().attr('src');
+        let index = link_src.lastIndexOf("/");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            );
+            let result = link_src.substr(index + 1);
+            $.ajax({
+                url: '/performance/delete-videolink',
+                type: 'post',
+                data: {link: result}
+            });
+            $(this).closest('.rem').remove();
           }
         })   
 });

@@ -32,7 +32,7 @@ class StaffController extends Controller
             ->where(['!=', 'role_id', $role_id])
             ->andWhere(["primary_key" => 1])
             ->andWhere(['is_member' => 1])
-            ->orderBy(['id' => SORT_DESC])
+            ->orderBy(['id' => SORT_ASC])
             ->limit(2)
             ->all();
         

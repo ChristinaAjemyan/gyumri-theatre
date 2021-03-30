@@ -130,11 +130,13 @@ use mihaildev\elfinder\ElFinder;
                 <?= $result_mobile_banner ? $result_mobile_banner : false; ?>
             <?php endif; ?>
 
-            <?= $form->field($model, 'trailer')->textInput(['maxlength' => true]) ?>
-
-            <?= $form->field($model_videolink_perform, 'link[]')->textInput(['maxlength' => true,'class' => 'form-control mb-3'])->label('Multiple Video Link') ?>
-            <a href="javascript:void(0)" class="btn btn-success addMoreInputs mb-3"><i class="fas fa-plus"></i></a>
-
+            <?= $form->field($model, 'trailer')->textInput(['maxlength' => true,'class' => 'form-control mb-3 w-50']) ?>
+            <?= $form->field($model_videolink_perform, 'link[]')->textInput(['maxlength' => true,'class' => 'form-control mb-3 w-50'])->label('Multiple Video Link') ?>
+            <a href="javascript:void(0)" class="btn btn-success addMoreInputs mb-3" title="Add more video links"><i class="fas fa-plus"></i></a>
+            <?php if (isset($links_result)) : ?>
+                <?= $links_result ? $links_result : false; ?>
+            <?php endif; ?>
+            <hr>
             <?= $form->field($model, 'age_restriction')->textInput(['type' => 'number', 'min' => 0]); ?>
             <?= $form->field($model, 'short_desc')->textarea(['rows' => 8]); ?>
         </div>
@@ -191,7 +193,7 @@ $( document ).ready(function() {
 
 $('.addMoreInputs').on('click',function() {
    $('.field-videolink-link').append(`
-   <input type="text" class="form-control mb-3" name="Videolink[link][]" maxlength="255" aria-invalid="false">
+   <input type="text" class="form-control w-50 mb-3" name="Videolink[link][]" maxlength="255" aria-invalid="false">
    `)
 })
 
