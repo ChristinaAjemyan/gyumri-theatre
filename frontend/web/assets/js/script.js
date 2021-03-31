@@ -3,6 +3,13 @@ $( document ).ready(function() {
 
 let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 
+$('.hy_close').click(function() {
+    let url = new URL(location.href);
+    window.history.pushState({}, '', url.origin+url.pathname);
+    location.reload();
+});
+
+
 if (width < 1124){
     $('.footer_links_items').removeClass('footer_links_items');
     $('.footer_links').addClass('row');

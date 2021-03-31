@@ -1,7 +1,6 @@
 <?php
 
 use common\models\Performance;
-use frontend\controllers\TicketController;
 ?>
 <div class="modal modal_main fade pr-0" id="orderingModal_index" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
 

@@ -1,6 +1,5 @@
 <?php use common\models\Performance;
 use common\models\Type;
-use frontend\controllers\TicketController;
 use yii\helpers\Url;
 use yii\widgets\LinkPager; ?>
 

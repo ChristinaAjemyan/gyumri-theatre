@@ -110,9 +110,9 @@ use yii\helpers\Url;
                         <p> <i class="fas fa-map-marker-alt ml-1" style="color: #515151;font-size: 22px;margin-bottom: -5px;margin-right: 13px;"></i> <?= Yii::t('home', 'Քաղաք Գյումրի') ?>
                             <br><span><?= Yii::t('home', 'Սայաթ Նովա 4') ?></span>
                         </p>
-                        <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/phone.svg'?>" alt="">060 381010</p>
+                        <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/phone.svg'?>" alt="">060 38 10 10</p>
                         <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/message.svg'?>" alt="">gyumrytheatre@gmail.com</p>
-                        <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/days.svg'?>" alt=""><?= Yii::t('home', 'Երկ-ուրբ 9։30 - 7։30 pm') ?></p>
+                        <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/days.svg'?>" alt=""><?= Yii::t('home', 'օրերը՝ երեքշաբթի - կիրակի,<br><span>ժամը՝ 10։00-17։00</span>') ?></p>
                         <br><br>
                         <ul class="social_icons soc_ic_contact" align="center">
                             <li>
@@ -122,10 +122,7 @@ use yii\helpers\Url;
                                 <a href="https://www.instagram.com/gyumri_theatre/" style="color: #515151;font-size: 25px;" target="_blank"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" style="color: #515151;font-size: 25px;"><i class="fab fa-telegram-plane"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" style="color: #515151;font-size: 25px;"><i class="fab fa-twitter"></i></a>
+                                <a href="https://t.me/gyumri_theatre" style="color: #515151;font-size: 25px;"><i class="fab fa-telegram-plane"></i></a>
                             </li>
                         </ul>
                     </div>

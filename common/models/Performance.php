@@ -136,12 +136,9 @@ class Performance extends \yii\db\ActiveRecord
 
     public static function openModal($id = ''){
         @date_default_timezone_set('Asia/Yerevan');
-        $modal_show = false;
-        if($id != '' & !isset($_GET['external_order_id']) && !isset($_GET['order_id'])){
+        $par = (isset($_GET['orderID']) || isset($_GET['external_order_id']) && isset($_GET['order_id'])) ? '?' . http_build_query($_GET) : "";
+        if($id != ''){
             $par = "?unik_id=".$id;
-            $modal_show = true;
-        }else{
-            $par = (isset($_GET['orderID']) || isset($_GET['external_order_id']) && isset($_GET['order_id'])) ? "?" . http_build_query($_GET) : "";
         }
 
         if (Yii::$app->request->cookies->getValue('language') == 'ru'){
@@ -163,12 +160,11 @@ class Performance extends \yii\db\ActiveRecord
 
         $result = json_decode($haytoms_data, false);
 
-        if ($modal_show){
-            return $result;
-        }else{
+        if(isset($_GET['external_order_id']) && isset($_GET['order_id'])){
             echo $result->script;
+            return false;
         }
-
+        return $result;
     }
 }
 
