@@ -6,7 +6,7 @@ use common\models\Performance;
 use frontend\controllers\TicketController;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
-
+Performance::openModal();
 ?>
 
 <div class="performances-page">

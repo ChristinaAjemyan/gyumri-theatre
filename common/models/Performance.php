@@ -133,5 +133,42 @@ class Performance extends \yii\db\ActiveRecord
             return '<aside class="aside_text text-uppercase" style="margin-right: -14px;">'.Yii::t('home', 'Հյուրախաղ').'</aside>';
         }
     }
+
+    public static function openModal($id = ''){
+        @date_default_timezone_set('Asia/Yerevan');
+        $modal_show = false;
+        if($id != '' & !isset($_GET['external_order_id']) && !isset($_GET['order_id'])){
+            $par = "?unik_id=".$id;
+            $modal_show = true;
+        }else{
+            $par = (isset($_GET['orderID']) || isset($_GET['external_order_id']) && isset($_GET['order_id'])) ? "?" . http_build_query($_GET) : "";
+        }
+
+        if (Yii::$app->request->cookies->getValue('language') == 'ru'){
+            $lng = "ru";
+        }elseif (Yii::$app->request->cookies->getValue('language') == 'en'){
+            $lng = "en";
+        }else {
+            $lng = "hy";
+        }
+
+        $curl_handle=curl_init();
+
+        curl_setopt($curl_handle, CURLOPT_URL,'https://api.haytoms.am/get/8a52a9c75db7a1f42c8c10fc62d397de/'.$lng.'/'.$par);
+
+        curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+        $haytoms_data = curl_exec($curl_handle);
+        curl_close($curl_handle);
+
+        $result = json_decode($haytoms_data, false);
+
+        if ($modal_show){
+            return $result;
+        }else{
+            echo $result->script;
+        }
+
+    }
 }
 

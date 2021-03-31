@@ -1,4 +1,6 @@
 <?php
+
+use common\models\Performance;
 use frontend\controllers\TicketController;
 ?>
 <div class="modal modal_main fade pr-0" id="orderingModal_index" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: hidden;">
@@ -11,7 +13,7 @@ use frontend\controllers\TicketController;
             </button>
             <?php if (isset($_GET['id'])) : ?>
 <!--                $_GET['external_order_id']?$_GET['external_order_id']:false,$_GET['order_id']?$_GET['order_id']:false-->
-                <?php $timelines = TicketController::getTicketTimelines($_GET['id']); ?>
+                <?php $timelines = Performance::openModal($_GET['id']); ?>
                 <h3 class="new_section-title mb-0">«<?= $timelines->data[0]->name ?>»</h3>
                 <div class="ordering_content">
                 <?php foreach ($timelines->data as $item) : ?>

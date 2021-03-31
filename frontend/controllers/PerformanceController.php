@@ -172,9 +172,8 @@ class PerformanceController extends Controller
         $this->view->title = Main::uppercaseFirstLetter($model->title);
         empty($model) ? $this->goHome() : false;
 
-        $timelines = TicketController::getTicketTimelines($model->external_id);
 
-        return $this->render('view', ['model' => $model,'timelines'=>$timelines]);
+        return $this->render('view', ['model' => $model]);
     }
 
     public function actionModalOrdering()
