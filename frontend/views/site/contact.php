@@ -29,21 +29,7 @@ use yii\helpers\Url;
                     <i class="fas fa-map-marker-alt"></i>
                 </a>
             </div>
-            <?php if (Yii::$app->session->hasFlash('success')): ?>
-                <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-                    <h5 class="m-0 p-0 text-success"><strong><?= Yii::t('home', Yii::$app->session->getFlash('success')); ?></strong></h5>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php elseif (Yii::$app->session->hasFlash('error')): ?>
-                <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-                    <h5 class="m-0 p-0 text-danger"><strong><?= Yii::t('home', Yii::$app->session->getFlash('error')); ?></strong></h5>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
+
             <div class="current_performances">
                 <h2 class="block_title carousel_title mt-3 contact_block_title" style="padding-top: 120px;"><?= Yii::t('home', 'Ընթացիկ ներկայացումներ') ?></h2>
                 <div class="block_title_gred_line"></div>
@@ -101,8 +87,22 @@ use yii\helpers\Url;
                             <img src="<?= Yii::$app->params['frontend-url'].'/assets/images/location.svg'?>" alt="">
                         </button>
                         <?php ActiveForm::end(); ?>
+                        <?php if (Yii::$app->session->hasFlash('success')): ?>
+                            <div class="alert alert-success alert-dismissible fade show mt-4 message_mail_conf" role="alert">
+                                <h5 class="m-0 p-0 text-success" style="line-height: 19px"><strong><?= Yii::t('home', Yii::$app->session->getFlash('success')); ?></strong></h5>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php elseif (Yii::$app->session->hasFlash('error')): ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-4 message_mail_conf" role="alert">
+                                <h5 class="m-0 p-0 text-danger" style="line-height: 19px"><strong><?= Yii::t('home', Yii::$app->session->getFlash('error')); ?></strong></h5>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top: -3px">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
                     </div>
-
                 </div>
                 <div class="righ_content" style="width: 35%">
                     <div class="contact_form right_side_contact" style="padding: 45px 40px;">
@@ -112,7 +112,7 @@ use yii\helpers\Url;
                         </p>
                         <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/phone.svg'?>" alt="">060 38 10 10</p>
                         <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/message.svg'?>" alt="">gyumrytheatre@gmail.com</p>
-                        <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/days.svg'?>" alt=""><?= Yii::t('home', 'օրերը՝ երեքշաբթի - կիրակի,<br><span>ժամը՝ 10։00-17։00</span>') ?></p>
+                        <p> <img class="mr-3" src="<?= Yii::$app->params['frontend-url'].'/assets/images/days.svg'?>" alt=""><?= Yii::t('home', 'Երք-կիր 10։00 - 17։00') ?></p>
                         <br><br>
                         <ul class="social_icons soc_ic_contact" align="center">
                             <li>
@@ -136,10 +136,6 @@ $js = <<<JS
     
 
 $(function() {
-    
-    $('.contact-big-content').on("click", function(event) {
-        console.log('gtgt')
-    });
     
     $( document ).ready(function() {
       $('#contactModal').modal();

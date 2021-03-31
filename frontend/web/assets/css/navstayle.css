@@ -129,6 +129,13 @@ h3 {
     width: 5px;
 }
 
+.message_mail_conf{
+    position: absolute;
+    bottom: -28px;
+    left: 74px;
+    right: 74px;
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
