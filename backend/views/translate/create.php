@@ -64,6 +64,10 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
                 <?= $form->field($message, "[1]translation")->textInput(['maxlength' => true])->label('Last Name') ?>
 
                 <?= $form->field($message, "[2]translation")->textInput(['maxlength' => true])->label('Slug') ?>
+
+                <?= $form->field($message, "[6]translation")->widget(CKEditor::className(), [
+                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+                ])->label('Description') ?>
             </div>
             <div class="col">
                 <?= $form->field($message, "[3]translation")->textInput(['maxlength' => true])->label('Genre') ?>
@@ -71,12 +75,10 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
                 <?= $form->field($message, "[4]translation")->textInput(['maxlength' => true])->label('Country') ?>
 
                 <?= $form->field($message, "[5]translation")->textInput(['maxlength' => true])->label('City') ?>
+
+                <?= $form->field($message, "[7]translation")->textarea(['rows' => 8])->label('Index Description') ?>
             </div>
         </div>
-
-        <?= $form->field($message, "[6]translation")->widget(CKEditor::className(), [
-            'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
-        ])->label('Description') ?>
 
     <?php elseif ($table_name == 'performance'): ?>
 

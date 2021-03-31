@@ -21,7 +21,7 @@ class TicketController extends Controller
 
         $curl_handle=curl_init();
 
-        if($id != ''){
+        if($id != '' && empty($_GET['external_order_id']) && empty($_GET['order_id'])){
             $par = "?unik_id=".$id;
         }
 
@@ -33,7 +33,10 @@ class TicketController extends Controller
             $lng = "hy";
         }
 
-        curl_setopt($curl_handle, CURLOPT_URL,'https://api.haytoms.am/get/8a52a9c75db7a1f42c8c10fc62d397de/'.$lng.'/'.$par);
+        $url = 'https://api.haytoms.am/get/8a52a9c75db7a1f42c8c10fc62d397de/'.$lng.'/'.$par;
+
+
+        curl_setopt($curl_handle, CURLOPT_URL,$url);
 
         curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
         curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);

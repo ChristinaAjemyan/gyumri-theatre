@@ -10,6 +10,7 @@ use frontend\controllers\TicketController;
                 <span aria-hidden="true">&times;</span>
             </button>
             <?php if (isset($_GET['id'])) : ?>
+<!--                $_GET['external_order_id']?$_GET['external_order_id']:false,$_GET['order_id']?$_GET['order_id']:false-->
                 <?php $timelines = TicketController::getTicketTimelines($_GET['id']); ?>
                 <h3 class="new_section-title mb-0">«<?= $timelines->data[0]->name ?>»</h3>
                 <div class="ordering_content">

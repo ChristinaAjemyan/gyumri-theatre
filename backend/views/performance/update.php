@@ -20,12 +20,11 @@ $video_links = ArrayHelper::map(Videolink::find()->where(['performance_id' => $m
 $images = ArrayHelper::map(Image::find()->where(['performance_id' => $model->attributes['id']])->all(), 'id', 'image');
 $table_name = $model->tableName();
 $column_name = array_keys($model->attributes);
-/*echo '<pre>';
-var_dump($column_name);die;*/
+
 $column[] = $column_name[1];
-$column[] = $column_name[11];
-$column[] = $column_name[9];
 $column[] = $column_name[14];
+$column[] = $column_name[9];
+$column[] = $column_name[11];
 $column[] = $column_name[12];
 ?>
 <?php $result_avatar = "
