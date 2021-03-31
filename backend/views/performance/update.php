@@ -111,7 +111,7 @@ $column[] = $column_name[12];
         'model' => $model, 'model_image' => $model_image, 'model_stf_perform' => $model_stf_perform,
         'result' => isset($result) ? $result : '', 'model_genre_perform' => $model_genre_perform, 'model_type_perform' => $model_type_perform,
         'result_avatar'=>isset($result_avatar) ? $result_avatar : '','result_banner'=>isset($result_banner) ? $result_banner : '',
-        'result_mobile_banner' => isset($result_mobile_banner)?$result_mobile_banner:'','model_videolink_perform' => $model_videolink_perform,'links_result' => $links_result
+        'result_mobile_banner' => isset($result_mobile_banner)?$result_mobile_banner:'','model_videolink_perform' => $model_videolink_perform,'links_result'=>isset($links_result) ? $links_result : ''
     ]) ?>
 </div>
 
