@@ -30,7 +30,7 @@ class PerformanceController extends Controller
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
 
-        $performancesAll = Performance::find()->orderBy(['show_date' => SORT_DESC])->asArray();
+        $performancesAll = Performance::find()->orderBy(['show_date' => SORT_ASC])->asArray();
 
         $pages = new Pagination([
             'totalCount' => $performancesAll->count(),
@@ -60,7 +60,7 @@ class PerformanceController extends Controller
             if ($type_id != 0) {
                 $performances = TypePerformance::find()->with('performance')->where(['type_id' => $type_id])->orderBy(['id' => SORT_DESC])->asArray()->all();
             } else {
-                $performances = Performance::find()->orderBy(['id' => SORT_DESC])->asArray()->all();
+                $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->asArray()->all();
 
             }
 
@@ -103,7 +103,7 @@ class PerformanceController extends Controller
 
     public function actionBig(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
-        $performancesBigHall = Performance::find()->where(['hall' => 0])->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesBigHall = Performance::find()->where(['hall' => 0])->orderBy(['show_date' => SORT_ASC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesBigHall->count(),
             'defaultPageSize' => 15,
@@ -129,7 +129,7 @@ class PerformanceController extends Controller
 
     public function actionSmall(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն');
-        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy(['id' => SORT_DESC])->asArray();
+        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy(['show_date' => SORT_ASC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesSmallHall->count(),
             'defaultPageSize' => 15,
@@ -196,17 +196,6 @@ class PerformanceController extends Controller
         if (Yii::$app->request->isAjax && isset($_GET['id'])){
 
             return $this->renderAjax('multiple-galleries',['id' => $_GET['id']]);
-        }
-    }
-
-    public function actionViewGalleries(){
-        if (Yii::$app->request->isAjax){
-
-            $images = Image::find()->where(['performance_id' => $model->id])->all();
-
-            return Json::encode([
-                'images_length' => count($season_arr['images'])
-            ]);
         }
     }
 

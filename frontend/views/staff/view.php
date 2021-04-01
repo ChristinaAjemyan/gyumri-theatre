@@ -109,7 +109,7 @@ use yii\helpers\Url;
     <div class="container">
 
         <div class="main_carousel owl-carousel" id="performances-carusel">
-            <?php $performances = Performance::find()->orderBy(['show_date' => SORT_DESC])->limit(6)->all(); ?>
+            <?php $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->limit(6)->all(); ?>
             <?php if (!empty($performances) && isset($performances)): ?>
                 <?php foreach ($performances as $item): ?>
                     <div class="carousel_item">

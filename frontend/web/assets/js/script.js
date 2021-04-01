@@ -340,10 +340,11 @@ $('.season_time').on('click',function () {
                         $(".archive_page_carousel .owl-carousel").append(`
                     <div class="carousel_item">
                         <div class="card" style="width: 16rem;">
-                            <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/400/'+item.img_path}" alt="Card image cap">
+                            <a href="/performance/view/${item.slug}">
+                                <img class="big-carousel card-img-top" src="${data.backend_url+'/upload/avatars/performance/400/'+item.img_path}" alt="Card image cap">
+                            </a>
                             <div class="card-body">
-                                <h5 class="card-title">${item.title}</h5>
-                                <p class="card-text">${item.show_date ? item.show_date : ''}</p>
+                                <a href="/performance/view/${item.slug}"><h5 class="card-title">${item.title}</h5></a>                 
                             </div>
                         </div>
                     </div>
@@ -399,7 +400,10 @@ $('.season_time').on('click',function () {
                     })
                     $('.performances-carusel').magnificPopup({
                         type: 'image',
-                        delegate:'a'
+                        delegate:'a',
+                        removalDelay: 400,
+                        mainClass: 'mfp-fade',
+                        gallery:{enabled:true,navigateByImgClick: true}
                     });
                     $('#current_performance_slide').owlCarousel({
                         loop:false,

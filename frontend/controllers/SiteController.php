@@ -54,7 +54,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->view->title = Yii::t('home', 'Գյումրու Դրամատիկական թատրոն');
-        $performances = Performance::find()->orderBy(['show_date' => SORT_DESC])->limit(6)->all();
+        $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->limit(6)->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
         if (Yii::$app->request->post('day') || Yii::$app->request->post('monthDays')){
@@ -220,7 +220,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $performances = Performance::find()->orderBy(['show_date' => SORT_DESC])->limit(6)->all();
+        $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->limit(6)->all();
         $this->view->title = Yii::t('home', 'Կապ');
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
