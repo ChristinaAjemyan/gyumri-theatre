@@ -166,6 +166,8 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model, 'hall')->radioList([0 =>'Մեծ բեմ', 1 => 'Փոքր թատրոն', 2 => 'Հյուրախաղ']) ?>
 
+    <?= $form->field($model, 'tour_link')->textInput(['maxlength' => true,'class' => 'w-25 form-control','disabled' => true]) ?>
+
     <?= $form->field($model, 'is_new')->checkbox() ?>
 
     <div class="form-group">
@@ -177,7 +179,20 @@ use mihaildev\elfinder\ElFinder;
 </div>
 <?php
 $js = <<<JS
+
+$('input[type="radio"]').on('change', function(e) {
+    if ($( '#performance-hall input[type="radio"]:checked' ).val() == 2){
+        $('#performance-tour_link').removeAttr('disabled');
+    } else{
+        $('#performance-tour_link').attr("disabled", true).val('');
+    }
+});
+
 $( document ).ready(function() {
+    
+    if ($( '#performance-hall input[type="radio"]:checked' ).val() == 2) {
+        $('#performance-tour_link').removeAttr('disabled');
+    }
     
     if ($('#external_id')[0].checked){
         $('.hidden_external_table').slideDown();

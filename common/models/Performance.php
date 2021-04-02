@@ -19,6 +19,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $mobile_banner
  * @property string|null $author
  * @property int|null $hall
+ * @property string|null $tour_link
  * @property string|null $short_desc
  * @property string|null $desc
  * @property int|null $is_new
@@ -48,7 +49,7 @@ class Performance extends \yii\db\ActiveRecord
         return [
             [['title', 'slug'], 'required'],
             ['slug', 'unique'],
-            [['show_date','external_id'], 'safe'],
+            [['show_date','external_id','tour_link'], 'safe'],
             [['desc', 'short_desc'], 'string'],
             [['avatar_image', 'banner_image','mobile_banner'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['age_restriction', 'performance_length', 'hall', 'is_new'], 'integer'],
@@ -76,6 +77,7 @@ class Performance extends \yii\db\ActiveRecord
             'mobile_banner' => 'Mobile Banner',
             'author' => 'Author',
             'hall' => 'Hall',
+            'tour_link' => 'Tour Link',
             'short_desc' => 'Short Description',
             'desc' => 'Description',
             'is_new' => 'Is New',

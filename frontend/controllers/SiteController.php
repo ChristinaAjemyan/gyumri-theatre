@@ -54,7 +54,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->view->title = Yii::t('home', 'Գյումրու Դրամատիկական թատրոն');
-        $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->limit(6)->all();
+        $performances = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->limit(6)->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
         if (Yii::$app->request->post('day') || Yii::$app->request->post('monthDays')){
@@ -68,7 +68,7 @@ class SiteController extends Controller
                 $end = date('Y-m-t 23:59:59', strtotime($nowDay));
             }
             $performanceByDays = Performance::find()->where(['between', 'show_date', $start, $end])
-                ->orderBy(['show_date' => SORT_ASC])->asArray()->all();
+                ->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray()->all();
             $arr = []; $arrLastData = [];
             foreach ($performanceByDays as $key => $value){
                 if ($value['show_date'] < date('Y-m-d H:i:s')){
@@ -95,6 +95,7 @@ class SiteController extends Controller
                 $performanceByDays[$key]['author'] = Yii::t('text', $val['author']);
                 $performanceByDays[$key]['short_desc'] = Yii::t('text', $val['short_desc']);
                 $performanceByDays[$key]['desc'] = Yii::t('text', $val['desc']);
+                $performanceByDays[$key]['tour_link'] = $val['tour_link'];
                 $performanceByDays[$key]['slug'] = Yii::t('text', $val['slug']);
                 $performanceByDays[$key]['external_id'] = $val['external_id'];
             }
@@ -220,7 +221,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->limit(6)->all();
+        $performances = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->limit(6)->all();
         $this->view->title = Yii::t('home', 'Կապ');
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {

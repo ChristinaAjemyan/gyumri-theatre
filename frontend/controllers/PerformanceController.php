@@ -30,7 +30,7 @@ class PerformanceController extends Controller
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
 
-        $performancesAll = Performance::find()->orderBy(['show_date' => SORT_ASC])->asArray();
+        $performancesAll = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray();
 
         $pages = new Pagination([
             'totalCount' => $performancesAll->count(),
@@ -60,7 +60,7 @@ class PerformanceController extends Controller
             if ($type_id != 0) {
                 $performances = TypePerformance::find()->with('performance')->where(['type_id' => $type_id])->orderBy(['id' => SORT_DESC])->asArray()->all();
             } else {
-                $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->asArray()->all();
+                $performances = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray()->all();
 
             }
 
@@ -85,6 +85,7 @@ class PerformanceController extends Controller
                 $performances_arr[$i]['short_desc'] = Yii::t('text', $val['short_desc']);
                 $performances_arr[$i]['show_date'] = $val['show_date'];
                 $performances_arr[$i]['hall'] = $val['hall'];
+                $performances_arr[$i]['tour_link'] = $val['tour_link'];
                 $performances_arr[$i]['img_path'] = Yii::t('text', $val['img_path']);
                 $performances_arr[$i]['genre'] = trim($str, ',');
                 $performances_arr[$i]['age_restriction'] = $val['age_restriction'];
@@ -103,7 +104,8 @@ class PerformanceController extends Controller
 
     public function actionBig(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
-        $performancesBigHall = Performance::find()->where(['hall' => 0])->orderBy(['show_date' => SORT_ASC])->asArray();
+        $performancesBigHall = Performance::find()->where(['hall' => 0])
+            ->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesBigHall->count(),
             'defaultPageSize' => 15,
@@ -129,7 +131,7 @@ class PerformanceController extends Controller
 
     public function actionSmall(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն');
-        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy(['show_date' => SORT_ASC])->asArray();
+        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesSmallHall->count(),
             'defaultPageSize' => 15,

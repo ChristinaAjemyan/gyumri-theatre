@@ -58,6 +58,11 @@ use yii\widgets\LinkPager; ?>
                                             <i class="fas fa-chevron-right"></i>
                                         </a>
                                         <?php endif; ?>
+                                        <?php if ($performance['hall'] == '2' && $performance['tour_link']) : ?>
+                                            <a href="<?=$performance['tour_link']?>" class="btn add_cupon"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?>
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        <?php endif; ?>
                                     </div>
 
                                     <p class="movie-lenght">

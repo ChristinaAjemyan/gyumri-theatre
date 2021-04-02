@@ -282,8 +282,10 @@ $('.weekdays').on('click', function () {
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
-                                        ${item.external_id ? `<a class=\"btn add_cupon showModalOrdering\" data-id=\"${item.external_id}\">` +
-                                            getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                        ${item.external_id && item.external_id != 0 ? `<a class=\"btn add_cupon showModalOrdering\" data-id=\"${item.external_id}\">` +
+                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                        ${item.hall === "2" ? `<a href="${item.tour_link}" target="_blank" class=\"btn add_cupon\">` +
+                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                     ${!item.external_id && item.show_date > currentTime ? "<p class='view-movie'>"+item.func_date+"</p>" : ''}
                                     <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
@@ -486,6 +488,7 @@ $('.performance_tab_cont').on('click',function () {
             $('#nav-tabContent').append('<div class="d-flex justify-content-center load-icon m-5"><i class="fas fa-spinner fa-pulse fa-4x"></i></div>');
         },
         success: function (data) {
+            console.log(data);
             if (data.performances.length < 1){
                 $(".tab-content").append(`
                 <p class="text-center h2 remove m-5" style="font-family: 'Arm Hmks'">${data.lang === 'en' ? 'Performance not found' : data.lang === 'ru' ? 'Спектакль не найден' : 'Ներկայացում չի գտնվել'}</p>
@@ -496,6 +499,7 @@ $('.performance_tab_cont').on('click',function () {
                 <div class="pagingControls paginator--list remove mb-4"></div>`);
 
                 $.each(data.performances,function (i,item) {
+
                     $(".tab-content").append(`
                 <div class="media d-block result">
                     <div class="row performances_main">
@@ -519,8 +523,10 @@ $('.performance_tab_cont').on('click',function () {
                                         <a href="/performance/view/${item.slug}" class="btn more_btn">
                                             ${getTranslate(data.lang, 'MORE', 'БОЛЬШЕ', 'ԱՎԵԼԻՆ')}
                                         </a>
-                                    ${!item.external_id && item.external_id ? `<a class=\"btn add_cupon showModalOrdering\" data-id=\"${item.external_id}\">` +
-                                        getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                    ${item.external_id && item.external_id != 0 ? `<a class=\"btn add_cupon showModalOrdering\" data-id=\"${item.external_id}\">` +
+                                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
+                                    ${item.hall === "2" ? `<a href="${item.tour_link}" target="_blank" class=\"btn add_cupon\">` +
+                                    getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
                                    
                                     <p class="movie-lenght">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}

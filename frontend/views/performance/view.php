@@ -51,10 +51,13 @@ use yii\helpers\Url;
                             <div class="media-footer">
 
                                 <div class="media_btn-group">
-                                    <?php if ($model->external_id) : ?>
+                                    <?php if ($model->external_id && $model->hall != 2) : ?>
                                     <div id="orderingBtn" data-toggle="modal" data-target="#orderingModal" style="color: white">
                                         <button class="btn more_btn showModalOrdering" data-id="<?=$model->external_id?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?></button>
                                     </div>
+                                    <?php endif; ?>
+                                    <?php if($model->hall == 2 && $model->tour_link) : ?>
+                                        <a href="<?=$model->tour_link?>" target="_blank" class="btn more_btn showModalOrdering"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?></a>
                                     <?php endif; ?>
                                 </div>
 
@@ -132,13 +135,18 @@ use yii\helpers\Url;
                                 <p class='view-movie' style="margin-top: -4px;"><?= Performance::getPerformanceTime($model->show_date); ?></p>
                                 <?php endif; ?>
                             </div>
-                            <?php if ($model->external_id) : ?>
+
                             <div class="media_btn-group">
+                                <?php if ($model->external_id && $model->hall != 2) : ?>
                                 <div class="" id="orderingBtn" data-toggle="modal" data-target="#orderingModal" style="color: white">
                                     <button class="btn more_btn showModalOrdering" data-id="<?=$model->external_id?>"><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?></button>
                                 </div>
+                                <?php endif; ?>
+                                <?php if($model->hall == 2 && $model->tour_link): ?>
+                                    <a href="<?= $model->tour_link ?>" target="_blank" class="btn more_btn showModalOrdering" ><?= Yii::t('home', 'ՊԱՏՎԻՐԵԼ') ?></a>
+                                <?php endif; ?>
                             </div>
-                            <?php endif; ?>
+
                         </div>
                     </div>
                 </div>
@@ -168,7 +176,7 @@ use yii\helpers\Url;
     <div class="container">
 
         <div class="main_carousel owl-carousel" id="performances-carusel">
-            <?php $performances = Performance::find()->orderBy(['show_date' => SORT_ASC])->limit(6)->all(); ?>
+            <?php $performances = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->limit(6)->all(); ?>
             <?php if (!empty($performances) && isset($performances)): ?>
                 <?php foreach ($performances as $item): ?>
                     <div class="carousel_item">
