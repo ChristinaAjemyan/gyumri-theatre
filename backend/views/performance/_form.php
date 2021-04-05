@@ -102,9 +102,11 @@ use mihaildev\elfinder\ElFinder;
             <?php endif; ?>
 
             <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
-
-            <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control', 'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off','readonly' => 'readonly']) ?>
-
+            <div class="d-flex">
+                <?= $form->field($model, 'show_date')->textInput(['class' => 'datepicker-here form-control',
+                    'data-timepicker' => 'true', 'data-date-format' => 'yyyy-mm-dd','autocomplete' => 'off','readonly' => 'readonly','style' => 'width:500px']) ?>
+                <a class="unset_time" style="margin: 30px 0px 0px 10px;" href="javascript:void();">unset time</a>
+            </div>
             <?= $form->field($model, 'performance_length')->textInput(['type' => 'number', 'min' => 1]); ?>
         </div>
         <div class="col">
@@ -179,6 +181,10 @@ use mihaildev\elfinder\ElFinder;
 </div>
 <?php
 $js = <<<JS
+
+$('.unset_time').on('click',function() {
+    $('#performance-show_date').val('');
+})
 
 $('input[type="radio"]').on('change', function(e) {
     if ($( '#performance-hall input[type="radio"]:checked' ).val() == 2){
