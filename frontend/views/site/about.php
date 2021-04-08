@@ -19,7 +19,7 @@
             <div class="media">
                 <div class="row">
                     <div class="col-md-3  col-12">
-                        <img src="/assets/images/director.png" class="h-auto" alt="Photo">
+                        <img src="/assets/images/director1.jpg" class="h-auto" alt="Photo">
                     </div>
                     <div class="col-md-9 col-12">
 
