@@ -438,7 +438,6 @@ hr.space-40 {
     display: block;
     width: 0;
     height: 2px;
-    content: '';
     -webkit-transition: all .25s ease-in-out;
     -moz-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
@@ -691,6 +690,12 @@ hr.space-40 {
 }
 .about_popup_youtube a{
     color: white;
+}
+.about_popup_youtube_span{
+    right: 36%;
+    top: 20%;
+    padding: 24px 25px 20px 26px;
+    z-index: 99
 }
 .popup_youtube_main{
     display: none;
@@ -1978,8 +1983,8 @@ border:2px solid  #e18848;
     opacity: 30;
     color: #FFFFFF;
     transition: max-width 0.5s;
-    max-width: 50%;
-    left: 133px;
+    max-width: 57%;
+    left: 98px;
     padding: 1px;
 }
 .staff_change_line_art div{
@@ -1996,8 +2001,8 @@ border:2px solid  #e18848;
     opacity: 30;
     color: #FFFFFF;
     transition: max-width 0.5s;
-    max-width: 29%;
-    left: 191px;
+    max-width: 59%;
+    left: 54px;
     padding: 1px;
 }
 .staff_change_line_adm div{
@@ -2005,7 +2010,24 @@ border:2px solid  #e18848;
     background: linear-gradient(to right, #fbbd61, #ec7532);
     padding: 2px;
 }
-
+.staff_change_line_tec{
+    display: none;
+    height: 4px;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    opacity: 30;
+    color: #FFFFFF;
+    transition: max-width 0.5s;
+    max-width: 66%;
+    left: 61px;
+    padding: 1px;
+}
+.staff_change_line_tec div{
+    width: 100%;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    padding: 2px
+}
 #searchModal .modal-dialog{
     max-width: 640px;
 }
@@ -2324,6 +2346,12 @@ border:2px solid  #e18848;
     .staff_pres{
         max-width: unset;
     }
+    .about_popup_youtube_span{
+        right: 41%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
+    }
     .actors_page .main_container {
         margin-top: 105px;!important: ;
     }
@@ -2400,6 +2428,13 @@ border:2px solid  #e18848;
     }
     .about_popup_youtube{
         top: 75px;
+        right: 25%;
+    }
+    .about_popup_youtube_span{
+        right: 45%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
     }
     .about_popup_youtube a {
         color: #ec7532;
@@ -2513,6 +2548,12 @@ border:2px solid  #e18848;
     .main_movies .nav-tabs{
         padding: 10px 0px 0px 10px;
     }
+    .about_popup_youtube_span{
+        right: 44%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
+    }
 }
 @media screen and (max-width: 660px) {
     #searchModal .modal-has-search .modal-search_input{
@@ -2533,6 +2574,12 @@ border:2px solid  #e18848;
     #headerCarousel .banner-item{
         height: 35vh!important;
     }
+    .about_popup_youtube_span{
+        right: 43%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
+    }
 }
 @media screen and (max-width: 576px) {
     .media-footer .media_btn-group .search_button{
@@ -2550,6 +2597,12 @@ border:2px solid  #e18848;
     }
     .owl-item .block-present img{
         height: 300px;
+    }
+    .about_popup_youtube_span{
+        right: 44%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
     }
     .new_section h5.media-title{
         font-size: 27px;
@@ -2624,7 +2677,12 @@ border:2px solid  #e18848;
     .actors_lists .actor{
         max-width: 400px;
     }
-
+    .about_popup_youtube_span{
+        right: 43%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
+    }
     .main_movies .nav-tabs{
         padding: 10px 0px 0px 10px;
     }
@@ -2825,6 +2883,12 @@ border:2px solid  #e18848;
         top: -340px;
         padding: 17px 18px 12px 20px;
     }
+    .about_popup_youtube_span{
+        right: 40%;
+        top: 25%!important;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
+    }
     .media_btn-group .add_cupon svg {
         margin-bottom: 1px!important;
     }
@@ -2926,6 +2990,12 @@ border:2px solid  #e18848;
     }
     .media-footer .media_btn-group .add_cupon svg {
         margin-bottom: 3px!important;
+    }
+    .about_popup_youtube_span{
+        right: 43%;
+        top: 25%;
+        padding: 24px 25px 20px 26px;
+        z-index: 99
     }
     .about_popup_youtube {
         top: 60px;
@@ -3350,4 +3420,44 @@ img.big-carousel{
     letter-spacing: 0px;
     text-transform: uppercase!important;
     font-size: 13px;
+}
+.newsNavWidth{
+    width: 58%;
+}
+.newsTabBorderLine{
+    width: 100%;
+    height: 2px;
+    border: 2px solid #efefef;
+}
+.newsNavActiveBorder{
+
+}
+.newsPageTab > .active > .row > .newsNavActiveBorder div{
+    width: 100%;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    padding: 5px 0 0 0;
+    margin: 12px 0 -19px 0px;
+}
+.newsPageTab > .active > .row > .newsActiveTextColor{
+    color: #ec7532 !important;
+}
+.newsPageTableTitle{
+    color: #b6b6b6;
+}
+.newsVideoUnderLine{
+    width: 100%;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    padding: 3px 0 0 0;
+}
+.footerStaffCol{
+    background: linear-gradient(to bottom, rgb(15 15 15 / 10%), rgb(15 15 15 / 100%));
+    height: 275px;
+    width: 200px;
+    position: absolute;
+    margin-left: 15px;
+    border-radius: 14px;
+}
+.footerStaffCol:hover{
+    transition: 0.8s;
+    background: none;!important;
 }

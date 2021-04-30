@@ -27,7 +27,7 @@ use common\models\Role;
                     ArrayHelper::map(Role::find()->orderBy('name')->asArray()->all(), 'id', 'name'), ['prompt' => 'Անձնակազմ...']); ?>
         </div>
         <div class="col">
-            <?= $form->field($model, 'staff_status')->dropDownList([1=>'administrative',2=>'artistic'], ['prompt' => '']); ?>
+            <?= $form->field($model, 'staff_status')->dropDownList([1=>'administrative',2=>'artistic',3=>'technical'], ['prompt' => '']); ?>
         </div>
     </div>
 

@@ -103,6 +103,18 @@ foreach ($column_name as $item){
                 ])->label('Description'); ?>
             </div>
         </div>
+    <?php elseif ( $table_name == 'project'): ?>
+        <div class="row">
+            <div class="col-12">
+                <?= $form->field($message, '[0]translation')->textInput(['maxlength' => true])->label('Title'); ?>
+            </div>
+            <div class="col-12">
+                <?= $form->field($message, '[1]translation')->widget(CKEditor::className(), [
+                    'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
+                ])->label('Description'); ?>
+            </div>
+        </div>
+
 
     <?php else: ?>
 

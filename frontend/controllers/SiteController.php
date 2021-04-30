@@ -8,6 +8,7 @@ use common\models\News;
 use common\models\Performance;
 use common\models\SourceMessage;
 use common\models\Staff;
+use DateTime;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -65,7 +66,17 @@ class SiteController extends Controller
             }else{
                 $nowDay = date('Y-m-d');
                 $start = date('Y-m-01 00:00:00', strtotime($nowDay));
-                $end = date('Y-m-t 23:59:59', strtotime($nowDay));
+
+                $date = new DateTime('now');
+                $date->modify('last day of this month');
+                $endDateThisMouth=$date->format('d');
+                $mouthEndDateNow= $endDateThisMouth - date('d');
+
+                if ($mouthEndDateNow<8){
+                    $end = date('Y-m-t 23:59:59', strtotime('+1 month',strtotime($nowDay)));
+                }else{
+                    $end = date('Y-m-t 23:59:59', strtotime($nowDay));
+                }
             }
             $performanceByDays = Performance::find()->where(['between', 'show_date', $start, $end])
                 ->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray()->all();

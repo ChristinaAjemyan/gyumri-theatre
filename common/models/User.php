@@ -5,6 +5,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Query;
 use yii\web\IdentityInterface;
 
 /**
@@ -208,5 +209,43 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    public static function ImgMeta($path){
+        $pathArray=explode('/',$path);
+        $pageName=['performance','staff','project'];
+        $imgPath = '/assets/images/IMG_5753.JPG';
+        foreach ($pathArray as $k=>$db){
+            if (in_array($db,$pageName)){
+                if ($db=='project'){
+                    $v=(int)$k+1;
+                    if (array_key_exists($v,$pathArray)){
+                        $key=$pathArray[$v];
+                        $img=Project::find()->where(['id'=>$key])->one()['img_path'];
+                        $imgPath=Yii::$app->params['backend-url'] . '/upload/avatars/project/200/'.$img;
+                    };
+                }
+                if ($db=='performance'){
+                    $v=(int)$k+2;
+                    if (array_key_exists($v,$pathArray)){;
+                        $key=$pathArray[$v];
+                        $img=Performance::find()->where(['slug'=>$key])->one()['img_path'];
+                        if ($img!=null){
+                            $imgPath=Yii::$app->params['backend-url'] . '/upload/avatars/performance/400/'.$img;
+                        }
+                    };
+                }
+                if ($db=='staff'){
+                    $v=(int)$k+2;
+                    if (array_key_exists($v,$pathArray)){;
+                        $key=$pathArray[$v];
+                        $img=Staff::find()->where(['slug'=>$key])->one()['img_path'];
+                        if ($img!=null){
+                            $imgPath=Yii::$app->params['backend-url'] . '/upload/avatars/staff/400/'.$img;
+                        }
+                    };
+                }
+            }
+        }
+        return $imgPath;
     }
 }

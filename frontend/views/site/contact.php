@@ -102,6 +102,14 @@ use yii\helpers\Url;
                                 </button>
                             </div>
                         <?php endif; ?>
+
+                        <!--                        --><?/*= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                            'template' => '<div class="d-flex justify-content-end"><div>{image}</div><div>{input}</div></div>',
+                        ])->label(false) */?>
+
+                        <!--                        <div class="form-group">
+                            <?/*= Html::submitButton(Yii::t('home','Ուղարկել'), ['class' => 'contact-button', 'name' => 'contact-button']) */?>
+                        </div>-->
                     </div>
                 </div>
                 <div class="righ_content" style="width: 35%">

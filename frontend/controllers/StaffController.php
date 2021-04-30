@@ -41,6 +41,8 @@ class StaffController extends Controller
         andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_ASC]);
         $staff_artist = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'2'])->
         andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_ASC]);
+        $staff_technical = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'3'])->
+        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_ASC]);
         $pages_staff_admin = new Pagination([
             'totalCount' => $staff_admin->count(),
             'defaultPageSize' => 15,
@@ -51,19 +53,29 @@ class StaffController extends Controller
             'defaultPageSize' => 15,
             'params' => array_merge($_GET, ['role' => 'artistic'])
         ]);
+        $pages_staff_technical=new Pagination([
+            'totalCount' => $staff_technical->count(),
+            'defaultPageSize' => 15,
+            'params' => array_merge($_GET, ['role' => 'technical'])
+        ]);
         $model_staff_admin = $staff_admin->offset($pages_staff_admin->offset)
             ->limit($pages_staff_admin->limit)
             ->all();
         $model_staff_artist = $staff_artist->offset($pages_staff_artist->offset)
             ->limit($pages_staff_artist->limit)
             ->all();
+        $model_staff_technical = $staff_technical->offset($pages_staff_technical->offset)
+            ->limit($pages_staff_technical->limit)
+            ->all();
         return $this->render('index',
             [
                 'staff_primary' => $staff_primary,
                 'model_staff_admin' => $model_staff_admin,
                 'model_staff_artist' => $model_staff_artist,
+                'model_staff_technical'=>$model_staff_technical,
                 'pages_staff_admin' => $pages_staff_admin,
-                'pages_staff_artist' => $pages_staff_artist
+                'pages_staff_artist' => $pages_staff_artist,
+                'pages_staff_technical'=>$pages_staff_technical
             ]
         );
     }

@@ -101,6 +101,9 @@ use yii\helpers\Url;
             <li class="sidebar-nav-item">
                 <a href="/archive/index" class="sidebar-nav-link"><i class="fas fa-archive"></i> Archive</a>
             </li>
+            <li class="sidebar-nav-item">
+                <a href="/project/index" class="sidebar-nav-link"><i class="fas fa-project-diagram"></i> Project</a>
+            </li>
             <li class="sidebar-nav-item with-sub">
                 <a class="sidebar-nav-link"><i class="fas fa-cogs"></i> Settings </a>
                 <ul class="nav sidebar-nav-sub">

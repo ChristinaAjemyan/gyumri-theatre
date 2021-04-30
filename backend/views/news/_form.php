@@ -20,9 +20,10 @@ use mihaildev\elfinder\ElFinder;
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'videolink')->textInput(['maxlength' => true]) ?>
-
+            <?= $form->field($model, 'show_type')->dropDownList(['1' => 'Videos', '2' => 'Articles',], ['prompt' => 'Select where show.']);?>
+            <?= $form->field($model, 'reference_source')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'source_url')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'avatar_image')->fileInput(['class' => 'imageFile']) ?>
-
             <?php if (isset($result)) : ?>
             <?= $result ? $result : false; ?>
             <?php endif; ?>

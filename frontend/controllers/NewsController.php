@@ -14,17 +14,27 @@ class NewsController extends Controller
     public function actionIndex()
     {
         $this->view->title = Yii::t('home', 'Նորություններ');
-        $news = News::find();
+        $news = News::find()->where(['show_type'=>1]);
+        $articles=News::find()->where(['show_type'=>2]);
 
         $pages = new Pagination([
             'totalCount' => $news->count(),
-            'defaultPageSize' => 15,
+            'defaultPageSize' => 12,
+            'params' => array_merge($_GET, ['show' => 'videos'])
+        ]);
+        $pagesTwo= new Pagination([
+            'totalCount' =>$articles->count(),
+            'defaultPageSize'=> 4,
+            'params' => array_merge($_GET, ['show' => 'articles'])
         ]);
         $contents = $news->orderBy(['id' => SORT_DESC])->asArray()->offset($pages->offset)->limit($pages->limit)->all();
+        $contentsTwo= $articles->orderBy(['id' => SORT_DESC])->asArray()->offset($pagesTwo->offset)->limit($pagesTwo->limit)->all();
 
         return $this->render('index', [
             'pages' => $pages,
-            'contents' => $contents
+            'contents' => $contents,
+            'pagesTwo'=>$pagesTwo,
+            'contentsTwo'=>$contentsTwo,
         ]);
     }
 

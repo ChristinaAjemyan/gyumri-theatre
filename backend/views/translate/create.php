@@ -93,12 +93,14 @@ if (Yii::$app->session->has('message') && Yii::$app->session->has('lang')){
             </div>
         </div>
 
+
+    <?php elseif ( $table_name == 'project'): ?>
         <div class="row">
             <div class="col-12">
-                <?= $form->field($message, '[3]translation')->textarea(['rows' => 6])->label('Short Description'); ?>
+                <?= $form->field($message, '[0]translation')->textInput(['maxlength' => true])->label('Title'); ?>
             </div>
             <div class="col-12">
-                <?= $form->field($message, '[4]translation')->widget(CKEditor::className(), [
+                <?= $form->field($message, '[1]translation')->widget(CKEditor::className(), [
                     'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),
                 ])->label('Description'); ?>
             </div>

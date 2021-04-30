@@ -65,4 +65,11 @@ return [
     'Բոլորը' => 'All',
     'ԿԱՅՔԻ ՔԱՐՏԵԶ' => 'Site Map',
     'Արդյունք չի գտնվել' => 'No results found',
+    'ՏԵՍԱՆՅՈՒԹԵՐ'=>'VIDEOS',
+    'ՀՈԴՎԱԾՆԵՐ'=>'ARTICLES',
+    'ՆՈՐՈՒԹՅՈՒՆՆԵՐ'=>'NEWS',
+    'ՆԱԽԱԳԾԵՐ'=>'PROJECTS',
+    'Վարչական Կազմ'=>'Admin.&nbsp;staff',
+    'Գեղ.-ստեղծագործական Կազմ'=>'Artistic&nbsp;creativity&nbsp;group',
+    'Տեխնիկական&nbsp;Կազմ'=>'Technicals&nbsp;group',
 ];

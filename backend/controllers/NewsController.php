@@ -81,8 +81,10 @@ class NewsController extends Controller
     {
         $model = new News();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
+        if ($model->load(Yii::$app->request->post())) {
+            $model->show_type=Yii::$app->request->post("News")["show_type"];
+            $model->reference_source=Yii::$app->request->post("News")["reference_source"];
+            $model->source_url=Yii::$app->request->post("News")["source_url"];
             Main::createUploadDirectories('avatars/news', ['original', '200']);
             if (UploadedFile::getInstance($model, 'avatar_image')){
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
@@ -116,22 +118,26 @@ class NewsController extends Controller
 
         Yii::$app->session->set('img_name', $model::find()->asArray()->where(['id' => $id])->one()['img_path']);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->show_type=Yii::$app->request->post("News")["show_type"];
+            $model->reference_source=Yii::$app->request->post("News")["reference_source"];
+            $model->source_url=Yii::$app->request->post("News")["source_url"];
             if (UploadedFile::getInstance($model, 'avatar_image')){
                 Main::unlinkImages('avatars/news', ['original', '200']);
                 $model->avatar_image = UploadedFile::getInstance($model, 'avatar_image');
                 $img_name = time() . '.' . $model->avatar_image->extension;
                 $model->img_path = $img_name ;
-                $model->save();
+                $model->save(false);
                 $model->avatar_image->saveAs('upload/avatars/news/original/' . $img_name);
                 Main::myResizeImage('avatars/news', $img_name, ['200']);
             }else{
                 if (Yii::$app->request->post('token')){
                     Main::unlinkImages('avatars/news', ['original', '200']);
                     $model->img_path = 'default.jpg';
-                    $model->save();
+                    $model->save(false);
                 }
             }
+            $model->save();
             unset($_SESSION['img_name']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
