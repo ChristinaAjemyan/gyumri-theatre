@@ -19,7 +19,7 @@ use yii\widgets\Pjax;
                 <div class="nav nav-tabs newsPageTab" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link col-lg-6 col-md-6 col-12 w-50 h3 d-flex justify-content-center p-3 newsPageTabChanges <?= ($role=='videos')?'active':''; ?>" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="true" data-content="Videos">
                         <div class="row" style="width: 80%;">
-                            <div class="col-12 d-flex justify-content-center newsPageTableTitle newsActiveTextColor">
+                            <div class="col-12 d-flex justify-content-center newsPageTableTitle newsActiveTextColor" style="font-family: Arm Hmks;">
                                 <?= Yii::t('home', 'ՏԵՍԱՆՅՈՒԹԵՐ') ?>
                             </div>
                             <div class="col-12 newsNavActiveBorder">
@@ -29,7 +29,7 @@ use yii\widgets\Pjax;
                     </a>
                     <a class="nav-item nav-link col-lg-6 col-md-6 col-12 w-50 h3 d-flex justify-content-center p-3 newsPageTabChanges <?= ($role=='articles')?'active':''; ?>" id="nav-articles-tab" data-toggle="tab" href="#nav-articles" role="tab" aria-controls="nav-articles" aria-selected="false" data-content="Articles">
                         <div class="row" style="width: 80%;">
-                            <div class="col-12 d-flex justify-content-center newsPageTableTitle newsActiveTextColor">
+                            <div class="col-12 d-flex justify-content-center newsPageTableTitle newsActiveTextColor" style="font-family: Arm Hmks;">
                                 <?= Yii::t('home', 'ՀՈԴՎԱԾՆԵՐ') ?>
                             </div>
                             <div class="col-12 newsNavActiveBorder">
@@ -53,17 +53,24 @@ use yii\widgets\Pjax;
                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 p-0 rounded pb-3" style="width: 90.1%; ">
                                     <div class="d-flex justify-content-center">
                                         <div style="box-shadow: 0 2px 5px 3px silver;border-radius: 10px;border-collapse: collapse;">
-                                            <img src="<?= Yii::$app->params['backend-url'] . '/upload/avatars/news/200/' . $content['img_path']; ?>" alt="<?= $content['img_path']; ?>" style="object-fit: cover;height: 150px;width: 250px;border-radius: 10px 10px 0px 0px;filter: grayscale(80%);">
+                                            <div>
+                                                <img src="<?= Yii::$app->params['backend-url'] . '/upload/avatars/news/200/' . $content['img_path']; ?>" alt="<?= $content['img_path']; ?>" style="object-fit: cover;height: 150px;width: 250px;border-radius: 10px 10px 0px 0px;">
+                                                <div style="position: absolute;height: 150px;width: 250px;border-radius:10px;margin: -150px 0px 0px 0px;background: linear-gradient(to bottom, rgb(15 15 15 / 40%), rgb(15 15 15 / 40%));"></div>
+                                            </div>
                                             <div class="newsVideoUnderLine"></div>
-                                            <div class="d-flex justify-content-center bg-white p-1" style="font-size: 20px;font-family: Sans-Serif; border-radius: 0px 0px 10px 10px;;"><?= (strlen($content['title'])>15)?mb_substr(Yii::t('text',$content['title']),0,15).'...':Yii::t('text',$content['title']);?></div>
+                                            <div class="d-flex justify-content-center bg-white p-1" style="font-size: 20px;font-family: Arm Hmks; border-radius: 0px 0px 10px 10px;;"><?= (strlen($content['title'])>15)?mb_substr(Yii::t('text',$content['title']),0,15).'...':Yii::t('text',$content['title']);?></div>
                                             <span class="btn_play about_popup_youtube about_popup_youtube_span">
                                             <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=<?= $content['videolink']; ?>"><i class="fas fa-play" style="font-size: 23px"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="d-flex justify-content-center">
+                                <p class="text-center h2 remove" style="font-family: 'Arm Hmks';padding: 80px;">
+                                    <?= Yii::t('home','Արդյունք չի գտնվել') ?></p>
+                            </div>
                         <?php endif; ?>
-
                     </div>
                     <div class="d-flex justify-content-center">
                         <?= LinkPager::widget([
@@ -94,11 +101,11 @@ use yii\widgets\Pjax;
                             <div class="col-12 col-md-12 col-lg-8">
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-9"
-                                         style="font-size: 32px; color: #404040;font-family: Sans-Serif;">
+                                         style="font-size: 32px; color: #404040;font-family: Arm Hmks;;">
                                         <?= (strlen($item['title']) > 25) ? mb_substr(Yii::t('text', $item['title']), 0, 25, 'utf-8') . '...' : Yii::t('text', $item['title']); ?>
                                     </div>
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-3"
-                                         style="font-size: 19px; color: #999999;font-family: Sans-Serif;<?= (empty($item['reference_source'])) ? 'margin: 28px 0px 0px 0px;' : '' ?>;">
+                                         style="font-size: 19px; color: #999999;font-family: Arm Hmks;;<?= (empty($item['reference_source'])) ? 'margin: 28px 0px 0px 0px;' : '' ?>;">
                                         <?= (!empty($item['reference_source'])) ? $item['reference_source'] : ''; ?>
                                         <div style="width: 100%;background: linear-gradient(to right, #fbbd61, #ec7532);padding: 4px 0 0 0;margin: 4px 0px -19px 0px;"></div>
                                     </div>
@@ -125,6 +132,11 @@ use yii\widgets\Pjax;
                         </div>
                     <div class="newsTabBorderLine mt-4" style="margin-left: 6px!important;width: 99%!important;"></div>
                     <?php endforeach; ?>
+                    <?php else: ?>
+                    <div class="d-flex justify-content-center">
+                        <p class="text-center h2 remove" style="font-family: 'Arm Hmks';padding: 80px;">
+                            <?= Yii::t('home','Արդյունք չի գտնվել') ?></p>
+                    </div>
                     <?php endif; ?>
                 </div>
 

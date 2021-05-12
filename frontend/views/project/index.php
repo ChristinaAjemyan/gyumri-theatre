@@ -44,6 +44,11 @@ use yii\widgets\LinkPager;
                         </div>
                     </div>
                 <?php endforeach; ?>
+            <?php else: ?>
+                <div class="d-flex justify-content-center">
+                    <p class="text-center h2 remove" style="font-family: 'Arm Hmks';padding: 80px;">
+                        <?= Yii::t('home','Արդյունք չի գտնվել') ?></p>
+                </div>
             <?php endif; ?>
 
 
