@@ -221,7 +221,7 @@ class User extends ActiveRecord implements IdentityInterface
                     if (array_key_exists($v,$pathArray)){
                         $key=$pathArray[$v];
                         $img=Project::find()->where(['id'=>$key])->one()['img_path'];
-                        $imgPath=Yii::$app->params['backend-url'] . 'upload/avatars/project/200/'.$img;
+                        $imgPath=Yii::$app->params['backend-url'] . '/upload/avatars/project/200/'.$img;
                     };
                 }
                 if ($db=='performance'){
@@ -230,7 +230,7 @@ class User extends ActiveRecord implements IdentityInterface
                         $key=$pathArray[$v];
                         $img=Performance::find()->where(['slug'=>$key])->one()['img_path'];
                         if ($img!=null){
-                            $imgPath=Yii::$app->params['backend-url'] . 'upload/avatars/performance/400/'.$img;
+                            $imgPath=Yii::$app->params['backend-url'] . '/upload/avatars/performance/400/'.$img;
                         }
                     };
                 }
@@ -240,7 +240,7 @@ class User extends ActiveRecord implements IdentityInterface
                         $key=$pathArray[$v];
                         $img=Staff::find()->where(['slug'=>$key])->one()['img_path'];
                         if ($img!=null){
-                            $imgPath=Yii::$app->params['backend-url'] . 'upload/avatars/staff/400/'.$img;
+                            $imgPath=Yii::$app->params['backend-url'] . '/upload/avatars/staff/400/'.$img;
                         }
                     };
                 }

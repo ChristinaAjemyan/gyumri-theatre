@@ -80,6 +80,8 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                 <div></div>
                                             </div>
                                         </a>
+                                        &nbsp;
+                                        &nbsp;
                                     </div>
                                 </nav>
                                 <?php Pjax::begin() ?>

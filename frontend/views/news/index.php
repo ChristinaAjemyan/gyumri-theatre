@@ -58,7 +58,7 @@ use yii\widgets\Pjax;
                                                 <div style="position: absolute;height: 150px;width: 250px;border-radius:10px;margin: -150px 0px 0px 0px;background: linear-gradient(to bottom, rgb(15 15 15 / 40%), rgb(15 15 15 / 40%));"></div>
                                             </div>
                                             <div class="newsVideoUnderLine"></div>
-                                            <div class="d-flex justify-content-center bg-white p-1" style="font-size: 20px;font-family: Arm Hmks; border-radius: 0px 0px 10px 10px;;"><?= (strlen($content['title'])>15)?mb_substr(Yii::t('text',$content['title']),0,15).'...':Yii::t('text',$content['title']);?></div>
+                                            <div class="d-flex justify-content-center bg-white p-1" style="font-size: 18px;font-family: Arm Hmks; border-radius: 0px 0px 10px 10px;;"><?= (strlen($content['title'])>17)?mb_substr(Yii::t('text',$content['title']),0,17).'...':Yii::t('text',$content['title']);?></div>
                                             <span class="btn_play about_popup_youtube about_popup_youtube_span">
                                             <a target="_blank" class="popup_youtube" href="https://www.youtube.com/watch?v=<?= $content['videolink']; ?>"><i class="fas fa-play" style="font-size: 23px"></i></a>
                                         </div>
