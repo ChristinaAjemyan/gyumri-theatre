@@ -59,7 +59,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'content:ntext',
             //'img_path',
             'dt_create',
-            'ordering',
+            [
+                'header' => 'ordering',
+                'value' => function ($model) {
+                    return $model->ordering;
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

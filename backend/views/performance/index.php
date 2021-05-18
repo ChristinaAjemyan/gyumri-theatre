@@ -129,7 +129,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->is_new == 0 ? '' : 'Շուտով';
                 }
             ],
-            'ordering',
+            [
+                'header' => 'ordering',
+                'value' => function ($model) {
+                    return $model->ordering;
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]);

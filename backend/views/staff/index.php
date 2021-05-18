@@ -103,7 +103,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'inst_url',
             //'staff_genre_type',
             //'desc:ntext',
-            'ordering',
+            [
+                'header' => 'ordering',
+                'value' => function ($model) {
+                    return $model->ordering;
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
