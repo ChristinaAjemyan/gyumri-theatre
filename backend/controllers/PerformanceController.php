@@ -15,6 +15,7 @@ use app\models\PerformanceSearch;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -59,7 +60,16 @@ class PerformanceController extends Controller
     {
         $searchModel = new PerformanceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if (Yii::$app->request->isAjax){
+            foreach (Yii::$app->request->post('orderArray') as $key=>$value){
+                if ($value!=null){
+                    $model= Performance::findOne($key);
+                    $model->ordering=$value;
+                    $model->save(false);
+                }
+            }
+            echo Json::encode(true);die;
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -121,6 +131,7 @@ class PerformanceController extends Controller
                     $model->img_path = $avatar_name;
                     $model->banner = $banner_name;
                     $model->mobile_banner = $mobile_banner_name;
+                    $model->ordering=0;
                     $model->save();
                 }
                 foreach ($imageArray as $value) {

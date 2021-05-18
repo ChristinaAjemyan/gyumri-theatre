@@ -25,6 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => null,
+        'tableOptions' => [
+            'id' => 'sortableNews',
+            'class'=>'table table-bordered sortableTables',
+        ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
@@ -55,6 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'content:ntext',
             //'img_path',
             'dt_create',
+            'ordering',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

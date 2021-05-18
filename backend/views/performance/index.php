@@ -28,7 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => null,
-
+        'tableOptions' => [
+            'id' => 'sortablePerformances',
+            'class'=>'table table-bordered sortableTables',
+        ],
+        'rowOptions'=>['class'=>'ui-state-default'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
@@ -125,6 +129,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->is_new == 0 ? '' : 'Շուտով';
                 }
             ],
+            'ordering',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]);

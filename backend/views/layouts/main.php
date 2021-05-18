@@ -46,7 +46,8 @@ use yii\helpers\Url;
     <link href="/lib/fontawesome-5.13/css/all.css" rel="stylesheet">
     <link href="/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
-    <link href="/lib/jquery.steps/css/jquery.steps.css" rel="stylesheet"
+    <link href="/lib/jquery.steps/css/jquery.steps.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
     <?php $this->registerCsrfMetaTags() ?>
     <!-- Slim CSS -->
     <link rel="stylesheet" href="/css/slim.css">
@@ -134,6 +135,7 @@ use yii\helpers\Url;
 <!--<script src="/lib/jquery/js/jquery.js"></script>-->
 <script src="/js/jquery-3.5.1.min.js"></script>
 <script src="/js/script.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="/lib/popper.js/js/popper.js"></script>
 <script src="/lib/bootstrap/js/bootstrap.js"></script>
@@ -143,8 +145,36 @@ use yii\helpers\Url;
 <script type="text/javascript" src="/js/angular/angular.min.js"></script>
 <script type="text/javascript" src="/js/angular/app.js"></script>
 <script src="/js/slim.js"></script>
+<script src="/js/sortable.js"></script>
 
 
+<script>
+    $(".sortableTables >tbody").sortable({
+        stop: function () {
+            let searchParams = new URLSearchParams(window.location.search);
+            let page = searchParams.get('page');
+            let num=1;
+            if (page!=null){
+                num=page*20-19;
+            }
+            var newsArray = [];
+            $(".sortableTables >tbody >tr").each(function (index, item) {
+                newsArray[$(item).attr("data-key")] = index+num;
+            });
+            $.ajax({
+                url: window.location.href,
+                type: "post",
+                dataType: "JSON",
+                data: {orderArray: newsArray},
+                success: function (data) {
+                    if (data) {
+                        location.reload();
+                    }
+                }
+            });
+        }
+    });
+</script>
 
 <?php $this->endBody() ?>
 </body>

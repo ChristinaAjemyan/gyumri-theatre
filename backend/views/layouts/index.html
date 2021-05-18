@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--<table>-->
+    <!--<tbody class="sortable">-->
+    <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>One</td>-->
+        <!--<td>some text</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>2</td>-->
+        <!--<td>Two</td>-->
+        <!--<td>some text</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>3</td>-->
+        <!--<td>Three</td>-->
+        <!--<td>some text</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>4</td>-->
+        <!--<td>Four</td>-->
+        <!--<td>some text</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>5</td>-->
+        <!--<td>Five</td>-->
+        <!--<td>some text</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>6</td>-->
+        <!--<td>Six</td>-->
+        <!--<td>some text</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+<!--</table>-->
+<ul id="sortable">
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+</ul>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+    // $(function() {
+    //     $(".sortable").sortable({
+    //         revert: true
+    //     });
+    // });
+    $( function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    } );
+</script>
+</body>
+</html>

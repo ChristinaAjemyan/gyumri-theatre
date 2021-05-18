@@ -17,7 +17,7 @@ class PerformanceSearch extends Performance
     public function rules()
     {
         return [
-            [['id', 'is_new', 'age_restriction', 'performance_length', 'hall'], 'integer'],
+            [['id', 'is_new', 'age_restriction', 'performance_length', 'hall','ordering'], 'integer'],
             [['title', 'img_path', 'show_date', 'trailer', 'banner', 'author', 'short_desc', 'desc', 'slug'], 'safe'],
         ];
     }
@@ -46,7 +46,7 @@ class PerformanceSearch extends Performance
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
+            'sort' => ['defaultOrder' => ['ordering' => SORT_ASC]]
         ]);
 
         $this->load($params);

@@ -8,6 +8,7 @@ use Yii;
 use common\models\News;
 use app\models\NewsSearch;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -52,7 +53,16 @@ class NewsController extends Controller
     {
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-                                
+        if (Yii::$app->request->isAjax){
+            foreach (Yii::$app->request->post('orderArray') as $key=>$value){
+                if ($value!=null){
+                    $model= News::findOne($key);
+                    $model->ordering=$value;
+                    $model->save(false);
+                }
+            }
+            echo Json::encode(true);die;
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

@@ -27,6 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => null,
+        'tableOptions' => [
+            'id' => 'sortableStaff',
+            'class'=>'table table-bordered sortableTables',
+        ],
+        'rowOptions'=>['class'=>'ui-state-default'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -98,6 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'inst_url',
             //'staff_genre_type',
             //'desc:ntext',
+            'ordering',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

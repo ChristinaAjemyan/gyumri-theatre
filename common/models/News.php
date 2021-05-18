@@ -34,7 +34,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['content'], 'string'],
-            [['dt_create','videolink','title', 'content'], 'safe'],
+            [['dt_create','videolink','title', 'content','ordering'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['title', 'img_path'], 'string', 'max' => 255],
             ['title', 'filter', 'filter' => 'mb_strtolower']

@@ -18,7 +18,7 @@ class StaffSearch extends Staff
     {
         return [
             [['id'], 'integer'],
-            [['first_name', 'last_name', 'date_of_birth', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type', 'desc', 'role_id', 'slug'], 'safe'],
+            [['first_name', 'last_name', 'date_of_birth', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type', 'desc', 'role_id', 'slug','ordering'], 'safe'],
         ];
     }
 
@@ -46,7 +46,7 @@ class StaffSearch extends Staff
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
+            'sort' => ['defaultOrder' => ['ordering' => SORT_ASC]]
         ]);
 
         $this->load($params);

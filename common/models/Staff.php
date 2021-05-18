@@ -45,7 +45,7 @@ class Staff extends \yii\db\ActiveRecord
         return [
             [['first_name', 'last_name'], 'required'],
             ['slug', 'unique'],
-            [['date_of_birth','staff_status','primary_key','index_description','is_member','slug','role_id'], 'safe'],
+            [['date_of_birth','staff_status','primary_key','index_description','is_member','slug','role_id','ordering'], 'safe'],
             ['avatar_image', 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
             [['desc'], 'string'],
             [['first_name', 'last_name', 'img_path', 'country', 'city', 'inst_url', 'staff_genre_type'], 'string', 'max' => 255],

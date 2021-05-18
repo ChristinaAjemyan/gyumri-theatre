@@ -18,7 +18,7 @@ class NewsSearch extends News
     {
         return [
             [['id'], 'integer'],
-            [['title', 'content', 'img_path', 'dt_create','show_type','reference_source','source_url'], 'safe'],
+            [['title', 'content', 'img_path', 'dt_create','show_type','reference_source','source_url','ordering'], 'safe'],
         ];
     }
 
@@ -46,7 +46,7 @@ class NewsSearch extends News
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
+            'sort' => ['defaultOrder' => ['ordering' => SORT_ASC]]
         ]);
 
         $this->load($params);

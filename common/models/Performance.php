@@ -49,10 +49,10 @@ class Performance extends \yii\db\ActiveRecord
         return [
             [['title', 'slug'], 'required'],
             ['slug', 'unique'],
-            [['show_date','external_id','tour_link'], 'safe'],
+            [['show_date', 'external_id', 'tour_link', 'ordering'], 'safe'],
             [['desc', 'short_desc'], 'string'],
-            [['avatar_image', 'banner_image','mobile_banner'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
-            [['age_restriction', 'performance_length', 'hall', 'is_new'], 'integer'],
+            [['avatar_image', 'banner_image', 'mobile_banner'], 'file', 'extensions' => ['png', 'jpg', 'jpeg']],
+            [['age_restriction', 'performance_length', 'hall', 'is_new', 'ordering'], 'integer'],
             ['age_restriction', 'integer', 'min' => 0],
             ['performance_length', 'integer', 'min' => 1],
             [['title', 'img_path', 'trailer', 'banner', 'author'], 'string', 'max' => 255],
