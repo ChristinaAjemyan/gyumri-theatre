@@ -269,7 +269,7 @@ $('.weekdays').on('click', function () {
                             <img src="${data.basePath}/upload/avatars/performance/400/${item.img_path}" class="mr-5" alt="Photo">
                         </a>
                         </div>
-                        <div class="col-md-9 col-12">
+                        <div class="col-md-9 col-12" style="padding-right: 25px;px; ">
                             <div class="media-body mt-4">
                             ${item.hall === '1' ? "<aside class=\"aside_text aside-text_bg\" style='margin-right: -14px;'>"+ getTranslate(data.lang, 'SMALL THEATRE', 'МАЛЕНЬКИЙ ТЕАТР', 'ՓՈՔՐ ԹԱՏՐՈՆ') +"</aside>" : 
                                     item.hall === '2' ? "<aside class=\"aside_text\">"+ getTranslate(data.lang, 'TOUR', 'ГАСТРОЛИ', 'ՀՅՈՒՐԱԽԱՂ') +"</aside>" : ''}
