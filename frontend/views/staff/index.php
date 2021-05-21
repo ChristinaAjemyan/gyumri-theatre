@@ -73,15 +73,13 @@ $role = isset($_GET['role']) && $_GET['role'] != '' ? $_GET['role'] : 'administr
                                                 <div></div>
                                             </div>
                                         </a>
-                                        <a class="nav-item col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 client_tab tab_main <?=$role == 'technical' ? 'active' : '' ?>" id="nav-technical-tab" data-role="technical"
+                                        <a class="nav-item col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 client_tab tab_main <?=$role == 'technical' ? 'active' : '' ?>" id="nav-technical-tab" data-role="technical"
                                            data-toggle="tab" href="#nav-technical" role="tab" aria-controls="nav-technical" aria-selected="false">
-                                            <?= Yii::t('home', 'Տեխնիկական&nbsp;Կազմ') ?>
+                                            <?= Yii::t('home', 'ԳԵՂ․-ՏԵԽՆԻԿԱԿԱՆ&nbsp;ԿԱԶՄ') ?>
                                                 <div class="hove_height staff_change_line_tec">
                                                 <div></div>
                                             </div>
                                         </a>
-                                        &nbsp;
-                                        &nbsp;
                                     </div>
                                 </nav>
                                 <?php Pjax::begin() ?>

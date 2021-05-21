@@ -55,7 +55,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->view->title = Yii::t('home', 'Գյումրու Դրամատիկական թատրոն');
-        $performances = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->limit(6)->all();
+        $performances = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->all();
         $performanceSoon = Performance::find()->where(['is_new' => 1])->orderBy(['id' => SORT_DESC])->one();
 
         if (Yii::$app->request->post('day') || Yii::$app->request->post('monthDays')){
@@ -65,18 +65,8 @@ class SiteController extends Controller
                 $end = date('Y-m-d 23:59:59', strtotime("$day this week"));
             }else{
                 $nowDay = date('Y-m-d');
-                $start = date('Y-m-01 00:00:00', strtotime($nowDay));
-
-                $date = new DateTime('now');
-                $date->modify('last day of this month');
-                $endDateThisMouth=$date->format('d');
-                $mouthEndDateNow= $endDateThisMouth - date('d');
-
-                if ($mouthEndDateNow<8){
-                    $end = date('Y-m-t 23:59:59', strtotime('+1 month',strtotime($nowDay)));
-                }else{
-                    $end = date('Y-m-t 23:59:59', strtotime($nowDay));
-                }
+                $start = date('Y-m-d 00:00:00', strtotime($nowDay));
+                $end=date('Y-m-d 23:59:59', strtotime($nowDay.'+1 month'));
             }
             $performanceByDays = Performance::find()->where(['between', 'show_date', $start, $end])
                 ->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray()->all();

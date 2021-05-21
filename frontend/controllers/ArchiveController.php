@@ -34,7 +34,7 @@ class ArchiveController extends Controller
             if (Yii::$app->request->post('id')){
                 $id = Yii::$app->request->post('id');
                 $season = Archive::find()->where(['id' => $id])->one();
-                $arch_performances = ArchivePerformance::find()->where(['archive_id' => $season->id])->all();
+                $arch_performances = ArchivePerformance::find()->where(['archive_id' => $season->id])->orderBy(['ordering'=>SORT_ASC])->all();
                 $images = ArchiveImage::find()->where(['archive_id' => $season->id])->all();
 
                 $season_arr['title'] = Yii::t('text', $season->title);

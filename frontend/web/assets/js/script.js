@@ -298,14 +298,14 @@ $('.weekdays').on('click', function () {
                 </div>          
             `);
             });
-            $(function () {
-                $('.content_row').flexiblePagination({
-                    itemsPerPage: 6,
-                    itemSelector: 'div.result:visible',
-                    pagingControlsContainer: '.pagingControls',
-                    showingInfoSelector: '#showingInfo',
-                });
-            });
+            // $(function () {
+            //     $('.content_row').flexiblePagination({
+            //         itemsPerPage: 10,
+            //         itemSelector: 'div.result:visible',
+            //         pagingControlsContainer: '.pagingControls',
+            //         showingInfoSelector: '#showingInfo',
+            //     });
+            // });
             $('.loadIcon').remove();
         }
     });

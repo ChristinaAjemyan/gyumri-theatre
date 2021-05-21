@@ -109,6 +109,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->ordering;
                 }
             ],
+            [
+                'header' => 'staff status',
+                'value' => function ($model) {
+                    if ($model->staff_status==1){
+                        return 'administrative';
+                    }
+                    if ($model->staff_status==2){
+                        return 'artistic';
+                    }
+                    if ($model->staff_status==3){
+                        return 'technical';
+                    }
+                    return $model->staff_status;
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -8,6 +8,6 @@ return [
     'user.passwordMinLength' => 8,
     'backend-url' => 'http://admin.gyumritheatre.am',
     'front-url' => 'http://demo.gyumritheatre.am',
-/*    'backend-url' => 'http://theatre.loc',
+/*   'backend-url' => 'http://theatre.loc',
     'front-url' => 'http://front.loc',*/
 ];

@@ -32,17 +32,17 @@ class StaffController extends Controller
             ->where(['!=', 'role_id', $role_id])
             ->andWhere(["primary_key" => 1])
             ->andWhere(['is_member' => 1])
-            ->orderBy(['id' => SORT_ASC])
+            ->orderBy(['ordering' => SORT_ASC])
             ->limit(2)
             ->all();
         
 
         $staff_admin = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'1'])->
-        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_ASC]);
+        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['ordering' => SORT_ASC]);
         $staff_artist = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'2'])->
-        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_ASC]);
+        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['ordering' => SORT_ASC]);
         $staff_technical = Staff::find()->where(['!=', 'role_id', $role_id])->andWhere(['staff_status'=>'3'])->
-        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['id' => SORT_ASC]);
+        andWhere(['!=', 'primary_key', 1])->andWhere(['is_member' => 1])->orderBy(['ordering' => SORT_ASC]);
         $pages_staff_admin = new Pagination([
             'totalCount' => $staff_admin->count(),
             'defaultPageSize' => 15,
@@ -84,7 +84,7 @@ class StaffController extends Controller
     {
         $this->view->title = Yii::t('home', 'Դերասաններ');
         $role_id = Role::find()->where(['name' => 'Դերասան'])->one();
-        $actors = Staff::find()->where(['role_id' => $role_id->id])->andWhere(['is_member' => 1]);
+        $actors = Staff::find()->where(['role_id' => $role_id->id])->andWhere(['is_member' => 1])->orderBy(['ordering' => SORT_ASC]);
         $pages = new Pagination([
             'totalCount' => $actors->count(),
             'defaultPageSize' => 15,

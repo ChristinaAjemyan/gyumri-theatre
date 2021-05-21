@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Staff;
+use yii\data\Pagination;
 
 /**
  * StaffSearch represents the model behind the search form of `app\models\Staff`.
@@ -46,6 +47,9 @@ class StaffSearch extends Staff
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 500,
+            ],
             'sort' => ['defaultOrder' => ['ordering' => SORT_ASC]]
         ]);
 

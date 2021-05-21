@@ -11,6 +11,7 @@ use common\models\Archive;
 use app\models\ArchiveSearch;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -44,7 +45,16 @@ class ArchiveController extends Controller
     {
         $searchModel = new ArchiveSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if (Yii::$app->request->isAjax){
+            foreach (Yii::$app->request->post('orderArray') as $key=>$value){
+                if ($value!=null){
+                    $model= Archive::findOne($key);
+                    $model->ordering=$value;
+                    $model->save(false);
+                }
+            }
+            echo Json::encode(true);die;
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -206,6 +216,23 @@ class ArchiveController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionOrdering()
+    {
+        $model = ArchivePerformance::find()->orderBy(['ordering'=>SORT_ASC])->all();
+        if (Yii::$app->request->isAjax){
+            foreach (Yii::$app->request->post('orderArray') as $key=>$value){
+                if ($value!=null){
+                    $model= ArchivePerformance::findOne($key);
+                    $model->ordering=$value;
+                    $model->save(false);
+                }
+            }
+            echo Json::encode(true);die;
+        }
+        return $this->render('ordering', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Finds the Archive model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

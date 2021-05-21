@@ -65,6 +65,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->ordering;
                 }
             ],
+            [
+                'header' => 'show type',
+                'value' => function ($model) {
+                    if ($model->show_type==1){
+                        return 'video';
+                    }
+                    if ($model->show_type==2){
+                        return 'articles';
+                    }
+                    return 'not select';
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -71,5 +71,5 @@ return [
     'ՆԱԽԱԳԾԵՐ'=>'PROJECTS',
     'Վարչական Կազմ'=>'Admin.&nbsp;staff',
     'Գեղ.-ստեղծագործական Կազմ'=>'Artistic&nbsp;creativity&nbsp;group',
-    'Տեխնիկական&nbsp;Կազմ'=>'Technicals&nbsp;group',
+    'ԳԵՂ․-ՏԵԽՆԻԿԱԿԱՆ&nbsp;ԿԱԶՄ'=>'Technicals&nbsp;group',
 ];

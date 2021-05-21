@@ -30,7 +30,7 @@ class PerformanceController extends Controller
     public function actionIndex(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
 
-        $performancesAll = Performance::find()->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray();
+        $performancesAll = Performance::find()->orderBy(['ordering'=>SORT_ASC])->asArray();
 
         $pages = new Pagination([
             'totalCount' => $performancesAll->count(),
@@ -77,22 +77,23 @@ class PerformanceController extends Controller
                 foreach ($genre as $value){
                     $str .= ' '.Yii::t('text', $value).',';
                 }
-                $performances_arr[$i]['id'] = $val['id'];
-                $performances_arr[$i]['author'] = Yii::t('text', $val['author']);
-                $performances_arr[$i]['title'] = Yii::t('text', $val['title']);
-                $performances_arr[$i]['slug'] = Yii::t('text', $val['slug']);
-                $performances_arr[$i]['desc'] = Yii::t('text', $val['desc']);
-                $performances_arr[$i]['short_desc'] = Yii::t('text', $val['short_desc']);
-                $performances_arr[$i]['show_date'] = $val['show_date'];
-                $performances_arr[$i]['hall'] = $val['hall'];
-                $performances_arr[$i]['tour_link'] = $val['tour_link'];
-                $performances_arr[$i]['img_path'] = Yii::t('text', $val['img_path']);
-                $performances_arr[$i]['genre'] = trim($str, ',');
-                $performances_arr[$i]['age_restriction'] = $val['age_restriction'];
-                $performances_arr[$i]['performance_length'] = $val['performance_length'];
-                $performances_arr[$i]['date'] = Performance::getPerformanceTime($val['show_date']);
-                $performances_arr[$i]['external_id'] = $val['external_id'];
+                $performances_arr[$val['ordering']]['id'] = $val['id'];
+                $performances_arr[$val['ordering']]['author'] = Yii::t('text', $val['author']);
+                $performances_arr[$val['ordering']]['title'] = Yii::t('text', $val['title']);
+                $performances_arr[$val['ordering']]['slug'] = Yii::t('text', $val['slug']);
+                $performances_arr[$val['ordering']]['desc'] = Yii::t('text', $val['desc']);
+                $performances_arr[$val['ordering']]['short_desc'] = Yii::t('text', $val['short_desc']);
+                $performances_arr[$val['ordering']]['show_date'] = $val['show_date'];
+                $performances_arr[$val['ordering']]['hall'] = $val['hall'];
+                $performances_arr[$val['ordering']]['tour_link'] = $val['tour_link'];
+                $performances_arr[$val['ordering']]['img_path'] = Yii::t('text', $val['img_path']);
+                $performances_arr[$val['ordering']]['genre'] = trim($str, ',');
+                $performances_arr[$val['ordering']]['age_restriction'] = $val['age_restriction'];
+                $performances_arr[$val['ordering']]['performance_length'] = $val['performance_length'];
+                $performances_arr[$val['ordering']]['date'] = Performance::getPerformanceTime($val['show_date']);
+                $performances_arr[$val['ordering']]['external_id'] = $val['external_id'];
             }
+            asort($performances_arr);
             return Json::encode([
                 'performances' => $performances_arr,
                 'base_path' => Yii::$app->params['backend-url'],
@@ -105,7 +106,7 @@ class PerformanceController extends Controller
     public function actionBig(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ');
         $performancesBigHall = Performance::find()->where(['hall' => 0])
-            ->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray();
+            ->orderBy(['ordering' => SORT_ASC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesBigHall->count(),
             'defaultPageSize' => 15,
@@ -131,7 +132,7 @@ class PerformanceController extends Controller
 
     public function actionSmall(){
         $this->view->title = Yii::t('home', 'Ներկայացումներ').' - '.Yii::t('home', 'Փոքր թատրոն');
-        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy([new \yii\db\Expression('show_date IS not NULL DESC, show_date ASC')])->asArray();
+        $performancesSmallHall = Performance::find()->where(['hall' => 1])->orderBy(['ordering' => SORT_ASC])->asArray();
         $pages = new Pagination([
             'totalCount' => $performancesSmallHall->count(),
             'defaultPageSize' => 15,

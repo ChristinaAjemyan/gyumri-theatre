@@ -27,8 +27,8 @@ class NewsController extends Controller
             'defaultPageSize'=> 4,
             'params' => array_merge($_GET, ['show' => 'articles'])
         ]);
-        $contents = $news->orderBy(['id' => SORT_DESC])->asArray()->offset($pages->offset)->limit($pages->limit)->all();
-        $contentsTwo= $articles->orderBy(['id' => SORT_DESC])->asArray()->offset($pagesTwo->offset)->limit($pagesTwo->limit)->all();
+        $contents = $news->orderBy(['ordering' => SORT_ASC])->asArray()->offset($pages->offset)->limit($pages->limit)->all();
+        $contentsTwo= $articles->orderBy(['ordering' => SORT_ASC])->asArray()->offset($pagesTwo->offset)->limit($pagesTwo->limit)->all();
 
         return $this->render('index', [
             'pages' => $pages,
