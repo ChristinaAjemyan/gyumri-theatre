@@ -263,7 +263,7 @@ $('.weekdays').on('click', function () {
             $.each(data.success, function (i, item) {
                 $(`#nav-tabContent #${weekHref}`).append(`
                 <div class="media result d-block mb-4" ${data.success.length <= 1 ? 'style="border-bottom:none"' : ''}>
-                    <div class="row performances_main" style="box-shadow: none;padding-bottom: 25px;">
+                    <div class="row performances_main" style="box-shadow: none;padding-bottom: 25px;padding-right: 8px;">
                         <div class="col-md-3 col-12 p-0" style="padding: 0px 15px;">
                         <a href="/performance/view/${item.slug}">
                             <img src="${data.basePath}/upload/avatars/performance/400/${item.img_path}" class="mr-5" alt="Photo">
