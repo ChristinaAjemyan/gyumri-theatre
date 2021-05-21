@@ -94,7 +94,7 @@ use yii\widgets\Pjax;
                     <?php foreach ($contentsTwo as $item): ?>
                         <div class="row ml-2 mr-2 mt-4 bg-white p-0" style="box-shadow: 0 2px 5px 3px silver;border-radius: 10px 0px 0px 10px;">
                             <div class="col-12 col-md-12 col-lg-4 p-0">
-                                <img src="<?= Yii::$app->params['backend-url'] . '/upload/avatars/news/200/' . $item['img_path']; ?>"
+                                <img src="<?= Yii::$app->params['backend-url'] . '/upload/avatars/news/original/' . $item['img_path']; ?>"
                                      alt="<?= $item['img_path']; ?>"
                                      style="width: 360px;height: 245px;object-fit: cover;border-radius: 10px;">
                             </div>
