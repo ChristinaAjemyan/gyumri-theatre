@@ -287,7 +287,7 @@ $('.weekdays').on('click', function () {
                                         ${item.hall === "2" ? `<a href="${item.tour_link}" target="_blank" class=\"btn add_cupon\">` +
                                         getTranslate(data.lang, 'ORDER', 'ПРИКАЗ', 'ՊԱՏՎԻՐԵԼ') + " <i class=\"fas fa-chevron-right\"></i></a>" : ''}
                                     </div>
-                                    ${!item.external_id && item.show_date > currentTime ? "<p class='view-movie'>"+item.func_date+"</p>" : ''}
+                                    ${item.show_date > currentTime ? "<p class='view-movie'>"+item.func_date+"</p>" : ''}
                                     <p class="movie-lenght" style="margin-right: -14px;">${item.performance_length ? item.performance_length : ''} ${item.performance_length ? getTranslate(data.lang, 'MINUTE', 'МИНУТА', 'ՐՈՊԵ') : ''}
                                         ${item.age_restriction ? '<span>'+item.age_restriction +'+</span>' : ''}
                                     </p>
