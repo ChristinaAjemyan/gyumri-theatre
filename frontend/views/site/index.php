@@ -7,7 +7,27 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 ?>
+<style>
+    .simplebar-scrollbar {
+        position: absolute!important;
+        left: 0!important;
+        right: 0!important;
+        min-height: 10px!important;
+        background: #a9a9a9;!important;
+        width: 5px;!important;
+    }
 
+    .simplebar-scrollbar:before {
+        position: absolute;!important;
+        content: '';!important;
+        background: #4f4f4f;!important;
+        border-radius: 0;!important;
+        left: 1px;!important;
+        right: 1px;!important;
+        opacity: 0;!important;
+        transition: opacity 0.2s linear;!important;
+    }
+</style>
 <!--<div class="scrollme">
     <h1 class="baner_title"><?/*= Yii::t('home', 'Գյումրու Դրամատիկական թատրոն') */?></h1>
 </div>-->
