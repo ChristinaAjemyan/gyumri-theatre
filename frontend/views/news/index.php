@@ -88,7 +88,7 @@ use yii\widgets\Pjax;
                 </div>
             </div>
             <div class="tab-pane fade <?= ($role=='articles')?'show active':''; ?>" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
-                <?php Pjax::begin();?>
+
                 <div class="container">
                     <?php if (isset($contentsTwo) && !empty($contentsTwo)): ?>
                     <?php foreach ($contentsTwo as $item): ?>
@@ -152,7 +152,7 @@ use yii\widgets\Pjax;
                         ]
                     ]);?>
                 </div>
-                <?php Pjax::end(); ?>
+
             </div>
         </div>
     </div>
@@ -165,6 +165,15 @@ $(document).on('click','.newsPageTabChanges',function() {
     let url = new URL(location.href);
         url.searchParams.set('show', showValue);
         window.history.pushState({}, '', url);
+        if (showValue=='Articles'){
+            $('#nav-video').css('display','none');
+            $('#nav-articles').css('display','block');
+        } 
+
+        if (showValue=='Videos'){
+            $('#nav-articles').css('display','none');
+            $('#nav-video').css('display','block');    
+        } 
 })
 JS;
 $this->registerJs($js);

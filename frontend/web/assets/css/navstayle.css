@@ -3234,8 +3234,7 @@ border:2px solid  #e18848;
 .language_select,.language_select option{
     font-family: 'Arm Hmks';
     font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    /*letter-spacing: 1.5px;*/
 }
 .week_days_perf{
     height: 300px; object-fit: cover;
