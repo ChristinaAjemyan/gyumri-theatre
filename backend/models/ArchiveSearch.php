@@ -40,7 +40,7 @@ class ArchiveSearch extends Archive
      */
     public function search($params)
     {
-        $query = Archive::find()->orderBy(['ordering'=>SORT_ASC]);
+        $query = Archive::find()->orderBy(['id'=>SORT_ASC]);
 
         // add conditions that should always apply here
 

@@ -45,16 +45,7 @@ class ArchiveController extends Controller
     {
         $searchModel = new ArchiveSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (Yii::$app->request->isAjax){
-            foreach (Yii::$app->request->post('orderArray') as $key=>$value){
-                if ($value!=null){
-                    $model= Archive::findOne($key);
-                    $model->ordering=$value;
-                    $model->save(false);
-                }
-            }
-            echo Json::encode(true);die;
-        }
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
