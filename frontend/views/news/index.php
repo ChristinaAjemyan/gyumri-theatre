@@ -88,7 +88,7 @@ use yii\widgets\Pjax;
                 </div>
             </div>
             <div class="tab-pane fade <?= ($role=='articles')?'show active':''; ?>" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
-
+                <?php Pjax::begin();?>
                 <div class="container">
                     <?php if (isset($contentsTwo) && !empty($contentsTwo)): ?>
                     <?php foreach ($contentsTwo as $item): ?>
@@ -152,7 +152,7 @@ use yii\widgets\Pjax;
                         ]
                     ]);?>
                 </div>
-
+                <?php Pjax::end(); ?>
             </div>
         </div>
     </div>
